@@ -34,19 +34,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            self.window?.rootViewController = TraningFirstViewController.route()
 //        } else
         
-        if FirebaseAutorization.shared.isLoginUser {
-            
-            FirebaseAutorization.shared.appleIDStatus {[weak self](logauth) in
-                if logauth == false {
-                    self?.login() //все нормально либо не использовали идент через аппле ид, либо токен еше активен
-                } else {
-                    self?.autorizationVC()
-                }
-            }
-            
-        } else {
-            autorizationVC()
-        }
+        
+        autorizationVC()
+//        if FirebaseAutorization.shared.isLoginUser {
+//
+//            FirebaseAutorization.shared.appleIDStatus {[weak self](logauth) in
+//                if logauth == false {
+//                    self?.login() //все нормально либо не использовали идент через аппле ид, либо токен еше активен
+//                } else {
+//                    self?.autorizationVC()
+//                }
+//            }
+//
+//        } else {
+//            autorizationVC()
+//        }
         
         return true
     }

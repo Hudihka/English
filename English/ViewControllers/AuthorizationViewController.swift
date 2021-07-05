@@ -25,6 +25,6 @@ class AuthorizationViewController: UIViewController {
     }
 
     @IBAction func autoriz(_ sender: Any) {
-        autoriz.startSignInWithAppleFlow()
+        autoriz.startAutorisation()
     }
 }
