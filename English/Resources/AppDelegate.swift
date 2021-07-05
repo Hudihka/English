@@ -19,7 +19,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        
+        window = UIWindow(frame: CGRect(origin: CGPoint.zero, size: UIScreen.main.bounds.size))
+        
+//        if DefaultsUtils.isUserSeeTrening == false {
+//            //логаут нужен тк с преведущей установки юзер мог остаться
+//            do {
+//                FirebaseData.shared.profile = nil
+//                try Auth.auth().signOut()
+//            } catch let signOutError as NSError {
+//                print ("Error signing out: %@", signOutError)
+//            }
+//
+//            self.window?.rootViewController = TraningFirstViewController.route()
+//        } else
+        
+        if FirebaseAutorization.shared.isLoginUser {
+            
+            FirebaseAutorization.shared.appleIDStatus {[weak self](logauth) in
+                if logauth == false {
+                    self?.login() //все нормально либо не использовали идент через аппле ид, либо токен еше активен
+                } else {
+                    self?.autorizationVC()
+                }
+            }
+            
+        } else {
+            autorizationVC()
+        }
+        
         return true
+    }
+    
+    private func login(){
+        let NVC = MenuViewController.route()
+        self.window?.rootViewController = NVC
+    }
+    
+    private func autorizationVC(){
+        let VC = AuthorizationViewController.route()
+        self.window?.rootViewController = VC
     }
 
 
@@ -29,8 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {}
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        ////
-    }
+    func applicationDidBecomeActive(_ application: UIApplication) {}
 }
 

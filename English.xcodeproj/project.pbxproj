@@ -20,6 +20,8 @@
 		45E8EEC6269340BD00D66F13 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EEC5269340BD00D66F13 /* Constant.swift */; };
 		45E8EEC92693429E00D66F13 /* DefaultUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EEC82693429E00D66F13 /* DefaultUtils.swift */; };
 		45E8EECB2693543C00D66F13 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EECA2693543C00D66F13 /* Word.swift */; };
+		45E8EECE269359DE00D66F13 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EECD269359DE00D66F13 /* AuthorizationViewController.swift */; };
+		45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EECF269359F600D66F13 /* MenuViewController.swift */; };
 		BBABB6EE4E302A6CA740797D /* Pods_English.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9F5BC59122B2F9337ED01F /* Pods_English.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 		45E8EEC5269340BD00D66F13 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		45E8EEC82693429E00D66F13 /* DefaultUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUtils.swift; sourceTree = "<group>"; };
 		45E8EECA2693543C00D66F13 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		45E8EECD269359DE00D66F13 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		45E8EECF269359F600D66F13 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		4A12AD1320830D63DA5EBBDB /* Pods-English.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.debug.xcconfig"; path = "Target Support Files/Pods-English/Pods-English.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,10 +94,11 @@
 		456EB43D2692E1120003CEB6 /* English */ = {
 			isa = PBXGroup;
 			children = (
+				4539C19D2692F86C00534F4B /* Resources */,
+				45E8EECC269358C000D66F13 /* ViewControllers */,
 				45E8EEC72693413600D66F13 /* DataProvider */,
 				45E8EEC026933DA200D66F13 /* Models */,
 				45E8EEBB2693385A00D66F13 /* SupportClasses */,
-				4539C19D2692F86C00534F4B /* Resources */,
 			);
 			path = English;
 			sourceTree = "<group>";
@@ -124,6 +129,15 @@
 				45E8EEC82693429E00D66F13 /* DefaultUtils.swift */,
 			);
 			path = DataProvider;
+			sourceTree = "<group>";
+		};
+		45E8EECC269358C000D66F13 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				45E8EECD269359DE00D66F13 /* AuthorizationViewController.swift */,
+				45E8EECF269359F600D66F13 /* MenuViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		B0B67EA5C8604836DA78643B /* Frameworks */ = {
@@ -264,6 +278,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45E8EECE269359DE00D66F13 /* AuthorizationViewController.swift in Sources */,
+				45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */,
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
 				45E8EECB2693543C00D66F13 /* Word.swift in Sources */,
 				45E8EEC226933E9500D66F13 /* Profile.swift in Sources */,

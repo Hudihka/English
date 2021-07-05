@@ -140,7 +140,7 @@ extension FirebaseAutorization: ASAuthorizationControllerDelegate {
     
     func appleIDStatus(compl: @escaping (Bool) -> ()){
         
-        var DF = DefaultUtils.shared
+        let DF = DefaultUtils.shared
         
         guard let id = DF.userAppleID else {
             compl(false)
