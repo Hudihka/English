@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		456EB4462692E1120003CEB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4442692E1120003CEB6 /* Main.storyboard */; };
 		456EB4482692E1120003CEB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4472692E1120003CEB6 /* Assets.xcassets */; };
 		456EB44B2692E1120003CEB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4492692E1120003CEB6 /* LaunchScreen.storyboard */; };
+		45C9416B2692E3D6001827AB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 45C9416A2692E3D6001827AB /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45C9416B2692E3D6001827AB /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = English;
+			packageProductDependencies = (
+				45C9416A2692E3D6001827AB /* SnapKit */,
+			);
 			productName = English;
 			productReference = 456EB43B2692E1120003CEB6 /* English.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +115,9 @@
 				Base,
 			);
 			mainGroup = 456EB4322692E1120003CEB6;
+			packageReferences = (
+				45C941692692E3D6001827AB /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 456EB43C2692E1120003CEB6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -289,6 +297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7M2U6SA6L4;
 				INFOPLIST_FILE = English/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +305,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.cocoa.English;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,6 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7M2U6SA6L4;
 				INFOPLIST_FILE = English/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +325,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.cocoa.English;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -341,6 +351,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		45C941692692E3D6001827AB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		45C9416A2692E3D6001827AB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45C941692692E3D6001827AB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 456EB4332692E1120003CEB6 /* Project object */;
 }
