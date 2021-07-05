@@ -23,6 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    func applicationWillResignActive(_ application: UIApplication) {}
 
+    func applicationDidEnterBackground(_ application: UIApplication){}
+
+    func applicationWillEnterForeground(_ application: UIApplication) {}
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        ////
+    }
 }
 
