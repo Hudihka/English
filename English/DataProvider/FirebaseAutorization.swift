@@ -28,14 +28,20 @@ class FirebaseAutorization: NSObject {
    
     
     func startAutorisation() {
-        Auth.auth().signIn(withEmail: "kostiantakoj@mail.ru", password: "kostiantakoj@mail") { (user, error) in
-            if error == nil {
+        firebaseAuth.signIn(withEmail: "kostiantakoj@mail.ru", password: "kostiantakoj@mail") {[weak self] (user, error) in
+            if let selF = self, let uid = user?.user.uid {
                 print ("вошли")
+                
+                selF.dataManager.getUser(userUID: uid) {
+                    print("получили узера")
+                }
+                
             } else {
                 print ("Error signing out: %@", error)
             }
         }
     }
+    
     
 }
 

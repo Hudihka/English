@@ -35,20 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        } else
         
         
-        autorizationVC()
-//        if FirebaseAutorization.shared.isLoginUser {
-//
-//            FirebaseAutorization.shared.appleIDStatus {[weak self](logauth) in
-//                if logauth == false {
-//                    self?.login() //все нормально либо не использовали идент через аппле ид, либо токен еше активен
-//                } else {
-//                    self?.autorizationVC()
-//                }
-//            }
-//
-//        } else {
-//            autorizationVC()
-//        }
+        if FirebaseAutorization.shared.idUser == nil {
+            login()
+        } else {
+            autorizationVC()
+        }
         
         return true
     }

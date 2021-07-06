@@ -11,28 +11,27 @@ import Foundation
 struct Word: Equatable {
     
     var id: String?
-    var themeID: String = ""
     var ownerId: String = ""
+    var listId: String = ""
     
     var rusValue: String = ""
     var engValue: String = ""
     var descript: String?
     var favorit: Bool = false
     
-    
     init(ownerId: String){
         self.ownerId = ownerId
     }
     
-    init(json: JSON, id: String?){
+    init(json: [String : Any], id: String?){
         self.id = id
-        
-        if let temp = json["themeID"] as? String {
-            self.themeID = temp
-        }
         
         if let temp = json["ownerId"] as? String {
             self.ownerId = temp
+        }
+        
+        if let temp = json["listId"] as? String {
+            self.listId = temp
         }
         
         if let temp = json["rusValue"] as? String {
@@ -47,11 +46,13 @@ struct Word: Equatable {
             self.descript = temp
         }
         
+        
         if let temp = json["favorit"] as? Bool {
             self.favorit = temp
         }
         
     }
+    
     
     var json: JSON{
         
@@ -61,12 +62,13 @@ struct Word: Equatable {
             json["id"] = id
         }
         
-        json["themeID"]     = ownerId
-        json["ownerId"]     = ownerId
-        json["rusValue"]    = rusValue
-        json["engValue"]    = engValue
-        json["descript"]    = descript
-        json["favorit"]     = favorit
+        json["ownerId"]      = ownerId
+        json["listId"]       = listId
+        json["rusValue"]     = rusValue
+        json["engValue"]     = engValue
+        json["descript"]     = descript
+        json["favorit"]      = favorit
+        
         
         return json
     }
