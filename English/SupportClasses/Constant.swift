@@ -22,11 +22,6 @@ enum EnumFont: String{
     case medium = "Medium"
     case light = "Light"
     
-    private var nameFont: String {
-        let baseName = "Montserrat-"
-        return baseName + self.rawValue
-    }
-    
     private var wedding: UIFont.Weight {
         
         switch self {
@@ -44,8 +39,8 @@ enum EnumFont: String{
     }
     
     func font(_ size: CGFloat) -> UIFont {
-        let font = UIFont(name: nameFont, size: size)
-        return font ?? UIFont.systemFont(ofSize: size, weight: self.wedding)
+        let font = UIFont.systemFont(ofSize: size, weight: wedding)
+        return font
     }
     
 }

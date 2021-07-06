@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         if FirebaseAutorization.shared.isLoginUser {
-            login()
+            menu()
         } else {
             autorizationVC()
         }
@@ -32,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    private func login(){
-        let NVC = MenuViewController.route()
+    private func menu(){
+        let NVC = LoadProfileViewController()
         self.window?.rootViewController = NVC
     }
     

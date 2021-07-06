@@ -13,6 +13,7 @@
 		456EB4482692E1120003CEB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4472692E1120003CEB6 /* Assets.xcassets */; };
 		456EB44B2692E1120003CEB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4492692E1120003CEB6 /* LaunchScreen.storyboard */; };
 		45C9416B2692E3D6001827AB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 45C9416A2692E3D6001827AB /* SnapKit */; };
+		45C960162694C2D600B846D2 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C960152694C2D600B846D2 /* UIWindow.swift */; };
 		45E8EEBD2693389600D66F13 /* FirebaseAutorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EEBC2693389600D66F13 /* FirebaseAutorization.swift */; };
 		45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EEBE26933CB400D66F13 /* FirebaseData.swift */; };
 		45E8EEC226933E9500D66F13 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EEC126933E9500D66F13 /* Profile.swift */; };
@@ -26,6 +27,7 @@
 		45E976A3269490C500A12858 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A2269490C500A12858 /* UINavigationController.swift */; };
 		45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A42694B56A00A12858 /* BaseViewController.swift */; };
 		45E976A72694BB3A00A12858 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A62694BB3900A12858 /* BaseNavigationController.swift */; };
+		45E976AA2694BE5E00A12858 /* LoadProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A92694BE5E00A12858 /* LoadProfileViewController.swift */; };
 		BBABB6EE4E302A6CA740797D /* Pods_English.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9F5BC59122B2F9337ED01F /* Pods_English.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,7 @@
 		456EB4472692E1120003CEB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		456EB44A2692E1120003CEB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		456EB44C2692E1120003CEB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45C960152694C2D600B846D2 /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		45E8EEBC2693389600D66F13 /* FirebaseAutorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAutorization.swift; sourceTree = "<group>"; };
 		45E8EEBE26933CB400D66F13 /* FirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseData.swift; sourceTree = "<group>"; };
 		45E8EEC126933E9500D66F13 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -52,6 +55,7 @@
 		45E976A2269490C500A12858 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		45E976A42694B56A00A12858 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		45E976A62694BB3900A12858 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		45E976A92694BE5E00A12858 /* LoadProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileViewController.swift; sourceTree = "<group>"; };
 		4A12AD1320830D63DA5EBBDB /* Pods-English.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.debug.xcconfig"; path = "Target Support Files/Pods-English/Pods-English.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +151,7 @@
 			children = (
 				45E8EECD269359DE00D66F13 /* AuthorizationViewController.swift */,
 				45E8EECF269359F600D66F13 /* MenuViewController.swift */,
+				45E976A82694BE3A00A12858 /* LoadProfile */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -155,9 +160,18 @@
 			isa = PBXGroup;
 			children = (
 				45E976A026947F5800A12858 /* UIViewController.swift */,
+				45C960152694C2D600B846D2 /* UIWindow.swift */,
 				45E976A2269490C500A12858 /* UINavigationController.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		45E976A82694BE3A00A12858 /* LoadProfile */ = {
+			isa = PBXGroup;
+			children = (
+				45E976A92694BE5E00A12858 /* LoadProfileViewController.swift */,
+			);
+			path = LoadProfile;
 			sourceTree = "<group>";
 		};
 		B0B67EA5C8604836DA78643B /* Frameworks */ = {
@@ -304,6 +318,7 @@
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
 				45E976A126947F5800A12858 /* UIViewController.swift in Sources */,
 				45E8EECB2693543C00D66F13 /* Word.swift in Sources */,
+				45E976AA2694BE5E00A12858 /* LoadProfileViewController.swift in Sources */,
 				45E8EEC226933E9500D66F13 /* Profile.swift in Sources */,
 				456EB43F2692E1120003CEB6 /* AppDelegate.swift in Sources */,
 				45E976A72694BB3A00A12858 /* BaseNavigationController.swift in Sources */,
@@ -312,6 +327,7 @@
 				45E976A3269490C500A12858 /* UINavigationController.swift in Sources */,
 				45E8EEBD2693389600D66F13 /* FirebaseAutorization.swift in Sources */,
 				45E8EEC6269340BD00D66F13 /* Constant.swift in Sources */,
+				45C960162694C2D600B846D2 /* UIWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

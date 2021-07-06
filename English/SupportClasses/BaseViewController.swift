@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class BaseViewController: UIViewController {
     
@@ -31,6 +32,8 @@ class BaseViewController: UIViewController {
         addRightBBItem()
         
         self.title = titleText
+        
+        desingUI()
     }
     
     private func addLeftBBItem(){
@@ -54,5 +57,7 @@ class BaseViewController: UIViewController {
     @objc func leftBBItem(){}
     
     @objc func rightBBItem(){}
+    
+    func desingUI(){}
 
 }
