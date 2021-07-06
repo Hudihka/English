@@ -28,18 +28,17 @@ class FirebaseData {
     //MARK: PROFILE
     
     
-    func getUser(userUID: String, compl: @escaping(() -> ())){
+    func getUser(compl: @escaping((Error?) -> ())){
         
-        db.collection("Profile").document("BBZ5E93AB21Jwxl67Axy").getDocument {[weak self] (snaphot, _) in
-            print(snaphot)
-//            if let data = snaphot?.data() {
-//                self?.profile = Profile(json: data)
-//            } else {
-//                self?.addUser(userId: userId, name: name, provided: provided)
-//            }
+        guard let idUser = idUser else {
+            return
         }
-
         
+        db.collection("Profile").document(idUser).getDocument {[weak self] (snaphot, error) in
+            if let data = snaphot?.data() {
+                self?.profile = Profile(json: data)
+            }
+        }
 
     }
     

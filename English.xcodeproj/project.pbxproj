@@ -22,6 +22,7 @@
 		45E8EECB2693543C00D66F13 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EECA2693543C00D66F13 /* Word.swift */; };
 		45E8EECE269359DE00D66F13 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EECD269359DE00D66F13 /* AuthorizationViewController.swift */; };
 		45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EECF269359F600D66F13 /* MenuViewController.swift */; };
+		45E976A126947F5800A12858 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A026947F5800A12858 /* UIViewController.swift */; };
 		BBABB6EE4E302A6CA740797D /* Pods_English.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9F5BC59122B2F9337ED01F /* Pods_English.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		45E8EECA2693543C00D66F13 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		45E8EECD269359DE00D66F13 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		45E8EECF269359F600D66F13 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		45E976A026947F5800A12858 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		4A12AD1320830D63DA5EBBDB /* Pods-English.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.debug.xcconfig"; path = "Target Support Files/Pods-English/Pods-English.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 		456EB43D2692E1120003CEB6 /* English */ = {
 			isa = PBXGroup;
 			children = (
+				45E9769F26947F2E00A12858 /* Extension */,
 				4539C19D2692F86C00534F4B /* Resources */,
 				45E8EECC269358C000D66F13 /* ViewControllers */,
 				45E8EEC72693413600D66F13 /* DataProvider */,
@@ -138,6 +141,14 @@
 				45E8EECF269359F600D66F13 /* MenuViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		45E9769F26947F2E00A12858 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				45E976A026947F5800A12858 /* UIViewController.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		B0B67EA5C8604836DA78643B /* Frameworks */ = {
@@ -281,6 +292,7 @@
 				45E8EECE269359DE00D66F13 /* AuthorizationViewController.swift in Sources */,
 				45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */,
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
+				45E976A126947F5800A12858 /* UIViewController.swift in Sources */,
 				45E8EECB2693543C00D66F13 /* Word.swift in Sources */,
 				45E8EEC226933E9500D66F13 /* Profile.swift in Sources */,
 				456EB43F2692E1120003CEB6 /* AppDelegate.swift in Sources */,

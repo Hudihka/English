@@ -25,6 +25,14 @@ class AuthorizationViewController: UIViewController {
     }
 
     @IBAction func autoriz(_ sender: Any) {
+        autoriz.isAutoriseid = {[weak self] error in
+            if let error = error {
+                self?.showAlert(title: "ERROR", message: error.localizedDescription)
+            } else {
+                print("двигаемся дальше")
+            }
+        }
         autoriz.startAutorisation()
+        
     }
 }

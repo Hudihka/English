@@ -25,19 +25,20 @@ class FirebaseAutorization: NSObject {
     var idUser: String?{
         return firebaseAuth.currentUser?.uid
     }
-   
+
+    
+    var isAutoriseid: (Error?) -> Void = {_ in }
     
     func startAutorisation() {
         firebaseAuth.signIn(withEmail: "kostiantakoj@mail.ru", password: "kostiantakoj@mail") {[weak self] (user, error) in
-            if let selF = self, let uid = user?.user.uid {
-                print ("вошли")
+            if user != nil {
                 
-                selF.dataManager.getUser(userUID: uid) {
-                    print("получили узера")
+                self?.dataManager.getUser { error in
+                    self?.isAutoriseid(error)
                 }
                 
             } else {
-                print ("Error signing out: %@", error)
+                self?.isAutoriseid(error)
             }
         }
     }

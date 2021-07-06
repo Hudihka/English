@@ -22,20 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: CGRect(origin: CGPoint.zero, size: UIScreen.main.bounds.size))
         
-//        if DefaultsUtils.isUserSeeTrening == false {
-//            //логаут нужен тк с преведущей установки юзер мог остаться
-//            do {
-//                FirebaseData.shared.profile = nil
-//                try Auth.auth().signOut()
-//            } catch let signOutError as NSError {
-//                print ("Error signing out: %@", signOutError)
-//            }
-//
-//            self.window?.rootViewController = TraningFirstViewController.route()
-//        } else
         
-        
-        if FirebaseAutorization.shared.idUser == nil {
+        if FirebaseAutorization.shared.isLoginUser {
             login()
         } else {
             autorizationVC()
