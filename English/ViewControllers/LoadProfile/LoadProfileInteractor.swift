@@ -17,7 +17,7 @@ class LoadProfileInteractor: LoadProfileInteractorIn {
     
     func startLoadProfile() {
         FirebaseData.shared.getUser {[weak self] error in
-            presenter?.finishLoadProfile(error: error)
+            self?.presenter?.finishLoadProfile(error: error)
         }
     }
     

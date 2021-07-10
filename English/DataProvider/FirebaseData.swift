@@ -37,6 +37,7 @@ class FirebaseData {
         db.collection("Profile").document(idUser).getDocument {[weak self] (snaphot, error) in
             if let data = snaphot?.data() {
                 self?.profile = Profile(json: data)
+                compl(nil)
             } else {
                 compl(error)
             }

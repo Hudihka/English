@@ -27,7 +27,7 @@ class LoadProfileViewController: BaseViewController, LoadProfileViewControllerIn
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        //presenter load
+        presenter?.didLoadVC()
     }
     
     override func desingUI() {
@@ -36,14 +36,15 @@ class LoadProfileViewController: BaseViewController, LoadProfileViewControllerIn
         let label = UILabel()
         label.text = "Учение - свет, неученье - тьма\nТьма - это мать, это мать, мать его..."
         label.textColor = UIColor.black
-        label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 25)
         label.textAlignment = .left
         self.view.addSubview(label)
         
         label.snp.makeConstraints({ (make) in
             make.left.equalTo(20)
             make.right.equalTo(-20)
-            make.centerX.equalTo(self.view)
+            make.centerY.equalTo(self.view)
             make.height.greaterThanOrEqualTo(90)
         })
     }
