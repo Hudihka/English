@@ -44,8 +44,9 @@ class LoadProfileViewController: BaseViewController, LoadProfileViewControllerIn
         label.snp.makeConstraints({ (make) in
             make.left.equalTo(20)
             make.right.equalTo(-20)
-            make.centerY.equalTo(self.view)
-            make.height.greaterThanOrEqualTo(90)
+            make.centerY.equalTo(self.view).offset(10)
+            make.centerX.equalTo(self.view)
+            make.height.equalTo(120)
         })
     }
     
