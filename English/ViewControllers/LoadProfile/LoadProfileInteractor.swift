@@ -13,9 +13,11 @@ protocol LoadProfileInteractorIn: AnyObject {
 
 class LoadProfileInteractor: LoadProfileInteractorIn {
     
+    var presenter: LoadProfilePresenter?
+    
     func startLoadProfile() {
         FirebaseData.shared.getUser {[weak self] error in
-            self?.finishLoadProfile(error: error)
+            presenter?.finishLoadProfile(error: error)
         }
     }
     

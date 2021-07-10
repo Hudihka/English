@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 class LoadProfileRouter: RouterProtocol{
     var callBack: (() -> ())? = nil
@@ -18,6 +18,7 @@ class LoadProfileRouter: RouterProtocol{
     func push() {}
     
     func windowChange() {
-        
+        let VC = DI.menuViewController()
+        UIWindow.transitionRoot(to: VC)
     }
 }

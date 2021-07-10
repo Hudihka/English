@@ -16,5 +16,16 @@ class BaseNavigationController: UINavigationController {
         self.fontBar(font: EnumFont.bold.font(21), color: .black)
     }
     
-
+    override init(rootViewController: UIViewController) {
+        super.init(rootViewController: rootViewController)
+        
+        self.providesPresentationContextTransitionStyle = true
+        self.definesPresentationContext = true
+        self.modalPresentationStyle = .overCurrentContext
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
