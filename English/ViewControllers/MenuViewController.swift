@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +15,9 @@ class MenuViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override var titleText: String?{
+        return "TEST"
+    }
 
     static func route() -> MenuViewController {
         let storuboard = UIStoryboard(name: "Main", bundle: nil)

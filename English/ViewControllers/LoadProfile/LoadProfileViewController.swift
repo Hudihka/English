@@ -7,15 +7,27 @@
 
 import UIKit
 
-class LoadProfileViewController: BaseViewController {
+protocol LoadProfileViewControllerIn: AnyObject {
+    func resultLoadProfile(error: Error)
+}
+
+//protocol LoadProfileViewControllerOut: AnyObject {
+//    func startLoad()
+//    func finishLoad()
+//}
+
+
+class LoadProfileViewController: BaseViewController, LoadProfileViewControllerIn {
+    
+    var presenter: LoadProfilePresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        
-        
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        //presenter load
     }
     
     override func desingUI() {
@@ -36,6 +48,8 @@ class LoadProfileViewController: BaseViewController {
         })
     }
     
-    
+    func resultLoadProfile(error: Error){
+        self.showAlert(title: "ERROR", message: error.localizedDescription)
+    }
 
 }
