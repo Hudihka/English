@@ -39,8 +39,7 @@ class AutorisationViewController: BaseViewController, AutorisationViewController
     }
     
     @objc private func buttonAction(sender: UIButton!) {
-        BluereViewController.route()
-//        presenter?.autoriz()
+        presenter?.autoriz()
      }
     
     

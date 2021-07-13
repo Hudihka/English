@@ -112,7 +112,7 @@ extension VisualEffectView {
         
         switch self.enumBlureValue {
         case .midl:
-            return (alpha: 1, radius: 5, colorTintAlpha: 0.15)
+            return (alpha: 1, radius: 5, colorTintAlpha: 0.5)
         case .light:
             return (alpha: 1, radius: 1, colorTintAlpha: 0.05)
         case .dark:

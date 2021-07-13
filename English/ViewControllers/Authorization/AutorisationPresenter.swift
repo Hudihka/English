@@ -25,6 +25,7 @@ class AutorisationPresenter: AutorisationPresenterIn {
     weak var view: AutorisationViewControllerIn?
     
     func finishLoadProfile(error: Error?) {
+        BluereViewController.hide()
         if let error = error {
             view?.resultLoadProfile(error: error)
         } else {
@@ -33,6 +34,7 @@ class AutorisationPresenter: AutorisationPresenterIn {
     }
     
     func autoriz() {
+        BluereViewController.route()
         interactor?.startLoadProfile()
     }
     

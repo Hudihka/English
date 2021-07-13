@@ -21,18 +21,21 @@ final class BluereViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.clear
         let blure = VisualEffectView(frame: self.view.frame)
+        blure.backgroundColor = UIColor.white.withAlphaComponent(0.25)
         blure.enumBlureValue = .midl
+        blure.blureValue()
         
         self.view.addSubview(blure)
         
         let spiner = UIActivityIndicatorView(style: .large)
         spiner.color = UIColor.black
+        spiner.startAnimating()
         
         self.view.addSubview(spiner)
-        
+
         spiner.snp.makeConstraints { make in
-            make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view)
+            make.centerY.equalTo(self.view).offset(-50)
+            make.centerX.equalTo(self.view.center.x)
         }
     }
     
@@ -47,8 +50,6 @@ final class BluereViewController: UIViewController {
         activityWindow.isHidden = false
         activityWindow.windowLevel = UIWindow.Level(rawValue: 1)
         activityWindow.makeKeyAndVisible()
-        
-//        vc.animateAppear()
     }
     
     
