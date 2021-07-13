@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 protocol RouterProtocol: AnyObject {
-    @optional var callBack: (() -> ())? {get set}
-    @optional var callBackParametrs: ((Any) -> ())? {get set}
+    var callBack: (() -> ())? {get set}
+    var callBackParametrs: ((Any) -> ())? {get set}
     
-    @optional func present()
-    @optional func push()
-    @optional func windowChange()
+    func present()
+    func push()
+    func windowChange()
 }

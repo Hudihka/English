@@ -10,6 +10,9 @@
 		450712E5269E0A9C0022EE61 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712E4269E0A9C0022EE61 /* MenuPresenter.swift */; };
 		450712E7269E0B520022EE61 /* MenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712E6269E0B510022EE61 /* MenuInteractor.swift */; };
 		450712E9269E0D160022EE61 /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712E8269E0D160022EE61 /* MenuRouter.swift */; };
+		450712EB269E15980022EE61 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712EA269E15980022EE61 /* String.swift */; };
+		450712ED269E15C90022EE61 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712EC269E15C90022EE61 /* Date.swift */; };
+		450712EF269E174A0022EE61 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712EE269E174A0022EE61 /* List.swift */; };
 		4539C1A12693284000534F4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4539C1A02693284000534F4B /* GoogleService-Info.plist */; };
 		4562DE6126972E0600510378 /* LoadProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DE6026972E0600510378 /* LoadProfileInteractor.swift */; };
 		4562DE6326972E1600510378 /* LoadProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DE6226972E1600510378 /* LoadProfilePresenter.swift */; };
@@ -51,6 +54,9 @@
 		450712E4269E0A9C0022EE61 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
 		450712E6269E0B510022EE61 /* MenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInteractor.swift; sourceTree = "<group>"; };
 		450712E8269E0D160022EE61 /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
+		450712EA269E15980022EE61 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		450712EC269E15C90022EE61 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		450712EE269E174A0022EE61 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		4539C1A02693284000534F4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4562DE6026972E0600510378 /* LoadProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileInteractor.swift; sourceTree = "<group>"; };
 		4562DE6226972E1600510378 /* LoadProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfilePresenter.swift; sourceTree = "<group>"; };
@@ -183,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				45E8EEC126933E9500D66F13 /* Profile.swift */,
+				450712EE269E174A0022EE61 /* List.swift */,
 				45E8EECA2693543C00D66F13 /* Word.swift */,
 			);
 			path = Models;
@@ -217,6 +224,8 @@
 				45C960152694C2D600B846D2 /* UIWindow.swift */,
 				45E976A2269490C500A12858 /* UINavigationController.swift */,
 				45A191AB269DE0D700D2E169 /* UIView.swift */,
+				450712EA269E15980022EE61 /* String.swift */,
+				450712EC269E15C90022EE61 /* Date.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -373,7 +382,9 @@
 				45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */,
 				456E7F722699EE6F007ABF69 /* RouterProtocol.swift in Sources */,
 				45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */,
+				450712ED269E15C90022EE61 /* Date.swift in Sources */,
 				45A191B0269DE22C00D2E169 /* BluereViewController.swift in Sources */,
+				450712EB269E15980022EE61 /* String.swift in Sources */,
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
 				45E976A126947F5800A12858 /* UIViewController.swift in Sources */,
 				45E8EECB2693543C00D66F13 /* Word.swift in Sources */,
@@ -385,6 +396,7 @@
 				45E976A72694BB3A00A12858 /* BaseNavigationController.swift in Sources */,
 				456E7F77269A092A007ABF69 /* AutorisationViewController.swift in Sources */,
 				4562DE6126972E0600510378 /* LoadProfileInteractor.swift in Sources */,
+				450712EF269E174A0022EE61 /* List.swift in Sources */,
 				45E8EEC92693429E00D66F13 /* DefaultUtils.swift in Sources */,
 				45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */,
 				45E8EEC42693403D00D66F13 /* Vibro.swift in Sources */,

@@ -9,8 +9,6 @@ import Foundation
 
 
 protocol MenuPresenterIn: AnyObject {
-    func finishLoadProfile(error: Error?)
-    func autoriz()
 }
 
 class MenuPresenter: MenuPresenterIn {
@@ -19,19 +17,6 @@ class MenuPresenter: MenuPresenterIn {
     var router: RouterProtocol?
     weak var view: MenuViewControllerIn?
     
-    func finishLoadProfile(error: Error?) {
-        BluereViewController.hide()
-        if let error = error {
-            view?.resultLoadProfile(error: error)
-        } else {
-            router?.windowChange()
-        }
-    }
-    
-    func autoriz() {
-        BluereViewController.route()
-        interactor?.startLoadProfile()
-    }
     
 }
 

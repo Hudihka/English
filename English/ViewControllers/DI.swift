@@ -52,7 +52,18 @@ class DI: DIProtocol {
     }
     
     static func menuViewController() -> BaseNavigationController {
-        let VC = MenuViewController.route()
+        let VC = MenuViewController()
+        let presenter = MenuPresenter()
+        let interactor = MenuInteractor()
+        let router = MenuRouter()
+        
+        VC.presenter = presenter
+        interactor.presenter = presenter
+        
+        presenter.view = VC
+        presenter.interactor = interactor
+        presenter.router = router
+        
         let NVC = BaseNavigationController(rootViewController: VC)
         
         return NVC

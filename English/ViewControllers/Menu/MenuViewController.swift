@@ -8,7 +8,6 @@
 import UIKit
 
 protocol MenuViewControllerIn: AnyObject {
-    func resultLoadProfile(error: Error)
 }
 
 class MenuViewController: BaseViewController, MenuViewControllerIn {
@@ -22,7 +21,17 @@ class MenuViewController: BaseViewController, MenuViewControllerIn {
     }
     
     override var titleText: String?{
-        return "TEST"
+        return "ТЕМЫ"
     }
+    
+    override var rightTextBBItem: String?{
+        return "+"
+    }
+    
+    @objc override func rightBBItem(){
+        
+    }
+    
+    
 
 }

@@ -13,6 +13,8 @@ typealias JSON = [String : Any]
 let hDdevice = UIScreen.main.bounds.size.height
 let wDdevice = UIScreen.main.bounds.size.width
 
+let FAVORIT_NAME = "ФАВОРИТ"
+
 //MARK: - fonts
 
 enum EnumFont: String{

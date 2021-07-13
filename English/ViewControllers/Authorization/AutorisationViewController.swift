@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol AutorisationViewControllerIn: AnyObject {
     func resultLoadProfile(error: Error)
