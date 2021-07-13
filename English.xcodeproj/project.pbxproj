@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		450712E5269E0A9C0022EE61 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712E4269E0A9C0022EE61 /* MenuPresenter.swift */; };
+		450712E7269E0B520022EE61 /* MenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712E6269E0B510022EE61 /* MenuInteractor.swift */; };
+		450712E9269E0D160022EE61 /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712E8269E0D160022EE61 /* MenuRouter.swift */; };
 		4539C1A12693284000534F4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4539C1A02693284000534F4B /* GoogleService-Info.plist */; };
 		4562DE6126972E0600510378 /* LoadProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DE6026972E0600510378 /* LoadProfileInteractor.swift */; };
 		4562DE6326972E1600510378 /* LoadProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DE6226972E1600510378 /* LoadProfilePresenter.swift */; };
@@ -45,6 +48,9 @@
 /* Begin PBXFileReference section */
 		2A9F5BC59122B2F9337ED01F /* Pods_English.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_English.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BA1FE80835AF7A178CB8FBA /* Pods-English.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.release.xcconfig"; path = "Target Support Files/Pods-English/Pods-English.release.xcconfig"; sourceTree = "<group>"; };
+		450712E4269E0A9C0022EE61 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
+		450712E6269E0B510022EE61 /* MenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInteractor.swift; sourceTree = "<group>"; };
+		450712E8269E0D160022EE61 /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
 		4539C1A02693284000534F4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4562DE6026972E0600510378 /* LoadProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileInteractor.swift; sourceTree = "<group>"; };
 		4562DE6226972E1600510378 /* LoadProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfilePresenter.swift; sourceTree = "<group>"; };
@@ -94,6 +100,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		450712E3269E09FA0022EE61 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				45E8EECF269359F600D66F13 /* MenuViewController.swift */,
+				450712E4269E0A9C0022EE61 /* MenuPresenter.swift */,
+				450712E6269E0B510022EE61 /* MenuInteractor.swift */,
+				450712E8269E0D160022EE61 /* MenuRouter.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		4539C19D2692F86C00534F4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,7 +201,7 @@
 		45E8EECC269358C000D66F13 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				45E8EECF269359F600D66F13 /* MenuViewController.swift */,
+				450712E3269E09FA0022EE61 /* Menu */,
 				456E7F75269A08FD007ABF69 /* Authorization */,
 				45E976A82694BE3A00A12858 /* LoadProfile */,
 				456E7F732699F79D007ABF69 /* DI.swift */,
@@ -360,6 +377,7 @@
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
 				45E976A126947F5800A12858 /* UIViewController.swift in Sources */,
 				45E8EECB2693543C00D66F13 /* Word.swift in Sources */,
+				450712E7269E0B520022EE61 /* MenuInteractor.swift in Sources */,
 				45E976AA2694BE5E00A12858 /* LoadProfileViewController.swift in Sources */,
 				45E8EEC226933E9500D66F13 /* Profile.swift in Sources */,
 				4562DE6326972E1600510378 /* LoadProfilePresenter.swift in Sources */,
@@ -375,11 +393,13 @@
 				45E8EEBD2693389600D66F13 /* FirebaseAutorization.swift in Sources */,
 				45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */,
 				45A191AC269DE0D700D2E169 /* UIView.swift in Sources */,
+				450712E9269E0D160022EE61 /* MenuRouter.swift in Sources */,
 				45E8EEC6269340BD00D66F13 /* Constant.swift in Sources */,
 				4562DE6526972E2400510378 /* LoadProfileRouter.swift in Sources */,
 				45C960162694C2D600B846D2 /* UIWindow.swift in Sources */,
 				45A191AE269DE16E00D2E169 /* VisualEffectView.swift in Sources */,
 				456E7F742699F79D007ABF69 /* DI.swift in Sources */,
+				450712E5269E0A9C0022EE61 /* MenuPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

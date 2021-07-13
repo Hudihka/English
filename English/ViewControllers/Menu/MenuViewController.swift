@@ -7,7 +7,13 @@
 
 import UIKit
 
-class MenuViewController: BaseViewController {
+protocol MenuViewControllerIn: AnyObject {
+    func resultLoadProfile(error: Error)
+}
+
+class MenuViewController: BaseViewController, MenuViewControllerIn {
+    
+    var presenter: MenuPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,13 +23,6 @@ class MenuViewController: BaseViewController {
     
     override var titleText: String?{
         return "TEST"
-    }
-
-    static func route() -> MenuViewController {
-        let storuboard = UIStoryboard(name: "Main", bundle: nil)
-        let VC = storuboard.instantiateViewController(identifier: "MenuViewController") as! MenuViewController
-        
-        return VC
     }
 
 }

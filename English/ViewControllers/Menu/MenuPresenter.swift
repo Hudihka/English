@@ -8,16 +8,16 @@
 import Foundation
 
 
-protocol AutorisationPresenterIn: AnyObject {
+protocol MenuPresenterIn: AnyObject {
     func finishLoadProfile(error: Error?)
     func autoriz()
 }
 
-class AutorisationPresenter: AutorisationPresenterIn {
+class MenuPresenter: MenuPresenterIn {
     
-    var interactor: AutorisationInteractorIn?
+    var interactor: MenuInteractorIn?
     var router: RouterProtocol?
-    weak var view: AutorisationViewControllerIn?
+    weak var view: MenuViewControllerIn?
     
     func finishLoadProfile(error: Error?) {
         BluereViewController.hide()
@@ -34,4 +34,5 @@ class AutorisationPresenter: AutorisationPresenterIn {
     }
     
 }
+
 
