@@ -11,19 +11,9 @@ protocol LoadProfileViewControllerIn: AnyObject {
     func resultLoadProfile(error: Error)
 }
 
-//protocol LoadProfileViewControllerOut: AnyObject {
-//    func startLoad()
-//    func finishLoad()
-//}
-
-
 class LoadProfileViewController: BaseViewController, LoadProfileViewControllerIn {
     
     var presenter: LoadProfilePresenter?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -51,7 +41,7 @@ class LoadProfileViewController: BaseViewController, LoadProfileViewControllerIn
     }
     
     func resultLoadProfile(error: Error){
-        self.showAlert(title: "ERROR", message: error.localizedDescription)
+        self.showAlertError(error: error)
     }
 
 }

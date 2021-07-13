@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func autorizationVC(){
-        let VC = AuthorizationViewController.route()
+        let VC = DI.autorisationViewController()
         self.window?.rootViewController = VC
     }
 

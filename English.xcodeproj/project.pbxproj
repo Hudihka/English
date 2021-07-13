@@ -13,10 +13,14 @@
 		4562DE6526972E2400510378 /* LoadProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DE6426972E2400510378 /* LoadProfileRouter.swift */; };
 		456E7F722699EE6F007ABF69 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456E7F712699EE6F007ABF69 /* RouterProtocol.swift */; };
 		456E7F742699F79D007ABF69 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456E7F732699F79D007ABF69 /* DI.swift */; };
+		456E7F77269A092A007ABF69 /* AutorisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456E7F76269A092A007ABF69 /* AutorisationViewController.swift */; };
 		456EB43F2692E1120003CEB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456EB43E2692E1120003CEB6 /* AppDelegate.swift */; };
 		456EB4462692E1120003CEB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4442692E1120003CEB6 /* Main.storyboard */; };
 		456EB4482692E1120003CEB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4472692E1120003CEB6 /* Assets.xcassets */; };
 		456EB44B2692E1120003CEB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4492692E1120003CEB6 /* LaunchScreen.storyboard */; };
+		45A191AC269DE0D700D2E169 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A191AB269DE0D700D2E169 /* UIView.swift */; };
+		45A191AE269DE16E00D2E169 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A191AD269DE16E00D2E169 /* VisualEffectView.swift */; };
+		45A191B0269DE22C00D2E169 /* BluereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A191AF269DE22C00D2E169 /* BluereViewController.swift */; };
 		45C9416B2692E3D6001827AB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 45C9416A2692E3D6001827AB /* SnapKit */; };
 		45C960162694C2D600B846D2 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C960152694C2D600B846D2 /* UIWindow.swift */; };
 		45E8EEBD2693389600D66F13 /* FirebaseAutorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EEBC2693389600D66F13 /* FirebaseAutorization.swift */; };
@@ -26,13 +30,15 @@
 		45E8EEC6269340BD00D66F13 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EEC5269340BD00D66F13 /* Constant.swift */; };
 		45E8EEC92693429E00D66F13 /* DefaultUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EEC82693429E00D66F13 /* DefaultUtils.swift */; };
 		45E8EECB2693543C00D66F13 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EECA2693543C00D66F13 /* Word.swift */; };
-		45E8EECE269359DE00D66F13 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EECD269359DE00D66F13 /* AuthorizationViewController.swift */; };
 		45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8EECF269359F600D66F13 /* MenuViewController.swift */; };
 		45E976A126947F5800A12858 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A026947F5800A12858 /* UIViewController.swift */; };
 		45E976A3269490C500A12858 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A2269490C500A12858 /* UINavigationController.swift */; };
 		45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A42694B56A00A12858 /* BaseViewController.swift */; };
 		45E976A72694BB3A00A12858 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A62694BB3900A12858 /* BaseNavigationController.swift */; };
 		45E976AA2694BE5E00A12858 /* LoadProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A92694BE5E00A12858 /* LoadProfileViewController.swift */; };
+		45ED9EC7269CBCCF00AB150F /* AutorisationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9EC6269CBCCF00AB150F /* AutorisationPresenter.swift */; };
+		45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9EC8269CBCF600AB150F /* AutorisationInteractor.swift */; };
+		45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9ECA269CBD0E00AB150F /* AutorisationRouter.swift */; };
 		BBABB6EE4E302A6CA740797D /* Pods_English.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9F5BC59122B2F9337ED01F /* Pods_English.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,12 +51,16 @@
 		4562DE6426972E2400510378 /* LoadProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileRouter.swift; sourceTree = "<group>"; };
 		456E7F712699EE6F007ABF69 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		456E7F732699F79D007ABF69 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
+		456E7F76269A092A007ABF69 /* AutorisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationViewController.swift; sourceTree = "<group>"; };
 		456EB43B2692E1120003CEB6 /* English.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = English.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		456EB43E2692E1120003CEB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		456EB4452692E1120003CEB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		456EB4472692E1120003CEB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		456EB44A2692E1120003CEB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		456EB44C2692E1120003CEB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45A191AB269DE0D700D2E169 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		45A191AD269DE16E00D2E169 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		45A191AF269DE22C00D2E169 /* BluereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluereViewController.swift; sourceTree = "<group>"; };
 		45C960152694C2D600B846D2 /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		45E8EEBC2693389600D66F13 /* FirebaseAutorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAutorization.swift; sourceTree = "<group>"; };
 		45E8EEBE26933CB400D66F13 /* FirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseData.swift; sourceTree = "<group>"; };
@@ -59,13 +69,15 @@
 		45E8EEC5269340BD00D66F13 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		45E8EEC82693429E00D66F13 /* DefaultUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUtils.swift; sourceTree = "<group>"; };
 		45E8EECA2693543C00D66F13 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
-		45E8EECD269359DE00D66F13 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		45E8EECF269359F600D66F13 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		45E976A026947F5800A12858 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		45E976A2269490C500A12858 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		45E976A42694B56A00A12858 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		45E976A62694BB3900A12858 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		45E976A92694BE5E00A12858 /* LoadProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileViewController.swift; sourceTree = "<group>"; };
+		45ED9EC6269CBCCF00AB150F /* AutorisationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationPresenter.swift; sourceTree = "<group>"; };
+		45ED9EC8269CBCF600AB150F /* AutorisationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationInteractor.swift; sourceTree = "<group>"; };
+		45ED9ECA269CBD0E00AB150F /* AutorisationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationRouter.swift; sourceTree = "<group>"; };
 		4A12AD1320830D63DA5EBBDB /* Pods-English.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.debug.xcconfig"; path = "Target Support Files/Pods-English/Pods-English.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +105,17 @@
 				456EB44C2692E1120003CEB6 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		456E7F75269A08FD007ABF69 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				456E7F76269A092A007ABF69 /* AutorisationViewController.swift */,
+				45ED9EC6269CBCCF00AB150F /* AutorisationPresenter.swift */,
+				45ED9EC8269CBCF600AB150F /* AutorisationInteractor.swift */,
+				45ED9ECA269CBD0E00AB150F /* AutorisationRouter.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		456EB4322692E1120003CEB6 = {
@@ -133,6 +156,8 @@
 				45E8EEC5269340BD00D66F13 /* Constant.swift */,
 				45E976A42694B56A00A12858 /* BaseViewController.swift */,
 				45E976A62694BB3900A12858 /* BaseNavigationController.swift */,
+				45A191AD269DE16E00D2E169 /* VisualEffectView.swift */,
+				45A191AF269DE22C00D2E169 /* BluereViewController.swift */,
 			);
 			path = SupportClasses;
 			sourceTree = "<group>";
@@ -159,11 +184,11 @@
 		45E8EECC269358C000D66F13 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				45E8EECD269359DE00D66F13 /* AuthorizationViewController.swift */,
 				45E8EECF269359F600D66F13 /* MenuViewController.swift */,
-				456E7F712699EE6F007ABF69 /* RouterProtocol.swift */,
+				456E7F75269A08FD007ABF69 /* Authorization */,
 				45E976A82694BE3A00A12858 /* LoadProfile */,
 				456E7F732699F79D007ABF69 /* DI.swift */,
+				456E7F712699EE6F007ABF69 /* RouterProtocol.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -174,6 +199,7 @@
 				45E976A026947F5800A12858 /* UIViewController.swift */,
 				45C960152694C2D600B846D2 /* UIWindow.swift */,
 				45E976A2269490C500A12858 /* UINavigationController.swift */,
+				45A191AB269DE0D700D2E169 /* UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -328,9 +354,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */,
-				45E8EECE269359DE00D66F13 /* AuthorizationViewController.swift in Sources */,
 				456E7F722699EE6F007ABF69 /* RouterProtocol.swift in Sources */,
 				45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */,
+				45A191B0269DE22C00D2E169 /* BluereViewController.swift in Sources */,
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
 				45E976A126947F5800A12858 /* UIViewController.swift in Sources */,
 				45E8EECB2693543C00D66F13 /* Word.swift in Sources */,
@@ -339,14 +365,20 @@
 				4562DE6326972E1600510378 /* LoadProfilePresenter.swift in Sources */,
 				456EB43F2692E1120003CEB6 /* AppDelegate.swift in Sources */,
 				45E976A72694BB3A00A12858 /* BaseNavigationController.swift in Sources */,
+				456E7F77269A092A007ABF69 /* AutorisationViewController.swift in Sources */,
 				4562DE6126972E0600510378 /* LoadProfileInteractor.swift in Sources */,
 				45E8EEC92693429E00D66F13 /* DefaultUtils.swift in Sources */,
+				45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */,
 				45E8EEC42693403D00D66F13 /* Vibro.swift in Sources */,
 				45E976A3269490C500A12858 /* UINavigationController.swift in Sources */,
+				45ED9EC7269CBCCF00AB150F /* AutorisationPresenter.swift in Sources */,
 				45E8EEBD2693389600D66F13 /* FirebaseAutorization.swift in Sources */,
+				45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */,
+				45A191AC269DE0D700D2E169 /* UIView.swift in Sources */,
 				45E8EEC6269340BD00D66F13 /* Constant.swift in Sources */,
 				4562DE6526972E2400510378 /* LoadProfileRouter.swift in Sources */,
 				45C960162694C2D600B846D2 /* UIWindow.swift in Sources */,
+				45A191AE269DE16E00D2E169 /* VisualEffectView.swift in Sources */,
 				456E7F742699F79D007ABF69 /* DI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,16 +13,16 @@ import Foundation
 //}
 
 //все сообщения от других классов
-protocol LoadProfilePresenterIn: AnyObject {
+protocol AutorisationPresenterIn: AnyObject {
     func finishLoadProfile(error: Error?)
-    func didLoadVC()
+    func autoriz()
 }
 
-class LoadProfilePresenter: LoadProfilePresenterIn {
+class AutorisationPresenter: AutorisationPresenterIn {
     
-    var interactor: LoadProfileInteractorIn?
+    var interactor: AutorisationInteractorIn?
     var router: RouterProtocol?
-    weak var view: LoadProfileViewControllerIn?
+    weak var view: AutorisationViewControllerIn?
     
     func finishLoadProfile(error: Error?) {
         if let error = error {
@@ -32,7 +32,9 @@ class LoadProfilePresenter: LoadProfilePresenterIn {
         }
     }
     
-    func didLoadVC() {
+    func autoriz() {
         interactor?.startLoadProfile()
     }
+    
 }
+

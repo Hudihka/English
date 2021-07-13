@@ -16,10 +16,12 @@ extension UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: buttonText, style: UIAlertAction.Style.default, handler: action))
         self.present(alert, animated: true, completion: nil)
-        
     }
     
-    
+    func showAlertError(error: Error){
+        Vibro.weak()
+        self.showAlert(title: "ERROR", message: error.localizedDescription)
+    }
     
     
     

@@ -10,6 +10,8 @@ import Foundation
 
 protocol DIProtocol: AnyObject {
     static func loadProfileViewController() -> BaseViewController
+    static func autorisationViewController() -> BaseViewController
+    
     static func menuViewController() -> BaseNavigationController
 }
 
@@ -21,6 +23,23 @@ class DI: DIProtocol {
         let presenter = LoadProfilePresenter()
         let interactor = LoadProfileInteractor()
         let router = LoadProfileRouter()
+        
+        VC.presenter = presenter
+        interactor.presenter = presenter
+        
+        presenter.view = VC
+        presenter.interactor = interactor
+        presenter.router = router
+        
+        return VC
+    }
+    
+    static func autorisationViewController() -> BaseViewController{
+        
+        let VC = AutorisationViewController()
+        let presenter = AutorisationPresenter()
+        let interactor = AutorisationInteractor()
+        let router = AutorisationRouter()
         
         VC.presenter = presenter
         interactor.presenter = presenter
