@@ -12,8 +12,8 @@ class List {
     
     var id = "id223"
     var name: String?
-    var count: Int?
-    var countFavorit: Int?
+    var count: Int = 0
+    var countFavorit: Int = 0
     
     var dateUpdate: Date = Date()
     

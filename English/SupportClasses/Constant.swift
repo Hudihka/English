@@ -14,6 +14,7 @@ let hDdevice = UIScreen.main.bounds.size.height
 let wDdevice = UIScreen.main.bounds.size.width
 
 let FAVORIT_NAME = "ФАВОРИТ"
+let FAVORIT_COUNT = 20
 
 //MARK: - fonts
 

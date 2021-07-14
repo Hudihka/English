@@ -24,15 +24,7 @@ class Profile {
         }
         
         if let temp = json["lists"] as? [JSON] {
-            var lists = temp.map { List(json: $0) }
-            lists = lists.sorted(by: { list1, list2 in
-                
-                if list1.name == FAVORIT_NAME {
-                    return true
-                }
-                
-                return list1.dateUpdate > list2.dateUpdate
-            })
+            let lists = temp.map { List(json: $0) }.sorted(by: { $0.dateUpdate > $1.dateUpdate })
             
             self.lists = lists
         }
@@ -46,6 +38,16 @@ class Profile {
         json["lists"]        = self.lists.map({$0.json})
         
         return json
+    }
+    
+    var countFavorit: Int {
+        let count = lists.reduce(0, {$0 + $1.countFavorit})
+        return Int(count)
+    }
+    
+    var countWords: Int {
+        let count = lists.reduce(0, {$0 + $1.count})
+        return count
     }
     
 }
