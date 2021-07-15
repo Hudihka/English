@@ -45,6 +45,12 @@
 		45ED9EC7269CBCCF00AB150F /* AutorisationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9EC6269CBCCF00AB150F /* AutorisationPresenter.swift */; };
 		45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9EC8269CBCF600AB150F /* AutorisationInteractor.swift */; };
 		45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9ECA269CBD0E00AB150F /* AutorisationRouter.swift */; };
+		45FF7AA326A00AF1005BAF35 /* MenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AA226A00AF1005BAF35 /* MenuTableView.swift */; };
+		45FF7AA526A00C28005BAF35 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AA426A00C28005BAF35 /* NSObject.swift */; };
+		45FF7AA926A015CF005BAF35 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AA626A015CF005BAF35 /* ListCell.swift */; };
+		45FF7AAA26A015CF005BAF35 /* FavoriteWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AA726A015CF005BAF35 /* FavoriteWords.swift */; };
+		45FF7AAB26A015CF005BAF35 /* HederCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AA826A015CF005BAF35 /* HederCells.swift */; };
+		45FF7AAD26A016DD005BAF35 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AAC26A016DD005BAF35 /* BaseCell.swift */; };
 		BBABB6EE4E302A6CA740797D /* Pods_English.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9F5BC59122B2F9337ED01F /* Pods_English.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +96,12 @@
 		45ED9EC6269CBCCF00AB150F /* AutorisationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationPresenter.swift; sourceTree = "<group>"; };
 		45ED9EC8269CBCF600AB150F /* AutorisationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationInteractor.swift; sourceTree = "<group>"; };
 		45ED9ECA269CBD0E00AB150F /* AutorisationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationRouter.swift; sourceTree = "<group>"; };
+		45FF7AA226A00AF1005BAF35 /* MenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableView.swift; sourceTree = "<group>"; };
+		45FF7AA426A00C28005BAF35 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		45FF7AA626A015CF005BAF35 /* ListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		45FF7AA726A015CF005BAF35 /* FavoriteWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteWords.swift; sourceTree = "<group>"; };
+		45FF7AA826A015CF005BAF35 /* HederCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HederCells.swift; sourceTree = "<group>"; };
+		45FF7AAC26A016DD005BAF35 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		4A12AD1320830D63DA5EBBDB /* Pods-English.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.debug.xcconfig"; path = "Target Support Files/Pods-English/Pods-English.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +125,7 @@
 				450712E4269E0A9C0022EE61 /* MenuPresenter.swift */,
 				450712E6269E0B510022EE61 /* MenuInteractor.swift */,
 				450712E8269E0D160022EE61 /* MenuRouter.swift */,
+				45FF7AA126A00AC8005BAF35 /* Views */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -177,10 +190,7 @@
 			children = (
 				45E8EEC32693403D00D66F13 /* Vibro.swift */,
 				45E8EEC5269340BD00D66F13 /* Constant.swift */,
-				45E976A42694B56A00A12858 /* BaseViewController.swift */,
-				45E976A62694BB3900A12858 /* BaseNavigationController.swift */,
-				45A191AD269DE16E00D2E169 /* VisualEffectView.swift */,
-				45A191AF269DE22C00D2E169 /* BluereViewController.swift */,
+				45FF7AAE26A017AB005BAF35 /* BaseUI */,
 			);
 			path = SupportClasses;
 			sourceTree = "<group>";
@@ -226,6 +236,7 @@
 				45A191AB269DE0D700D2E169 /* UIView.swift */,
 				450712EA269E15980022EE61 /* String.swift */,
 				450712EC269E15C90022EE61 /* Date.swift */,
+				45FF7AA426A00C28005BAF35 /* NSObject.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -239,6 +250,29 @@
 				4562DE6426972E2400510378 /* LoadProfileRouter.swift */,
 			);
 			path = LoadProfile;
+			sourceTree = "<group>";
+		};
+		45FF7AA126A00AC8005BAF35 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				45FF7AA226A00AF1005BAF35 /* MenuTableView.swift */,
+				45FF7AA726A015CF005BAF35 /* FavoriteWords.swift */,
+				45FF7AA826A015CF005BAF35 /* HederCells.swift */,
+				45FF7AA626A015CF005BAF35 /* ListCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		45FF7AAE26A017AB005BAF35 /* BaseUI */ = {
+			isa = PBXGroup;
+			children = (
+				45E976A42694B56A00A12858 /* BaseViewController.swift */,
+				45E976A62694BB3900A12858 /* BaseNavigationController.swift */,
+				45FF7AAC26A016DD005BAF35 /* BaseCell.swift */,
+				45A191AD269DE16E00D2E169 /* VisualEffectView.swift */,
+				45A191AF269DE22C00D2E169 /* BluereViewController.swift */,
+			);
+			path = BaseUI;
 			sourceTree = "<group>";
 		};
 		B0B67EA5C8604836DA78643B /* Frameworks */ = {
@@ -379,10 +413,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45FF7AA326A00AF1005BAF35 /* MenuTableView.swift in Sources */,
 				45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */,
 				456E7F722699EE6F007ABF69 /* RouterProtocol.swift in Sources */,
 				45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */,
 				450712ED269E15C90022EE61 /* Date.swift in Sources */,
+				45FF7AA926A015CF005BAF35 /* ListCell.swift in Sources */,
 				45A191B0269DE22C00D2E169 /* BluereViewController.swift in Sources */,
 				450712EB269E15980022EE61 /* String.swift in Sources */,
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
@@ -393,8 +429,10 @@
 				45E8EEC226933E9500D66F13 /* Profile.swift in Sources */,
 				4562DE6326972E1600510378 /* LoadProfilePresenter.swift in Sources */,
 				456EB43F2692E1120003CEB6 /* AppDelegate.swift in Sources */,
+				45FF7AAA26A015CF005BAF35 /* FavoriteWords.swift in Sources */,
 				45E976A72694BB3A00A12858 /* BaseNavigationController.swift in Sources */,
 				456E7F77269A092A007ABF69 /* AutorisationViewController.swift in Sources */,
+				45FF7AA526A00C28005BAF35 /* NSObject.swift in Sources */,
 				4562DE6126972E0600510378 /* LoadProfileInteractor.swift in Sources */,
 				450712EF269E174A0022EE61 /* List.swift in Sources */,
 				45E8EEC92693429E00D66F13 /* DefaultUtils.swift in Sources */,
@@ -406,7 +444,9 @@
 				45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */,
 				45A191AC269DE0D700D2E169 /* UIView.swift in Sources */,
 				450712E9269E0D160022EE61 /* MenuRouter.swift in Sources */,
+				45FF7AAD26A016DD005BAF35 /* BaseCell.swift in Sources */,
 				45E8EEC6269340BD00D66F13 /* Constant.swift in Sources */,
+				45FF7AAB26A015CF005BAF35 /* HederCells.swift in Sources */,
 				4562DE6526972E2400510378 /* LoadProfileRouter.swift in Sources */,
 				45C960162694C2D600B846D2 /* UIWindow.swift in Sources */,
 				45A191AE269DE16E00D2E169 /* VisualEffectView.swift in Sources */,

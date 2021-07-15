@@ -12,15 +12,9 @@ protocol MenuViewControllerIn: AnyObject {
 
 class MenuViewController: BaseViewController, MenuViewControllerIn {
     
-    private var tableView: UITableView!
+    private var tableView: MenuTableView!
     
     var presenter: MenuPresenter?
-    
-    private var profile: Profile? {
-        didSet{
-            
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +35,10 @@ class MenuViewController: BaseViewController, MenuViewControllerIn {
     }
     
     override func desingUI() {
-        <#code#>
+        tableView = MenuTableView()
+        view.addSubview(tableView)
+        
+        
     }
 
 }
