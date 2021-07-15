@@ -10,7 +10,7 @@ import Foundation
 
 class Profile {
     
-    var id = "id223"
+    var id = ""
     var lists: [List] = []
     
     init(id: String) {

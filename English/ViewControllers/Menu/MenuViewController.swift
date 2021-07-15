@@ -38,7 +38,12 @@ class MenuViewController: BaseViewController, MenuViewControllerIn {
         tableView = MenuTableView()
         view.addSubview(tableView)
         
-        
+        tableView.snp.makeConstraints { make in
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.top.equalTo(0)
+            make.bottom.equalTo(0)
+        }
     }
 
 }

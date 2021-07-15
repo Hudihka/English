@@ -25,7 +25,7 @@ class AutorisationViewController: BaseViewController, AutorisationViewController
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        button.addRadius(number: 5)
+        button.addRadius(number: 10)
         
         self.view.addSubview(button)
         

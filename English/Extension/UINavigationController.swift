@@ -37,7 +37,7 @@ extension UINavigationController {
     func clearBar(){
         let NB = self.navigationBar
         
-//            NB.standardAppearance.backgroundColor = colorBacground //если сделать прозрачным, то по факту будет черным
+        NB.standardAppearance.backgroundColor = UIColor.white //если сделать прозрачным, то по факту будет черным
         NB.standardAppearance.backgroundEffect = nil
         NB.standardAppearance.shadowImage = UIImage()
         NB.standardAppearance.shadowColor = .clear

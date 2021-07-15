@@ -39,7 +39,7 @@ class MenuTableView: UITableView {
         
         self.separatorStyle = .none
         
-        self.estimatedRowHeight = 88.0
+        self.estimatedRowHeight = 100.0
         self.rowHeight = UITableView.automaticDimension
 
         self.register(FavoriteWords.self, forCellReuseIdentifier: "FavoriteWords")
@@ -65,7 +65,7 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
         if isTwoSection, section == 0 {
             return 1
         } else {
-            return lists.count
+            return 1//lists.count
         }
         
     }
@@ -115,7 +115,8 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
         
         if isTwoSection, indexPath.section == 0 {
             tapedCell(FAVORIT_NAME)
-        } else if let name = lists[indexPath.row].name{
+        } else {
+            let name = lists[indexPath.row].name
             tapedCell(name)
         }
     }
