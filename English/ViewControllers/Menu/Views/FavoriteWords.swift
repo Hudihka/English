@@ -11,13 +11,6 @@ import UIKit
 class FavoriteWords: BaseCell {
     
     private var labelFavorite: UILabel!
-    private var labelCount: UILabel!
-    
-    var count: Int = 0{
-        didSet{
-            labelCount.text = "\(count)"
-        }
-    }
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,34 +26,16 @@ class FavoriteWords: BaseCell {
 		labelFavorite = UILabel()
 		labelFavorite.text = "Выбранные слова"
 		labelFavorite.textColor = UIColor.black
-		labelFavorite.font = UIFont.systemFont(ofSize: 21, weight: .bold)
+		labelFavorite.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        labelFavorite.textAlignment = .center
 
 		self.contentView.addSubview(labelFavorite)
 		labelFavorite.snp.makeConstraints({ (make) in
-			make.height.equalTo(33)
+			make.height.equalTo(30)
 			make.left.equalTo(16)
 			make.right.equalTo(-16)
 			make.top.equalTo(10)
-		})
-		
-		let imageView = UIImageView(image: UIImage(named: "favorit"))
-		self.contentView.addSubview(imageView)
-		imageView.snp.makeConstraints { (make) in
-			make.height.equalTo(18)
-			make.width.equalTo(18)
-			make.bottom.equalTo(-9)
-			make.left.equalTo(self.labelFavorite.snp.left)
-		}
-		
-		labelCount = UILabel()
-		labelCount.textColor = UIColor.black
-		labelCount.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-		self.contentView.addSubview(labelCount)
-		labelCount.snp.makeConstraints({ (make) in
-			make.height.equalTo(18)
-			make.width.equalTo(85)
-			make.left.equalTo(imageView.snp.right).offset(8)
-			make.centerY.equalTo(imageView)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
 		})
 		
 	}

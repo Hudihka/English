@@ -24,7 +24,7 @@ class MenuTableView: UITableView {
     }
     
     fileprivate var isTwoSection: Bool {
-        return favoritCount >= FAVORIT_COUNT
+        return favoritCount >= 10//FAVORIT_COUNT
     }
     
     fileprivate var lists: [List]{
@@ -65,7 +65,7 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
         if isTwoSection, section == 0 {
             return 1
         } else {
-            return 1//lists.count
+            return lists.count
         }
         
     }
@@ -74,7 +74,6 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
         
         if isTwoSection, indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteWords") as! FavoriteWords
-            cell.count = favoritCount
             
             return cell
         } else {
@@ -86,26 +85,35 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
         
     }
 
-    //MARK: - ХЕДЕР
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
 
+    //MARK: - ХЕДЕР
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if isTwoSection, section == 0 {
-            return nil
-        }
-        
+
         let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HederCells") as! HederCells
-        let count = profile?.countWords ?? 0
-        cell.text = "Всего \(lists.count) тем, \(count) слов"
-        
+        if isTwoSection, section == 0 {
+            cell.text = "Всего \(favoritCount) выбранных слов"
+        } else {
+            let count = profile?.countWords ?? 0
+            cell.text = "Всего \(lists.count) тем, \(count) слов"
+        }
+
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
     
     //MARK: - тап

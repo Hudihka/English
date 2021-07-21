@@ -49,10 +49,11 @@ class ListCell: BaseCell {
 		
 		labelTheme = UILabel()
 		labelTheme.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        labelTheme.numberOfLines = 0
 
 		self.contentView.addSubview(labelTheme)
 		labelTheme.snp.makeConstraints({ (make) in
-			make.height.equalTo(33)
+            make.height.greaterThanOrEqualTo(33)
 			make.left.equalTo(16)
 			make.right.equalTo(-16)
 			make.top.equalTo(10)
@@ -65,12 +66,10 @@ class ListCell: BaseCell {
 		self.contentView.addSubview(labelCount)
 		labelCount.snp.makeConstraints({ (make) in
 			make.width.equalTo(85)
-			make.top.equalTo(self.labelTheme.snp.top).offset(9)
-			make.bottom.equalTo(13)
+			make.top.equalTo(self.labelTheme.snp.bottom).offset(9)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-9)
 			make.left.equalTo(self.labelTheme.snp.left)
 		})
-		
-		
 		
 		favoritImage = UIImageView(image: UIImage(named: "favorit"))
 		self.contentView.addSubview(favoritImage)
