@@ -8,10 +8,16 @@
 import Foundation
 
 protocol MenuInteractorIn: AnyObject {
+    func createdNewList(name: String)
 }
 
 class MenuInteractor: MenuInteractorIn {
     
     var presenter: MenuPresenter?
-    
+
+    func createdNewList(name: String){
+
+    }
+
+//    private func lissen
 }

@@ -8,9 +8,10 @@
 import UIKit
 
 protocol MenuViewControllerIn: AnyObject {
+    func showErrorNewList()
 }
 
-class MenuViewController: BaseViewController, MenuViewControllerIn {
+class MenuViewController: BaseViewController {
     
     private var tableView: MenuTableView!
     
@@ -31,7 +32,16 @@ class MenuViewController: BaseViewController, MenuViewControllerIn {
     }
     
     @objc override func rightBBItem(){
-        
+        showAlertTextField(title: "Введите название новой темы",
+                           message: nil,
+                           actionTitle: "Ok",
+                           cancelTitle: "Отмена", inputPlaceholder: "Тема") {[weak self] str in
+            guard let self = self, let str = str else {
+                return
+            }
+
+            self.presenter?.createList(name: str)
+        }
     }
     
     override func desingUI() {
@@ -44,6 +54,35 @@ class MenuViewController: BaseViewController, MenuViewControllerIn {
             make.top.equalTo(0)
             make.bottom.equalTo(0)
         }
+
+        tableView.tapedCell = {[weak self] theme in
+            guard let self = self else {
+                return
+            }
+
+            self.showAlertThreeButton(title: "Выберите направление",
+                                      message: nil,
+                                      buttonText1: MenuEndpointsEnum.ActionButtonsAlert.rusEngl.rawValue,
+                                      action1: { _ in
+                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.rusEngl, theme: theme)
+                                      },
+                                      buttonText2: MenuEndpointsEnum.ActionButtonsAlert.englRus.rawValue,
+                                      action2: { _ in
+                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.englRus, theme: theme)
+                                      },
+                                      buttonText3: MenuEndpointsEnum.ActionButtonsAlert.cramming.rawValue) { _ in
+                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.cramming, theme: theme)
+            }
+        }
+    }
+
+}
+
+
+extension MenuViewController: MenuViewControllerIn {
+
+    func showErrorNewList() {
+        showAlert(title: "Ошибка", message: "Нельзя тиспользовать такое имя")
     }
 
 }

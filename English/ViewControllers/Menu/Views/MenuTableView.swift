@@ -117,6 +117,29 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     //MARK: - тап
+
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
+    {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+
+        UIView.animate(withDuration: 0.25) {
+
+            cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.85)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath)
+    {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+
+        UIView.animate(withDuration: 0.25) {
+            cell.transform = .identity
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

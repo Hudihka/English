@@ -14,6 +14,7 @@
 		450712ED269E15C90022EE61 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712EC269E15C90022EE61 /* Date.swift */; };
 		450712EF269E174A0022EE61 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712EE269E174A0022EE61 /* List.swift */; };
 		4539C1A12693284000534F4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4539C1A02693284000534F4B /* GoogleService-Info.plist */; };
+		4553CEC726A8954F001EF57E /* MenuEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553CEC626A8954F001EF57E /* MenuEndpoints.swift */; };
 		4562DE6126972E0600510378 /* LoadProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DE6026972E0600510378 /* LoadProfileInteractor.swift */; };
 		4562DE6326972E1600510378 /* LoadProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DE6226972E1600510378 /* LoadProfilePresenter.swift */; };
 		4562DE6526972E2400510378 /* LoadProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DE6426972E2400510378 /* LoadProfileRouter.swift */; };
@@ -64,6 +65,7 @@
 		450712EC269E15C90022EE61 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		450712EE269E174A0022EE61 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		4539C1A02693284000534F4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4553CEC626A8954F001EF57E /* MenuEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEndpoints.swift; sourceTree = "<group>"; };
 		4562DE6026972E0600510378 /* LoadProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileInteractor.swift; sourceTree = "<group>"; };
 		4562DE6226972E1600510378 /* LoadProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfilePresenter.swift; sourceTree = "<group>"; };
 		4562DE6426972E2400510378 /* LoadProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileRouter.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		450712E3269E09FA0022EE61 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				4553CEC626A8954F001EF57E /* MenuEndpoints.swift */,
 				45E8EECF269359F600D66F13 /* MenuViewController.swift */,
 				450712E4269E0A9C0022EE61 /* MenuPresenter.swift */,
 				450712E6269E0B510022EE61 /* MenuInteractor.swift */,
@@ -444,6 +447,7 @@
 				45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */,
 				45A191AC269DE0D700D2E169 /* UIView.swift in Sources */,
 				450712E9269E0D160022EE61 /* MenuRouter.swift in Sources */,
+				4553CEC726A8954F001EF57E /* MenuEndpoints.swift in Sources */,
 				45FF7AAD26A016DD005BAF35 /* BaseCell.swift in Sources */,
 				45E8EEC6269340BD00D66F13 /* Constant.swift in Sources */,
 				45FF7AAB26A015CF005BAF35 /* HederCells.swift in Sources */,
