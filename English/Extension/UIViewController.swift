@@ -15,7 +15,10 @@ extension UIViewController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: buttonText, style: UIAlertAction.Style.default, handler: action))
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion:{
+                alert.view.superview?.isUserInteractionEnabled = true
+                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+            })
     }
 
     func showAlertThreeButton(title: String?,

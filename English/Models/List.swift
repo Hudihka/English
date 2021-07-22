@@ -15,6 +15,10 @@ class List {
     var countFavorit: Int = 0
     
     var dateUpdate: Date = Date()
+
+    init(name: String){
+        self.name = name
+    }
     
     init(json: JSON) {
         
@@ -42,7 +46,7 @@ class List {
         
         json["name"]            = name
         json["count"]           = count
-        json["favorit"]    = countFavorit
+        json["favorit"]         = countFavorit
         json["dateUpdate"]      = dateUpdate.printDate()
         
         return json

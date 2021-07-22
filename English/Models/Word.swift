@@ -11,7 +11,7 @@ import Foundation
 struct Word: Equatable {
     
     var id: String?
-    var listId: String = ""
+    var listName: String = ""
     
     var rusValue: String = ""
     var engValue: String = ""
@@ -23,8 +23,8 @@ struct Word: Equatable {
         self.id = id
         
         
-        if let temp = json["listId"] as? String {
-            self.listId = temp
+        if let temp = json["listName"] as? String {
+            self.listName = temp
         }
         
         if let temp = json["rusValue"] as? String {
@@ -55,7 +55,7 @@ struct Word: Equatable {
             json["id"] = id
         }
         
-        json["listId"]       = listId
+        json["listName"]     = listName
         json["rusValue"]     = rusValue
         json["engValue"]     = engValue
         json["descript"]     = descript

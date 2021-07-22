@@ -19,20 +19,20 @@ class FirebaseData {
     
     var profile: Profile?
     
-    var idUser: String?{
-        return FirebaseAutorization.shared.idUser
-    }
+//    var idUser: String?{
+//        return FirebaseAutorization.shared.idUser
+//    }
     
     //MARK: PROFILE
     
     
     func getUser(compl: @escaping((Error?) -> ())){
         
-        guard let idUser = idUser else {
+        guard let id = profile?.id else {
             return
         }
         
-        db.collection("Profile").document(idUser).getDocument {[weak self] (snaphot, error) in
+        db.collection("Profile").document(id).getDocument {[weak self] (snaphot, error) in
             if let data = snaphot?.data() {
                 self?.profile = Profile(json: data)
                 compl(nil)
@@ -40,41 +40,81 @@ class FirebaseData {
                 compl(error)
             }
         }
+    }
 
-    }
-    
-    func createUser(userId: String, name: String?, provided: String?){
-        db.collection("users").document(userId).getDocument {[weak self] (snaphot, _) in
-            if let data = snaphot?.data() {
-                self?.profile = Profile(json: data)
-            } else {
-                self?.addUser(userId: userId, name: name, provided: provided)
-            }
-        }
-    }
-    
-    private func addUser(userId: String, name: String?, provided: String?){
-        let newProfile = Profile(id: userId)
-        self.profile = newProfile
-        
-        db.collection("users").document(userId).setData(newProfile.json)
-    }
-    
-    //MARK: LISTS
-    
     func lisenProfile(compl: @escaping(() -> Void)) {
 
-        guard let profile = profile else {
+        guard let id = profile?.id else {
             return
         }
 
-        db.collection("users").document(profile.id).addSnapshotListener {[weak self] (snaphot, _) in
+        db.collection("users").document(id).addSnapshotListener {[weak self] (snaphot, _) in
             if let selF = self, let data = snaphot?.data() {
                 selF.profile = Profile(json: data)
                 compl()
             }
         }
     }
+
+    //MARK: LISTS
+
+    func createList(listName: String){
+        guard let profile = profile else {
+            return
+        }
+
+        let newList = List(name: listName)
+        profile.lists.insert(newList, at: 0)
+
+        db.collection("users").document(profile.id).setData(profile.json)
+    }
+
+    func renameLists(oldName: String, newName: String){
+        guard let profile = profile,
+            let index = profile.lists.firstIndex(where: {$0.name == oldName}) else {
+            return
+        }
+
+        let oldList = profile.lists[index]
+        oldList.name = newName
+        profile.lists[index] = oldList
+
+        db.collection("users").document(profile.id).setData(profile.json)
+
+        db.collection("Words")
+            .whereField("listName", isEqualTo: oldName)
+            .getDocuments {[weak self] (snaphot, _) in
+
+            if let data = snaphot?.documents {
+                data.forEach({self?.batch.updateData(["listName" : newName], forDocument: $0.reference)})
+            }
+
+            self?.batch.commit()
+        }
+    }
+
+
+
+    
+//    func createUser(userId: String, name: String?, provided: String?){
+//        db.collection("users").document(userId).getDocument {[weak self] (snaphot, _) in
+//            if let data = snaphot?.data() {
+//                self?.profile = Profile(json: data)
+//            } else {
+//                self?.addUser(userId: userId, name: name, provided: provided)
+//            }
+//        }
+//    }
+//
+//    private func addUser(userId: String, name: String?, provided: String?){
+//        let newProfile = Profile(id: userId)
+//        self.profile = newProfile
+//
+//        db.collection("users").document(userId).setData(newProfile.json)
+//    }
+    
+    //MARK: LISTS
+
 //
 //
 //    func countWordIn(listName: String?, compl: @escaping((Int) -> ()) ) {
@@ -130,23 +170,7 @@ class FirebaseData {
 //        }
 //
 //    }
-//
-//    func createList(listName: String?){
-//
-//        guard let listName = listName,
-//              let profile = profile,
-//              conteinsProfileList(name: listName) == false else {
-//            return
-//        }
-//
-//        if profile.lists.count == 1 {
-//            profile.lists.append(listName)
-//        } else {
-//            profile.lists.insert(listName, at: 1)
-//        }
-//
-//        db.collection("users").document(profile.id).setData(profile.json)
-//    }
+
 //
 //    //есть уже лист с таким именем
 //
