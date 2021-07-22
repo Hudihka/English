@@ -19,10 +19,6 @@ class FirebaseData {
     
     var profile: Profile?
     
-//    var idUser: String?{
-//        return FirebaseAutorization.shared.idUser
-//    }
-    
     //MARK: PROFILE
     
     

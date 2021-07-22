@@ -55,7 +55,7 @@ class DI: DIProtocol {
         let VC = MenuViewController()
         let presenter = MenuPresenter()
         let interactor = MenuInteractor()
-        let router = MenuRouter()
+        let router = MenuRouterProtocol()
         
         VC.presenter = presenter
         interactor.presenter = presenter

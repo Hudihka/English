@@ -7,11 +7,16 @@
 
 import Foundation
 
-protocol MenuRouterProtocol: AnyObject {
-    func createdNewList(name: String)
+protocol MenuRouterProtocol: RouterProtocol {
+    var way: MenuEndpointsEnum.ActionButtonsAlert? {get set}
+    var words: [Word] {get set}
 }
 
-class MenuRouter: RouterProtocol{
+class MenuRouter: MenuRouterProtocol{
+    var way: MenuEndpointsEnum.ActionButtonsAlert? = nil
+
+    var words: [Word] = []
+
     var callBack: (() -> ())? = nil
     
     var callBackParametrs: ((Any) -> ())? = nil
