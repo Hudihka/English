@@ -10,6 +10,7 @@ import UIKit
 class MenuTableView: UITableView {
     
     var tapedCell: (String) -> Void = {_ in }
+    var tapedRename: (String) -> Void = {_ in }
     
     fileprivate var profile: Profile?{
         return FirebaseData.shared.profile
@@ -150,6 +151,25 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
             let name = lists[indexPath.row].name
             tapedCell(name)
         }
+    }
+
+    //MARK: Контекстное меню
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        if isTwoSection, indexPath.section == 0 {
+            return nil
+        }
+
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
+            let action = UIAction(title: "Переименовать", image: UIImage(systemName: "Compose.fill")) {[weak self] _ in
+                guard let self = self else {return}
+
+                let oldName = self.lists[indexPath.row].name
+                self.tapedRename(oldName)
+            }
+            return UIMenu(title: "Menu", children: [action])
+        }
+
+        return configuration
     }
     
 }

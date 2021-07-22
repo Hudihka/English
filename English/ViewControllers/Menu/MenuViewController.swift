@@ -74,6 +74,25 @@ class MenuViewController: BaseViewController {
                                         self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.cramming, theme: theme)
             }
         }
+
+        tableView.tapedRename = {[weak self] theme in
+            guard let self = self else {
+                return
+            }
+
+            self.showAlertTextField(title: "Введите новое название",
+                               message: nil,
+                               actionTitle: "Ok",
+                               cancelTitle: "Отмена",
+                               inputPlaceholder: "Тема",
+                               inputStartText: theme) {[weak self] str in
+                guard let self = self, let str = str else {
+                    return
+                }
+
+                self.presenter?.createList(name: str)
+            }
+        }
     }
 
 }

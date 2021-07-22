@@ -9,14 +9,25 @@ import Foundation
 
 protocol MenuInteractorIn: AnyObject {
     func createdNewList(name: String)
+    func renameList(oldName: String, newName: String)
 }
 
 class MenuInteractor: MenuInteractorIn {
+
+    private let FB = FirebaseData.shared
     
-    var presenter: MenuPresenter?
+    private var presenter: MenuPresenter?
+
+    init(presenter: MenuPresenter) {
+        self.presenter = presenter
+    }
 
     func createdNewList(name: String){
+        FB.createdNewList(name)
+    }
 
+    func renameList(oldName: String, newName: String){
+        FB.renameLists(oldName: oldName, newName: newName)
     }
 
 //    private func lissen

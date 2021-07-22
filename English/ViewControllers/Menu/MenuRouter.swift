@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol MenuRouterProtocol: AnyObject {
+    func createdNewList(name: String)
+}
+
 class MenuRouter: RouterProtocol{
     var callBack: (() -> ())? = nil
     

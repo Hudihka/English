@@ -11,6 +11,7 @@ import Foundation
 protocol MenuPresenterIn: AnyObject {
     func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert, theme: String)
     func createList(name: String)
+    func renameList(oldName: String, newName: String)
 }
 
 class MenuPresenter: MenuPresenterIn {
@@ -31,13 +32,19 @@ class MenuPresenter: MenuPresenterIn {
     }
 
     func createList(name: String){
-
         if busyName(name) {
             view?.showErrorNewList()
         } else {
-            //создаем в интеракторе 
+            interactor.createdNewList(name: name)
         }
-        
+    }
+
+    func renameList(oldName: String, newName: String) {
+        if busyName(newName) {
+            view?.showErrorNewList()
+        } else {
+            interactor.renameList(oldName: oldName, newName: newName)
+        }
     }
 
     //private func

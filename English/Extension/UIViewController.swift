@@ -47,22 +47,24 @@ extension UIViewController {
                             actionTitle: String?,
                             cancelTitle: String?,
                             inputPlaceholder:String? = nil,
+                            inputStartText:String? = nil,
                             actionHandler: ((_ text: String?) -> Void)? = nil) {
 
            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
            alert.addTextField { (textField:UITextField) in
-            textField.textColor = .black
-               textField.placeholder = inputPlaceholder
-               textField.keyboardType = UIKeyboardType.default
-            textField.autocapitalizationType = .words
+                textField.text = inputStartText
+                textField.textColor = .black
+                textField.placeholder = inputPlaceholder
+                textField.keyboardType = UIKeyboardType.default
+                textField.autocapitalizationType = .words
            }
            alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action: UIAlertAction) in
                guard let textField = alert.textFields?.first else {
                    actionHandler?(nil)
                    return
                }
-               actionHandler?(textField.text)
+            actionHandler?(textField.text.textEditor)
            }))
            alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
 
