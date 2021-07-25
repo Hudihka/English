@@ -9,6 +9,7 @@ import UIKit
 
 protocol MenuViewControllerIn: AnyObject {
     func showErrorNewList()
+    func reloadData()
 }
 
 class MenuViewController: BaseViewController {
@@ -102,6 +103,10 @@ extension MenuViewController: MenuViewControllerIn {
 
     func showErrorNewList() {
         showAlert(title: "Ошибка", message: "Нельзя тиспользовать такое имя")
+    }
+
+    func reloadData(){
+        self.tableView.reloadData()
     }
 
 }

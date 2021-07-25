@@ -54,8 +54,8 @@ class DI: DIProtocol {
     static func menuViewController() -> BaseNavigationController {
         let VC = MenuViewController()
         let presenter = MenuPresenter()
-        let interactor = MenuInteractor()
-        let router = MenuRouterProtocol()
+        let interactor = MenuInteractor(presenter: presenter)
+        let router = MenuRouter()
         
         VC.presenter = presenter
         interactor.presenter = presenter

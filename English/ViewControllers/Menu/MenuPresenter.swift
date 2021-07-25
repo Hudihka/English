@@ -12,12 +12,13 @@ protocol MenuPresenterIn: AnyObject {
     func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert, theme: String)
     func createList(name: String)
     func renameList(oldName: String, newName: String)
+    func reloadProfile()
 }
 
 class MenuPresenter: MenuPresenterIn {
     
     var interactor: MenuInteractorIn?
-    var router: RouterProtocol?
+    var router: MenuRouterProtocol?
     weak var view: MenuViewControllerIn?
     
     func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert, theme: String) {
@@ -35,7 +36,7 @@ class MenuPresenter: MenuPresenterIn {
         if busyName(name) {
             view?.showErrorNewList()
         } else {
-            interactor.createdNewList(name: name)
+            interactor?.createdNewList(name: name)
         }
     }
 
@@ -43,8 +44,12 @@ class MenuPresenter: MenuPresenterIn {
         if busyName(newName) {
             view?.showErrorNewList()
         } else {
-            interactor.renameList(oldName: oldName, newName: newName)
+            interactor?.renameList(oldName: oldName, newName: newName)
         }
+    }
+
+    func reloadProfile(){
+        view?.reloadData()
     }
 
     //private func
@@ -61,6 +66,7 @@ class MenuPresenter: MenuPresenterIn {
 
         return arrayNames.contains(element)
     }
+
 }
 
 

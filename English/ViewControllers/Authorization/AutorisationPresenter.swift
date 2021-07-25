@@ -16,7 +16,7 @@ protocol AutorisationPresenterIn: AnyObject {
 class AutorisationPresenter: AutorisationPresenterIn {
     
     var interactor: AutorisationInteractorIn?
-    var router: RouterProtocol?
+    var router: AutorisationRouterProtocol?
     weak var view: AutorisationViewControllerIn?
     
     func finishLoadProfile(error: Error?) {

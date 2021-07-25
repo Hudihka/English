@@ -21,7 +21,7 @@ protocol LoadProfilePresenterIn: AnyObject {
 class LoadProfilePresenter: LoadProfilePresenterIn {
     
     var interactor: LoadProfileInteractorIn?
-    var router: RouterProtocol?
+    var router: LoadProfileProtocol?
     weak var view: LoadProfileViewControllerIn?
     
     func finishLoadProfile(error: Error?) {

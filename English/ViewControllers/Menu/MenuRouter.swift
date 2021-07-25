@@ -7,23 +7,25 @@
 
 import Foundation
 
-protocol MenuRouterProtocol: RouterProtocol {
-    var way: MenuEndpointsEnum.ActionButtonsAlert? {get set}
-    var words: [Word] {get set}
+protocol MenuRouterProtocol: AnyObject {
+    var tupeNewVC: MenuEndpointsEnum.ActionButtonsAlert? {get set}
+    var selectedWords: [Word] {get set}
+    func present()
+
+    func push()
+
 }
 
 class MenuRouter: MenuRouterProtocol{
-    var way: MenuEndpointsEnum.ActionButtonsAlert? = nil
 
-    var words: [Word] = []
+    var tupeNewVC: MenuEndpointsEnum.ActionButtonsAlert?
+    var selectedWords: [Word] = []{
+        didSet{
 
-    var callBack: (() -> ())? = nil
-    
-    var callBackParametrs: ((Any) -> ())? = nil
+        }
+    }
     
     func present() {}
     
     func push() {}
-    
-    func windowChange() {}
 }

@@ -8,15 +8,11 @@
 import Foundation
 import UIKit
 
-class AutorisationRouter: RouterProtocol{
-    var callBack: (() -> ())? = nil
-    
-    var callBackParametrs: ((Any) -> ())? = nil
-    
-    func present() {}
-    
-    func push() {}
-    
+protocol AutorisationRouterProtocol: AnyObject {
+    func windowChange()
+}
+
+class AutorisationRouter: AutorisationRouterProtocol{
     func windowChange() {
         let VC = DI.menuViewController()
         UIWindow.transitionRoot(to: VC)

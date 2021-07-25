@@ -11,6 +11,7 @@ class MenuTableView: UITableView {
     
     var tapedCell: (String) -> Void = {_ in }
     var tapedRename: (String) -> Void = {_ in }
+    var tapedAdd: (String) -> Void = {_ in }
     
     fileprivate var profile: Profile?{
         return FirebaseData.shared.profile
@@ -160,13 +161,21 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
         }
 
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
-            let action = UIAction(title: "Переименовать", image: UIImage(systemName: "Compose.fill")) {[weak self] _ in
+            let action1 = UIAction(title: "Переименовать", image: UIImage(systemName: "Compose.fill")) {[weak self] _ in
                 guard let self = self else {return}
 
                 let oldName = self.lists[indexPath.row].name
                 self.tapedRename(oldName)
             }
-            return UIMenu(title: "Menu", children: [action])
+
+            let action2 = UIAction(title: "Добавить", image: UIImage(systemName: "Add.fill")) {[weak self] _ in
+                guard let self = self else {return}
+
+                let oldName = self.lists[indexPath.row].name
+                self.tapedAdd(oldName)
+            }
+
+            return UIMenu(title: "Menu", children: [action1, action2])
         }
 
         return configuration

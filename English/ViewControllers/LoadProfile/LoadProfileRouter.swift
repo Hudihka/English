@@ -8,15 +8,12 @@
 import Foundation
 import UIKit
 
-class LoadProfileRouter: RouterProtocol{
-    var callBack: (() -> ())? = nil
-    
-    var callBackParametrs: ((Any) -> ())? = nil
-    
-    func present() {}
-    
-    func push() {}
-    
+protocol LoadProfileProtocol: AnyObject {
+    func windowChange()
+}
+
+class LoadProfileRouter: LoadProfileProtocol{
+
     func windowChange() {
         let VC = DI.menuViewController()
         UIWindow.transitionRoot(to: VC)

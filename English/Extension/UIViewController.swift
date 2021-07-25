@@ -60,11 +60,12 @@ extension UIViewController {
                 textField.autocapitalizationType = .words
            }
            alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action: UIAlertAction) in
-               guard let textField = alert.textFields?.first else {
+               guard let textField = alert.textFields?.first,
+                     let text = textField.text else {
                    actionHandler?(nil)
                    return
                }
-            actionHandler?(textField.text.textEditor)
+            actionHandler?(text.textEditor)
            }))
            alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
 
