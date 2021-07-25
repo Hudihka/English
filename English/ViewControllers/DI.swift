@@ -13,6 +13,7 @@ protocol DIProtocol: AnyObject {
     static func autorisationViewController() -> BaseViewController
     
     static func menuViewController() -> BaseNavigationController
+    static func newWordViewController(nameList: String) -> BaseNavigationController
 }
 
 
@@ -53,9 +54,11 @@ class DI: DIProtocol {
     
     static func menuViewController() -> BaseNavigationController {
         let VC = MenuViewController()
+        let NVC = BaseNavigationController(rootViewController: VC)
+
         let presenter = MenuPresenter()
         let interactor = MenuInteractor(presenter: presenter)
-        let router = MenuRouter()
+        let router = MenuRouter(navigationVC: NVC)
         
         VC.presenter = presenter
         interactor.presenter = presenter
@@ -64,8 +67,24 @@ class DI: DIProtocol {
         presenter.interactor = interactor
         presenter.router = router
         
+        return NVC
+    }
+
+    static func newWordViewController(nameList: String) -> BaseNavigationController {
+        let VC = NewWordViewController()
         let NVC = BaseNavigationController(rootViewController: VC)
-        
+
+        let presenter = NewWordPresenter()
+        let interactor = NewWordInteractor(nameList: nameList)
+        let router = NewWordRouter(navigationVC: NVC)
+
+        VC.presenter = presenter
+        interactor.presenter = presenter
+
+        presenter.view = VC
+        presenter.interactor = interactor
+        presenter.router = router
+
         return NVC
     }
     

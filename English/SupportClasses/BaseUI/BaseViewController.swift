@@ -21,6 +21,14 @@ class BaseViewController: UIViewController {
     var titleText: String?{
         return nil
     }
+
+    var rightColor: UIColor {
+        return UIColor.black
+    }
+
+    var leftColor: UIColor {
+        return UIColor.black
+    }
     
 
     override func viewDidLoad() {
@@ -41,7 +49,7 @@ class BaseViewController: UIViewController {
         guard let leftTextBBItem = leftTextBBItem else {return}
         
         let left = UIBarButtonItem(title: leftTextBBItem, style: .plain, target: self, action: #selector(leftBBItem))
-        left.tintColor = UIColor.black
+        left.tintColor = leftColor
         navigationItem.leftBarButtonItem = left
     }
     
@@ -50,7 +58,7 @@ class BaseViewController: UIViewController {
         guard let rightTextBBItem = rightTextBBItem else {return}
         
         let right = UIBarButtonItem(title: rightTextBBItem, style: .plain, target: self, action: #selector(rightBBItem))
-        right.tintColor = UIColor.black
+        right.tintColor = rightColor
         navigationItem.leftBarButtonItem = right
     }
 

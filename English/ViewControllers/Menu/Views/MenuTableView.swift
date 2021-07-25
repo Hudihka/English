@@ -168,7 +168,7 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
                 self.tapedRename(oldName)
             }
 
-            let action2 = UIAction(title: "Добавить", image: UIImage(systemName: "add")) {[weak self] _ in
+            let action2 = UIAction(title: "Добавить слово", image: UIImage(systemName: "plus")) {[weak self] _ in
                 guard let self = self else {return}
 
                 let listName = self.lists[indexPath.row].name

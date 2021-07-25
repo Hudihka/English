@@ -13,6 +13,7 @@ protocol MenuPresenterIn: AnyObject {
     func createList(name: String)
     func renameList(oldName: String, newName: String)
     func reloadProfile()
+    func newWordInTheme(listName: String)
 }
 
 class MenuPresenter: MenuPresenterIn {
@@ -50,6 +51,10 @@ class MenuPresenter: MenuPresenterIn {
 
     func reloadProfile(){
         view?.reloadData()
+    }
+
+    func newWordInTheme(listName: String){
+        router?.newWordInTheme(listName: listName)
     }
 
     //private func

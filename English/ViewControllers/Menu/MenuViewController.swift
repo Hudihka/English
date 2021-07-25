@@ -94,6 +94,14 @@ class MenuViewController: BaseViewController {
                 self.presenter?.createList(name: str)
             }
         }
+
+        tableView.tapedAdd = {[weak self] theme in
+            guard let self = self else {
+                return
+            }
+
+            self.presenter?.newWordInTheme(listName: theme)
+        }
     }
 
 }

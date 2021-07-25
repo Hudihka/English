@@ -24,6 +24,11 @@
 		456EB4462692E1120003CEB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4442692E1120003CEB6 /* Main.storyboard */; };
 		456EB4482692E1120003CEB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4472692E1120003CEB6 /* Assets.xcassets */; };
 		456EB44B2692E1120003CEB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4492692E1120003CEB6 /* LaunchScreen.storyboard */; };
+		45942FE926ADDCAB006EE405 /* NewWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45942FE826ADDCAB006EE405 /* NewWordViewController.swift */; };
+		45942FEB26ADDCCA006EE405 /* NewWordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45942FEA26ADDCCA006EE405 /* NewWordPresenter.swift */; };
+		45942FED26ADDCDE006EE405 /* NewWordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45942FEC26ADDCDE006EE405 /* NewWordInteractor.swift */; };
+		45942FEF26ADDD00006EE405 /* NewWordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45942FEE26ADDD00006EE405 /* NewWordRouter.swift */; };
+		45942FF226ADE87C006EE405 /* BaseBlackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45942FF126ADE87C006EE405 /* BaseBlackButton.swift */; };
 		45A191AC269DE0D700D2E169 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A191AB269DE0D700D2E169 /* UIView.swift */; };
 		45A191AE269DE16E00D2E169 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A191AD269DE16E00D2E169 /* VisualEffectView.swift */; };
 		45A191B0269DE22C00D2E169 /* BluereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A191AF269DE22C00D2E169 /* BluereViewController.swift */; };
@@ -76,6 +81,11 @@
 		456EB4472692E1120003CEB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		456EB44A2692E1120003CEB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		456EB44C2692E1120003CEB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45942FE826ADDCAB006EE405 /* NewWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordViewController.swift; sourceTree = "<group>"; };
+		45942FEA26ADDCCA006EE405 /* NewWordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordPresenter.swift; sourceTree = "<group>"; };
+		45942FEC26ADDCDE006EE405 /* NewWordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordInteractor.swift; sourceTree = "<group>"; };
+		45942FEE26ADDD00006EE405 /* NewWordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordRouter.swift; sourceTree = "<group>"; };
+		45942FF126ADE87C006EE405 /* BaseBlackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBlackButton.swift; sourceTree = "<group>"; };
 		45A191AB269DE0D700D2E169 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		45A191AD269DE16E00D2E169 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		45A191AF269DE22C00D2E169 /* BluereViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluereViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +196,25 @@
 			path = English;
 			sourceTree = "<group>";
 		};
+		45942FE626ADDC70006EE405 /* NewWord */ = {
+			isa = PBXGroup;
+			children = (
+				45942FE826ADDCAB006EE405 /* NewWordViewController.swift */,
+				45942FEA26ADDCCA006EE405 /* NewWordPresenter.swift */,
+				45942FEC26ADDCDE006EE405 /* NewWordInteractor.swift */,
+				45942FEE26ADDD00006EE405 /* NewWordRouter.swift */,
+				45942FF026ADE7D3006EE405 /* Views */,
+			);
+			path = NewWord;
+			sourceTree = "<group>";
+		};
+		45942FF026ADE7D3006EE405 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		45E8EEBB2693385A00D66F13 /* SupportClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +248,7 @@
 		45E8EECC269358C000D66F13 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				45942FE626ADDC70006EE405 /* NewWord */,
 				450712E3269E09FA0022EE61 /* Menu */,
 				456E7F75269A08FD007ABF69 /* Authorization */,
 				45E976A82694BE3A00A12858 /* LoadProfile */,
@@ -271,6 +301,7 @@
 				45FF7AAC26A016DD005BAF35 /* BaseCell.swift */,
 				45A191AD269DE16E00D2E169 /* VisualEffectView.swift */,
 				45A191AF269DE22C00D2E169 /* BluereViewController.swift */,
+				45942FF126ADE87C006EE405 /* BaseBlackButton.swift */,
 			);
 			path = BaseUI;
 			sourceTree = "<group>";
@@ -417,6 +448,7 @@
 				45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */,
 				45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */,
 				450712ED269E15C90022EE61 /* Date.swift in Sources */,
+				45942FF226ADE87C006EE405 /* BaseBlackButton.swift in Sources */,
 				45FF7AA926A015CF005BAF35 /* ListCell.swift in Sources */,
 				45A191B0269DE22C00D2E169 /* BluereViewController.swift in Sources */,
 				450712EB269E15980022EE61 /* String.swift in Sources */,
@@ -433,13 +465,17 @@
 				456E7F77269A092A007ABF69 /* AutorisationViewController.swift in Sources */,
 				45FF7AA526A00C28005BAF35 /* NSObject.swift in Sources */,
 				4562DE6126972E0600510378 /* LoadProfileInteractor.swift in Sources */,
+				45942FEF26ADDD00006EE405 /* NewWordRouter.swift in Sources */,
 				450712EF269E174A0022EE61 /* List.swift in Sources */,
 				45E8EEC92693429E00D66F13 /* DefaultUtils.swift in Sources */,
 				45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */,
+				45942FED26ADDCDE006EE405 /* NewWordInteractor.swift in Sources */,
 				45E8EEC42693403D00D66F13 /* Vibro.swift in Sources */,
+				45942FEB26ADDCCA006EE405 /* NewWordPresenter.swift in Sources */,
 				45E976A3269490C500A12858 /* UINavigationController.swift in Sources */,
 				45ED9EC7269CBCCF00AB150F /* AutorisationPresenter.swift in Sources */,
 				45E8EEBD2693389600D66F13 /* FirebaseAutorization.swift in Sources */,
+				45942FE926ADDCAB006EE405 /* NewWordViewController.swift in Sources */,
 				45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */,
 				45A191AC269DE0D700D2E169 /* UIView.swift in Sources */,
 				450712E9269E0D160022EE61 /* MenuRouter.swift in Sources */,

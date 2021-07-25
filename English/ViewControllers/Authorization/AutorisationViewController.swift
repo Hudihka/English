@@ -15,17 +15,10 @@ protocol AutorisationViewControllerIn: AnyObject {
 class AutorisationViewController: BaseViewController, AutorisationViewControllerIn {
     
     var presenter: AutorisationPresenter?
+    lazy var button = BaseBlackButton(title: "ВХОД", selector: #selector(buttonAction))
     
     override func desingUI() {
         super.desingUI()
-        
-        let button = UIButton()
-        button.setTitle("ВХОД", for: .normal)
-        button.backgroundColor = UIColor.black
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .bold)
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        button.addRadius(number: 10)
         
         self.view.addSubview(button)
         

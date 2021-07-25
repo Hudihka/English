@@ -6,26 +6,32 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MenuRouterProtocol: AnyObject {
-    var tupeNewVC: MenuEndpointsEnum.ActionButtonsAlert? {get set}
-    var selectedWords: [Word] {get set}
-    func present()
+    func presentSplit(words: [Word], way: MenuEndpointsEnum.ActionButtonsAlert)
+    func pushCramming(words: [Word], listName: String)
+    func newWordInTheme(listName: String)
 
-    func push()
-
+    init(navigationVC: UINavigationController)
 }
 
 class MenuRouter: MenuRouterProtocol{
+    private let navigationVC: UINavigationController!
 
-    var tupeNewVC: MenuEndpointsEnum.ActionButtonsAlert?
-    var selectedWords: [Word] = []{
-        didSet{
-
-        }
+    required init(navigationVC: UINavigationController){
+        self.navigationVC = navigationVC
     }
-    
-    func present() {}
-    
-    func push() {}
+
+    func presentSplit(words: [Word], way: MenuEndpointsEnum.ActionButtonsAlert) {
+
+    }
+
+    func pushCramming(words: [Word], listName: String) {
+    }
+
+    func newWordInTheme(listName: String) {
+        let NVC = DI.newWordViewController(nameList: listName)
+        navigationVC.present(NVC, animated: true, completion: nil)
+    }
 }
