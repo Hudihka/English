@@ -161,21 +161,24 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
         }
 
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
-            let action1 = UIAction(title: "Переименовать", image: UIImage(systemName: "Compose.fill")) {[weak self] _ in
+            let action1 = UIAction(title: "Переименовать", image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
                 guard let self = self else {return}
 
                 let oldName = self.lists[indexPath.row].name
                 self.tapedRename(oldName)
             }
 
-            let action2 = UIAction(title: "Добавить", image: UIImage(systemName: "Add.fill")) {[weak self] _ in
+            let action2 = UIAction(title: "Добавить", image: UIImage(systemName: "add")) {[weak self] _ in
                 guard let self = self else {return}
 
-                let oldName = self.lists[indexPath.row].name
-                self.tapedAdd(oldName)
+                let listName = self.lists[indexPath.row].name
+                self.tapedAdd(listName)
             }
 
-            return UIMenu(title: "Menu", children: [action1, action2])
+            let menu1 = UIMenu(title: "", options: .displayInline, children: [action1])
+            let menu2 = UIMenu(title: "", options: .displayInline, children: [action2])
+
+            return UIMenu(title: "", children: [menu1, menu2])
         }
 
         return configuration

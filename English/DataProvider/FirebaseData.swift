@@ -18,13 +18,18 @@ class FirebaseData {
     private let batch = Firestore.firestore().batch()
     
     var profile: Profile?
+
+    var idUser: String?{
+        return FirebaseAutorization.shared.idUser
+    }
+
     
     //MARK: PROFILE
     
     
     func getUser(compl: @escaping((Error?) -> ())){
         
-        guard let id = profile?.id else {
+        guard let id = idUser else {
             return
         }
         
@@ -40,7 +45,7 @@ class FirebaseData {
 
     func lisenProfile(compl: @escaping(() -> Void)) {
 
-        guard let id = profile?.id else {
+        guard let id = idUser else {
             return
         }
 
