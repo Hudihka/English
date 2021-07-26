@@ -10,6 +10,7 @@ import UIKit
 
 protocol NewWordViewControllerProtocol: AnyObject {
 	func startData(word: Word?)
+	func enabledData(enabledAdd: Bool, enabledMix: Bool)
 }
 
 class NewWordViewController: BaseViewController{
@@ -111,7 +112,9 @@ class NewWordViewController: BaseViewController{
 			 make.height.equalTo(30)
 		 })
 		
-		descriptionValueTF.settingsTF(placeholder: "Описание", delegateObj: self)
+		descriptionValueTF.settingsTF(placeholder: "Описание",
+									  returnKeyType: UIReturnKeyType.go,
+									  delegateObj: self)
 		view.addSubview(descriptionValueTF)
 		descriptionValueTF.snp.makeConstraints({ (make) in
 			make.left.equalTo(20)
@@ -141,14 +144,37 @@ class NewWordViewController: BaseViewController{
 }
 
 extension NewWordViewController: UITextFieldDelegate {
-	
+	func textField(_ textField: UITextField,
+				   shouldChangeCharactersIn range: NSRange,
+				   replacementString string: String) -> Bool {
+		
+		switch textField {
+		case rusValueTF:
+			<#code#>
+		case engValueTF:
+		<#code#>
+		case descriptionValueTF:
+		<#code#>
+		default:
+			break
+		}
+		
+		return true
+	}
 }
 
 extension NewWordViewController: NewWordViewControllerProtocol {
 	func startData(word: Word?) {
 		guard let word = word else { return }
 		
-		
+		rusValueTF.text = word.rusValue.textEditor
+		engValueTF.text = word.engValue.textEditor
+		descriptionValueTF.text = word.descript
+	}
+	
+	func enabledData(enabledAdd: Bool, enabledMix: Bool){
+		buttonMix.isEnabled = enabledMix
+		button.isEnabled = enabledAdd
 	}
 }
 
