@@ -46,8 +46,7 @@ class NewWordViewController: BaseViewController{
     }
 
     override func desingUI() {
-        self.view.addSubview(button)
-
+        view.addSubview(button)
         button.isEnabled = false
 
         button.snp.makeConstraints({ (make) in
@@ -72,6 +71,52 @@ class NewWordViewController: BaseViewController{
 			make.left.equalTo(20)
 			make.right.equalTo(-20)
 			make.top.equalTo(rusValue.snp.bottom).offset(10)
+			make.height.equalTo(20)
+		})
+		
+        view.addSubview(buttonMix)
+        buttonMix.isEnabled = false
+
+        buttonMix.snp.makeConstraints({ (make) in
+			make.top.equalTo(rusValueTF.snp.bottom).offset(20)
+            make.height.equalTo(50)
+			make.width.equalTo(50)
+			make.centerX.equalTo(self.view.center.x)
+        })
+		
+		let engValue = addLabel(text: "Введте английское значение")
+		view.addSubview(engValue)
+		engValue.snp.makeConstraints({ (make) in
+			 make.left.equalTo(20)
+			 make.right.equalTo(-20)
+			make.top.equalTo(buttonMix.snp.bottom).offset(20)
+			 make.height.equalTo(30)
+		 })
+		
+		engValueTF.settingsTF(placeholder: "ENG", delegateObj: self)
+		view.addSubview(engValueTF)
+		engValueTF.snp.makeConstraints({ (make) in
+			make.left.equalTo(20)
+			make.right.equalTo(-20)
+			make.top.equalTo(engValue.snp.bottom).offset(10)
+			make.height.equalTo(20)
+		})
+		
+		let description = addLabel(text: "Описание")
+		view.addSubview(description)
+		description.snp.makeConstraints({ (make) in
+			 make.left.equalTo(20)
+			 make.right.equalTo(-20)
+			 make.top.equalTo(engValueTF.snp.bottom).offset(20)
+			 make.height.equalTo(30)
+		 })
+		
+		descriptionValueTF.settingsTF(placeholder: "Описание", delegateObj: self)
+		view.addSubview(descriptionValueTF)
+		descriptionValueTF.snp.makeConstraints({ (make) in
+			make.left.equalTo(20)
+			make.right.equalTo(-20)
+			make.top.equalTo(description.snp.bottom).offset(10)
 			make.height.equalTo(20)
 		})
     }
