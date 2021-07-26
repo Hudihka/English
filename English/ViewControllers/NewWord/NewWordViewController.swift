@@ -148,18 +148,32 @@ extension NewWordViewController: UITextFieldDelegate {
 				   shouldChangeCharactersIn range: NSRange,
 				   replacementString string: String) -> Bool {
 		
+		let str = textField.resultString(string: string, range: range)
+		
 		switch textField {
 		case rusValueTF:
-			<#code#>
+			presenter?.textInTF(rusText: str, engText: nil, description: nil)
 		case engValueTF:
-		<#code#>
+			presenter?.textInTF(rusText: nil, engText: str, description: nil)
 		case descriptionValueTF:
-		<#code#>
+			presenter?.textInTF(rusText: nil, engText: nil, description: str)
 		default:
 			break
 		}
 		
 		return true
+	}
+	
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+		print("----")
+	}
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		print("00000")
+	}
+	
+	func textFieldDidChangeSelection(_ textField: UITextField) {
+		print("-\\\\\\-")
 	}
 }
 
