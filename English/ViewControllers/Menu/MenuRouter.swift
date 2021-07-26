@@ -31,7 +31,7 @@ class MenuRouter: MenuRouterProtocol{
     }
 
     func newWordInTheme(listName: String) {
-        let NVC = DI.newWordViewController(nameList: listName)
+		let NVC = DI.newWordViewController(nameList: listName, oldWord: nil)
         navigationVC.present(NVC, animated: true, completion: nil)
     }
 }
