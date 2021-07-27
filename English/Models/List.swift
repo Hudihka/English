@@ -47,9 +47,32 @@ class List {
         json["name"]            = name
         json["count"]           = count
         json["favorit"]         = countFavorit
-        json["dateUpdate"]      = dateUpdate.printDate()
+        json["dateUpdate"]      = Date().printDate()
         
         return json
     }
+	
+	//методы вызываемые когда что либо делаем со словами
+	
+	func jsonAddOneWord() -> JSON{
+		let newList = self
+		newList.count += 1
+		return newList.json
+	}
     
+	
+	func jsonReloadFavoritCount(add: Bool) -> JSON{
+		let newList = self
+		let oldCountFavorit = newList.countFavorit
+		
+		if add {
+			newList.countFavorit += 1
+		} else if oldCountFavorit == 0 {
+			newList.countFavorit = 0
+		} else {
+			newList.countFavorit -= 1
+		}
+		
+		return newList.json
+	}
 }

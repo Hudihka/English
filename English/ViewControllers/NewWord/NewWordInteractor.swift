@@ -8,16 +8,26 @@
 import Foundation
 
 protocol NewWordInteractorProtocol: AnyObject {
-    init(nameList: String)
+	func create(word: Word)
+	func reload(word: Word)
+    init(list: List)
 }
 
 class NewWordInteractor: NewWordInteractorProtocol {
-    private var nameList: String!
+	
+    private var list: List!
 
     var presenter: NewWordPresenterProtocol?
 
-    required init(nameList: String){
-        self.nameList = nameList
+    required init(list: List){
+        self.list = list
     }
     
+	func reload(word: Word) {
+		<#code#>
+	}
+	
+	func create(word: Word) {
+		<#code#>
+	}
 }

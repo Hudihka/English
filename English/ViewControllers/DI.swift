@@ -13,7 +13,7 @@ protocol DIProtocol: AnyObject {
     static func autorisationViewController() -> BaseViewController
     
     static func menuViewController() -> BaseNavigationController
-    static func newWordViewController(nameList: String, oldWord: Word?) -> BaseNavigationController
+    static func newWordViewController(list: List, oldWord: Word?) -> BaseNavigationController
 }
 
 
@@ -70,13 +70,13 @@ class DI: DIProtocol {
         return NVC
     }
 
-	static func newWordViewController(nameList: String,
+	static func newWordViewController(list: List,
 									  oldWord: Word?) -> BaseNavigationController {
         let VC = NewWordViewController()
         let NVC = BaseNavigationController(rootViewController: VC)
 
         let presenter = NewWordPresenter(oldWord: oldWord)
-        let interactor = NewWordInteractor(nameList: nameList)
+        let interactor = NewWordInteractor(list: list)
         let router = NewWordRouter(navigationVC: NVC)
 
         VC.presenter = presenter
