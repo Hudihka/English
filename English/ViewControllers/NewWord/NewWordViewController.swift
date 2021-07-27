@@ -27,7 +27,8 @@ class NewWordViewController: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+		EnumNotification.UIKeyboardWillShow.subscribeNotific(observer: self, selector: #selector(adjustForKeydoard(notification:)))
+        EnumNotification.UIKeyboardWillHide.subscribeNotific(observer: self, selector: #selector(adjustForKeydoard(notification:)))
     }
 
     override var titleText: String?{
@@ -131,6 +132,10 @@ class NewWordViewController: BaseViewController{
     @objc private func mixButton(sender: UIButton!) {
 
     }
+	
+	@objc private func adjustForKeydoard(notification: Notification) {
+		
+	}
 
     private func addLabel(text: String) -> UILabel {
 
@@ -164,17 +169,33 @@ extension NewWordViewController: UITextFieldDelegate {
 		return true
 	}
 	
-	func textFieldDidBeginEditing(_ textField: UITextField) {
-		print("----")
-	}
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { //нажатие на кнопку next
+
+		switch textField {
+		case rusValueTF:
+			engValueTF.resignFirstResponder()
+		case engValueTF:
+			descriptionValueTF.resignFirstResponder()
+		case descriptionValueTF:
+			descriptionValueTF.becomeFirstResponder()
+		default:
+			break
+		}
+
+        return false
+    }
 	
-	func textFieldDidEndEditing(_ textField: UITextField) {
-		print("00000")
-	}
-	
-	func textFieldDidChangeSelection(_ textField: UITextField) {
-		print("-\\\\\\-")
-	}
+//	func textFieldDidBeginEditing(_ textField: UITextField) {
+//		print("----")
+//	}
+//
+//	func textFieldDidEndEditing(_ textField: UITextField) {
+//		print("00000")
+//	}
+//
+//	func textFieldDidChangeSelection(_ textField: UITextField) {
+//		print("-\\\\\\-")
+//	}
 }
 
 extension NewWordViewController: NewWordViewControllerProtocol {
