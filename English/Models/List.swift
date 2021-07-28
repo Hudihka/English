@@ -18,6 +18,7 @@ class List {
 
     init(name: String){
         self.name = name
+		self.dateUpdate = Date()
     }
     
     init(json: JSON) {
