@@ -12,6 +12,7 @@ protocol NewWordPresenterProtocol: AnyObject {
 	func fetchData()
 	
 	func tapedMix()
+	func createWord()
 	
 	func textInTF(rusText: String?, engText: String?, description: String?)
 	
@@ -65,6 +66,15 @@ class NewWordPresenter: NewWordPresenterProtocol {
 		newWord?.engValue = eng
 		
 		fetchData()
+	}
+	
+	func createWord() {
+		guard let newWord = newWord else { return }
+		if oldWord == nil {
+			interactor?.create(word: newWord)
+		} else {
+			interactor?.reload(word: newWord)
+		}
 	}
 	
 	func textInTF(rusText: String?, engText: String?, description: String?){

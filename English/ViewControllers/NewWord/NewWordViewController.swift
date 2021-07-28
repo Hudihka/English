@@ -126,11 +126,11 @@ class NewWordViewController: BaseViewController{
     }
 
     @objc private func buttonAction(sender: UIButton!) {
-
+		presenter?.createWord()
     }
 	
     @objc private func mixButton(sender: UIButton!) {
-
+		presenter?.tapedMix()
     }
 	
 	@objc private func adjustForKeydoard(notification: Notification) {

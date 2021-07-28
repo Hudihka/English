@@ -11,7 +11,7 @@ class MenuTableView: UITableView {
     
     var tapedCell: (String) -> Void = {_ in }
     var tapedRename: (String) -> Void = {_ in }
-    var tapedAdd: (String) -> Void = {_ in }
+    var tapedAdd: (List) -> Void = {_ in }
     
     fileprivate var profile: Profile?{
         return FirebaseData.shared.profile
@@ -171,8 +171,8 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
             let action2 = UIAction(title: "Добавить слово", image: UIImage(systemName: "plus")) {[weak self] _ in
                 guard let self = self else {return}
 
-                let listName = self.lists[indexPath.row].name
-                self.tapedAdd(listName)
+                let list = self.lists[indexPath.row]
+                self.tapedAdd(list)
             }
 
             let menu1 = UIMenu(title: "", options: .displayInline, children: [action1])

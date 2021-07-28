@@ -78,6 +78,7 @@ class FirebaseData {
 
         let oldList = profile.lists[index]
         oldList.name = newName
+		oldList.dateUpdate = Date()
         profile.lists[index] = oldList
 
         db.collection("users").document(profile.id).setData(profile.json)
@@ -94,7 +95,12 @@ class FirebaseData {
         }
     }
 
-
+	//MARK: - создание слов
+	
+	func renameWord(newWord: Word, list: List){
+		guard let id = newWord.id else { return }
+		db.collection("Words").document(id).setData(newWord.json)
+	}
 
     
 //    func createUser(userId: String, name: String?, provided: String?){

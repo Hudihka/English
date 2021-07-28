@@ -24,10 +24,10 @@ class NewWordInteractor: NewWordInteractorProtocol {
     }
     
 	func reload(word: Word) {
-		<#code#>
+		
 	}
 	
 	func create(word: Word) {
-		<#code#>
+		
 	}
 }

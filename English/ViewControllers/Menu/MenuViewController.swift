@@ -95,12 +95,12 @@ class MenuViewController: BaseViewController {
             }
         }
 
-        tableView.tapedAdd = {[weak self] theme in
+        tableView.tapedAdd = {[weak self] list in
             guard let self = self else {
                 return
             }
 
-            self.presenter?.newWordInTheme(listName: theme)
+            self.presenter?.newWordInTheme(list: list)
         }
     }
 
