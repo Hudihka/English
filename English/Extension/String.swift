@@ -40,5 +40,10 @@ extension String {
         dateFormatter.locale = Locale.current
         return dateFormatter.date(from: self) // replace Date String
     }
+
+    static var randomString: String {
+          let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+          return String((0..<20).map{ _ in letters.randomElement()! })
+    }
     
 }

@@ -190,12 +190,12 @@
 		456EB43D2692E1120003CEB6 /* English */ = {
 			isa = PBXGroup;
 			children = (
-				45E9769F26947F2E00A12858 /* Extension */,
 				4539C19D2692F86C00534F4B /* Resources */,
 				45E8EECC269358C000D66F13 /* ViewControllers */,
 				45E8EEC72693413600D66F13 /* DataProvider */,
 				45E8EEC026933DA200D66F13 /* Models */,
 				45E8EEBB2693385A00D66F13 /* SupportClasses */,
+				45E9769F26947F2E00A12858 /* Extension */,
 			);
 			path = English;
 			sourceTree = "<group>";
