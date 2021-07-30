@@ -15,14 +15,14 @@ class BaseBlackButton: UIButton {
         }
     }
 
-    init(title: String, selector: Selector) {
+    init(title: String, selector: Selector, target: Any?) {
         super.init(frame: CGRect())
 
         self.setTitle(title, for: .normal)
         self.backgroundColor = UIColor.black
         self.setTitleColor(UIColor.white, for: .normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .bold)
-        self.addTarget(self, action: selector, for: .touchUpInside)
+        self.addTarget(target, action: selector, for: .touchUpInside)
         self.addRadius(number: 10)
     }
 

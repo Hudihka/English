@@ -49,7 +49,7 @@ class FirebaseData {
             return
         }
 
-        db.collection("users").document(id).addSnapshotListener {[weak self] (snaphot, _) in
+        db.collection("Profile").document(id).addSnapshotListener {[weak self] (snaphot, _) in
             if let selF = self, let data = snaphot?.data() {
                 selF.profile = Profile(json: data)
                 compl()
@@ -60,18 +60,20 @@ class FirebaseData {
     //MARK: LISTS
 
     func createList(listName: String){
-        guard let profile = profile else {
+        guard let profile = profile,
+              let id = idUser else {
             return
         }
 
         let newList = List(name: listName)
         profile.lists.insert(newList, at: 0)
 
-        db.collection("users").document(profile.id).setData(profile.json)
+        db.collection("Profile").document(id).setData(profile.json)
     }
 
     func renameLists(oldName: String, newName: String){
         guard let profile = profile,
+            let id = idUser,
             let index = profile.lists.firstIndex(where: {$0.name == oldName}) else {
             return
         }
@@ -81,7 +83,7 @@ class FirebaseData {
 		oldList.dateUpdate = Date()
         profile.lists[index] = oldList
 
-        db.collection("users").document(profile.id).setData(profile.json)
+        db.collection("Profile").document(id).setData(profile.json)
 
         db.collection("Words")
             .whereField("listName", isEqualTo: oldName)

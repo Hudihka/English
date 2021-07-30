@@ -17,8 +17,8 @@ class NewWordViewController: BaseViewController{
     
     var presenter: NewWordPresenterProtocol?
 	
-	private var button = BaseBlackButton(title: "ДОБАВИТЬ", selector: #selector(buttonAction))
-	private var buttonMix = BaseBlackButton(title: "↓↑", selector: #selector(mixButton))
+    private var button = BaseBlackButton(title: "ДОБАВИТЬ", selector: #selector(buttonAction), target: self)
+    private var buttonMix = BaseBlackButton(title: "↓↑", selector: #selector(mixButton), target: self)
 	
 	private var rusValueTF = UITextField()
 	private var engValueTF = UITextField()
@@ -63,7 +63,7 @@ class NewWordViewController: BaseViewController{
 		rusValue.snp.makeConstraints({ (make) in
 			 make.left.equalTo(20)
 			 make.right.equalTo(-20)
-			 make.top.equalTo(self.view).offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
 			 make.height.equalTo(30)
 		 })
 		
@@ -73,7 +73,7 @@ class NewWordViewController: BaseViewController{
 			make.left.equalTo(20)
 			make.right.equalTo(-20)
 			make.top.equalTo(rusValue.snp.bottom).offset(10)
-			make.height.equalTo(20)
+			make.height.equalTo(30)
 		})
 		
         view.addSubview(buttonMix)
@@ -101,7 +101,7 @@ class NewWordViewController: BaseViewController{
 			make.left.equalTo(20)
 			make.right.equalTo(-20)
 			make.top.equalTo(engValue.snp.bottom).offset(10)
-			make.height.equalTo(20)
+			make.height.equalTo(30)
 		})
 		
 		let description = addLabel(text: "Описание")
@@ -121,7 +121,7 @@ class NewWordViewController: BaseViewController{
 			make.left.equalTo(20)
 			make.right.equalTo(-20)
 			make.top.equalTo(description.snp.bottom).offset(10)
-			make.height.equalTo(20)
+			make.height.equalTo(30)
 		})
     }
 
@@ -142,6 +142,7 @@ class NewWordViewController: BaseViewController{
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.text = text
 
         return label
     }
@@ -173,11 +174,11 @@ extension NewWordViewController: UITextFieldDelegate {
 
 		switch textField {
 		case rusValueTF:
-			engValueTF.resignFirstResponder()
+			engValueTF.becomeFirstResponder()
 		case engValueTF:
-			descriptionValueTF.resignFirstResponder()
-		case descriptionValueTF:
 			descriptionValueTF.becomeFirstResponder()
+		case descriptionValueTF:
+			descriptionValueTF.resignFirstResponder()
 		default:
 			break
 		}
@@ -185,17 +186,17 @@ extension NewWordViewController: UITextFieldDelegate {
         return false
     }
 	
-//	func textFieldDidBeginEditing(_ textField: UITextField) {
-//		print("----")
-//	}
-//
-//	func textFieldDidEndEditing(_ textField: UITextField) {
-//		print("00000")
-//	}
-//
-//	func textFieldDidChangeSelection(_ textField: UITextField) {
-//		print("-\\\\\\-")
-//	}
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+		print("----")
+	}
+
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		print("00000")
+	}
+
+	func textFieldDidChangeSelection(_ textField: UITextField) {
+		print("-\\\\\\-")
+	}
 }
 
 extension NewWordViewController: NewWordViewControllerProtocol {

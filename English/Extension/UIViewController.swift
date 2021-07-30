@@ -54,10 +54,10 @@ extension UIViewController {
 
            alert.addTextField { (textField:UITextField) in
                 textField.text = inputStartText
+                textField.autocapitalizationType = .sentences
                 textField.textColor = .black
                 textField.placeholder = inputPlaceholder
                 textField.keyboardType = UIKeyboardType.default
-                textField.autocapitalizationType = .words
            }
            alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action: UIAlertAction) in
                guard let textField = alert.textFields?.first,

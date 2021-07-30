@@ -15,7 +15,7 @@ protocol AutorisationViewControllerIn: AnyObject {
 class AutorisationViewController: BaseViewController, AutorisationViewControllerIn {
     
     var presenter: AutorisationPresenter?
-    lazy var button = BaseBlackButton(title: "ВХОД", selector: #selector(buttonAction))
+    lazy var button = BaseBlackButton(title: "ВХОД", selector: #selector(buttonAction), target: self)
     
     override func desingUI() {
         super.desingUI()

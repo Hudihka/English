@@ -29,14 +29,6 @@ class BaseViewController: UIViewController {
     var leftColor: UIColor {
         return UIColor.black
     }
-    
-	convenience init() {
-		self.init()
-	}
-	
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()

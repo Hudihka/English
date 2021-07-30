@@ -91,7 +91,7 @@ class MenuViewController: BaseViewController {
                     return
                 }
 
-                self.presenter?.createList(name: str)
+                self.presenter?.renameList(oldName: theme, newName: str)
             }
         }
 
