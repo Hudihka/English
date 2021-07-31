@@ -20,7 +20,11 @@ struct Word: Equatable {
     
     
     init(json: [String : Any], id: String?){
-        self.id = id
+        if id == nil {
+            self.id = String.randomString
+        } else if let temp = json["id"] as? String {
+            self.id = temp
+        }
         
         
         if let temp = json["listName"] as? String {
@@ -64,5 +68,16 @@ struct Word: Equatable {
         return json
     }
 
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        if lhs.listName == rhs.listName,
+           lhs.rusValue == rhs.rusValue,
+           lhs.engValue == rhs.engValue,
+           lhs.descript == rhs.descript,
+           lhs.favorit == rhs.favorit {
+            return true
+        }
+
+        return false
+    }
     
 }

@@ -79,7 +79,7 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	
 	func textInTF(rusText: String?, engText: String?, description: String?){
 		if newWord == nil {
-			newWord = Word(json: [:])
+            newWord = Word(json: [:], id: nil)
 		}
 		
 		if let rusText = rusText {
