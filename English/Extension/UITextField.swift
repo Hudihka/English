@@ -10,11 +10,11 @@ import UIKit
 
 extension UITextField {
     
-	func settingsTF(placeholder: String?,
+    func settingsTF(placeholder: String?,
 					returnKeyType: UIReturnKeyType = .next,
 					delegateObj: UITextFieldDelegate) {
 		
-		self.placeholder = placeholder
+        self.placeholder = placeholder
 		self.borderStyle = UITextField.BorderStyle.roundedRect
 		self.autocorrectionType = UITextAutocorrectionType.no
 		self.keyboardType = UIKeyboardType.default

@@ -13,8 +13,8 @@ protocol WordsPresenterProtocol: AnyObject {
 
 class WordsPresenter: WordsPresenterProtocol {
 
-    var interactor: NewWordInteractorProtocol?
-    var router: NewWordRouterProtocol?
+    var interactor: WordsInteractorProtocol?
+    var router: WordsRouterProtocol?
     weak var view: WordViewControllerProtocol?
     
     required init(interactor: WordsInteractorProtocol, list: List) {

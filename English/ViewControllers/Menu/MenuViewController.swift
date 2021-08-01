@@ -25,18 +25,19 @@ class MenuViewController: BaseViewController {
     }
     
     override var titleText: String?{
-        return "ТЕМЫ"
+        return MenuEndpointsEnum.ViewText.title.rawValue
     }
     
     override var rightTextBBItem: String?{
-        return "+"
+        return MenuEndpointsEnum.ViewText.rightBB.rawValue
     }
     
     @objc override func rightBBItem(){
-        showAlertTextField(title: "Введите название новой темы",
+        showAlertTextField(title: MenuEndpointsEnum.AlertTF.title.rawValue,
                            message: nil,
-                           actionTitle: "Ok",
-                           cancelTitle: "Отмена", inputPlaceholder: "Тема") {[weak self] str in
+                           actionTitle: MenuEndpointsEnum.AlertTF.actionTitle.rawValue,
+                           cancelTitle: MenuEndpointsEnum.AlertTF.cancelTitle.rawValue,
+                           inputPlaceholder: MenuEndpointsEnum.AlertTF.theme.rawValue) {[weak self] str in
             guard let self = self, let str = str else {
                 return
             }
@@ -56,12 +57,12 @@ class MenuViewController: BaseViewController {
             make.bottom.equalTo(0)
         }
 
-        tableView.tapedCell = {[weak self] theme in
+        tableView.tapedCell = {[weak self] list, name in
             guard let self = self else {
                 return
             }
 
-            self.showAlertThreeButton(title: "Выберите направление",
+            self.showAlertThreeButton(title: MenuEndpointsEnum.ActionButtonsAlert.title.rawValue,
                                       message: nil,
                                       buttonText1: MenuEndpointsEnum.ActionButtonsAlert.rusEngl.rawValue,
                                       action1: { _ in
@@ -81,12 +82,11 @@ class MenuViewController: BaseViewController {
                 return
             }
 
-            self.showAlertTextField(title: "Введите новое название",
-                               message: nil,
-                               actionTitle: "Ok",
-                               cancelTitle: "Отмена",
-                               inputPlaceholder: "Тема",
-                               inputStartText: theme) {[weak self] str in
+            self.showAlertTextField(title: MenuEndpointsEnum.AlertTF.title.rawValue,
+                                    message: nil,
+                                    actionTitle: MenuEndpointsEnum.AlertTF.actionTitle.rawValue,
+                                    cancelTitle: MenuEndpointsEnum.AlertTF.cancelTitle.rawValue,
+                                    inputStartText: theme) {[weak self] str in
                 guard let self = self, let str = str else {
                     return
                 }
@@ -110,7 +110,8 @@ class MenuViewController: BaseViewController {
 extension MenuViewController: MenuViewControllerProtocol {
 
     func showErrorNewList() {
-        showAlert(title: "Ошибка", message: "Нельзя тиспользовать такое имя")
+        showAlert(title: MenuEndpointsEnum.AlertError.title.rawValue,
+                  message: MenuEndpointsEnum.AlertError.description.rawValue)
     }
 
     func reloadData(){

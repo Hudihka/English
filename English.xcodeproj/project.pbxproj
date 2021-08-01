@@ -28,6 +28,8 @@
 		458C50BF26B6BEE5001DD6B9 /* WordsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50BE26B6BEE5001DD6B9 /* WordsPresenter.swift */; };
 		458C50C126B6BF01001DD6B9 /* WordsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50C026B6BF01001DD6B9 /* WordsInteractor.swift */; };
 		458C50C326B6BF0D001DD6B9 /* WordsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50C226B6BF0D001DD6B9 /* WordsRouter.swift */; };
+		458C50C626B6CAD4001DD6B9 /* NewWordEndpoits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50C526B6CAD4001DD6B9 /* NewWordEndpoits.swift */; };
+		458C50C826B6CCFB001DD6B9 /* WordsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50C726B6CCFB001DD6B9 /* WordsEndpoint.swift */; };
 		45942FE926ADDCAB006EE405 /* NewWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45942FE826ADDCAB006EE405 /* NewWordViewController.swift */; };
 		45942FEB26ADDCCA006EE405 /* NewWordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45942FEA26ADDCCA006EE405 /* NewWordPresenter.swift */; };
 		45942FED26ADDCDE006EE405 /* NewWordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45942FEC26ADDCDE006EE405 /* NewWordInteractor.swift */; };
@@ -91,6 +93,8 @@
 		458C50BE26B6BEE5001DD6B9 /* WordsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsPresenter.swift; sourceTree = "<group>"; };
 		458C50C026B6BF01001DD6B9 /* WordsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsInteractor.swift; sourceTree = "<group>"; };
 		458C50C226B6BF0D001DD6B9 /* WordsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsRouter.swift; sourceTree = "<group>"; };
+		458C50C526B6CAD4001DD6B9 /* NewWordEndpoits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordEndpoits.swift; sourceTree = "<group>"; };
+		458C50C726B6CCFB001DD6B9 /* WordsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsEndpoint.swift; sourceTree = "<group>"; };
 		45942FE826ADDCAB006EE405 /* NewWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordViewController.swift; sourceTree = "<group>"; };
 		45942FEA26ADDCCA006EE405 /* NewWordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordPresenter.swift; sourceTree = "<group>"; };
 		45942FEC26ADDCDE006EE405 /* NewWordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordInteractor.swift; sourceTree = "<group>"; };
@@ -211,17 +215,27 @@
 		458C50BB26B6BE1B001DD6B9 /* Words */ = {
 			isa = PBXGroup;
 			children = (
+				458C50C726B6CCFB001DD6B9 /* WordsEndpoint.swift */,
 				458C50BC26B6BEB4001DD6B9 /* WordsViewController.swift */,
 				458C50BE26B6BEE5001DD6B9 /* WordsPresenter.swift */,
 				458C50C026B6BF01001DD6B9 /* WordsInteractor.swift */,
 				458C50C226B6BF0D001DD6B9 /* WordsRouter.swift */,
+				458C50C426B6C915001DD6B9 /* Views */,
 			);
 			path = Words;
+			sourceTree = "<group>";
+		};
+		458C50C426B6C915001DD6B9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		45942FE626ADDC70006EE405 /* NewWord */ = {
 			isa = PBXGroup;
 			children = (
+				458C50C526B6CAD4001DD6B9 /* NewWordEndpoits.swift */,
 				45942FE826ADDCAB006EE405 /* NewWordViewController.swift */,
 				45942FEA26ADDCCA006EE405 /* NewWordPresenter.swift */,
 				45942FEC26ADDCDE006EE405 /* NewWordInteractor.swift */,
@@ -471,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45FF7AA326A00AF1005BAF35 /* MenuTableView.swift in Sources */,
+				458C50C626B6CAD4001DD6B9 /* NewWordEndpoits.swift in Sources */,
 				458C50C126B6BF01001DD6B9 /* WordsInteractor.swift in Sources */,
 				45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */,
 				45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */,
@@ -491,6 +506,7 @@
 				456EB43F2692E1120003CEB6 /* AppDelegate.swift in Sources */,
 				458C50BD26B6BEB4001DD6B9 /* WordsViewController.swift in Sources */,
 				45FF7AAA26A015CF005BAF35 /* FavoriteWords.swift in Sources */,
+				458C50C826B6CCFB001DD6B9 /* WordsEndpoint.swift in Sources */,
 				45E976A72694BB3A00A12858 /* BaseNavigationController.swift in Sources */,
 				456E7F77269A092A007ABF69 /* AutorisationViewController.swift in Sources */,
 				45FF7AA526A00C28005BAF35 /* NSObject.swift in Sources */,

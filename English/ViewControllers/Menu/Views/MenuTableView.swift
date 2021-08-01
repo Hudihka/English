@@ -9,7 +9,7 @@ import UIKit
 
 class MenuTableView: UITableView {
     
-    var tapedCell: (String) -> Void = {_ in }
+    var tapedCell: (List?, String?) -> Void = {_,_ in }
     var tapedRename: (String) -> Void = {_ in }
     var tapedAdd: (List) -> Void = {_ in }
     
@@ -147,10 +147,10 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if isTwoSection, indexPath.section == 0 {
-            tapedCell(FAVORIT_NAME)
+            tapedCell(nil, FAVORIT_NAME)
         } else {
-            let name = lists[indexPath.row].name
-            tapedCell(name)
+            let list = lists[indexPath.row]
+            tapedCell(list, nil)
         }
     }
 

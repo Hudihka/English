@@ -11,14 +11,17 @@ import UIKit
 protocol NewWordViewControllerProtocol: AnyObject {
 	func startData(word: Word?)
 	func enabledData(enabledAdd: Bool, enabledMix: Bool)
+    func title(text: String)
 }
 
 class NewWordViewController: BaseViewController{
     
     var presenter: NewWordPresenterProtocol?
 	
-    private var button = BaseBlackButton(title: "ДОБАВИТЬ", selector: #selector(buttonAction), target: self)
-    private var buttonMix = BaseBlackButton(title: "↓↑", selector: #selector(mixButton), target: self)
+    private var button = BaseBlackButton(title: NewWordEndpoits.ButtonText.add.rawValue,
+                                         selector: #selector(buttonAction), target: self)
+    private var buttonMix = BaseBlackButton(title: NewWordEndpoits.ButtonText.mix.rawValue,
+                                            selector: #selector(mixButton), target: self)
 
     private var gester: UITapGestureRecognizer?
 	
@@ -33,12 +36,8 @@ class NewWordViewController: BaseViewController{
         EnumNotification.UIKeyboardWillHide.subscribeNotific(observer: self, selector: #selector(adjustForKeydoard(notification:)))
     }
 
-    override var titleText: String?{
-        return "Новое слово"
-    }
-
     override var leftTextBBItem: String?{
-        return "Отмена"
+        return NewWordEndpoits.ButtonText.leftBB.rawValue
     }
 
     override var leftColor: UIColor{
@@ -60,7 +59,7 @@ class NewWordViewController: BaseViewController{
             make.height.equalTo(50)
         })
 		
-		let rusValue = addLabel(text: "Введте русское значение")
+        let rusValue = addLabel(text: NewWordEndpoits.Labels.rus)
 		view.addSubview(rusValue)
 		rusValue.snp.makeConstraints({ (make) in
 			 make.left.equalTo(20)
@@ -69,7 +68,7 @@ class NewWordViewController: BaseViewController{
 			 make.height.equalTo(30)
 		 })
 		
-		rusValueTF.settingsTF(placeholder: "RUS", delegateObj: self)
+        rusValueTF.settingsTF(placeholder: NewWordEndpoits.TextField.rus.rawValue, delegateObj: self)
 		view.addSubview(rusValueTF)
 		rusValueTF.snp.makeConstraints({ (make) in
 			make.left.equalTo(20)
@@ -88,7 +87,7 @@ class NewWordViewController: BaseViewController{
 			make.centerX.equalTo(self.view.center.x)
         })
 		
-		let engValue = addLabel(text: "Введте английское значение")
+		let engValue = addLabel(text: NewWordEndpoits.Labels.engl)
 		view.addSubview(engValue)
 		engValue.snp.makeConstraints({ (make) in
 			 make.left.equalTo(20)
@@ -97,7 +96,7 @@ class NewWordViewController: BaseViewController{
 			 make.height.equalTo(30)
 		 })
 		
-		engValueTF.settingsTF(placeholder: "ENG", delegateObj: self)
+        engValueTF.settingsTF(placeholder: NewWordEndpoits.TextField.engl.rawValue, delegateObj: self)
 		view.addSubview(engValueTF)
 		engValueTF.snp.makeConstraints({ (make) in
 			make.left.equalTo(20)
@@ -106,7 +105,7 @@ class NewWordViewController: BaseViewController{
 			make.height.equalTo(30)
 		})
 		
-		let description = addLabel(text: "Описание")
+        let description = addLabel(text: NewWordEndpoits.Labels.descript)
 		view.addSubview(description)
 		description.snp.makeConstraints({ (make) in
 			 make.left.equalTo(20)
@@ -115,7 +114,7 @@ class NewWordViewController: BaseViewController{
 			 make.height.equalTo(30)
 		 })
 		
-		descriptionValueTF.settingsTF(placeholder: "Описание",
+        descriptionValueTF.settingsTF(placeholder: NewWordEndpoits.TextField.descript.rawValue,
 									  returnKeyType: UIReturnKeyType.go,
 									  delegateObj: self)
 		view.addSubview(descriptionValueTF)
@@ -129,6 +128,8 @@ class NewWordViewController: BaseViewController{
         gester = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         self.view.addGestureRecognizer(gester!)
         gester?.isEnabled = false
+
+        presenter?.fetchTitle()
     }
 
     @objc private func buttonAction(sender: UIButton!) {
@@ -151,12 +152,12 @@ class NewWordViewController: BaseViewController{
         }
 	}
 
-    private func addLabel(text: String) -> UILabel {
+    private func addLabel(text: NewWordEndpoits.Labels) -> UILabel {
 
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.text = text
+        label.text = text.rawValue
 
         return label
     }
@@ -214,6 +215,10 @@ extension NewWordViewController: NewWordViewControllerProtocol {
 		buttonMix.isEnabled = enabledMix
 		button.isEnabled = enabledAdd
 	}
+
+    func title(text: String){
+        self.title = text
+    }
 }
 
 
