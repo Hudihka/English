@@ -29,12 +29,30 @@ class WordsViewController: BaseViewController {
 
         let segentTranslate = UISegmentedControl()
         segentTranslate.selectedSegmentTintColor = UIColor.white
+//        segentTranslate.tintColor = grayColor
         segentTranslate.insertSegment(withTitle: WordsEndpoint.Text.rus.rawValue, at: 0, animated: true)
         segentTranslate.insertSegment(withTitle: WordsEndpoint.Text.engl.rawValue, at: 1, animated: true)
 //        segentTranslate.selectedSegmentIndex = presenter.rusTranslate
         segentTranslate.addTarget(self, action: #selector(actionSegment(_ :)), for: .valueChanged)
 
         self.view.addSubview(segentTranslate)
+
+        /*
+         if #available(iOS 13.0, *) {
+              yoursegmentedControl.backgroundColor = UIColor.black
+              yoursegmentedControl.layer.borderColor = UIColor.white.cgColor
+              yoursegmentedControl.selectedSegmentTintColor = UIColor.white
+              yoursegmentedControl.layer.borderWidth = 1
+
+              let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+              yoursegmentedControl.setTitleTextAttributes(titleTextAttributes, for:.normal)
+
+              let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
+              yoursegmentedControl.setTitleTextAttributes(titleTextAttributes1, for:.selected)
+          } else {
+                      // Fallback on earlier versions
+        }
+         */
 
         segentTranslate.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
@@ -45,6 +63,7 @@ class WordsViewController: BaseViewController {
 
         switchTranslate = UISwitch()
         switchTranslate.onTintColor = UIColor.black
+        switchTranslate.tintColor = grayColor
 //        switchTranslate.isOn = presenter.hideTranslate
         switchTranslate.addTarget(self, action: #selector(switchAction(_ :)), for: .touchUpInside)
         self.view.addSubview(switchTranslate)
@@ -71,7 +90,6 @@ class WordsViewController: BaseViewController {
         labelClear.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         labelClear.textAlignment = .center
         labelClear.text = WordsEndpoint.Text.emptyWords.rawValue
-        labelClear.isHidden = true
         self.view.addSubview(labelClear)
 
         labelClear.snp.makeConstraints({ (make) in

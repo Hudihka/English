@@ -10,7 +10,7 @@ import UIKit
 
 protocol MenuRouterProtocol: AnyObject {
     func presentSplit(words: [Word], way: MenuEndpointsEnum.ActionButtonsAlert)
-    func pushCramming(list: List, NVC: BaseNavigationController)
+    func pushCramming(list: List?, NVC: BaseNavigationController)
     func newWordInTheme(list: List)
 
     init(navigationVC: BaseNavigationController)
@@ -27,7 +27,7 @@ class MenuRouter: MenuRouterProtocol{
 
     }
 
-    func pushCramming(list: List, NVC: BaseNavigationController) {
+    func pushCramming(list: List?, NVC: BaseNavigationController) {
         let VC = DI.wordsViewController(list: list, NVC: NVC)
         self.navigationVC.pushViewController(viewController: VC, completion: nil)
     }

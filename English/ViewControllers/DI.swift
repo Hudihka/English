@@ -14,7 +14,7 @@ protocol DIProtocol: AnyObject {
     
     static func menuViewController() -> BaseNavigationController
     static func newWordViewController(list: List, oldWord: Word?) -> BaseNavigationController
-    static func wordsViewController(list: List, NVC: BaseNavigationController) -> BaseViewController
+    static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController
 }
 
 
@@ -90,7 +90,7 @@ class DI: DIProtocol {
         return NVC
     }
 
-    static func wordsViewController(list: List, NVC: BaseNavigationController) -> BaseViewController {
+    static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController {
         let VC = WordsViewController()
 
         let interactor = WordsInteractor()

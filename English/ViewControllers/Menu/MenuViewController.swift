@@ -58,7 +58,7 @@ class MenuViewController: BaseViewController {
         }
 
         tableView.tapedCell = {[weak self] list, name in
-            guard let self = self else {
+            guard let self = self, let BNC = self.navigationController as? BaseNavigationController else {
                 return
             }
 
@@ -66,14 +66,14 @@ class MenuViewController: BaseViewController {
                                       message: nil,
                                       buttonText1: MenuEndpointsEnum.ActionButtonsAlert.rusEngl.rawValue,
                                       action1: { _ in
-                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.rusEngl, theme: theme)
+                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.rusEngl, list: list, NVC: BNC)
                                       },
                                       buttonText2: MenuEndpointsEnum.ActionButtonsAlert.englRus.rawValue,
                                       action2: { _ in
-                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.englRus, theme: theme)
+                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.englRus, list: list, NVC: BNC)
                                       },
                                       buttonText3: MenuEndpointsEnum.ActionButtonsAlert.cramming.rawValue) { _ in
-                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.cramming, theme: theme)
+                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.cramming, list: list, NVC: BNC)
             }
         }
 

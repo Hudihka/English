@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WordsPresenterProtocol: AnyObject {
-    init(interactor: WordsInteractorProtocol, list: List)
+    init(interactor: WordsInteractorProtocol, list: List?) //если лист нил значит фаворит
 }
 
 class WordsPresenter: WordsPresenterProtocol {
@@ -17,7 +17,7 @@ class WordsPresenter: WordsPresenterProtocol {
     var router: WordsRouterProtocol?
     weak var view: WordViewControllerProtocol?
     
-    required init(interactor: WordsInteractorProtocol, list: List) {
+    required init(interactor: WordsInteractorProtocol, list: List?) {
         
     }
 
