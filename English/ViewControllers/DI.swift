@@ -75,8 +75,8 @@ class DI: DIProtocol {
         let VC = NewWordViewController()
         let NVC = BaseNavigationController(rootViewController: VC)
 
-        let presenter = NewWordPresenter(oldWord: oldWord)
-        let interactor = NewWordInteractor(list: list)
+        let presenter = NewWordPresenter(oldWord: oldWord, list: list)
+        let interactor = NewWordInteractor()
         let router = NewWordRouter(navigationVC: NVC)
 
         VC.presenter = presenter

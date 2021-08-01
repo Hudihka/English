@@ -19,6 +19,8 @@ class NewWordViewController: BaseViewController{
 	
     private var button = BaseBlackButton(title: "ДОБАВИТЬ", selector: #selector(buttonAction), target: self)
     private var buttonMix = BaseBlackButton(title: "↓↑", selector: #selector(mixButton), target: self)
+
+    private var gester: UITapGestureRecognizer?
 	
 	private var rusValueTF = UITextField()
 	private var engValueTF = UITextField()
@@ -123,6 +125,10 @@ class NewWordViewController: BaseViewController{
 			make.top.equalTo(description.snp.bottom).offset(10)
 			make.height.equalTo(30)
 		})
+
+        gester = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        self.view.addGestureRecognizer(gester!)
+        gester?.isEnabled = false
     }
 
     @objc private func buttonAction(sender: UIButton!) {
@@ -132,9 +138,17 @@ class NewWordViewController: BaseViewController{
     @objc private func mixButton(sender: UIButton!) {
 		presenter?.tapedMix()
     }
+
+    @objc private func handleTap(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
 	
 	@objc private func adjustForKeydoard(notification: Notification) {
-		
+        if notification.name == UIApplication.keyboardWillShowNotification {
+            gester?.isEnabled = true
+        } else if notification.name == UIApplication.keyboardWillHideNotification {
+            gester?.isEnabled = false
+        }
 	}
 
     private func addLabel(text: String) -> UILabel {
@@ -185,18 +199,6 @@ extension NewWordViewController: UITextFieldDelegate {
 
         return false
     }
-	
-	func textFieldDidBeginEditing(_ textField: UITextField) {
-		print("----")
-	}
-
-	func textFieldDidEndEditing(_ textField: UITextField) {
-		print("00000")
-	}
-
-	func textFieldDidChangeSelection(_ textField: UITextField) {
-		print("-\\\\\\-")
-	}
 }
 
 extension NewWordViewController: NewWordViewControllerProtocol {

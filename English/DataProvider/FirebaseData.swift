@@ -99,10 +99,24 @@ class FirebaseData {
 
 	//MARK: - создание слов
 	
-	func renameWord(newWord: Word, list: List){
+	func renameWord(newWord: Word){
 		guard let id = newWord.id else { return }
-		db.collection("Words").document(id).setData(newWord.json)
+        db.collection("Words").whereField("id", isEqualTo: id).setValuesForKeys(newWord.json)
 	}
+
+    func createWord(newWord: Word, list: List){
+        guard let profile = profile,
+            let id = idUser,
+            let index = profile.lists.firstIndex(where: {$0.name == list.name}) else {
+            return
+        }
+
+        let newList = list.jsonAddOneWord
+        profile.lists[index] = newList
+
+        db.collection("Profile").document(id).setData(profile.json)
+        db.collection("Words").addDocument(data: newWord.json)
+    }
 
     
 //    func createUser(userId: String, name: String?, provided: String?){

@@ -16,7 +16,7 @@ protocol NewWordPresenterProtocol: AnyObject {
 	
 	func textInTF(rusText: String?, engText: String?, description: String?)
 	
-	init(oldWord: Word?)
+	init(oldWord: Word?, list: List)
 }
 
 class NewWordPresenter: NewWordPresenterProtocol {
@@ -26,10 +26,12 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	
 	private var oldWord: Word?
 	private var newWord: Word?
+    private var list: List!
 	
-	required init(oldWord: Word?){
+    required init(oldWord: Word?, list: List){
 		self.oldWord = oldWord
 		self.newWord = oldWord
+        self.list = list
 	}
 
     func tapedCancel(){
@@ -62,8 +64,8 @@ class NewWordPresenter: NewWordPresenterProtocol {
 		let rus = newWord?.rusValue ?? ""
 		let eng = newWord?.engValue ?? ""
 		
-		newWord?.rusValue = rus
-		newWord?.engValue = eng
+		newWord?.rusValue = eng
+		newWord?.engValue = rus
 		
 		fetchData()
 	}
@@ -71,15 +73,16 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	func createWord() {
 		guard let newWord = newWord else { return }
 		if oldWord == nil {
-			interactor?.create(word: newWord)
+            interactor?.create(word: newWord, list: list)
 		} else {
-			interactor?.reload(word: newWord)
+            interactor?.reload(word: newWord)
 		}
 	}
 	
 	func textInTF(rusText: String?, engText: String?, description: String?){
 		if newWord == nil {
-            newWord = Word(json: [:], id: nil)
+            let json = ["listName" : list.name]
+            newWord = Word(json: json, id: nil)
 		}
 		
 		if let rusText = rusText {

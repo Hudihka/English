@@ -8,26 +8,23 @@
 import Foundation
 
 protocol NewWordInteractorProtocol: AnyObject {
-	func create(word: Word)
+    func create(word: Word, list: List)
 	func reload(word: Word)
-    init(list: List)
 }
 
 class NewWordInteractor: NewWordInteractorProtocol {
-	
-    private var list: List!
+
+    private let db = FirebaseData.shared
 
     var presenter: NewWordPresenterProtocol?
-
-    required init(list: List){
-        self.list = list
-    }
     
-	func reload(word: Word) {
-		
+	func reload(word: Word){
+        db.renameWord(newWord: word)
+        presenter?.tapedCancel()
 	}
 	
-	func create(word: Word) {
-		
+	func create(word: Word, list: List) {
+        db.createWord(newWord: word, list: list)
+        presenter?.tapedCancel()
 	}
 }

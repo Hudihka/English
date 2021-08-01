@@ -54,15 +54,16 @@ class List {
     }
 	
 	//методы вызываемые когда что либо делаем со словами
-	
-	func jsonAddOneWord() -> JSON{
-		let newList = self
-		newList.count += 1
-		return newList.json
-	}
+
+    var jsonAddOneWord: List{
+        let newList = self
+        newList.dateUpdate = Date()
+        newList.count += 1
+        return newList
+    }
     
 	
-	func jsonReloadFavoritCount(add: Bool) -> JSON{
+	func jsonReloadFavoritCount(add: Bool) -> List{
 		let newList = self
 		let oldCountFavorit = newList.countFavorit
 		
@@ -74,6 +75,6 @@ class List {
 			newList.countFavorit -= 1
 		}
 		
-		return newList.json
+		return newList
 	}
 }
