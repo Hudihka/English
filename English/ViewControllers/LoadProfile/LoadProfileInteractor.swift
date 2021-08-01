@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol LoadProfileInteractorIn: AnyObject {
+protocol LoadProfileInteractorProtocol: AnyObject {
     func startLoadProfile()
 }
 
-class LoadProfileInteractor: LoadProfileInteractorIn {
+class LoadProfileInteractor: LoadProfileInteractorProtocol {
     
     var presenter: LoadProfilePresenter?
     

@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol MenuPresenterIn: AnyObject {
+protocol MenuPresenterProtocol: AnyObject {
     func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert, theme: String)
     func createList(name: String)
     func renameList(oldName: String, newName: String)
@@ -16,11 +16,11 @@ protocol MenuPresenterIn: AnyObject {
     func newWordInTheme(list: List)
 }
 
-class MenuPresenter: MenuPresenterIn {
+class MenuPresenter: MenuPresenterProtocol {
     
-    var interactor: MenuInteractorIn?
+    var interactor: MenuInteractorProtocol?
     var router: MenuRouterProtocol?
-    weak var view: MenuViewControllerIn?
+    weak var view: MenuViewControllerProtocol?
     
     func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert, theme: String) {
         switch alertButton {

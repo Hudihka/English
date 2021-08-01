@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol LoadProfileViewControllerIn: AnyObject {
+protocol LoadProfileViewControllerProtocol: AnyObject {
     func resultLoadProfile(error: Error)
 }
 
-class LoadProfileViewController: BaseViewController, LoadProfileViewControllerIn {
+class LoadProfileViewController: BaseViewController, LoadProfileViewControllerProtocol {
     
     var presenter: LoadProfilePresenter?
     

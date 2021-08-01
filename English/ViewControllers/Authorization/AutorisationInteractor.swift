@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol AutorisationInteractorIn: AnyObject {
+protocol AutorisationInteractorProtocol: AnyObject {
     func startLoadProfile()
 }
 
-class AutorisationInteractor: AutorisationInteractorIn {
+class AutorisationInteractor: AutorisationInteractorProtocol {
     
     var presenter: AutorisationPresenter?
     

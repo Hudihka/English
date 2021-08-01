@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MenuViewControllerIn: AnyObject {
+protocol MenuViewControllerProtocol: AnyObject {
     func showErrorNewList()
     func reloadData()
 }
@@ -107,7 +107,7 @@ class MenuViewController: BaseViewController {
 }
 
 
-extension MenuViewController: MenuViewControllerIn {
+extension MenuViewController: MenuViewControllerProtocol {
 
     func showErrorNewList() {
         showAlert(title: "Ошибка", message: "Нельзя тиспользовать такое имя")
