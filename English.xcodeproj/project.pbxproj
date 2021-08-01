@@ -30,6 +30,7 @@
 		458C50C326B6BF0D001DD6B9 /* WordsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50C226B6BF0D001DD6B9 /* WordsRouter.swift */; };
 		458C50C626B6CAD4001DD6B9 /* NewWordEndpoits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50C526B6CAD4001DD6B9 /* NewWordEndpoits.swift */; };
 		458C50C826B6CCFB001DD6B9 /* WordsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50C726B6CCFB001DD6B9 /* WordsEndpoint.swift */; };
+		458C50CA26B70D96001DD6B9 /* WordsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50C926B70D96001DD6B9 /* WordsTableView.swift */; };
 		45942FE926ADDCAB006EE405 /* NewWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45942FE826ADDCAB006EE405 /* NewWordViewController.swift */; };
 		45942FEB26ADDCCA006EE405 /* NewWordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45942FEA26ADDCCA006EE405 /* NewWordPresenter.swift */; };
 		45942FED26ADDCDE006EE405 /* NewWordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45942FEC26ADDCDE006EE405 /* NewWordInteractor.swift */; };
@@ -95,6 +96,7 @@
 		458C50C226B6BF0D001DD6B9 /* WordsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsRouter.swift; sourceTree = "<group>"; };
 		458C50C526B6CAD4001DD6B9 /* NewWordEndpoits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordEndpoits.swift; sourceTree = "<group>"; };
 		458C50C726B6CCFB001DD6B9 /* WordsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsEndpoint.swift; sourceTree = "<group>"; };
+		458C50C926B70D96001DD6B9 /* WordsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsTableView.swift; sourceTree = "<group>"; };
 		45942FE826ADDCAB006EE405 /* NewWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordViewController.swift; sourceTree = "<group>"; };
 		45942FEA26ADDCCA006EE405 /* NewWordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordPresenter.swift; sourceTree = "<group>"; };
 		45942FEC26ADDCDE006EE405 /* NewWordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordInteractor.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		458C50C426B6C915001DD6B9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				458C50C926B70D96001DD6B9 /* WordsTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				450712EB269E15980022EE61 /* String.swift in Sources */,
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
 				45E976A126947F5800A12858 /* UIViewController.swift in Sources */,
+				458C50CA26B70D96001DD6B9 /* WordsTableView.swift in Sources */,
 				45E8EECB2693543C00D66F13 /* Word.swift in Sources */,
 				52DB12E326AEF37600AAF949 /* UITextField.swift in Sources */,
 				450712E7269E0B520022EE61 /* MenuInteractor.swift in Sources */,

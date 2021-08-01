@@ -8,51 +8,48 @@
 import UIKit
 
 protocol WordViewControllerProtocol: AnyObject {
+    func fetchTitle(text: String)
+    func fetchSegmentControll(index: Int)
+    func fetchSwitch(isOn: Bool)
 
 }
 
 class WordsViewController: BaseViewController {
     var presenter: WordsPresenterProtocol?
 
-    private var labelClear: UILabel!
-    private var seartchView: UISearchBar!
-    private var switchTranslate: UISwitch!
+    fileprivate let labelClear = UILabel()
+    fileprivate let segentTranslate = UISegmentedControl()
+    fileprivate let switchTranslate = UISwitch()
+
+    override var rightTextBBItem: String?{
+        return "+"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        presenter?.fetchData()
     }
     
 
     override func desingUI() {
 
-        let segentTranslate = UISegmentedControl()
-        segentTranslate.selectedSegmentTintColor = UIColor.white
-//        segentTranslate.tintColor = grayColor
+        segentTranslate.backgroundColor = .white
+        segentTranslate.tintColor = UIColor.yellow
+        segentTranslate.selectedSegmentTintColor = UIColor.black
+
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        segentTranslate.setTitleTextAttributes(titleTextAttributes, for:.normal)
+
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        segentTranslate.setTitleTextAttributes(titleTextAttributes1, for:.selected)
+
         segentTranslate.insertSegment(withTitle: WordsEndpoint.Text.rus.rawValue, at: 0, animated: true)
         segentTranslate.insertSegment(withTitle: WordsEndpoint.Text.engl.rawValue, at: 1, animated: true)
-//        segentTranslate.selectedSegmentIndex = presenter.rusTranslate
         segentTranslate.addTarget(self, action: #selector(actionSegment(_ :)), for: .valueChanged)
 
         self.view.addSubview(segentTranslate)
 
-        /*
-         if #available(iOS 13.0, *) {
-              yoursegmentedControl.backgroundColor = UIColor.black
-              yoursegmentedControl.layer.borderColor = UIColor.white.cgColor
-              yoursegmentedControl.selectedSegmentTintColor = UIColor.white
-              yoursegmentedControl.layer.borderWidth = 1
-
-              let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-              yoursegmentedControl.setTitleTextAttributes(titleTextAttributes, for:.normal)
-
-              let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
-              yoursegmentedControl.setTitleTextAttributes(titleTextAttributes1, for:.selected)
-          } else {
-                      // Fallback on earlier versions
-        }
-         */
 
         segentTranslate.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
@@ -61,7 +58,6 @@ class WordsViewController: BaseViewController {
             make.height.equalTo(40)
         }
 
-        switchTranslate = UISwitch()
         switchTranslate.onTintColor = UIColor.black
         switchTranslate.tintColor = grayColor
 //        switchTranslate.isOn = presenter.hideTranslate
@@ -85,7 +81,6 @@ class WordsViewController: BaseViewController {
             make.top.equalTo(segentTranslate.snp.bottom).offset(16)
         })
 
-        labelClear = UILabel()
         labelClear.textColor = UIColor.black
         labelClear.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         labelClear.textAlignment = .center
@@ -112,11 +107,11 @@ class WordsViewController: BaseViewController {
     }
 
     @objc private func actionSegment(_ sender: UISegmentedControl) {
-//        presenter.selectedRussia(rusValue: sender.selectedSegmentIndex)
+        presenter?.saveWay(index: sender.selectedSegmentIndex)
     }
 
     @objc private func switchAction(_ sender: UISwitch) {
-//        presenter.hideSwitch(hide: sender.isOn)
+        presenter?.saveSwitch(isOn: sender.isOn)
 //        animateReloadData(duration: 0.25)
     }
 
@@ -124,5 +119,15 @@ class WordsViewController: BaseViewController {
 
 
 extension WordsViewController: WordViewControllerProtocol {
+    func fetchTitle(text: String){
+        self.title = text
+    }
 
+    func fetchSegmentControll(index: Int){
+        segentTranslate.selectedSegmentIndex = index
+    }
+
+    func fetchSwitch(isOn: Bool){
+        switchTranslate.isOn = isOn
+    }
 }
