@@ -17,6 +17,7 @@ protocol WordViewControllerProtocol: AnyObject {
 class WordsViewController: BaseViewController {
     var presenter: WordsPresenterProtocol?
 
+	private var table: WordsTableView!
     fileprivate let labelClear = UILabel()
     fileprivate let segentTranslate = UISegmentedControl()
     fileprivate let switchTranslate = UISwitch()
@@ -94,26 +95,38 @@ class WordsViewController: BaseViewController {
             make.top.equalTo(273)
         })
 
-//        table = UITableView()
-//        self.view.addSubview(table)
+		table = WordsTableView(presenter: presenter)
+        self.view.addSubview(table)
 
-//        table.snp.makeConstraints({ (make) in
-//            make.top.equalTo(switchTranslate.snp.bottom).offset(16)
-//            make.left.equalTo(0)
-//            make.right.equalTo(0)
-//            make.bottom.equalTo(0)
-//        })
+        table.snp.makeConstraints({ (make) in
+            make.top.equalTo(switchTranslate.snp.bottom).offset(16)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.bottom.equalTo(0)
+        })
 
     }
 
     @objc private func actionSegment(_ sender: UISegmentedControl) {
         presenter?.saveWay(index: sender.selectedSegmentIndex)
+		animateReloadData(duration: 0.25)
     }
 
     @objc private func switchAction(_ sender: UISwitch) {
         presenter?.saveSwitch(isOn: sender.isOn)
-//        animateReloadData(duration: 0.25)
+        animateReloadData(duration: 0.25)
     }
+	
+	private func animateReloadData(duration: TimeInterval = 0){
+		
+        UIView.transition(with: self.table,
+                          duration: duration,
+                          options: .transitionCrossDissolve,
+                          animations: {
+
+            self.table.reloadData()
+        })
+	}
 
 }
 

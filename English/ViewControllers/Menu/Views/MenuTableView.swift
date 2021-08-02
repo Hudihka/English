@@ -11,7 +11,8 @@ class MenuTableView: UITableView {
     
     var tapedCell: (List?, String?) -> Void = {_,_ in }
     var tapedRename: (String) -> Void = {_ in }
-    var tapedAdd: (List) -> Void = {_ in }
+	
+	private var presenter: MenuPresenterProtocol?
     
     fileprivate var profile: Profile?{
         return FirebaseData.shared.profile
@@ -33,7 +34,7 @@ class MenuTableView: UITableView {
         return profile?.lists ?? []
     }
 
-    init() {
+    init(presenter: MenuPresenterProtocol?) {
         super.init(frame: CGRect(), style: .grouped)
         
         self.delegate = self
@@ -48,6 +49,8 @@ class MenuTableView: UITableView {
         self.register(ListCell.self, forCellReuseIdentifier: "ListCell")
 
         self.register(HederCells.self, forHeaderFooterViewReuseIdentifier: "HederCells")
+		
+		self.presenter = presenter
     }
     
     required init?(coder: NSCoder) {
@@ -172,7 +175,7 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
                 guard let self = self else {return}
 
                 let list = self.lists[indexPath.row]
-                self.tapedAdd(list)
+				self.presenter?.newWordInTheme(list: list)
             }
 
             let menu1 = UIMenu(title: "", options: .displayInline, children: [action1])

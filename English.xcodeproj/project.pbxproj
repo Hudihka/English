@@ -64,6 +64,7 @@
 		45FF7AAB26A015CF005BAF35 /* HederCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AA826A015CF005BAF35 /* HederCells.swift */; };
 		45FF7AAD26A016DD005BAF35 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AAC26A016DD005BAF35 /* BaseCell.swift */; };
 		52DB12E326AEF37600AAF949 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB12E226AEF37600AAF949 /* UITextField.swift */; };
+		52E45E7326B7F546009C5965 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7226B7F546009C5965 /* WordCell.swift */; };
 		52EF819326B039C700B81D19 /* EnumNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF819226B039C700B81D19 /* EnumNotification.swift */; };
 		BBABB6EE4E302A6CA740797D /* Pods_English.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9F5BC59122B2F9337ED01F /* Pods_English.framework */; };
 /* End PBXBuildFile section */
@@ -130,6 +131,7 @@
 		45FF7AAC26A016DD005BAF35 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		4A12AD1320830D63DA5EBBDB /* Pods-English.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.debug.xcconfig"; path = "Target Support Files/Pods-English/Pods-English.debug.xcconfig"; sourceTree = "<group>"; };
 		52DB12E226AEF37600AAF949 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		52E45E7226B7F546009C5965 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		52EF819226B039C700B81D19 /* EnumNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				458C50C926B70D96001DD6B9 /* WordsTableView.swift */,
+				52E45E7226B7F546009C5965 /* WordCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				45942FEB26ADDCCA006EE405 /* NewWordPresenter.swift in Sources */,
 				45E976A3269490C500A12858 /* UINavigationController.swift in Sources */,
 				45ED9EC7269CBCCF00AB150F /* AutorisationPresenter.swift in Sources */,
+				52E45E7326B7F546009C5965 /* WordCell.swift in Sources */,
 				45E8EEBD2693389600D66F13 /* FirebaseAutorization.swift in Sources */,
 				45942FE926ADDCAB006EE405 /* NewWordViewController.swift in Sources */,
 				45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */,

@@ -16,7 +16,7 @@ class MenuViewController: BaseViewController {
     
     private var tableView: MenuTableView!
     
-    var presenter: MenuPresenter?
+    var presenter: MenuPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class MenuViewController: BaseViewController {
     }
     
     override func desingUI() {
-        tableView = MenuTableView()
+        tableView = MenuTableView(presenter: presenter)
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
@@ -93,14 +93,6 @@ class MenuViewController: BaseViewController {
 
                 self.presenter?.renameList(oldName: theme, newName: str)
             }
-        }
-
-        tableView.tapedAdd = {[weak self] list in
-            guard let self = self else {
-                return
-            }
-
-            self.presenter?.newWordInTheme(list: list)
         }
     }
 
