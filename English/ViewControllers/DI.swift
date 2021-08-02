@@ -93,9 +93,9 @@ class DI: DIProtocol {
     static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController {
         let VC = WordsViewController()
 
-        let interactor = WordsInteractor()
+		let interactor = WordsInteractor(list: list)
         let router = WordsRouter(navigationVC: NVC)
-        let presenter = WordsPresenter(interactor: interactor, list: list)
+        let presenter = WordsPresenter(interactor: interactor)
 
         VC.presenter = presenter
         interactor.presenter = presenter

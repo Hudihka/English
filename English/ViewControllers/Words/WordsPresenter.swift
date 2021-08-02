@@ -12,7 +12,7 @@ protocol WordsPresenterProtocol: AnyObject {
     func saveSwitch(isOn: Bool)
     func saveWay(index: Int)
 
-    init(interactor: WordsInteractorProtocol, list: List?) //если лист нил значит фаворит
+    init(interactor: WordsInteractorProtocol) //если лист нил значит фаворит
 }
 
 class WordsPresenter: WordsPresenterProtocol {
@@ -22,14 +22,13 @@ class WordsPresenter: WordsPresenterProtocol {
     weak var view: WordViewControllerProtocol?
 
     private var defUt = DefaultUtils.shared
-    private var list: List?
     
-    required init(interactor: WordsInteractorProtocol, list: List?) {
-        self.list = list
+    required init(interactor: WordsInteractorProtocol) {
+        self.interactor = interactor
     }
 
     func fetchData() {
-		view?.fetchTitle(text: list?.name ?? WordsEndpoint.Text.title.rawValue)
+//		view?.fetchTitle(text: list?.name ?? WordsEndpoint.Text.title.rawValue)
         view?.fetchSegmentControll(index: defUt.translateWay)
         view?.fetchSwitch(isOn: defUt.hideTranslate)
     }
