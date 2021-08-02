@@ -100,10 +100,11 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
 
         let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HederCells") as! HederCells
         if isTwoSection, section == 0 {
-            cell.text = "Всего \(favoritCount) выбранных слов"
+			cell.text = MenuEndpointsEnum.CellText.header(favoritCount).text
         } else {
             let count = profile?.countWords ?? 0
-            cell.text = "Всего \(lists.count) тем, \(count) слов"
+			cell.text = MenuEndpointsEnum.CellText.cell(countThem: lists.count,
+				countWord: count).text
         }
 
         return cell
@@ -164,14 +165,16 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
         }
 
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
-            let action1 = UIAction(title: "Переименовать", image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
+			let action1 = UIAction(title: MenuEndpointsEnum.TableContextMenu.rename.rawValue,
+								   image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
                 guard let self = self else {return}
 
                 let oldName = self.lists[indexPath.row].name
                 self.tapedRename(oldName)
             }
 
-            let action2 = UIAction(title: "Добавить слово", image: UIImage(systemName: "plus")) {[weak self] _ in
+			let action2 = UIAction(title: MenuEndpointsEnum.TableContextMenu.addWord.rawValue,
+								   image: UIImage(systemName: "plus")) {[weak self] _ in
                 guard let self = self else {return}
 
                 let list = self.lists[indexPath.row]

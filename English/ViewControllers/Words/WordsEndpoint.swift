@@ -14,6 +14,7 @@ enum WordsEndpoint {
         case engl       = "Англ -> Рус"
         case hide       = "Скрыть перевод"
         case emptyWords = "Нет слов"
+		case title 		= "ФАВОРИТ"
     }
 
 }

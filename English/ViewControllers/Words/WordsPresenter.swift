@@ -29,7 +29,7 @@ class WordsPresenter: WordsPresenterProtocol {
     }
 
     func fetchData() {
-        view?.fetchTitle(text: list?.name ?? "ФАВОРИТ")
+		view?.fetchTitle(text: list?.name ?? WordsEndpoint.Text.title.rawValue)
         view?.fetchSegmentControll(index: defUt.translateWay)
         view?.fetchSwitch(isOn: defUt.hideTranslate)
     }

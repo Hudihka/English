@@ -24,7 +24,7 @@ class FavoriteWords: BaseCell {
 	override func desingUI(){
 		
 		labelFavorite = UILabel()
-		labelFavorite.text = "Выбранные слова"
+		labelFavorite.text = MenuEndpointsEnum.CellText.favorit.text
 		labelFavorite.textColor = UIColor.black
 		labelFavorite.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         labelFavorite.textAlignment = .center
