@@ -12,6 +12,7 @@ protocol WordViewControllerProtocol: AnyObject {
     func fetchSegmentControll(index: Int)
     func fetchSwitch(isOn: Bool)
 
+    func words(words: [Word])
 }
 
 class WordsViewController: BaseViewController {
@@ -23,7 +24,7 @@ class WordsViewController: BaseViewController {
     fileprivate let switchTranslate = UISwitch()
 
     override var rightTextBBItem: String?{
-        return "+"
+        return WordsEndpoint.ViewText.rightBB.rawValue
     }
 
     override func viewDidLoad() {
@@ -109,24 +110,13 @@ class WordsViewController: BaseViewController {
 
     @objc private func actionSegment(_ sender: UISegmentedControl) {
         presenter?.saveWay(index: sender.selectedSegmentIndex)
-		animateReloadData(duration: 0.25)
+        table.wordsTable(wordsArray: nil, duration: 0.25, scroll: true)
     }
 
     @objc private func switchAction(_ sender: UISwitch) {
         presenter?.saveSwitch(isOn: sender.isOn)
-        animateReloadData(duration: 0.25)
+        table.wordsTable(wordsArray: nil, duration: 0.25)
     }
-	
-	private func animateReloadData(duration: TimeInterval = 0){
-		
-        UIView.transition(with: self.table,
-                          duration: duration,
-                          options: .transitionCrossDissolve,
-                          animations: {
-
-            self.table.reloadData()
-        })
-	}
 
 }
 
@@ -142,5 +132,10 @@ extension WordsViewController: WordViewControllerProtocol {
 
     func fetchSwitch(isOn: Bool){
         switchTranslate.isOn = isOn
+    }
+
+
+    func words(words: [Word]) {
+        table.wordsTable(wordsArray: words, duration: 0, scroll: false)
     }
 }

@@ -25,7 +25,7 @@ enum MenuEndpointsEnum {
 
     enum ViewText: String {
         case title          = "ТЕМЫ"
-        case rightBB        = "+"
+        case rightBB        = "add"
     }
 
     enum AlertError: String {

@@ -22,13 +22,17 @@ class WordsPresenter: WordsPresenterProtocol {
     weak var view: WordViewControllerProtocol?
 
     private var defUt = DefaultUtils.shared
-    
+
     required init(interactor: WordsInteractorProtocol) {
         self.interactor = interactor
+
+        interactor.lissenWords {[weak self] words in
+            self?.view?.words(words: words)
+        }
     }
 
     func fetchData() {
-//		view?.fetchTitle(text: list?.name ?? WordsEndpoint.Text.title.rawValue)
+        view?.fetchTitle(text: interactor?.list?.name ?? WordsEndpoint.Text.title.rawValue)
         view?.fetchSegmentControll(index: defUt.translateWay)
         view?.fetchSwitch(isOn: defUt.hideTranslate)
     }
@@ -39,6 +43,10 @@ class WordsPresenter: WordsPresenterProtocol {
 
     func saveWay(index: Int) {
         self.defUt.translateWay = index
+    }
+
+    func words(words: [Word]) {
+        
     }
 
 }

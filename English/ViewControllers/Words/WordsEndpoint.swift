@@ -17,4 +17,8 @@ enum WordsEndpoint {
 		case title 		= "ФАВОРИТ"
     }
 
+    enum ViewText: String {
+        case rightBB        = "add"
+    }
+
 }

@@ -36,9 +36,11 @@ class WordCell: BaseCell {
 			
 			labelWord.text = russValue ? word.rusValue : word.engValue
 			labelTarnlate.text = !russValue ? word.rusValue : word.engValue
-			
-			labelTarnlate.alpha = df.hideTranslate ? 0 : 1
-			labelDescription.alpha = df.hideTranslate ? 0 : 1
+
+            let alpha: CGFloat = df.hideTranslate ? 0 : 1
+
+			labelTarnlate.alpha = alpha
+			labelDescription.alpha = alpha
 		}
 	}
 	
@@ -76,6 +78,10 @@ class WordCell: BaseCell {
    }
    
    func showAnimate(){
+
+    if df.hideTranslate == false {
+        return
+    }
 	   
 	   UIView.animate(withDuration: 0.25, animations: {
 		   self.labelTarnlate.alpha = 1

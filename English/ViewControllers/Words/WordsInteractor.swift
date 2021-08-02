@@ -8,6 +8,9 @@
 import Foundation
 
 protocol WordsInteractorProtocol: AnyObject {
+    func lissenWords(compl: @escaping(([Word]) -> Void))
+    var list: List? {get set}
+
     init(list: List?)
 }
 
@@ -17,9 +20,15 @@ class WordsInteractor: WordsInteractorProtocol {
 
     var presenter: WordsPresenterProtocol?
 
-    private var list: List?
-    
+    var list: List?
+
     required init(list: List?) {
         self.list = list
+    }
+
+    func lissenWords(compl: @escaping(([Word]) -> Void)) {
+        db.lisenWord(list: list) { (words) in
+            compl(words)
+        }
     }
 }

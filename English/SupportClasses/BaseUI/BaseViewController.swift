@@ -58,7 +58,7 @@ class BaseViewController: UIViewController {
         
         let right = UIBarButtonItem(title: rightTextBBItem, style: .plain, target: self, action: #selector(rightBBItem))
         right.tintColor = rightColor
-        navigationItem.leftBarButtonItem = right
+        navigationItem.rightBarButtonItem = right
     }
 
     @objc func leftBBItem(){}

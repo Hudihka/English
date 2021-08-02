@@ -118,6 +118,24 @@ class FirebaseData {
         db.collection("Words").addDocument(data: newWord.json)
     }
 
+    func lisenWord(list: List?, compl: @escaping(([Word]) -> Void)) {
+
+        let collection = list == nil ?
+            db.collection("Words").whereField("favorit", isEqualTo: true) :
+            db.collection("Words").whereField("listName", isEqualTo: list?.name ?? "")
+
+        collection.addSnapshotListener {(snaphot, _) in
+
+            if let data = snaphot?.documents {
+                let words = data.map({Word(json: $0.data(), id: $0.documentID)})
+                compl(words)
+            } else {
+                compl([])
+            }
+        }
+
+    }
+
     
 //    func createUser(userId: String, name: String?, provided: String?){
 //        db.collection("users").document(userId).getDocument {[weak self] (snaphot, _) in

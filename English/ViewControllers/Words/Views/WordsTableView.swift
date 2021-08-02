@@ -11,11 +11,7 @@ import UIKit
 class WordsTableView: UITableView {
 	private var presenter: WordsPresenterProtocol?
 
-    var words: [Word] = [] {
-        didSet{
-            self.reloadData()
-        }
-    }
+    fileprivate var words: [Word] = [] 
 
     init(presenter: WordsPresenterProtocol?) {
         super.init(frame: CGRect(), style: .grouped)
@@ -35,6 +31,29 @@ class WordsTableView: UITableView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func wordsTable(wordsArray: [Word]?,
+                    duration: TimeInterval = 0,
+                    scroll: Bool = false) {//если нил, использум те что уже есть
+
+        let newWords: [Word] = wordsArray == nil ? self.words : wordsArray!
+
+        self.words = DefaultUtils.shared.translateWay == 0 ?
+            newWords.sorted { $0.rusValue.lowercased() < $1.rusValue.lowercased() } :
+            newWords.sorted { $0.engValue.lowercased() < $1.engValue.lowercased() }
+
+        UIView.transition(with: self,
+                          duration: duration,
+                          options: .transitionCrossDissolve,
+                          animations: {
+
+            self.reloadData()
+        })
+
+        if scroll {
+            self.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+        }
     }
 
 }
