@@ -74,6 +74,7 @@ class List {
 		} else {
 			newList.countFavorit -= 1
 		}
+		newList.dateUpdate = Date()
 		
 		return newList
 	}

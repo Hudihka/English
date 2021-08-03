@@ -68,6 +68,7 @@ extension WordsTableView: UITableViewDelegate, UITableViewDataSource {
 
 		let cell = tableView.dequeueReusableCell(withIdentifier: "WordCell") as! WordCell
 		cell.word = words[indexPath.row]
+		cell.presenter = presenter
 
 		return cell
 

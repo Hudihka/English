@@ -10,18 +10,13 @@ import UIKit
 
 class WordCell: BaseCell {
 	
-   
    private var labelWord: UILabel!
    private var labelTarnlate: UILabel!
    private var labelDescription: UILabel!
    private var buttonFave: UIButton!
    private let df = DefaultUtils.shared
    
-   var tupl: (word: Word, russValue: Bool, hideTranslate: Bool)?{
-	   didSet{
-		   settingsCell()
-	   }
-   }
+	var presenter: WordsPresenterProtocol?
 	
 	var word: Word? {
 		didSet{
@@ -54,27 +49,7 @@ class WordCell: BaseCell {
 	}
 	
    @objc private func tapedLikeButton() {
-//	   presenter?.tapedLike(word: self.tupl?.word)
-   }
-   
-   private func settingsCell(){
-	   
-	   guard let tupl = tupl else {
-		   return
-	   }
-	   
-	   labelWord.text = tupl.russValue ? tupl.word.rusValue : tupl.word.engValue
-	   labelTarnlate.text = !tupl.russValue ? tupl.word.rusValue : tupl.word.engValue
-	   
-	   labelDescription.text = tupl.word.descript
-	   
-	   labelTarnlate.alpha = tupl.hideTranslate ? 0 : 1
-	   labelDescription.alpha = tupl.hideTranslate ? 0 : 1
-	   
-	   let image = tupl.word.favorit ? "favorit" : "not_favorit"
-	   buttonFave.setImage(UIImage(named: image), for: .normal)
-	   
-	   
+	   presenter?.tapedLike(word: word)
    }
    
    func showAnimate(){

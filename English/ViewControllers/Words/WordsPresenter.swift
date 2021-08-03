@@ -11,6 +11,8 @@ protocol WordsPresenterProtocol: AnyObject {
     func fetchData()
     func saveSwitch(isOn: Bool)
     func saveWay(index: Int)
+	
+	func tapedLike(word: Word?)
 
     init(interactor: WordsInteractorProtocol) //если лист нил значит фаворит
 }
@@ -45,8 +47,9 @@ class WordsPresenter: WordsPresenterProtocol {
         self.defUt.translateWay = index
     }
 
-    func words(words: [Word]) {
-        
+	//action
+    func tapedLike(word: Word?) {
+		interactor?.tapedLike(word: word)
     }
 
 }

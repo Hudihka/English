@@ -135,6 +135,29 @@ class FirebaseData {
         }
 
     }
+	
+	func likeWord(word: Word?) {
+		
+		guard
+			let word = word,
+			let idWord = word.id,
+			let profile = profile,
+            let id = idUser,
+			let index = profile.lists.firstIndex(where: {$0.name == word.listName}) else {
+            return
+        }
+
+        let oldList = profile.lists[index]
+		let tapedFavorit = word.favorit ? false : true
+		let newList = oldList.jsonReloadFavoritCount(add: tapedFavorit)
+        profile.lists[index] = newList
+
+        db.collection("Profile").document(id).setData(profile.json)
+
+        db.collection("Words")
+			.whereField("id", isEqualTo: idWord)
+			.setValue(tapedFavorit, forKeyPath: "favorit")
+    }
 
     
 //    func createUser(userId: String, name: String?, provided: String?){
