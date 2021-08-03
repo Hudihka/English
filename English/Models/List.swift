@@ -55,10 +55,15 @@ class List {
 	
 	//методы вызываемые когда что либо делаем со словами
 
-    var jsonAddOneWord: List{
+    func addOrDeleteOneWord(add: Bool) -> List{
         let newList = self
         newList.dateUpdate = Date()
-        newList.count += 1
+        if add {
+            newList.count += 1
+        } else if newList.count != 0 {
+            newList.count -= 1
+        }
+
         return newList
     }
     

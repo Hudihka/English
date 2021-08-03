@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class WordsTableView: UITableView {
+    var deleteWord: (Word) -> Void = {_ in }
+
 	private var presenter: WordsPresenterProtocol?
 
     fileprivate var words: [Word] = [] 
@@ -79,69 +81,63 @@ extension WordsTableView: UITableViewDelegate, UITableViewDataSource {
     }
 
     //MARK: - тап
-//
-//    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
-//    {
-//        guard let cell = tableView.cellForRow(at: indexPath) else {
-//            return
-//        }
-//
-//        UIView.animate(withDuration: 0.25) {
-//
-//            cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.85)
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath)
-//    {
-//        guard let cell = tableView.cellForRow(at: indexPath) else {
-//            return
-//        }
-//
-//        UIView.animate(withDuration: 0.25) {
-//            cell.transform = .identity
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//        if isTwoSection, indexPath.section == 0 {
-//            tapedCell(nil, FAVORIT_NAME)
-//        } else {
-//            let list = lists[indexPath.row]
-//            tapedCell(list, nil)
-//        }
-//    }
-//
+
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
+    {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+
+        UIView.animate(withDuration: 0.25) {
+
+            cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.85)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath)
+    {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+
+        UIView.animate(withDuration: 0.25) {
+            cell.transform = .identity
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let cell = cellForRow(at: indexPath) as? WordCell {
+            cell.showAnimate()
+        }
+    }
+
 //    //MARK: Контекстное меню
-//    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-//        if isTwoSection, indexPath.section == 0 {
-//            return nil
-//        }
-//
-//        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
-//            let action1 = UIAction(title: "Переименовать", image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
-//                guard let self = self else {return}
-//
+
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
+            let action1 = UIAction(title: "Изменить", image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
+                guard let self = self else {return}
+
 //                let oldName = self.lists[indexPath.row].name
 //                self.tapedRename(oldName)
-//            }
-//
-//            let action2 = UIAction(title: "Добавить слово", image: UIImage(systemName: "plus")) {[weak self] _ in
-//                guard let self = self else {return}
-//
-//                let list = self.lists[indexPath.row]
-//                self.tapedAdd(list)
-//            }
-//
-//            let menu1 = UIMenu(title: "", options: .displayInline, children: [action1])
-//            let menu2 = UIMenu(title: "", options: .displayInline, children: [action2])
-//
-//            return UIMenu(title: "", children: [menu1, menu2])
-//        }
-//
-//        return configuration
-//    }
+            }
+
+            let action2 = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) {[weak self] _ in
+                guard let self = self else {return}
+
+                let word = self.words[indexPath.row]
+                self.deleteWord(word)
+            }
+
+            let menu1 = UIMenu(title: "", options: .displayInline, children: [action1])
+            let menu2 = UIMenu(title: "", options: .displayInline, children: [action2])
+
+            return UIMenu(title: "", children: [menu1, menu2])
+        }
+
+        return configuration
+    }
 
 }

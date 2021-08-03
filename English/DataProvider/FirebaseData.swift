@@ -111,7 +111,7 @@ class FirebaseData {
             return
         }
 
-        let newList = list.jsonAddOneWord
+        let newList = list.addOrDeleteOneWord(add: true)
         profile.lists[index] = newList
 
         db.collection("Profile").document(id).setData(profile.json)
@@ -157,6 +157,27 @@ class FirebaseData {
         db.collection("Words")
 			.whereField("id", isEqualTo: idWord)
 			.setValue(tapedFavorit, forKeyPath: "favorit")
+    }
+
+    func delete(word: Word) {
+
+        guard
+            let idWord = word.id,
+            let profile = profile,
+            let id = idUser,
+            let index = profile.lists.firstIndex(where: {$0.name == word.listName}) else {
+            return
+        }
+
+        let oldList = profile.lists[index]
+        var newList = oldList.addOrDeleteOneWord(add: false)
+        if word.favorit {
+            newList = newList.jsonReloadFavoritCount(add: false)
+        }
+        profile.lists[index] = newList
+
+        db.collection("Profile").document(id).setData(profile.json)
+        db.collection("Words").document(idWord).delete()
     }
 
     

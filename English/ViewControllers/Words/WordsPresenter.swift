@@ -13,6 +13,7 @@ protocol WordsPresenterProtocol: AnyObject {
     func saveWay(index: Int)
 	
 	func tapedLike(word: Word?)
+    func delete(word: Word?)
 
     init(interactor: WordsInteractorProtocol) //если лист нил значит фаворит
 }
@@ -50,6 +51,10 @@ class WordsPresenter: WordsPresenterProtocol {
 	//action
     func tapedLike(word: Word?) {
 		interactor?.tapedLike(word: word)
+    }
+
+    func delete(word: Word?){
+        interactor?.delete(word: word)
     }
 
 }

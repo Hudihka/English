@@ -10,6 +10,7 @@ import Foundation
 protocol WordsInteractorProtocol: AnyObject {
     func lissenWords(compl: @escaping(([Word]) -> Void))
 	func tapedLike(word: Word?)
+    func delete(word: Word?)
     var list: List? {get set}
 
     init(list: List?)
@@ -36,4 +37,8 @@ class WordsInteractor: WordsInteractorProtocol {
 	func tapedLike(word: Word?) {
 		db.likeWord(word: word)
 	}
+
+    func delete(word: Word?){
+        
+    }
 }

@@ -106,6 +106,14 @@ class WordsViewController: BaseViewController {
             make.bottom.equalTo(0)
         })
 
+        table.deleteWord = {[weak self] word in
+            guard let self = self else {return}
+
+            self.showAlert(title: "Действительно хочешь далить?", message: nil, style: .cancel, buttonText: "НЕТ") { _ in
+                self.presenter?.delete(word: word)
+            }
+        }
+
     }
 
     @objc private func actionSegment(_ sender: UISegmentedControl) {
@@ -124,6 +132,9 @@ class WordsViewController: BaseViewController {
 extension WordsViewController: WordViewControllerProtocol {
     func fetchTitle(text: String){
         self.title = text
+        if text == FAVORIT_NAME {
+            navigationItem.rightBarButtonItem = nil
+        }
     }
 
     func fetchSegmentControll(index: Int){
