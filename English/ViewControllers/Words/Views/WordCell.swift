@@ -10,9 +10,8 @@ import UIKit
 
 class WordCell: BaseCell {
 	
-   private var labelWord: UILabel!
-   private var labelTarnlate: UILabel!
-   private var labelDescription: UILabel!
+   private(set) var labelWord: UILabel!
+   var labelTarnlate: UILabel!
    private var buttonFave: UIButton!
    private let df = DefaultUtils.shared
    
@@ -22,23 +21,23 @@ class WordCell: BaseCell {
 		didSet{
 			guard let word = word else { return }
 			
-			labelDescription?.text = word.descript
-			
 			let image = word.favorit ? "favorit" : "not_favorit"
 			buttonFave.setImage(UIImage(named: image), for: .normal)
-			
-			let russValue = df.translateWay == 0
-			
-			labelWord.text = russValue ? word.rusValue : word.engValue
-			labelTarnlate.text = !russValue ? word.rusValue : word.engValue
 
             let alpha: CGFloat = df.hideTranslate ? 0 : 1
 
-			labelTarnlate.alpha = alpha
-			labelDescription?.alpha = alpha
+            textsLabels(word: word, alpha: alpha)
 		}
 	}
-	
+
+    func textsLabels(word: Word, alpha: CGFloat) {
+        let russValue = df.translateWay == 0
+
+        labelWord.text = russValue ? word.rusValue : word.engValue
+        labelTarnlate.text = !russValue ? word.rusValue : word.engValue
+
+        labelTarnlate.alpha = alpha
+    }
    
    	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 	   super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -59,8 +58,7 @@ class WordCell: BaseCell {
     }
 	   
 	   UIView.animate(withDuration: 0.25, animations: {
-		   self.labelTarnlate.alpha = 1
-		   self.labelDescription?.alpha = 1
+		   self.animateAlpa(alpha: 1)
 	   }) {[weak self] (compl) in
 		   self?.hideAniate()
 	   }
@@ -68,12 +66,13 @@ class WordCell: BaseCell {
    
    private func hideAniate(){
 	   UIView.animate(withDuration: 0.25, delay: 0.9, options: [], animations: {
-		   self.labelTarnlate.alpha = 0
-		   self.labelDescription?.alpha = 0
-	   }) { (_) in
-		   ///
-	   }
+		   self.animateAlpa(alpha: 0)
+	   })
    }
+
+    func animateAlpa(alpha: CGFloat) {
+        self.labelTarnlate.alpha = alpha
+    }
    
    
    override func desingUI(){
@@ -89,7 +88,6 @@ class WordCell: BaseCell {
 		   make.height.equalTo(50)
 		   make.width.equalTo(50)
 	   })
-	   
 	   
 	   labelWord = UILabel()
 	   labelWord.textColor = UIColor.black
@@ -116,18 +114,5 @@ class WordCell: BaseCell {
            make.bottom.equalTo(contentView.snp.bottom).offset(-9)
 	   })
 
-        labelDescription = UILabel()
-        guard let labelDescription = labelDescription else { return }
-        labelDescription.numberOfLines = 0
-        labelDescription.textColor = UIColor.black
-        labelDescription.font = UIFont.systemFont(ofSize: 17)
-        self.contentView.addSubview(labelDescription)
-        labelDescription.snp.makeConstraints({ (make) in
-            make.top.equalTo(labelTarnlate.snp.bottom).offset(10)
-            make.left.equalTo(labelWord.snp.left)
-            make.right.equalTo(-16)
-            make.height.greaterThanOrEqualTo(18).priority(750)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-9)
-        })
    }
 }

@@ -30,6 +30,7 @@ class WordsTableView: UITableView {
         self.rowHeight = UITableView.automaticDimension
 
         self.register(WordCell.self, forCellReuseIdentifier: "WordCell")
+        self.register(WordCellDescription.self, forCellReuseIdentifier: "WordCellDescription")
 		self.presenter = presenter
     }
 
@@ -70,8 +71,18 @@ extension WordsTableView: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        let word = words[indexPath.row]
+
+        if word.descript != nil {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WordCellDescription") as! WordCellDescription
+            cell.word = word
+            cell.presenter = presenter
+
+            return cell
+        }
+
 		let cell = tableView.dequeueReusableCell(withIdentifier: "WordCell") as! WordCell
-		cell.word = words[indexPath.row]
+		cell.word = word
 		cell.presenter = presenter
 
 		return cell
