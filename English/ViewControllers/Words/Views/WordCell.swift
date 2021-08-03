@@ -16,13 +16,13 @@ class WordCell: BaseCell {
    private var buttonFave: UIButton!
    private let df = DefaultUtils.shared
    
-	var presenter: WordsPresenterProtocol?
+    var presenter: WordsPresenterProtocol?
 	
 	var word: Word? {
 		didSet{
 			guard let word = word else { return }
 			
-			labelDescription.text = word.descript
+			labelDescription?.text = word.descript
 			
 			let image = word.favorit ? "favorit" : "not_favorit"
 			buttonFave.setImage(UIImage(named: image), for: .normal)
@@ -35,7 +35,7 @@ class WordCell: BaseCell {
             let alpha: CGFloat = df.hideTranslate ? 0 : 1
 
 			labelTarnlate.alpha = alpha
-			labelDescription.alpha = alpha
+			labelDescription?.alpha = alpha
 		}
 	}
 	
@@ -60,7 +60,7 @@ class WordCell: BaseCell {
 	   
 	   UIView.animate(withDuration: 0.25, animations: {
 		   self.labelTarnlate.alpha = 1
-		   self.labelDescription.alpha = 1
+		   self.labelDescription?.alpha = 1
 	   }) {[weak self] (compl) in
 		   self?.hideAniate()
 	   }
@@ -69,7 +69,7 @@ class WordCell: BaseCell {
    private func hideAniate(){
 	   UIView.animate(withDuration: 0.25, delay: 0.9, options: [], animations: {
 		   self.labelTarnlate.alpha = 0
-		   self.labelDescription.alpha = 0
+		   self.labelDescription?.alpha = 0
 	   }) { (_) in
 		   ///
 	   }
@@ -100,7 +100,7 @@ class WordCell: BaseCell {
 		   make.top.equalTo(5)
 		   make.left.equalTo(20)
 		   make.right.equalTo(buttonFave.snp.left)
-		   make.height.greaterThanOrEqualTo(50)
+		   make.height.greaterThanOrEqualTo(40)
 	   })
 	   
 	   labelTarnlate = UILabel()
@@ -109,25 +109,25 @@ class WordCell: BaseCell {
 	   labelTarnlate.font = UIFont.systemFont(ofSize: 23)
 	   self.contentView.addSubview(labelTarnlate)
 	   labelTarnlate.snp.makeConstraints({ (make) in
-		   make.top.equalTo(labelWord.snp.bottom).offset(-7)
+		   make.top.equalTo(labelWord.snp.bottom).offset(7)
 		   make.left.equalTo(labelWord.snp.left)
 		   make.right.equalTo(-16)
-		   make.height.greaterThanOrEqualTo(27)
-		   make.height.equalTo(27).priority(750)
+           make.height.greaterThanOrEqualTo(25).priority(999)
+           make.bottom.equalTo(contentView.snp.bottom).offset(-9)
 	   })
-	   
-	   
-	   labelDescription = UILabel()
-	   labelDescription.numberOfLines = 0
-	   labelDescription.textColor = UIColor.black
-	   labelDescription.font = UIFont.systemFont(ofSize: 17)
-	   self.contentView.addSubview(labelDescription)
-	   labelDescription.snp.makeConstraints({ (make) in
-		   make.top.equalTo(labelTarnlate.snp.bottom).offset(-20)
-		   make.left.equalTo(labelWord.snp.left)
-		   make.right.equalTo(0)
-		   make.height.greaterThanOrEqualTo(21)
-		   make.height.equalTo(21).priority(750)
-	   })
+
+        labelDescription = UILabel()
+        guard let labelDescription = labelDescription else { return }
+        labelDescription.numberOfLines = 0
+        labelDescription.textColor = UIColor.black
+        labelDescription.font = UIFont.systemFont(ofSize: 17)
+        self.contentView.addSubview(labelDescription)
+        labelDescription.snp.makeConstraints({ (make) in
+            make.top.equalTo(labelTarnlate.snp.bottom).offset(10)
+            make.left.equalTo(labelWord.snp.left)
+            make.right.equalTo(-16)
+            make.height.greaterThanOrEqualTo(18).priority(750)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-9)
+        })
    }
 }

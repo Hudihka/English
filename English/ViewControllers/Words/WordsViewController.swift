@@ -100,7 +100,7 @@ class WordsViewController: BaseViewController {
         self.view.addSubview(table)
 
         table.snp.makeConstraints({ (make) in
-            make.top.equalTo(switchTranslate.snp.bottom).offset(16)
+            make.top.equalTo(switchTranslate.snp.bottom).offset(11)
             make.left.equalTo(0)
             make.right.equalTo(0)
             make.bottom.equalTo(0)
@@ -148,6 +148,7 @@ extension WordsViewController: WordViewControllerProtocol {
 
 
     func words(words: [Word]) {
+        labelClear.isHidden = !words.isEmpty
         table.wordsTable(wordsArray: words, duration: 0, scroll: false)
     }
 }

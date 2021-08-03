@@ -18,7 +18,7 @@ class WordsTableView: UITableView {
     fileprivate var words: [Word] = [] 
 
     init(presenter: WordsPresenterProtocol?) {
-        super.init(frame: CGRect(), style: .grouped)
+        super.init(frame: CGRect(), style: .plain)
 
         self.delegate = self
         self.dataSource = self
@@ -142,6 +142,14 @@ extension WordsTableView: UITableViewDelegate, UITableViewDataSource {
         }
 
         return configuration
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
 
 }
