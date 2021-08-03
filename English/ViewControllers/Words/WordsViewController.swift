@@ -133,6 +133,7 @@ extension WordsViewController: WordViewControllerProtocol {
     func fetchTitle(text: String){
         self.title = text
         if text == FAVORIT_NAME {
+            table.isFavoritList = true
             navigationItem.rightBarButtonItem = nil
         }
     }

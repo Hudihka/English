@@ -14,6 +14,7 @@ protocol WordsPresenterProtocol: AnyObject {
 	
 	func tapedLike(word: Word?)
     func delete(word: Word?)
+    func changeWord(word: Word)
 
     init(interactor: WordsInteractorProtocol) //если лист нил значит фаворит
 }
@@ -55,6 +56,12 @@ class WordsPresenter: WordsPresenterProtocol {
 
     func delete(word: Word?){
         interactor?.delete(word: word)
+    }
+
+    func changeWord(word: Word){
+        if let list = FirebaseData.shared.profile?.lists.first(where: {$0.name == word.listName}){
+            router?.newWordInTheme(list: list, word: word)
+        }
     }
 
 }

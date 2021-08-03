@@ -11,6 +11,8 @@ import UIKit
 class WordsTableView: UITableView {
     var deleteWord: (Word) -> Void = {_ in }
 
+    var isFavoritList: Bool = false
+
 	private var presenter: WordsPresenterProtocol?
 
     fileprivate var words: [Word] = [] 
@@ -116,12 +118,13 @@ extension WordsTableView: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 
-        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {[weak self] actions -> UIMenu? in
+
             let action1 = UIAction(title: "Изменить", image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
                 guard let self = self else {return}
 
-//                let oldName = self.lists[indexPath.row].name
-//                self.tapedRename(oldName)
+                let word = self.words[indexPath.row]
+                self.presenter?.changeWord(word: word)
             }
 
             let action2 = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) {[weak self] _ in
@@ -133,8 +136,9 @@ extension WordsTableView: UITableViewDelegate, UITableViewDataSource {
 
             let menu1 = UIMenu(title: "", options: .displayInline, children: [action1])
             let menu2 = UIMenu(title: "", options: .displayInline, children: [action2])
+            let children = self?.isFavoritList ?? false ? [menu2] : [menu1, menu2]
 
-            return UIMenu(title: "", children: [menu1, menu2])
+            return UIMenu(title: "", children: children)
         }
 
         return configuration
