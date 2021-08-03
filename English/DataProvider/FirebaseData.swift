@@ -152,11 +152,11 @@ class FirebaseData {
 		let newList = oldList.jsonReloadFavoritCount(add: tapedFavorit)
         profile.lists[index] = newList
 
-        db.collection("Profile").document(id).setData(profile.json)
+        var wordJson = word.json
+        wordJson["favorit"] = tapedFavorit
 
-        db.collection("Words")
-			.whereField("id", isEqualTo: idWord)
-			.setValue(tapedFavorit, forKeyPath: "favorit")
+        db.collection("Profile").document(id).setData(profile.json)
+        db.collection("Words").document(idWord).setData(wordJson)
     }
 
     func delete(word: Word) {
