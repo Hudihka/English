@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 protocol MenuRouterProtocol: AnyObject {
-    func presentSplit(words: [Word], way: MenuEndpointsEnum.ActionButtonsAlert)
-    func pushCramming(list: List?, NVC: BaseNavigationController)
+    func presentSplit(list: List?, way: MenuEndpointsEnum.ActionButtonsAlert)
+    func pushCramming(list: List?)
     func newWordInTheme(list: List)
 
     init(navigationVC: BaseNavigationController)
@@ -23,12 +23,12 @@ class MenuRouter: MenuRouterProtocol{
         self.navigationVC = navigationVC
     }
 
-    func presentSplit(words: [Word], way: MenuEndpointsEnum.ActionButtonsAlert) {
+    func presentSplit(list: List?, way: MenuEndpointsEnum.ActionButtonsAlert) {
 
     }
 
-    func pushCramming(list: List?, NVC: BaseNavigationController) {
-        let VC = DI.wordsViewController(list: list, NVC: NVC)
+    func pushCramming(list: List?) {
+        let VC = DI.wordsViewController(list: list, NVC: navigationVC)
         self.navigationVC.pushViewController(viewController: VC, completion: nil)
     }
 

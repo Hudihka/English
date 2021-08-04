@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol MenuPresenterProtocol: AnyObject {
-    func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert, list: List?, NVC: BaseNavigationController?)
+    func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert, list: List?)
     func createList(name: String)
     func renameList(oldName: String, newName: String)
 	func deleteList(name: String)
@@ -24,18 +24,15 @@ class MenuPresenter: MenuPresenterProtocol {
     weak var view: MenuViewControllerProtocol?
     
     func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert,
-                    list: List?, //если лист нил значит фаворит
-                    NVC: BaseNavigationController?) {
+					list: List?) { //если лист нил значит фаворит
 
         switch alertButton {
         case .rusEngl:
-            print("------1")
+			
         case .englRus:
-            print("------2")
+            
         case .cramming:
-            if let NVC = NVC {
-                router?.pushCramming(list: list, NVC: NVC)
-            }
+            router?.pushCramming(list: list)
         case .title:
             break
         }

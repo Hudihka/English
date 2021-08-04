@@ -66,6 +66,8 @@
 		45FF7AAD26A016DD005BAF35 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AAC26A016DD005BAF35 /* BaseCell.swift */; };
 		52DB12E326AEF37600AAF949 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB12E226AEF37600AAF949 /* UITextField.swift */; };
 		52E45E7326B7F546009C5965 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7226B7F546009C5965 /* WordCell.swift */; };
+		52E45E7626BAFB32009C5965 /* WordAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7526BAFB32009C5965 /* WordAnswer.swift */; };
+		52E45E7826BAFCB2009C5965 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7726BAFCB2009C5965 /* Array.swift */; };
 		52EF819326B039C700B81D19 /* EnumNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF819226B039C700B81D19 /* EnumNotification.swift */; };
 		BBABB6EE4E302A6CA740797D /* Pods_English.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9F5BC59122B2F9337ED01F /* Pods_English.framework */; };
 /* End PBXBuildFile section */
@@ -134,6 +136,8 @@
 		4A12AD1320830D63DA5EBBDB /* Pods-English.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.debug.xcconfig"; path = "Target Support Files/Pods-English/Pods-English.debug.xcconfig"; sourceTree = "<group>"; };
 		52DB12E226AEF37600AAF949 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		52E45E7226B7F546009C5965 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
+		52E45E7526BAFB32009C5965 /* WordAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAnswer.swift; sourceTree = "<group>"; };
+		52E45E7726BAFCB2009C5965 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		52EF819226B039C700B81D19 /* EnumNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -301,6 +305,7 @@
 				456E7F75269A08FD007ABF69 /* Authorization */,
 				45E976A82694BE3A00A12858 /* LoadProfile */,
 				456E7F732699F79D007ABF69 /* DI.swift */,
+				52E45E7426BAFAF6009C5965 /* Split */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 				450712EC269E15C90022EE61 /* Date.swift */,
 				45FF7AA426A00C28005BAF35 /* NSObject.swift */,
 				52DB12E226AEF37600AAF949 /* UITextField.swift */,
+				52E45E7726BAFCB2009C5965 /* Array.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -353,6 +359,14 @@
 				45942FF126ADE87C006EE405 /* BaseBlackButton.swift */,
 			);
 			path = BaseUI;
+			sourceTree = "<group>";
+		};
+		52E45E7426BAFAF6009C5965 /* Split */ = {
+			isa = PBXGroup;
+			children = (
+				52E45E7526BAFB32009C5965 /* WordAnswer.swift */,
+			);
+			path = Split;
 			sourceTree = "<group>";
 		};
 		B0B67EA5C8604836DA78643B /* Frameworks */ = {
@@ -502,6 +516,7 @@
 				45942FF226ADE87C006EE405 /* BaseBlackButton.swift in Sources */,
 				458C50C326B6BF0D001DD6B9 /* WordsRouter.swift in Sources */,
 				45FF7AA926A015CF005BAF35 /* ListCell.swift in Sources */,
+				52E45E7826BAFCB2009C5965 /* Array.swift in Sources */,
 				45A191B0269DE22C00D2E169 /* BluereViewController.swift in Sources */,
 				450712EB269E15980022EE61 /* String.swift in Sources */,
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
@@ -532,6 +547,7 @@
 				45942FEB26ADDCCA006EE405 /* NewWordPresenter.swift in Sources */,
 				45E976A3269490C500A12858 /* UINavigationController.swift in Sources */,
 				45ED9EC7269CBCCF00AB150F /* AutorisationPresenter.swift in Sources */,
+				52E45E7626BAFB32009C5965 /* WordAnswer.swift in Sources */,
 				52E45E7326B7F546009C5965 /* WordCell.swift in Sources */,
 				45E8EEBD2693389600D66F13 /* FirebaseAutorization.swift in Sources */,
 				45942FE926ADDCAB006EE405 /* NewWordViewController.swift in Sources */,
