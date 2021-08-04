@@ -9,6 +9,9 @@ import Foundation
 
 protocol SplitInteractorProtocol: AnyObject {
     func lissenWords(compl: @escaping(([Word]) -> Void))
+    func tapedAnswer(word: Word)
+    func choseWordToCheck(word: Word)
+
 
     init(list: List?)
 }
@@ -32,5 +35,13 @@ class SplitInteractor: SplitInteractorProtocol {
                 compl(words)
             }
         }
+    }
+
+    func tapedAnswer(word: Word){
+        presenter?.tapedAnswer(word: word)
+    }
+
+    func choseWordToCheck(word: Word){
+        presenter?.choseWordToCheck(word: word)
     }
 }

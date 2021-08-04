@@ -8,15 +8,14 @@
 import Foundation
 
 protocol SplitPresenterProtocol: AnyObject {
-//    func fetchData()
-//    func saveSwitch(isOn: Bool)
-//    func saveWay(index: Int)
+    func tapedAnswer(word: Word)
+    func choseWordToCheck(word: Word)
 //
 //    func tapedLike(word: Word?)
 //    func delete(word: Word)
 //    func changeWord(word: Word?)
 
-    init(interactor: SplitInteractorProtocol) //если лист нил значит фаворит
+    init(interactor: SplitInteractorProtocol, wayTranslate: MenuEndpointsEnum.ActionButtonsAlert)
 }
 
 class SplitPresenter: SplitPresenterProtocol {
@@ -25,12 +24,44 @@ class SplitPresenter: SplitPresenterProtocol {
     var router: SplitRouterProtocol?
     weak var view: SplitViewControllerProtocol?
 
-    required init(interactor: SplitInteractorProtocol) {
+    private var answerWords = [WordAnswer]()
+    private var allWord = [Word]()
+    private let wayTranslate: MenuEndpointsEnum.ActionButtonsAlert!
+
+    required init(interactor: SplitInteractorProtocol,
+                  wayTranslate: MenuEndpointsEnum.ActionButtonsAlert) {
+
         self.interactor = interactor
+        self.wayTranslate = wayTranslate
 
         interactor.lissenWords {[weak self] words in
-//            self?.view?.words(words: words)
+            guard let self = self else {return}
+            self.allWord = words
+            self.answerWords = words.map({WordAnswer(word: $0)})
+            self.view?.answer(wordsAnswe: self.answerWords,
+                              translateWayRusEng: self.wayTranslate == .rusEngl)
         }
+    }
+
+    func tapedAnswer(word: Word) {
+        guard let index = index(word: word) else {return}
+
+        var answer = answerWords[index]
+        answer.creteAnswer(word: word)
+        answerWords[index] = answer
+
+    }
+
+    func choseWordToCheck(word: Word) {
+        guard let index = index(word: word) else {return}
+
+        var answer = answerWords[index]
+        answer.createWordsAnswers(allWords: allWord)
+        answerWords[index] = answer
+    }
+
+    private func index(word: Word) -> Int? {
+        return answerWords.firstIndex(where: {$0.word == word})
     }
 
 }

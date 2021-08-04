@@ -16,13 +16,11 @@ struct WordAnswer {
 		self.word = word
 	}
 	
-	mutating func createWordsAnswers(allWords: [Word]) -> [Word]{
+	mutating func createWordsAnswers(allWords: [Word]){
 		if answer == nil, wordsAnswer.isEmpty {
 			let arrayDontAnswer = allWords.filter({$0.id != word.id})
 			wordsAnswer = arrayDontAnswer[word]
 		}
-		
-		return wordsAnswer
 	}
 	
 	mutating func creteAnswer(word: Word){

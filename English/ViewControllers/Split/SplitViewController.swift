@@ -12,7 +12,7 @@ protocol SplitViewControllerProtocol: AnyObject {
 //    func fetchSegmentControll(index: Int)
 //    func fetchSwitch(isOn: Bool)
 //
-//    func words(words: [Word])
+    func answer(wordsAnswe: [WordAnswer], translateWayRusEng: Bool)
 }
 
 class SplitViewController: UISplitViewController {
@@ -26,4 +26,8 @@ class SplitViewController: UISplitViewController {
 
 }
 
-extension SplitViewController: SplitViewControllerProtocol {}
+extension SplitViewController: SplitViewControllerProtocol {
+    func answer(wordsAnswe: [WordAnswer], translateWayRusEng: Bool) {
+
+    }
+}
