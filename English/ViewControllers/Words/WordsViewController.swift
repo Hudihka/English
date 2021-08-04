@@ -109,7 +109,7 @@ class WordsViewController: BaseViewController {
         table.deleteWord = {[weak self] word in
             guard let self = self else {return}
 
-            self.showAlert(title: "Действительно хочешь далить?", message: nil, style: .cancel, buttonText: "НЕТ") { _ in
+            self.showAlert(title: "Уверен", message: "Действительно хочешь далить?", style: .cancel, buttonText: "ДА") { _ in
                 self.presenter?.delete(word: word)
             }
         }
@@ -124,6 +124,10 @@ class WordsViewController: BaseViewController {
     @objc private func switchAction(_ sender: UISwitch) {
         presenter?.saveSwitch(isOn: sender.isOn)
         table.wordsTable(wordsArray: nil, duration: 0.25)
+    }
+
+    @objc override func rightBBItem(){
+        self.presenter?.changeWord(word: word)
     }
 
 }

@@ -178,6 +178,15 @@ class FirebaseData {
 
         db.collection("Profile").document(id).setData(profile.json)
         db.collection("Words").document(idWord).delete()
+        db.collection("Words").whereField("id", isEqualTo: idWord).getDocuments { snaphot, _ in
+            let batchLocal = Firestore.firestore().batch()
+
+            if let data = snaphot?.documents {
+                data.forEach({batchLocal.deleteDocument($0.reference)})
+            }
+
+            batchLocal.commit()
+        }
     }
 
     

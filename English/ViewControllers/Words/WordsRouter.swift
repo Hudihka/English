@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WordsRouterProtocol: AnyObject {
-    func newWordInTheme(list: List, word: Word)
+    func newWordInTheme(list: List, word: Word?)
     
     init(navigationVC: BaseNavigationController)
 }
@@ -22,7 +22,7 @@ class WordsRouter: WordsRouterProtocol {
     }
 
 
-    func newWordInTheme(list: List, word: Word) {
+    func newWordInTheme(list: List, word: Word?) {
         let NVC = DI.newWordViewController(list: list, oldWord: word)
         navigationVC.present(NVC, animated: true, completion: nil)
     }
