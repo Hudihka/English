@@ -131,14 +131,17 @@ extension WordsTableView: UITableViewDelegate, UITableViewDataSource {
 
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {[weak self] actions -> UIMenu? in
 
-            let action1 = UIAction(title: "Изменить", image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
+            let action1 = UIAction(title: WordsEndpoint.TableContextMenu.rename.rawValue,
+								   image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
                 guard let self = self else {return}
 
                 let word = self.words[indexPath.row]
                 self.presenter?.changeWord(word: word)
             }
 
-            let action2 = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) {[weak self] _ in
+			let action2 = UIAction(title: WordsEndpoint.TableContextMenu.delete.rawValue,
+								   image: UIImage(systemName: "trash"),
+								   attributes: .destructive) {[weak self] _ in
                 guard let self = self else {return}
 
                 let word = self.words[indexPath.row]

@@ -20,5 +20,10 @@ enum WordsEndpoint {
     enum ViewText: String {
         case rightBB        = "add"
     }
+	
+	enum TableContextMenu: String {
+        case rename     = "Изменить"
+		case delete     = "Удалить"
+	}
 
 }

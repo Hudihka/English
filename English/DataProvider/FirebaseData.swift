@@ -70,6 +70,30 @@ class FirebaseData {
 
         db.collection("Profile").document(id).setData(profile.json)
     }
+	
+    func deleteList(listName: String){
+        guard let profile = profile,
+              let id = idUser else {
+            return
+        }
+		
+		let newLists = profile.lists.filter({$0.name != listName})
+        profile.lists = newLists
+
+        db.collection("Profile").document(id).setData(profile.json)
+		
+		db.collection("Words")
+			.whereField("listName", isEqualTo: listName)
+			.getDocuments { snaphot, _ in
+				let batchLocal = Firestore.firestore().batch()
+
+				if let data = snaphot?.documents {
+					data.forEach({batchLocal.deleteDocument($0.reference)})
+				}
+
+					batchLocal.commit()
+		}
+    }
 
     func renameLists(oldName: String, newName: String){
         guard let profile = profile,
@@ -116,6 +140,7 @@ class FirebaseData {
     func createWord(newWord: Word, list: List){
         guard let profile = profile,
             let id = idUser,
+			let idWord = newWord.id,
             let index = profile.lists.firstIndex(where: {$0.name == list.name}) else {
             return
         }
@@ -124,7 +149,7 @@ class FirebaseData {
         profile.lists[index] = newList
 
         db.collection("Profile").document(id).setData(profile.json)
-        db.collection("Words").addDocument(data: newWord.json)
+        db.collection("Words").document(idWord).setData(newWord.json)
     }
 
     func lisenWord(list: List?, compl: @escaping(([Word]) -> Void)) {

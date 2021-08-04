@@ -12,6 +12,7 @@ protocol MenuPresenterProtocol: AnyObject {
     func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert, list: List?, NVC: BaseNavigationController?)
     func createList(name: String)
     func renameList(oldName: String, newName: String)
+	func deleteList(name: String)
     func reloadProfile()
     func newWordInTheme(list: List)
 }
@@ -55,6 +56,10 @@ class MenuPresenter: MenuPresenterProtocol {
             interactor?.renameList(oldName: oldName, newName: newName)
         }
     }
+	
+	func deleteList(name: String) {
+		interactor?.deleteList(name: name)
+	}
 
     func reloadProfile(){
         view?.reloadData()
