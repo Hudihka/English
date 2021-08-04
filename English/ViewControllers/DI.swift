@@ -15,6 +15,8 @@ protocol DIProtocol: AnyObject {
     static func menuViewController() -> BaseNavigationController
     static func newWordViewController(list: List, oldWord: Word?) -> BaseNavigationController
     static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController
+
+    static func splitViewController(list: List?) -> SplitViewController
 }
 
 
@@ -96,6 +98,23 @@ class DI: DIProtocol {
 		let interactor = WordsInteractor(list: list)
         let router = WordsRouter(navigationVC: NVC, list: list)
         let presenter = WordsPresenter(interactor: interactor)
+
+        VC.presenter = presenter
+        interactor.presenter = presenter
+
+        presenter.view = VC
+        presenter.interactor = interactor
+        presenter.router = router
+
+        return VC
+    }
+
+    static func splitViewController(list: List?) -> SplitViewController {
+        let VC = SplitViewController()
+
+        let interactor = SplitInteractor(list: list)
+        let router = SplitRouterRouter()
+        let presenter = SplitPresenter(interactor: interactor)
 
         VC.presenter = presenter
         interactor.presenter = presenter
