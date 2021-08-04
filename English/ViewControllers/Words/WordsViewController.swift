@@ -127,7 +127,7 @@ class WordsViewController: BaseViewController {
     }
 
     @objc override func rightBBItem(){
-        self.presenter?.changeWord(word: word)
+        self.presenter?.changeWord(word: nil)
     }
 
 }

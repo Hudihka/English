@@ -23,6 +23,7 @@ enum NewWordEndpoits {
 
     enum ButtonText: String {
         case add        = "ДОБАВИТЬ"
+        case change     = "ИЗМЕНИТЬ"
         case mix        = "↓↑"
         case leftBB     = "Отмена"
     }

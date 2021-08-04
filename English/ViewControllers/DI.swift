@@ -94,7 +94,7 @@ class DI: DIProtocol {
         let VC = WordsViewController()
 
 		let interactor = WordsInteractor(list: list)
-        let router = WordsRouter(navigationVC: NVC)
+        let router = WordsRouter(navigationVC: NVC, list: list)
         let presenter = WordsPresenter(interactor: interactor)
 
         VC.presenter = presenter

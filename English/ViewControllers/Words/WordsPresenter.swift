@@ -59,9 +59,7 @@ class WordsPresenter: WordsPresenterProtocol {
     }
 
     func changeWord(word: Word?){
-        if let list = FirebaseData.shared.profile?.lists.first(where: {$0.name == word.listName}){
-            router?.newWordInTheme(list: list, word: word)
-        }
+        router?.newWordInTheme(word: word)
     }
 
 }

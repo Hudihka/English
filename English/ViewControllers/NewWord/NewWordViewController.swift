@@ -12,13 +12,14 @@ protocol NewWordViewControllerProtocol: AnyObject {
 	func startData(word: Word?)
 	func enabledData(enabledAdd: Bool, enabledMix: Bool)
     func title(text: String)
+    func titleButton(text: String)
 }
 
 class NewWordViewController: BaseViewController{
     
     var presenter: NewWordPresenterProtocol?
 	
-    private var button = BaseBlackButton(title: NewWordEndpoits.ButtonText.add.rawValue,
+    private var button = BaseBlackButton(title: nil,
                                          selector: #selector(buttonAction), target: self)
     private var buttonMix = BaseBlackButton(title: NewWordEndpoits.ButtonText.mix.rawValue,
                                             selector: #selector(mixButton), target: self)
@@ -130,6 +131,7 @@ class NewWordViewController: BaseViewController{
         gester?.isEnabled = false
 
         presenter?.fetchTitle()
+        presenter?.fetchData()
     }
 
     @objc override func rightBBItem(){
@@ -222,6 +224,10 @@ extension NewWordViewController: NewWordViewControllerProtocol {
 
     func title(text: String){
         self.title = text
+    }
+
+    func titleButton(text: String) {
+        button.setTitle(text, for: .normal)
     }
 }
 

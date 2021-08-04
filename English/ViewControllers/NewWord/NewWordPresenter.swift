@@ -46,6 +46,7 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	func fetchData(){
 		view?.startData(word: newWord)
 		view?.enabledData(enabledAdd: enabledAdd, enabledMix: enabledMixedd)
+        view?.titleButton(text: oldWord == nil ? NewWordEndpoits.ButtonText.add.rawValue : NewWordEndpoits.ButtonText.change.rawValue)
 	}
 	
 	private var enabledAdd: Bool{

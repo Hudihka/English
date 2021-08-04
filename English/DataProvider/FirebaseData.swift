@@ -101,7 +101,16 @@ class FirebaseData {
 	
 	func renameWord(newWord: Word){
 		guard let id = newWord.id else { return }
-        db.collection("Words").whereField("id", isEqualTo: id).setValuesForKeys(newWord.json)
+        db.collection("Words").whereField("id", isEqualTo: id).getDocuments { snaphot, _ in
+            let batchLocal = Firestore.firestore().batch()
+
+            if let data = snaphot?.documents {
+                data.forEach({batchLocal.updateData(newWord.json, forDocument: $0.reference)})
+            }
+
+            batchLocal.commit()
+//            newWord.json
+        }
 	}
 
     func createWord(newWord: Word, list: List){
