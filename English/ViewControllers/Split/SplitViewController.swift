@@ -8,11 +8,9 @@
 import UIKit
 
 protocol SplitViewControllerProtocol: AnyObject {
-//    func fetchTitle(text: String)
-//    func fetchSegmentControll(index: Int)
-//    func fetchSwitch(isOn: Bool)
-//
     func answer(wordsAnswe: [WordAnswer], translateWayRusEng: Bool)
+	func correctedAnswerTwoVC(wordsAnswe: [WordAnswer])
+	func answerDetailVC(wordAnswer: WordAnswer)
 }
 
 class SplitViewController: UISplitViewController {
@@ -21,13 +19,21 @@ class SplitViewController: UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        presenter?.fetchData()
+		
     }
 
 }
 
 extension SplitViewController: SplitViewControllerProtocol {
     func answer(wordsAnswe: [WordAnswer], translateWayRusEng: Bool) {
-
+		
     }
+	
+	func correctedAnswerTwoVC(wordsAnswe: [WordAnswer]){ //это после ответа
+		
+	}
+	
+	func answerDetailVC(wordAnswer: WordAnswer) { //это показ возможных вариантов ответа
+		
+	}
 }

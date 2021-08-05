@@ -43,21 +43,24 @@ class SplitPresenter: SplitPresenterProtocol {
         }
     }
 
-    func tapedAnswer(word: Word) {
+    func tapedAnswer(word: Word) { //выбрали ответ
         guard let index = index(word: word) else {return}
 
         var answer = answerWords[index]
         answer.creteAnswer(word: word)
         answerWords[index] = answer
-
+		
+		view?.correctedAnswerTwoVC(wordsAnswe: answerWords)
     }
 
-    func choseWordToCheck(word: Word) {
+    func choseWordToCheck(word: Word) { //выбрали слово для проверки
         guard let index = index(word: word) else {return}
 
         var answer = answerWords[index]
         answer.createWordsAnswers(allWords: allWord)
         answerWords[index] = answer
+		
+		view?.answerDetailVC(wordAnswer: answer)
     }
 
     private func index(word: Word) -> Int? {

@@ -72,6 +72,7 @@
 		52E45E7326B7F546009C5965 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7226B7F546009C5965 /* WordCell.swift */; };
 		52E45E7626BAFB32009C5965 /* WordAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7526BAFB32009C5965 /* WordAnswer.swift */; };
 		52E45E7826BAFCB2009C5965 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7726BAFCB2009C5965 /* Array.swift */; };
+		52E45E7B26BC5270009C5965 /* MasterSlitTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7A26BC5270009C5965 /* MasterSlitTableView.swift */; };
 		52EF819326B039C700B81D19 /* EnumNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF819226B039C700B81D19 /* EnumNotification.swift */; };
 		BBABB6EE4E302A6CA740797D /* Pods_English.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9F5BC59122B2F9337ED01F /* Pods_English.framework */; };
 /* End PBXBuildFile section */
@@ -146,6 +147,7 @@
 		52E45E7226B7F546009C5965 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		52E45E7526BAFB32009C5965 /* WordAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAnswer.swift; sourceTree = "<group>"; };
 		52E45E7726BAFCB2009C5965 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		52E45E7A26BC5270009C5965 /* MasterSlitTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSlitTableView.swift; sourceTree = "<group>"; };
 		52EF819226B039C700B81D19 /* EnumNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -377,8 +379,25 @@
 				4561060B26BB0B0D006A1442 /* SplitPresenter.swift */,
 				4561060D26BB0B61006A1442 /* SplitInteractorProtocol.swift */,
 				4561060F26BB0BD6006A1442 /* SplitRouter.swift */,
+				52E45E7926BC523D009C5965 /* MasterSplitViewController */,
 			);
 			path = Split;
+			sourceTree = "<group>";
+		};
+		52E45E7926BC523D009C5965 /* MasterSplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				52E45E7C26BC5276009C5965 /* Views */,
+			);
+			path = MasterSplitViewController;
+			sourceTree = "<group>";
+		};
+		52E45E7C26BC5276009C5965 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				52E45E7A26BC5270009C5965 /* MasterSlitTableView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B0B67EA5C8604836DA78643B /* Frameworks */ = {
@@ -579,6 +598,7 @@
 				45A191AE269DE16E00D2E169 /* VisualEffectView.swift in Sources */,
 				456E7F742699F79D007ABF69 /* DI.swift in Sources */,
 				450712E5269E0A9C0022EE61 /* MenuPresenter.swift in Sources */,
+				52E45E7B26BC5270009C5965 /* MasterSlitTableView.swift in Sources */,
 				45826F6026B9B83D001B3350 /* WordCellDescription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
