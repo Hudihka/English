@@ -68,6 +68,9 @@
 		45FF7AAA26A015CF005BAF35 /* FavoriteWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AA726A015CF005BAF35 /* FavoriteWords.swift */; };
 		45FF7AAB26A015CF005BAF35 /* HederCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AA826A015CF005BAF35 /* HederCells.swift */; };
 		45FF7AAD26A016DD005BAF35 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AAC26A016DD005BAF35 /* BaseCell.swift */; };
+		529EFF0A26BD1B0800D65721 /* MasterHeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFF0926BD1B0800D65721 /* MasterHeder.swift */; };
+		529EFF0C26BD1CBA00D65721 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFF0B26BD1CBA00D65721 /* UITableView.swift */; };
+		529EFF0F26BD20C000D65721 /* SplitEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFF0E26BD20C000D65721 /* SplitEndpoint.swift */; };
 		52DB12E326AEF37600AAF949 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB12E226AEF37600AAF949 /* UITextField.swift */; };
 		52E45E7326B7F546009C5965 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7226B7F546009C5965 /* WordCell.swift */; };
 		52E45E7626BAFB32009C5965 /* WordAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7526BAFB32009C5965 /* WordAnswer.swift */; };
@@ -143,6 +146,9 @@
 		45FF7AA826A015CF005BAF35 /* HederCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HederCells.swift; sourceTree = "<group>"; };
 		45FF7AAC26A016DD005BAF35 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		4A12AD1320830D63DA5EBBDB /* Pods-English.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.debug.xcconfig"; path = "Target Support Files/Pods-English/Pods-English.debug.xcconfig"; sourceTree = "<group>"; };
+		529EFF0926BD1B0800D65721 /* MasterHeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterHeder.swift; sourceTree = "<group>"; };
+		529EFF0B26BD1CBA00D65721 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		529EFF0E26BD20C000D65721 /* SplitEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitEndpoint.swift; sourceTree = "<group>"; };
 		52DB12E226AEF37600AAF949 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		52E45E7226B7F546009C5965 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		52E45E7526BAFB32009C5965 /* WordAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAnswer.swift; sourceTree = "<group>"; };
@@ -327,6 +333,7 @@
 				45E976A026947F5800A12858 /* UIViewController.swift */,
 				45C960152694C2D600B846D2 /* UIWindow.swift */,
 				45E976A2269490C500A12858 /* UINavigationController.swift */,
+				529EFF0B26BD1CBA00D65721 /* UITableView.swift */,
 				45A191AB269DE0D700D2E169 /* UIView.swift */,
 				450712EA269E15980022EE61 /* String.swift */,
 				450712EC269E15C90022EE61 /* Date.swift */,
@@ -375,6 +382,7 @@
 		52E45E7426BAFAF6009C5965 /* Split */ = {
 			isa = PBXGroup;
 			children = (
+				529EFF0E26BD20C000D65721 /* SplitEndpoint.swift */,
 				4561060926BB0974006A1442 /* SplitViewController.swift */,
 				4561060B26BB0B0D006A1442 /* SplitPresenter.swift */,
 				4561060D26BB0B61006A1442 /* SplitInteractorProtocol.swift */,
@@ -396,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				52E45E7A26BC5270009C5965 /* MasterSlitTableView.swift */,
+				529EFF0926BD1B0800D65721 /* MasterHeder.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -541,6 +550,7 @@
 				45FF7AA326A00AF1005BAF35 /* MenuTableView.swift in Sources */,
 				458C50C626B6CAD4001DD6B9 /* NewWordEndpoits.swift in Sources */,
 				458C50C126B6BF01001DD6B9 /* WordsInteractor.swift in Sources */,
+				529EFF0F26BD20C000D65721 /* SplitEndpoint.swift in Sources */,
 				45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */,
 				45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */,
 				450712ED269E15C90022EE61 /* Date.swift in Sources */,
@@ -551,6 +561,7 @@
 				52E45E7826BAFCB2009C5965 /* Array.swift in Sources */,
 				45A191B0269DE22C00D2E169 /* BluereViewController.swift in Sources */,
 				4561060A26BB0974006A1442 /* SplitViewController.swift in Sources */,
+				529EFF0C26BD1CBA00D65721 /* UITableView.swift in Sources */,
 				450712EB269E15980022EE61 /* String.swift in Sources */,
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
 				45E976A126947F5800A12858 /* UIViewController.swift in Sources */,
@@ -574,6 +585,7 @@
 				4562DE6126972E0600510378 /* LoadProfileInteractor.swift in Sources */,
 				45942FEF26ADDD00006EE405 /* NewWordRouter.swift in Sources */,
 				450712EF269E174A0022EE61 /* List.swift in Sources */,
+				529EFF0A26BD1B0800D65721 /* MasterHeder.swift in Sources */,
 				45E8EEC92693429E00D66F13 /* DefaultUtils.swift in Sources */,
 				45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */,
 				45942FED26ADDCDE006EE405 /* NewWordInteractor.swift in Sources */,

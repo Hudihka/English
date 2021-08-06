@@ -16,14 +16,14 @@ class MasterSlitTableView: UITableView {
     var countTrue: Int = 0
     var countFalse: Int = 0
 	
-	var wordsAnswe: [WordAnswer]{
+	var wordsAnswer: [WordAnswer]{
 		didSet {
 			self.reloadData()
 		}
     }
 
     init(presenter: MenuPresenterProtocol?) {
-        super.init(frame: CGRect())
+		super.init(frame: CGRect(), style: .grouped)
         
         self.delegate = self
         self.dataSource = self
@@ -34,9 +34,7 @@ class MasterSlitTableView: UITableView {
         self.rowHeight = UITableView.automaticDimension
 
         self.register(FavoriteWords.self, forCellReuseIdentifier: "FavoriteWords")
-        self.register(ListCell.self, forCellReuseIdentifier: "ListCell")
-
-        self.register(HederCells.self, forHeaderFooterViewReuseIdentifier: "HederCells")
+        self.register(MasterHeder.self, forHeaderFooterViewReuseIdentifier: "MasterHeder")
 		
 		self.presenter = presenter
     }
@@ -47,23 +45,18 @@ class MasterSlitTableView: UITableView {
     
 }
 
-extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
+extension MasterSlitTableView: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return isTwoSection ? 2 : 1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                
-        if isTwoSection, section == 0 {
-            return 1
-        } else {
-            return lists.count
-        }
-        
+		return wordsAnswer.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+				   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if isTwoSection, indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteWords") as! FavoriteWords
@@ -86,14 +79,10 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
-        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HederCells") as! HederCells
-        if isTwoSection, section == 0 {
-			cell.text = MenuEndpointsEnum.CellText.header(favoritCount).text
-        } else {
-            let count = profile?.countWords ?? 0
-			cell.text = MenuEndpointsEnum.CellText.cell(countThem: lists.count,
-				countWord: count).text
-        }
+        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MasterHeder") as! MasterHeder
+		cell.countFalse = countFalse
+		cell.countTrue = countTrue
+		cell.count = wordsAnswer.count
 
         return cell
     }
@@ -114,79 +103,19 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
     {
-        guard let cell = tableView.cellForRow(at: indexPath) else {
-            return
-        }
-
-        UIView.animate(withDuration: 0.25) {
-
-            cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.85)
-        }
+        tableView.didHighlightRowAt(indexPath: indexPath)
     }
 
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath)
     {
-        guard let cell = tableView.cellForRow(at: indexPath) else {
-            return
-        }
-
-        UIView.animate(withDuration: 0.25) {
-            cell.transform = .identity
-        }
+        tableView.didUnhighlightRowAt(indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if isTwoSection, indexPath.section == 0 {
-            tapedCell(nil, FAVORIT_NAME)
-        } else {
-            let list = lists[indexPath.row]
-            tapedCell(list, nil)
-        }
+        
     }
 
-    //MARK: Контекстное меню
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        if isTwoSection, indexPath.section == 0 {
-            return nil
-        }
-
-        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
-			let action1 = UIAction(title: MenuEndpointsEnum.TableContextMenu.rename.rawValue,
-								   image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
-                guard let self = self else {return}
-
-                let oldName = self.lists[indexPath.row].name
-                self.tapedRename(oldName)
-            }
-
-			let action2 = UIAction(title: MenuEndpointsEnum.TableContextMenu.addWord.rawValue,
-								   image: UIImage(systemName: "plus")) {[weak self] _ in
-                guard let self = self else {return}
-
-                let list = self.lists[indexPath.row]
-				self.presenter?.newWordInTheme(list: list)
-            }
-			
-			let action3 = UIAction(title: MenuEndpointsEnum.TableContextMenu.delete.rawValue,
-								   image: UIImage(systemName: "trash"),
-								   attributes: .destructive) {[weak self] _ in
-                guard let self = self else {return}
-
-				let list = self.lists[indexPath.row].name
-				self.presenter?.deleteList(name: list)
-            }
-
-            let menu1 = UIMenu(title: "", children: [action1])
-            let menu2 = UIMenu(title: "", options: .displayInline, children: [action2])
-			let menu3 = UIMenu(title: "", options: .displayInline, children: [action3])
-
-            return UIMenu(title: "", children: [menu1, menu2, menu3])
-        }
-
-        return configuration
-    }
-    
 }
 

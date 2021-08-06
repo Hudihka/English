@@ -97,25 +97,12 @@ extension WordsTableView: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
     {
-        guard let cell = tableView.cellForRow(at: indexPath) else {
-            return
-        }
-
-        UIView.animate(withDuration: 0.25) {
-
-            cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.85)
-        }
+		tableView.didHighlightRowAt(indexPath: indexPath)
     }
 
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath)
     {
-        guard let cell = tableView.cellForRow(at: indexPath) else {
-            return
-        }
-
-        UIView.animate(withDuration: 0.25) {
-            cell.transform = .identity
-        }
+		tableView.didUnhighlightRowAt(indexPath: indexPath)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
