@@ -71,6 +71,7 @@
 		529EFF0A26BD1B0800D65721 /* MasterHeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFF0926BD1B0800D65721 /* MasterHeder.swift */; };
 		529EFF0C26BD1CBA00D65721 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFF0B26BD1CBA00D65721 /* UITableView.swift */; };
 		529EFF0F26BD20C000D65721 /* SplitEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFF0E26BD20C000D65721 /* SplitEndpoint.swift */; };
+		529EFF1126BD4ADA00D65721 /* CellMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFF1026BD4ADA00D65721 /* CellMaster.swift */; };
 		52DB12E326AEF37600AAF949 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB12E226AEF37600AAF949 /* UITextField.swift */; };
 		52E45E7326B7F546009C5965 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7226B7F546009C5965 /* WordCell.swift */; };
 		52E45E7626BAFB32009C5965 /* WordAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7526BAFB32009C5965 /* WordAnswer.swift */; };
@@ -149,6 +150,7 @@
 		529EFF0926BD1B0800D65721 /* MasterHeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterHeder.swift; sourceTree = "<group>"; };
 		529EFF0B26BD1CBA00D65721 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		529EFF0E26BD20C000D65721 /* SplitEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitEndpoint.swift; sourceTree = "<group>"; };
+		529EFF1026BD4ADA00D65721 /* CellMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellMaster.swift; sourceTree = "<group>"; };
 		52DB12E226AEF37600AAF949 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		52E45E7226B7F546009C5965 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		52E45E7526BAFB32009C5965 /* WordAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAnswer.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 			children = (
 				52E45E7A26BC5270009C5965 /* MasterSlitTableView.swift */,
 				529EFF0926BD1B0800D65721 /* MasterHeder.swift */,
+				529EFF1026BD4ADA00D65721 /* CellMaster.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45FF7AA326A00AF1005BAF35 /* MenuTableView.swift in Sources */,
+				529EFF1126BD4ADA00D65721 /* CellMaster.swift in Sources */,
 				458C50C626B6CAD4001DD6B9 /* NewWordEndpoits.swift in Sources */,
 				458C50C126B6BF01001DD6B9 /* WordsInteractor.swift in Sources */,
 				529EFF0F26BD20C000D65721 /* SplitEndpoint.swift in Sources */,

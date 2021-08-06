@@ -18,14 +18,16 @@ class MasterHeder: UITableViewHeaderFooterView {
     
     var count: Int = 0 {
         didSet{
-			labelAll.text = HederMasterText.countAll
-//			"\(countTrue + countFalse) из \(count)"
-			
+			let text = SplitEndpoint.HederMasterText
+				.countAll(countTrue: countTrue, countFalse: countFalse, count: count)
+				.text
+			labelAll.text = text
+
 			labelTrue.isHidden = countTrue == 0
-			labelTrue.text = "\(countTrue) +"
+			labelTrue.text = SplitEndpoint.HederMasterText.countTrue(countTrue).text
 			
             labelFolse.isHidden = countFalse == 0
-            labelFolse.text = "\(countFalse) -"
+            labelFolse.text = SplitEndpoint.HederMasterText.countFalse(countTrue).text
         }
     }
 	

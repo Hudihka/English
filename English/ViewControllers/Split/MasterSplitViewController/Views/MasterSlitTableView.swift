@@ -8,33 +8,33 @@
 import UIKit
 
 class MasterSlitTableView: UITableView {
-    
-    var tapedCell: (List?, String?) -> Void = {_,_ in }
 	
 	private var presenter: MenuPresenterProtocol?
+	private var rusEngWay: Bool = true
     
     var countTrue: Int = 0
     var countFalse: Int = 0
 	
 	var wordsAnswer: [WordAnswer]{
 		didSet {
-			self.reloadData()
+			reloadData()
 		}
     }
 
-    init(presenter: MenuPresenterProtocol?) {
+	init(presenter: MenuPresenterProtocol?, rusEngWay: Bool) {
 		super.init(frame: CGRect(), style: .grouped)
         
-        self.delegate = self
-        self.dataSource = self
+        delegate = self
+        dataSource = self
         
-        self.separatorStyle = .none
+        separatorStyle = .none
+		backgroundColor = .white
         
-        self.estimatedRowHeight = 100.0
-        self.rowHeight = UITableView.automaticDimension
+        estimatedRowHeight = 100.0
+        rowHeight = UITableView.automaticDimension
 
-        self.register(FavoriteWords.self, forCellReuseIdentifier: "FavoriteWords")
-        self.register(MasterHeder.self, forHeaderFooterViewReuseIdentifier: "MasterHeder")
+        register(CellMaster.self, forCellReuseIdentifier: "CellMaster")
+        register(MasterHeder.self, forHeaderFooterViewReuseIdentifier: "MasterHeder")
 		
 		self.presenter = presenter
     }
@@ -58,17 +58,11 @@ extension MasterSlitTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView,
 				   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if isTwoSection, indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteWords") as! FavoriteWords
-            
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as! ListCell
-            cell.list = lists[indexPath.row]
-            
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellMaster") as! CellMaster
+		cell.rusEngl = rusEngWay
+		cell.wordAnswer = wordsAnswer[indexPath.row]
         
+		return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -113,8 +107,6 @@ extension MasterSlitTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        
     }
 
 }
