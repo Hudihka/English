@@ -8,6 +8,10 @@
 import Foundation
 
 enum SplitEndpoint {
+	enum MasterText: String {
+		case leftBBItem = "Отмена"
+	}
+	
 	enum HederMasterText {
 		case countAll(countTrue: Int, countFalse: Int, count: Int)
 		case countTrue(Int)

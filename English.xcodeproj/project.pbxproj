@@ -72,6 +72,7 @@
 		529EFF0C26BD1CBA00D65721 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFF0B26BD1CBA00D65721 /* UITableView.swift */; };
 		529EFF0F26BD20C000D65721 /* SplitEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFF0E26BD20C000D65721 /* SplitEndpoint.swift */; };
 		529EFF1126BD4ADA00D65721 /* CellMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFF1026BD4ADA00D65721 /* CellMaster.swift */; };
+		529EFF1426BD6AA700D65721 /* MasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529EFF1326BD6AA700D65721 /* MasterSplitViewController.swift */; };
 		52DB12E326AEF37600AAF949 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DB12E226AEF37600AAF949 /* UITextField.swift */; };
 		52E45E7326B7F546009C5965 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7226B7F546009C5965 /* WordCell.swift */; };
 		52E45E7626BAFB32009C5965 /* WordAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E45E7526BAFB32009C5965 /* WordAnswer.swift */; };
@@ -151,6 +152,7 @@
 		529EFF0B26BD1CBA00D65721 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		529EFF0E26BD20C000D65721 /* SplitEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitEndpoint.swift; sourceTree = "<group>"; };
 		529EFF1026BD4ADA00D65721 /* CellMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellMaster.swift; sourceTree = "<group>"; };
+		529EFF1326BD6AA700D65721 /* MasterSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitViewController.swift; sourceTree = "<group>"; };
 		52DB12E226AEF37600AAF949 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		52E45E7226B7F546009C5965 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		52E45E7526BAFB32009C5965 /* WordAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAnswer.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 		52E45E7926BC523D009C5965 /* MasterSplitViewController */ = {
 			isa = PBXGroup;
 			children = (
+				529EFF1326BD6AA700D65721 /* MasterSplitViewController.swift */,
 				52E45E7C26BC5276009C5965 /* Views */,
 			);
 			path = MasterSplitViewController;
@@ -570,6 +573,7 @@
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
 				45E976A126947F5800A12858 /* UIViewController.swift in Sources */,
 				458C50CA26B70D96001DD6B9 /* WordsTableView.swift in Sources */,
+				529EFF1426BD6AA700D65721 /* MasterSplitViewController.swift in Sources */,
 				45E8EECB2693543C00D66F13 /* Word.swift in Sources */,
 				52DB12E326AEF37600AAF949 /* UITextField.swift in Sources */,
 				450712E7269E0B520022EE61 /* MenuInteractor.swift in Sources */,

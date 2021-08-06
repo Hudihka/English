@@ -134,10 +134,6 @@ class NewWordViewController: BaseViewController{
         presenter?.fetchData()
     }
 
-    @objc override func rightBBItem(){
-        //добавить слово
-    }
-
     @objc private func buttonAction(sender: UIButton!) {
 		presenter?.createWord()
     }
