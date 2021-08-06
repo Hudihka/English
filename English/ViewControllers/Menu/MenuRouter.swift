@@ -24,7 +24,8 @@ class MenuRouter: MenuRouterProtocol{
     }
 
     func presentSplit(list: List?, way: MenuEndpointsEnum.ActionButtonsAlert) {
-
+        let VC = DI.splitViewController(list: list, wayTranslate: way)
+        navigationVC.present(VC, animated: true, completion: nil)
     }
 
     func pushCramming(list: List?) {

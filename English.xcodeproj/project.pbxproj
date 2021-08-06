@@ -59,6 +59,9 @@
 		45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A42694B56A00A12858 /* BaseViewController.swift */; };
 		45E976A72694BB3A00A12858 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A62694BB3900A12858 /* BaseNavigationController.swift */; };
 		45E976AA2694BE5E00A12858 /* LoadProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A92694BE5E00A12858 /* LoadProfileViewController.swift */; };
+		45EA372526BDB8A000BB40BD /* MasterSplitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA372426BDB8A000BB40BD /* MasterSplitPresenter.swift */; };
+		45EA372726BDB8B300BB40BD /* MasterSplitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA372626BDB8B300BB40BD /* MasterSplitInteractor.swift */; };
+		45EA372926BDB8D400BB40BD /* MasterSplitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA372826BDB8D400BB40BD /* MasterSplitRouter.swift */; };
 		45ED9EC7269CBCCF00AB150F /* AutorisationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9EC6269CBCCF00AB150F /* AutorisationPresenter.swift */; };
 		45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9EC8269CBCF600AB150F /* AutorisationInteractor.swift */; };
 		45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9ECA269CBD0E00AB150F /* AutorisationRouter.swift */; };
@@ -138,6 +141,9 @@
 		45E976A42694B56A00A12858 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		45E976A62694BB3900A12858 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		45E976A92694BE5E00A12858 /* LoadProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileViewController.swift; sourceTree = "<group>"; };
+		45EA372426BDB8A000BB40BD /* MasterSplitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitPresenter.swift; sourceTree = "<group>"; };
+		45EA372626BDB8B300BB40BD /* MasterSplitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitInteractor.swift; sourceTree = "<group>"; };
+		45EA372826BDB8D400BB40BD /* MasterSplitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitRouter.swift; sourceTree = "<group>"; };
 		45ED9EC6269CBCCF00AB150F /* AutorisationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationPresenter.swift; sourceTree = "<group>"; };
 		45ED9EC8269CBCF600AB150F /* AutorisationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationInteractor.swift; sourceTree = "<group>"; };
 		45ED9ECA269CBD0E00AB150F /* AutorisationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationRouter.swift; sourceTree = "<group>"; };
@@ -400,6 +406,9 @@
 			isa = PBXGroup;
 			children = (
 				529EFF1326BD6AA700D65721 /* MasterSplitViewController.swift */,
+				45EA372426BDB8A000BB40BD /* MasterSplitPresenter.swift */,
+				45EA372626BDB8B300BB40BD /* MasterSplitInteractor.swift */,
+				45EA372826BDB8D400BB40BD /* MasterSplitRouter.swift */,
 				52E45E7C26BC5276009C5965 /* Views */,
 			);
 			path = MasterSplitViewController;
@@ -556,8 +565,10 @@
 				45FF7AA326A00AF1005BAF35 /* MenuTableView.swift in Sources */,
 				529EFF1126BD4ADA00D65721 /* CellMaster.swift in Sources */,
 				458C50C626B6CAD4001DD6B9 /* NewWordEndpoits.swift in Sources */,
+				45EA372926BDB8D400BB40BD /* MasterSplitRouter.swift in Sources */,
 				458C50C126B6BF01001DD6B9 /* WordsInteractor.swift in Sources */,
 				529EFF0F26BD20C000D65721 /* SplitEndpoint.swift in Sources */,
+				45EA372726BDB8B300BB40BD /* MasterSplitInteractor.swift in Sources */,
 				45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */,
 				45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */,
 				450712ED269E15C90022EE61 /* Date.swift in Sources */,
@@ -598,6 +609,7 @@
 				45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */,
 				45942FED26ADDCDE006EE405 /* NewWordInteractor.swift in Sources */,
 				45E8EEC42693403D00D66F13 /* Vibro.swift in Sources */,
+				45EA372526BDB8A000BB40BD /* MasterSplitPresenter.swift in Sources */,
 				45942FEB26ADDCCA006EE405 /* NewWordPresenter.swift in Sources */,
 				45E976A3269490C500A12858 /* UINavigationController.swift in Sources */,
 				45ED9EC7269CBCCF00AB150F /* AutorisationPresenter.swift in Sources */,

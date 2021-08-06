@@ -9,9 +9,9 @@ import UIKit
 
 class MasterSlitTableView: UITableView {
 	
-	private var presenter: MenuPresenterProtocol?
-	private var rusEngWay: Bool = true
-    
+	private var presenter: MasterSplitPresenterProtocol?
+
+	var rusEngWay: Bool = true
     var countTrue: Int = 0
     var countFalse: Int = 0
 	
@@ -21,7 +21,7 @@ class MasterSlitTableView: UITableView {
 		}
     }
 
-	init(presenter: MenuPresenterProtocol?, rusEngWay: Bool) {
+	init(presenter: MasterSplitPresenterProtocol?) {
 		super.init(frame: CGRect(), style: .grouped)
         
         delegate = self

@@ -16,7 +16,7 @@ protocol DIProtocol: AnyObject {
     static func newWordViewController(list: List, oldWord: Word?) -> BaseNavigationController
     static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController
 
-    static func splitViewController(list: List?) -> SplitViewController
+    static func splitViewController(list: List?, wayTranslate: MenuEndpointsEnum.ActionButtonsAlert) -> SplitViewController
 }
 
 
@@ -109,12 +109,31 @@ class DI: DIProtocol {
         return VC
     }
 
-    static func splitViewController(list: List?) -> SplitViewController {
+    static func splitViewController(list: List?,
+                                    wayTranslate: MenuEndpointsEnum.ActionButtonsAlert) -> SplitViewController {
         let VC = SplitViewController()
 
         let interactor = SplitInteractor(list: list)
         let router = SplitRouterRouter()
-        let presenter = SplitPresenter(interactor: interactor)
+        let presenter = SplitPresenter(interactor: interactor, wayTranslate: wayTranslate)
+
+        VC.presenter = presenter
+        interactor.presenter = presenter
+
+        presenter.view = VC
+        presenter.interactor = interactor
+        presenter.router = router
+
+        return VC
+    }
+
+    static func asterSplitViewController(list: List?,
+                                         wayTranslate: MenuEndpointsEnum.ActionButtonsAlert) -> SplitViewController {
+        let VC = MasterSplitViewController()
+
+        let interactor = SplitInteractor(list: list)
+        let router = SplitRouterRouter()
+        let presenter = SplitPresenter(interactor: interactor, wayTranslate: wayTranslate)
 
         VC.presenter = presenter
         interactor.presenter = presenter

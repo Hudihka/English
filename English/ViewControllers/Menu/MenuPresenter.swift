@@ -27,10 +27,9 @@ class MenuPresenter: MenuPresenterProtocol {
 					list: List?) { //если лист нил значит фаворит
 
         switch alertButton {
-        case .rusEngl:
-			
-        case .englRus:
-            
+        case .rusEngl, .englRus:
+            router?.presentSplit(list: list,
+                                 way: alertButton)
         case .cramming:
             router?.pushCramming(list: list)
         case .title:

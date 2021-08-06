@@ -14,7 +14,7 @@ protocol MasterSplitViewControllerProtocol: AnyObject {
 
 class MasterSplitViewController: BaseViewController{
     
-    var presenter: NewWordPresenterProtocol?
+    var presenter: MasterSplitPresenterProtocol?
 	private var table: MasterSlitTableView!
 	
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ class MasterSplitViewController: BaseViewController{
     }
 
     override func desingUI() {
-		table = MasterSlitTableView(presenter: <#T##MenuPresenterProtocol?#>, rusEngWay: <#T##Bool#>)
+		table = MasterSlitTableView(presenter: presenter)
 		view.addSubview(table)
         table.snp.makeConstraints({ (make) in
             make.top.equalTo(0)
@@ -45,8 +45,8 @@ class MasterSplitViewController: BaseViewController{
         })
     }
 
+}
 
-    @objc private func buttonAction(sender: UIButton!) {
-		presenter?.createWord()
-    }
+extension MasterSplitViewController: MasterSplitViewControllerProtocol {
+
 }
