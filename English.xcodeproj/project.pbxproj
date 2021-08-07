@@ -18,7 +18,6 @@
 		4561060A26BB0974006A1442 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4561060926BB0974006A1442 /* SplitViewController.swift */; };
 		4561060C26BB0B0D006A1442 /* SplitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4561060B26BB0B0D006A1442 /* SplitPresenter.swift */; };
 		4561060E26BB0B61006A1442 /* SplitInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4561060D26BB0B61006A1442 /* SplitInteractorProtocol.swift */; };
-		4561061026BB0BD6006A1442 /* SplitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4561060F26BB0BD6006A1442 /* SplitRouter.swift */; };
 		4562DE6126972E0600510378 /* LoadProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DE6026972E0600510378 /* LoadProfileInteractor.swift */; };
 		4562DE6326972E1600510378 /* LoadProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DE6226972E1600510378 /* LoadProfilePresenter.swift */; };
 		4562DE6526972E2400510378 /* LoadProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562DE6426972E2400510378 /* LoadProfileRouter.swift */; };
@@ -105,7 +104,6 @@
 		4561060926BB0974006A1442 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		4561060B26BB0B0D006A1442 /* SplitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitPresenter.swift; sourceTree = "<group>"; };
 		4561060D26BB0B61006A1442 /* SplitInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitInteractorProtocol.swift; sourceTree = "<group>"; };
-		4561060F26BB0BD6006A1442 /* SplitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitRouter.swift; sourceTree = "<group>"; };
 		4562DE6026972E0600510378 /* LoadProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileInteractor.swift; sourceTree = "<group>"; };
 		4562DE6226972E1600510378 /* LoadProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfilePresenter.swift; sourceTree = "<group>"; };
 		4562DE6426972E2400510378 /* LoadProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileRouter.swift; sourceTree = "<group>"; };
@@ -420,7 +418,6 @@
 				529EFF0E26BD20C000D65721 /* SplitEndpoint.swift */,
 				4561060926BB0974006A1442 /* SplitViewController.swift */,
 				4561060B26BB0B0D006A1442 /* SplitPresenter.swift */,
-				4561060F26BB0BD6006A1442 /* SplitRouter.swift */,
 				4561060D26BB0B61006A1442 /* SplitInteractorProtocol.swift */,
 				52E45E7926BC523D009C5965 /* MasterSplitViewController */,
 				45EA372E26BEA82C00BB40BD /* DetailSplitViewController */,
@@ -621,7 +618,6 @@
 				4562DE6326972E1600510378 /* LoadProfilePresenter.swift in Sources */,
 				456EB43F2692E1120003CEB6 /* AppDelegate.swift in Sources */,
 				458C50BD26B6BEB4001DD6B9 /* WordsViewController.swift in Sources */,
-				4561061026BB0BD6006A1442 /* SplitRouter.swift in Sources */,
 				45FF7AAA26A015CF005BAF35 /* FavoriteWords.swift in Sources */,
 				458C50C826B6CCFB001DD6B9 /* WordsEndpoint.swift in Sources */,
 				45E976A72694BB3A00A12858 /* BaseNavigationController.swift in Sources */,

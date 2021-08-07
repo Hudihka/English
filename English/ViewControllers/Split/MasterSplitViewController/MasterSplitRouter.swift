@@ -24,14 +24,7 @@ class MasterSplitRouter: MasterSplitRouterProtocol {
     }
 
     func dissmisSplit() {
+        SplitViewController.activeSplitVC = false
         SVC.dismiss(animated: true, completion: nil)
     }
-//
-//    required init(navigationVC: BaseNavigationController, list: List?) {
-//        self.navigationVC = navigationVC
-//    }
-//
-//    func dissmis() {
-//        navigationVC.dismiss(animated: true, completion: nil)
-//    }
 }

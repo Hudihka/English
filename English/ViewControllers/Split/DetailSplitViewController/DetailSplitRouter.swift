@@ -24,6 +24,7 @@ class DetailSplitRouter: DetailSplitRouterProtocol {
     }
 
     func dissmisSplit() {
+        SplitViewController.activeSplitVC = false
         SVC.dismiss(animated: true, completion: nil)
     }
 

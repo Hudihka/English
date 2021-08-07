@@ -20,8 +20,12 @@ class SplitViewController: UISplitViewController {
     private var detailInteractor: DetailSplitInteractorProtocol?
     private var flagLoadDetail = false //нужен для того, что бы при первом запуске не делать сразу переход
 
+    @objc func canRotate () -> Void {}
+    static var activeSplitVC = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        SplitViewController.activeSplitVC = true
 
         let tuplMaster = DI.masterSplitViewController(SVC: self)
         let tuplDetail = DI.detailSplitViewController(SVC: self)

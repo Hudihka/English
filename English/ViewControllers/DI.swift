@@ -116,7 +116,6 @@ class DI: DIProtocol {
         let VC = SplitViewController()
 
         let interactor = SplitInteractor(list: list)
-        let router = SplitRouterRouter()
         let presenter = SplitPresenter(interactor: interactor, wayTranslate: wayTranslate)
 
         VC.presenter = presenter
@@ -124,7 +123,6 @@ class DI: DIProtocol {
 
         presenter.view = VC
         presenter.interactor = interactor
-        presenter.router = router
 
         return VC
     }

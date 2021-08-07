@@ -18,7 +18,6 @@ protocol SplitPresenterProtocol: AnyObject {
 class SplitPresenter: SplitPresenterProtocol {
 
     var interactor: SplitInteractorProtocol?
-    var router: SplitRouterProtocol?
     weak var view: SplitViewControllerProtocol?
 
     private var answerWords = [WordAnswer]()
