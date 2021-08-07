@@ -52,7 +52,7 @@ class BaseViewController: UIViewController {
         navigationItem.leftBarButtonItem = left
     }
     
-    private func addRightBBItem(){
+    func addRightBBItem(){
         
         guard let rightTextBBItem = rightTextBBItem else {return}
         

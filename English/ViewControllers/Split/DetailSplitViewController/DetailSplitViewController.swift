@@ -37,6 +37,11 @@ class DetailSplitViewController: BaseViewController{
         presenter?.tapedDissmis()
     }
 
+    override var leftTextBBItem: String?{
+        return ""
+    }
+
+
     override func desingUI() {
 
         label = UILabel()
@@ -63,6 +68,15 @@ class DetailSplitViewController: BaseViewController{
             make.bottom.equalTo(0)
         })
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+            if UIDevice.current.orientation.isLandscape {
+                self.navigationItem.setRightBarButton(nil, animated: true)
+            } else {
+                self.addRightBBItem()
+            }
+        }
 
 }
 
