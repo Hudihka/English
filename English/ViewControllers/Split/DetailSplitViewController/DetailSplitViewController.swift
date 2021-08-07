@@ -25,18 +25,6 @@ class DetailSplitViewController: BaseViewController{
 
     }
 
-    override var rightTextBBItem: String?{
-        return SplitEndpoint.MasterText.leftBBItem.rawValue
-    }
-
-    override var rightColor: UIColor{
-        return UIColor.red
-    }
-
-    @objc override func rightBBItem(){
-        presenter?.tapedDissmis()
-    }
-
     override func desingUI() {
 
         label = UILabel()

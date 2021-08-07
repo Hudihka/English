@@ -27,7 +27,7 @@ class MasterHeder: UITableViewHeaderFooterView {
 			labelTrue.text = SplitEndpoint.HederMasterText.countTrue(countTrue).text
 			
             labelFolse.isHidden = countFalse == 0
-            labelFolse.text = SplitEndpoint.HederMasterText.countFalse(countTrue).text
+            labelFolse.text = SplitEndpoint.HederMasterText.countFalse(countFalse).text
         }
     }
 	
