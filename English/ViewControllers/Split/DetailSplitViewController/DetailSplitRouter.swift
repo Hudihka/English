@@ -6,24 +6,25 @@
 //
 
 import Foundation
+import UIKit
 
 protocol DetailSplitRouterProtocol: AnyObject {
-//    func dissmis()
+    func dissmisSplit()
 
-//    init(navigationVC: BaseNavigationController)
+    init(SVC: UIViewController)
 }
 
 class DetailSplitRouter: DetailSplitRouterProtocol {
 
     var presenter: DetailSplitPresenterProtocol?
+    private var SVC: UIViewController!
 
-//    private var navigationVC: BaseNavigationController!
-//
-//    required init(navigationVC: BaseNavigationController, list: List?) {
-//        self.navigationVC = navigationVC
-//    }
-//
-//    func dissmis() {
-//        navigationVC.dismiss(animated: true, completion: nil)
-//    }
+    required init(SVC: UIViewController){
+        self.SVC = SVC
+    }
+
+    func dissmisSplit() {
+        SVC.dismiss(animated: true, completion: nil)
+    }
+
 }

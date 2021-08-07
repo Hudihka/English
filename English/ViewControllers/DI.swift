@@ -18,7 +18,7 @@ protocol DIProtocol: AnyObject {
 
     static func splitViewController(list: List?, wayTranslate: MenuEndpointsEnum.ActionButtonsAlert) -> SplitViewController
     static func masterSplitViewController(SVC: UIViewController) -> (NVC: BaseNavigationController, interactor: MasterSplitInteractorProtocol)
-    static func detailSplitViewController() -> (VC: BaseViewController, interactor: DetailSplitInteractorProtocol)
+    static func detailSplitViewController(SVC: UIViewController) -> (NVC: BaseNavigationController, interactor: DetailSplitInteractorProtocol)
 }
 
 
@@ -147,11 +147,12 @@ class DI: DIProtocol {
         return (NVC: NVC, interactor: interactor)
     }
 
-    static func detailSplitViewController() -> (VC: BaseViewController, interactor: DetailSplitInteractorProtocol) {
+    static func detailSplitViewController(SVC: UIViewController) -> (NVC: BaseNavigationController, interactor: DetailSplitInteractorProtocol) {
         let VC = DetailSplitViewController()
+        let NVC = BaseNavigationController(rootViewController: VC)
 
         let interactor = DetailSplitInteractor()
-        let router = DetailSplitRouter()
+        let router = DetailSplitRouter(SVC: SVC)
         let presenter = DetailSplitPresenter()
 
         VC.presenter = presenter
@@ -161,7 +162,7 @@ class DI: DIProtocol {
         presenter.interactor = interactor
         presenter.router = router
 
-        return (VC: VC, interactor: interactor)
+        return (NVC: NVC, interactor: interactor)
     }
     
 }

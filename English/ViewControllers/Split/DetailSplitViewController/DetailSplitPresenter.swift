@@ -9,6 +9,7 @@ import Foundation
 
 protocol DetailSplitPresenterProtocol: AnyObject {
     func answer(ansewe: WordAnswer, translateWayRusEng: Bool)
+    func tapedDissmis()
 }
 
 class DetailSplitPresenter: DetailSplitPresenterProtocol {
@@ -30,5 +31,9 @@ class DetailSplitPresenter: DetailSplitPresenterProtocol {
                         ansewe.wordsAnswer.compactMap({$0.rusValue})
             view?.answerTexts(texts: texts)
         }
+    }
+
+    func tapedDissmis() {
+        router?.dissmisSplit()
     }
 }

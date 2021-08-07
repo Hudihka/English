@@ -22,12 +22,12 @@ class SplitViewController: UISplitViewController {
         super.viewDidLoad()
 
         let tuplMaster = DI.masterSplitViewController(SVC: self)
-        let tuplDetail = DI.detailSplitViewController()
+        let tuplDetail = DI.detailSplitViewController(SVC: self)
 
         masterInteractor = tuplMaster.interactor
         detailInteractor = tuplDetail.interactor
 
-        viewControllers = [tuplMaster.NVC, tuplDetail.VC]
+        viewControllers = [tuplMaster.NVC, tuplDetail.NVC]
         preferredDisplayMode = .allVisible
     }
 
