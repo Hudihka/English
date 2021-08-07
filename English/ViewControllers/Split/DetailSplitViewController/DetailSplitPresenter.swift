@@ -30,8 +30,7 @@ class DetailSplitPresenter: DetailSplitPresenterProtocol {
                      label: labelText)
         
         if ansewe.answer != nil {
-            let textLabel = translateWayRusEng ? ansewe.word.engValue : ansewe.word.rusValue
-            view?.labelText(text: textLabel)
+            view?.animate()
         } else {
             let texts = translateWayRusEng ?
                         ansewe.wordsAnswer.compactMap({$0.engValue}) :

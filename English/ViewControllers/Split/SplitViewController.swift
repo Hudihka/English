@@ -54,6 +54,7 @@ extension SplitViewController: SplitViewControllerProtocol {
 	
 	func correctedAnswerTwoVC(wordsAnswe: [WordAnswer]){ //это после ответа
         masterInteractor?.allAnswer(wordsAnswe: wordsAnswe)
+//        detailInteractor?.answerDetailVC(wordAnswer: wordAnswer)
 	}
 	
 	func answerDetailVC(wordAnswer: WordAnswer) { //это показ возможных вариантов ответа

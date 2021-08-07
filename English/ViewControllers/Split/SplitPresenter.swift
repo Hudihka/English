@@ -53,6 +53,7 @@ class SplitPresenter: SplitPresenterProtocol {
         answerWords[index] = answer
 
         view?.correctedAnswerTwoVC(wordsAnswe: answerWords)
+        view?.answerDetailVC(wordAnswer: answer)
 
         guard let answerWord = answer.answer else { return }
         if answerWord {

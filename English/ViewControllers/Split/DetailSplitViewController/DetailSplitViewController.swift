@@ -10,7 +10,7 @@ import UIKit
 
 protocol DetailSplitViewControllerProtocol: AnyObject {
     func labels(title: String, label: String)
-    func labelText(text: String)
+    func animate()
     func answerTexts(texts: [String])
 }
 
@@ -83,7 +83,7 @@ extension DetailSplitViewController: DetailSplitViewControllerProtocol {
     }
 
 
-    func labelText(text: String){
+    func animate(){
         if label.isHidden {
             UIView.animate(withDuration: 0.25) {
                 self.table.isHidden = true
