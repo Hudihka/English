@@ -11,6 +11,8 @@ protocol MasterSplitInteractorProtocol: AnyObject {
     var translateWayRusEng: Bool {get set}
     func allAnswer(wordsAnswe: [WordAnswer])
     func correctedAnswerTwoVC(wordsAnswe: [WordAnswer])
+
+    var choiceWordAnswer: (WordAnswer) -> Void {get set}
 }
 
 class MasterSplitInteractor: MasterSplitInteractorProtocol {
@@ -26,4 +28,6 @@ class MasterSplitInteractor: MasterSplitInteractorProtocol {
     func correctedAnswerTwoVC(wordsAnswe: [WordAnswer]) {
         
     }
+
+    var choiceWordAnswer: (WordAnswer) -> Void = {_ in }
 }

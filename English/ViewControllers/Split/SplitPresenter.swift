@@ -9,11 +9,8 @@ import Foundation
 
 protocol SplitPresenterProtocol: AnyObject {
     func tapedAnswer(word: Word)
-    func choseWordToCheck(word: Word)
-//
-//    func tapedLike(word: Word?)
-//    func delete(word: Word)
-//    func changeWord(word: Word?)
+    func choseWordToCheck(wordAnser: WordAnswer)
+
 
     init(interactor: SplitInteractorProtocol, wayTranslate: MenuEndpointsEnum.ActionButtonsAlert)
 }
@@ -41,8 +38,8 @@ class SplitPresenter: SplitPresenterProtocol {
             self.view?.answer(wordsAnswe: self.answerWords,
                               translateWayRusEng: self.wayTranslate == .rusEngl)
 
-            if let first = self.answerWords.first?.word {
-                self.choseWordToCheck(word: first)
+            if let first = self.answerWords.first {
+                self.choseWordToCheck(wordAnser: first)
             }
         }
     }
@@ -64,7 +61,8 @@ class SplitPresenter: SplitPresenterProtocol {
         }
     }
 
-    func choseWordToCheck(word: Word) { //выбрали слово для проверки
+    func choseWordToCheck(wordAnser: WordAnswer) { //выбрали слово для проверки
+        let word = wordAnser.word
         guard let index = index(word: word) else {return}
 
         var answer = answerWords[index]

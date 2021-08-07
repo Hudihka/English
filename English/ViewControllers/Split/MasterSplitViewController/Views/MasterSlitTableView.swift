@@ -22,7 +22,7 @@ class MasterSlitTableView: UITableView {
     }
 
 	init(presenter: MasterSplitPresenterProtocol?) {
-		super.init(frame: CGRect(), style: .plain)
+		super.init(frame: CGRect(), style: .grouped)
         
         delegate = self
         dataSource = self
@@ -107,6 +107,8 @@ extension MasterSlitTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let word = wordsAnswer[indexPath.row]
+        presenter?.choiceWordAnswer(answer: word)
         Vibro.weak()
     }
 

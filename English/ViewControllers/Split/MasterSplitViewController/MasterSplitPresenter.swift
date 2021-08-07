@@ -10,6 +10,8 @@ import Foundation
 protocol MasterSplitPresenterProtocol: AnyObject {
     func allAnswer(wordsAnswe: [WordAnswer], translateWayRusEng: Bool)
     func tapedDissmis()
+
+    func choiceWordAnswer(answer: WordAnswer)
 }
 
 class MasterSplitPresenter: MasterSplitPresenterProtocol {
@@ -30,5 +32,9 @@ class MasterSplitPresenter: MasterSplitPresenterProtocol {
 
     func tapedDissmis() {
         router?.dissmisSplit()
+    }
+
+    func choiceWordAnswer(answer: WordAnswer){
+        interactor?.choiceWordAnswer(answer)
     }
 }
