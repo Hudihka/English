@@ -9,7 +9,7 @@ import UIKit
 
 protocol SplitViewControllerProtocol: AnyObject {
     func answer(wordsAnswe: [WordAnswer], translateWayRusEng: Bool)
-	func correctedAnswerTwoVC(wordsAnswe: [WordAnswer])
+	func correctedAnswerTwoVC(wordsAnswe: [WordAnswer], wordAnswer: WordAnswer)
 	func answerDetailVC(wordAnswer: WordAnswer)
 }
 
@@ -56,9 +56,9 @@ extension SplitViewController: SplitViewControllerProtocol {
         masterInteractor?.allAnswer(wordsAnswe: wordsAnswe)
     }
 	
-	func correctedAnswerTwoVC(wordsAnswe: [WordAnswer]){ //это после ответа
+	func correctedAnswerTwoVC(wordsAnswe: [WordAnswer], wordAnswer: WordAnswer){ //это после ответа
         masterInteractor?.allAnswer(wordsAnswe: wordsAnswe)
-//        detailInteractor?.answerDetailVC(wordAnswer: wordAnswer)
+        detailInteractor?.answerDetailVC(wordAnswer: wordAnswer)
 	}
 	
 	func answerDetailVC(wordAnswer: WordAnswer) { //это показ возможных вариантов ответа

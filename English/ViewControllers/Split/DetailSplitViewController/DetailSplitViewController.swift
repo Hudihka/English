@@ -38,7 +38,7 @@ class DetailSplitViewController: BaseViewController{
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.centerX.equalTo(view.center.x)
-            make.centerY.equalTo(view.center.y)
+            make.top.equalTo(100)
         })
 
 
