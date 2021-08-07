@@ -19,8 +19,9 @@ class MasterSplitPresenter: MasterSplitPresenterProtocol {
 
     func allAnswer(wordsAnswe: [WordAnswer], translateWayRusEng: Bool) {
 
-        let countTrue = wordsAnswe.compactMap({$0.answer == true}).count
-        let countFalse = wordsAnswe.compactMap({$0.answer == false}).count
+        let arrayAnswer = wordsAnswe.compactMap({$0.answer})
+        let countTrue = arrayAnswer.map({$0 == true}).count
+        let countFalse = arrayAnswer.map({$0 == false}).count
 
         view?.count(countTrue: countTrue, countFalse: countFalse)
         view?.startSettingsTableview(wordsAnswe: wordsAnswe, translateWayRusEng: translateWayRusEng)

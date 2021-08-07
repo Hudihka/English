@@ -25,6 +25,7 @@ class MenuRouter: MenuRouterProtocol{
 
     func presentSplit(list: List?, way: MenuEndpointsEnum.ActionButtonsAlert) {
         let VC = DI.splitViewController(list: list, wayTranslate: way)
+        VC.modalPresentationStyle = .fullScreen
         navigationVC.present(VC, animated: true, completion: nil)
     }
 
