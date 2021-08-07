@@ -21,13 +21,13 @@ class SplitViewController: UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let tuplMaster = DI.masterSplitViewController()
+        let tuplMaster = DI.masterSplitViewController(SVC: self)
         let tuplDetail = DI.detailSplitViewController()
 
         masterInteractor = tuplMaster.interactor
         detailInteractor = tuplDetail.interactor
 
-        viewControllers = [tuplMaster.VC, tuplDetail.VC]
+        viewControllers = [tuplMaster.NVC, tuplDetail.VC]
         preferredDisplayMode = .allVisible
     }
 
@@ -39,8 +39,6 @@ extension SplitViewController: SplitViewControllerProtocol {
         detailInteractor?.translateWayRusEng = translateWayRusEng
 
         masterInteractor?.allAnswer(wordsAnswe: wordsAnswe)
-        guard let word = wordsAnswe.first else {return}
-        detailInteractor?.answerDetailVC(wordAnswer: word)
     }
 	
 	func correctedAnswerTwoVC(wordsAnswe: [WordAnswer]){ //это после ответа

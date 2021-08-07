@@ -9,6 +9,7 @@ import Foundation
 
 protocol MasterSplitPresenterProtocol: AnyObject {
     func allAnswer(wordsAnswe: [WordAnswer], translateWayRusEng: Bool)
+    func tapedDissmis()
 }
 
 class MasterSplitPresenter: MasterSplitPresenterProtocol {
@@ -25,5 +26,9 @@ class MasterSplitPresenter: MasterSplitPresenterProtocol {
 
         view?.count(countTrue: countTrue, countFalse: countFalse)
         view?.startSettingsTableview(wordsAnswe: wordsAnswe, translateWayRusEng: translateWayRusEng)
+    }
+
+    func tapedDissmis() {
+        router?.dissmisSplit()
     }
 }

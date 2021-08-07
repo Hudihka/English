@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 protocol DIProtocol: AnyObject {
     static func loadProfileViewController() -> BaseViewController
@@ -17,7 +17,7 @@ protocol DIProtocol: AnyObject {
     static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController
 
     static func splitViewController(list: List?, wayTranslate: MenuEndpointsEnum.ActionButtonsAlert) -> SplitViewController
-    static func masterSplitViewController() -> (VC: BaseViewController, interactor: MasterSplitInteractorProtocol)
+    static func masterSplitViewController(SVC: UIViewController) -> (NVC: BaseNavigationController, interactor: MasterSplitInteractorProtocol)
     static func detailSplitViewController() -> (VC: BaseViewController, interactor: DetailSplitInteractorProtocol)
 }
 
@@ -129,11 +129,12 @@ class DI: DIProtocol {
         return VC
     }
 
-    static func masterSplitViewController() -> (VC: BaseViewController, interactor: MasterSplitInteractorProtocol) {
+    static func masterSplitViewController(SVC: UIViewController) -> (NVC: BaseNavigationController, interactor: MasterSplitInteractorProtocol) {
         let VC = MasterSplitViewController()
+        let NVC = BaseNavigationController(rootViewController: VC)
 
         let interactor = MasterSplitInteractor()
-        let router = MasterSplitRouter()
+        let router = MasterSplitRouter(SVC: SVC)
         let presenter = MasterSplitPresenter()
 
         VC.presenter = presenter
@@ -143,7 +144,7 @@ class DI: DIProtocol {
         presenter.interactor = interactor
         presenter.router = router
 
-        return (VC: VC, interactor: interactor)
+        return (NVC: NVC, interactor: interactor)
     }
 
     static func detailSplitViewController() -> (VC: BaseViewController, interactor: DetailSplitInteractorProtocol) {

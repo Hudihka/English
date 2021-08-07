@@ -22,7 +22,7 @@ class MasterSlitTableView: UITableView {
     }
 
 	init(presenter: MasterSplitPresenterProtocol?) {
-		super.init(frame: CGRect(), style: .grouped)
+		super.init(frame: CGRect(), style: .plain)
         
         delegate = self
         dataSource = self
@@ -86,7 +86,7 @@ extension MasterSlitTableView: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 95
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -107,6 +107,7 @@ extension MasterSlitTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        Vibro.weak()
     }
 
 }

@@ -32,7 +32,7 @@ class MasterSplitViewController: BaseViewController{
     }
 
     @objc override func leftBBItem(){
-        //сбросить
+        presenter?.tapedDissmis()
     }
 
     override func desingUI() {

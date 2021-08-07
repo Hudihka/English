@@ -35,11 +35,15 @@ class SplitPresenter: SplitPresenterProtocol {
         self.wayTranslate = wayTranslate
 
         interactor.lissenWords {[weak self] words in
-            guard let self = self else {return}
+            guard let self = self, self.allWord.isEmpty else {return}
             self.allWord = words
             self.answerWords = words.map({WordAnswer(word: $0)})
             self.view?.answer(wordsAnswe: self.answerWords,
                               translateWayRusEng: self.wayTranslate == .rusEngl)
+
+            if let first = self.answerWords.first?.word {
+                self.choseWordToCheck(word: first)
+            }
         }
     }
 

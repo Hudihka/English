@@ -6,18 +6,26 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MasterSplitRouterProtocol: AnyObject {
-//    func dissmis()
+    func dissmisSplit()
 
-//    init(navigationVC: BaseNavigationController)
+    init(SVC: UIViewController)
 }
 
 class MasterSplitRouter: MasterSplitRouterProtocol {
 
     var presenter: MasterSplitPresenterProtocol?
+    private var SVC: UIViewController!
 
-//    private var navigationVC: BaseNavigationController!
+    required init(SVC: UIViewController){
+        self.SVC = SVC
+    }
+
+    func dissmisSplit() {
+        SVC.dismiss(animated: true, completion: nil)
+    }
 //
 //    required init(navigationVC: BaseNavigationController, list: List?) {
 //        self.navigationVC = navigationVC

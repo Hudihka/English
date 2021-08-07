@@ -26,6 +26,7 @@ class MenuRouter: MenuRouterProtocol{
     func presentSplit(list: List?, way: MenuEndpointsEnum.ActionButtonsAlert) {
         let VC = DI.splitViewController(list: list, wayTranslate: way)
         VC.modalPresentationStyle = .fullScreen
+        VC.delegate = self
         navigationVC.present(VC, animated: true, completion: nil)
     }
 
@@ -38,4 +39,16 @@ class MenuRouter: MenuRouterProtocol{
 		let NVC = DI.newWordViewController(list: list, oldWord: nil)
         navigationVC.present(NVC, animated: true, completion: nil)
     }
+}
+
+
+extension MenuRouter: UISplitViewControllerDelegate {
+
+    func splitViewController(_ splitViewController: UISplitViewController,
+                    collapseSecondary secondaryViewController: UIViewController,
+                    onto primaryViewController: UIViewController) -> Bool{
+
+        return true
+    }
+
 }

@@ -7,21 +7,21 @@
 
 import Foundation
 
-extension Array { //массив уже должен быть без искомого слова
+extension Array { //массив уже должен быть без искомого слова, но только если слов меньше 10
 	subscript (obj: Element) -> [Element] {
         var copy = self
 		var n = 10
 		if self.count < n {
 			n = self.count
 		}
-		
+
         for i in stride(from: count - 1, to: count - n - 1, by: -1) {
             copy.swapAt(i, Int(arc4random_uniform(UInt32(i + 1))))
         }
-		
+
 		let randomIndex = Int(arc4random_uniform(UInt32(n)))
 		copy[randomIndex] = obj
-		
+
         return Array(copy.suffix(n))
     }
 }
