@@ -18,8 +18,12 @@ struct WordAnswer {
 	
 	mutating func createWordsAnswers(allWords: [Word]){
 		if answer == nil, wordsAnswer.isEmpty {
-            let arrayDontAnswer = allWords.count < 10 ? allWords : allWords.filter({$0.id != word.id})
-			wordsAnswer = arrayDontAnswer[word]
+            if allWords.count < 10 {
+                wordsAnswer = allWords
+            } else {
+                let arrayDontAnswer = allWords.filter({$0.id != word.id})
+                wordsAnswer = arrayDontAnswer[word]
+            }
 		}
 	}
 	

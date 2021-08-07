@@ -40,7 +40,8 @@ class DetailSplitPresenter: DetailSplitPresenterProtocol {
 
     func tapedIndex(index: Int) {
         guard let word = wordAnswer?.wordsAnswer[safe: index] else {return}
-        
+
+        interactor?.choiceWord(word)
     }
 
     func tapedDissmis() {
