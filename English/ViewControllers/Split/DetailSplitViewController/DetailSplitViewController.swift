@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol DetailSplitViewControllerProtocol: AnyObject {
-    func labelTitle(text: String)
+    func labels(title: String, label: String)
     func labelText(text: String)
     func answerTexts(texts: [String])
 }
@@ -40,7 +40,8 @@ class DetailSplitViewController: BaseViewController{
     override func desingUI() {
 
         label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        label.textAlignment = .center
         label.isHidden = true
         view.addSubview(label)
 
@@ -76,8 +77,9 @@ class DetailSplitViewController: BaseViewController{
 }
 
 extension DetailSplitViewController: DetailSplitViewControllerProtocol {
-    func labelTitle(text: String){
-        title = text
+    func labels(title: String, label: String) {
+        self.title = title
+        self.label.text = label
     }
 
 

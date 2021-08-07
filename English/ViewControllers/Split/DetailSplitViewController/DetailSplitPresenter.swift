@@ -25,7 +25,9 @@ class DetailSplitPresenter: DetailSplitPresenterProtocol {
     func answer(ansewe: WordAnswer, translateWayRusEng: Bool){
         wordAnswer = ansewe
         let labelTitle = translateWayRusEng ? ansewe.word.rusValue : ansewe.word.engValue
-        view?.labelTitle(text: labelTitle)
+        let labelText  = !translateWayRusEng ? ansewe.word.rusValue : ansewe.word.engValue
+        view?.labels(title: labelTitle,
+                     label: labelText)
         
         if ansewe.answer != nil {
             let textLabel = translateWayRusEng ? ansewe.word.engValue : ansewe.word.rusValue
