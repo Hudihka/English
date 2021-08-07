@@ -10,13 +10,13 @@ import UIKit
 
 protocol NewWordRouterProtocol: AnyObject {
     func popViewController()
-    init(navigationVC: UINavigationController)
+    init(navigationVC: BaseNavigationController)
 }
 
 class NewWordRouter: NewWordRouterProtocol{
-    private var navigationVC: UINavigationController!
+    private var navigationVC: BaseNavigationController!
 
-    required init(navigationVC: UINavigationController) {
+    required init(navigationVC: BaseNavigationController) {
         self.navigationVC = navigationVC
     }
 

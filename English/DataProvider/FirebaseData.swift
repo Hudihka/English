@@ -70,6 +70,30 @@ class FirebaseData {
 
         db.collection("Profile").document(id).setData(profile.json)
     }
+	
+    func deleteList(listName: String){
+        guard let profile = profile,
+              let id = idUser else {
+            return
+        }
+		
+		let newLists = profile.lists.filter({$0.name != listName})
+        profile.lists = newLists
+
+        db.collection("Profile").document(id).setData(profile.json)
+		
+		db.collection("Words")
+			.whereField("listName", isEqualTo: listName)
+			.getDocuments { snaphot, _ in
+				let batchLocal = Firestore.firestore().batch()
+
+				if let data = snaphot?.documents {
+					data.forEach({batchLocal.deleteDocument($0.reference)})
+				}
+
+					batchLocal.commit()
+		}
+    }
 
     func renameLists(oldName: String, newName: String){
         guard let profile = profile,
@@ -101,21 +125,102 @@ class FirebaseData {
 	
 	func renameWord(newWord: Word){
 		guard let id = newWord.id else { return }
-        db.collection("Words").whereField("id", isEqualTo: id).setValuesForKeys(newWord.json)
+        db.collection("Words").whereField("id", isEqualTo: id).getDocuments { snaphot, _ in
+            let batchLocal = Firestore.firestore().batch()
+
+            if let data = snaphot?.documents {
+                data.forEach({batchLocal.updateData(newWord.json, forDocument: $0.reference)})
+            }
+
+            batchLocal.commit()
+//            newWord.json
+        }
 	}
 
     func createWord(newWord: Word, list: List){
         guard let profile = profile,
             let id = idUser,
+			let idWord = newWord.id,
             let index = profile.lists.firstIndex(where: {$0.name == list.name}) else {
             return
         }
 
-        let newList = list.jsonAddOneWord
+        let newList = list.addOrDeleteOneWord(add: true)
         profile.lists[index] = newList
 
         db.collection("Profile").document(id).setData(profile.json)
-        db.collection("Words").addDocument(data: newWord.json)
+        db.collection("Words").document(idWord).setData(newWord.json)
+    }
+
+    func lisenWord(list: List?, compl: @escaping(([Word]) -> Void)) {
+
+        let collection = list == nil ?
+            db.collection("Words").whereField("favorit", isEqualTo: true) :
+            db.collection("Words").whereField("listName", isEqualTo: list?.name ?? "")
+
+        collection.addSnapshotListener {(snaphot, _) in
+
+            if let data = snaphot?.documents {
+                let words = data.map({Word(json: $0.data(), id: $0.documentID)})
+                compl(words)
+            } else {
+                compl([])
+            }
+        }
+
+    }
+	
+	func likeWord(word: Word?) {
+		
+		guard
+			let word = word,
+			let idWord = word.id,
+			let profile = profile,
+            let id = idUser,
+			let index = profile.lists.firstIndex(where: {$0.name == word.listName}) else {
+            return
+        }
+
+        let oldList = profile.lists[index]
+		let tapedFavorit = word.favorit ? false : true
+		let newList = oldList.jsonReloadFavoritCount(add: tapedFavorit)
+        profile.lists[index] = newList
+
+        var wordJson = word.json
+        wordJson["favorit"] = tapedFavorit
+
+        db.collection("Profile").document(id).setData(profile.json)
+        db.collection("Words").document(idWord).setData(wordJson)
+    }
+
+    func delete(word: Word) {
+
+        guard
+            let idWord = word.id,
+            let profile = profile,
+            let id = idUser,
+            let index = profile.lists.firstIndex(where: {$0.name == word.listName}) else {
+            return
+        }
+
+        let oldList = profile.lists[index]
+        var newList = oldList.addOrDeleteOneWord(add: false)
+        if word.favorit {
+            newList = newList.jsonReloadFavoritCount(add: false)
+        }
+        profile.lists[index] = newList
+
+        db.collection("Profile").document(id).setData(profile.json)
+        db.collection("Words").document(idWord).delete()
+        db.collection("Words").whereField("id", isEqualTo: idWord).getDocuments { snaphot, _ in
+            let batchLocal = Firestore.firestore().batch()
+
+            if let data = snaphot?.documents {
+                data.forEach({batchLocal.deleteDocument($0.reference)})
+            }
+
+            batchLocal.commit()
+        }
     }
 
     

@@ -25,8 +25,7 @@ struct Word: Equatable {
         } else if let temp = json["id"] as? String {
             self.id = temp
         }
-        
-        
+
         if let temp = json["listName"] as? String {
             self.listName = temp
         }
@@ -42,8 +41,7 @@ struct Word: Equatable {
         if let temp = json["descript"] as? String {
             self.descript = temp
         }
-        
-        
+
         if let temp = json["favorit"] as? Bool {
             self.favorit = temp
         }

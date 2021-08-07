@@ -10,6 +10,7 @@ import Foundation
 protocol NewWordPresenterProtocol: AnyObject {
     func tapedCancel()
 	func fetchData()
+    func fetchTitle()
 	
 	func tapedMix()
 	func createWord()
@@ -34,6 +35,10 @@ class NewWordPresenter: NewWordPresenterProtocol {
         self.list = list
 	}
 
+    func fetchTitle(){
+        self.view?.title(text: oldWord == nil ? "Новое слово" : "Изменить слово")
+    }
+
     func tapedCancel(){
         router?.popViewController()
     }
@@ -41,6 +46,7 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	func fetchData(){
 		view?.startData(word: newWord)
 		view?.enabledData(enabledAdd: enabledAdd, enabledMix: enabledMixedd)
+        view?.titleButton(text: oldWord == nil ? NewWordEndpoits.ButtonText.add.rawValue : NewWordEndpoits.ButtonText.change.rawValue)
 	}
 	
 	private var enabledAdd: Bool{

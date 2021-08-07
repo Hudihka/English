@@ -9,9 +9,10 @@ import UIKit
 
 class MenuTableView: UITableView {
     
-    var tapedCell: (String) -> Void = {_ in }
+    var tapedCell: (List?, String?) -> Void = {_,_ in }
     var tapedRename: (String) -> Void = {_ in }
-    var tapedAdd: (List) -> Void = {_ in }
+	
+	private var presenter: MenuPresenterProtocol?
     
     fileprivate var profile: Profile?{
         return FirebaseData.shared.profile
@@ -33,7 +34,7 @@ class MenuTableView: UITableView {
         return profile?.lists ?? []
     }
 
-    init() {
+    init(presenter: MenuPresenterProtocol?) {
         super.init(frame: CGRect(), style: .grouped)
         
         self.delegate = self
@@ -48,6 +49,8 @@ class MenuTableView: UITableView {
         self.register(ListCell.self, forCellReuseIdentifier: "ListCell")
 
         self.register(HederCells.self, forHeaderFooterViewReuseIdentifier: "HederCells")
+		
+		self.presenter = presenter
     }
     
     required init?(coder: NSCoder) {
@@ -97,10 +100,11 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
 
         let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HederCells") as! HederCells
         if isTwoSection, section == 0 {
-            cell.text = "Всего \(favoritCount) выбранных слов"
+			cell.text = MenuEndpointsEnum.CellText.header(favoritCount).text
         } else {
             let count = profile?.countWords ?? 0
-            cell.text = "Всего \(lists.count) тем, \(count) слов"
+			cell.text = MenuEndpointsEnum.CellText.cell(countThem: lists.count,
+				countWord: count).text
         }
 
         return cell
@@ -122,35 +126,22 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
     {
-        guard let cell = tableView.cellForRow(at: indexPath) else {
-            return
-        }
-
-        UIView.animate(withDuration: 0.25) {
-
-            cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.85)
-        }
+        tableView.didHighlightRowAt(indexPath: indexPath)
     }
 
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath)
     {
-        guard let cell = tableView.cellForRow(at: indexPath) else {
-            return
-        }
-
-        UIView.animate(withDuration: 0.25) {
-            cell.transform = .identity
-        }
+        tableView.didUnhighlightRowAt(indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if isTwoSection, indexPath.section == 0 {
-            tapedCell(FAVORIT_NAME)
+            tapedCell(nil, FAVORIT_NAME)
         } else {
-            let name = lists[indexPath.row].name
-            tapedCell(name)
+            let list = lists[indexPath.row]
+            tapedCell(list, nil)
         }
     }
 
@@ -161,24 +152,36 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
         }
 
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions -> UIMenu? in
-            let action1 = UIAction(title: "Переименовать", image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
+			let action1 = UIAction(title: MenuEndpointsEnum.TableContextMenu.rename.rawValue,
+								   image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
                 guard let self = self else {return}
 
                 let oldName = self.lists[indexPath.row].name
                 self.tapedRename(oldName)
             }
 
-            let action2 = UIAction(title: "Добавить слово", image: UIImage(systemName: "plus")) {[weak self] _ in
+			let action2 = UIAction(title: MenuEndpointsEnum.TableContextMenu.addWord.rawValue,
+								   image: UIImage(systemName: "plus")) {[weak self] _ in
                 guard let self = self else {return}
 
                 let list = self.lists[indexPath.row]
-                self.tapedAdd(list)
+				self.presenter?.newWordInTheme(list: list)
+            }
+			
+			let action3 = UIAction(title: MenuEndpointsEnum.TableContextMenu.delete.rawValue,
+								   image: UIImage(systemName: "trash"),
+								   attributes: .destructive) {[weak self] _ in
+                guard let self = self else {return}
+
+				let list = self.lists[indexPath.row].name
+				self.presenter?.deleteList(name: list)
             }
 
-            let menu1 = UIMenu(title: "", options: .displayInline, children: [action1])
+            let menu1 = UIMenu(title: "", children: [action1])
             let menu2 = UIMenu(title: "", options: .displayInline, children: [action2])
+			let menu3 = UIMenu(title: "", options: .displayInline, children: [action3])
 
-            return UIMenu(title: "", children: [menu1, menu2])
+            return UIMenu(title: "", children: [menu1, menu2, menu3])
         }
 
         return configuration

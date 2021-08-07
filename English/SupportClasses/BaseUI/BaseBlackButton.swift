@@ -15,7 +15,7 @@ class BaseBlackButton: UIButton {
         }
     }
 
-    init(title: String, selector: Selector, target: Any?) {
+    init(title: String?, selector: Selector, target: Any?) {
         super.init(frame: CGRect())
 
         self.setTitle(title, for: .normal)

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 protocol DIProtocol: AnyObject {
     static func loadProfileViewController() -> BaseViewController
@@ -14,6 +14,11 @@ protocol DIProtocol: AnyObject {
     
     static func menuViewController() -> BaseNavigationController
     static func newWordViewController(list: List, oldWord: Word?) -> BaseNavigationController
+    static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController
+
+    static func splitViewController(list: List?, wayTranslate: MenuEndpointsEnum.ActionButtonsAlert) -> SplitViewController
+    static func masterSplitViewController(SVC: UIViewController) -> (NVC: BaseNavigationController, interactor: MasterSplitInteractorProtocol)
+    static func detailSplitViewController(SVC: UIViewController) -> (NVC: BaseNavigationController, interactor: DetailSplitInteractorProtocol)
 }
 
 
@@ -87,6 +92,75 @@ class DI: DIProtocol {
         presenter.router = router
 
         return NVC
+    }
+
+    static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController {
+        let VC = WordsViewController()
+
+		let interactor = WordsInteractor(list: list)
+        let router = WordsRouter(navigationVC: NVC, list: list)
+        let presenter = WordsPresenter(interactor: interactor)
+
+        VC.presenter = presenter
+        interactor.presenter = presenter
+
+        presenter.view = VC
+        presenter.interactor = interactor
+        presenter.router = router
+
+        return VC
+    }
+
+    static func splitViewController(list: List?,
+                                    wayTranslate: MenuEndpointsEnum.ActionButtonsAlert) -> SplitViewController {
+        let VC = SplitViewController()
+
+        let interactor = SplitInteractor(list: list)
+        let presenter = SplitPresenter(interactor: interactor, wayTranslate: wayTranslate)
+
+        VC.presenter = presenter
+        interactor.presenter = presenter
+
+        presenter.view = VC
+        presenter.interactor = interactor
+
+        return VC
+    }
+
+    static func masterSplitViewController(SVC: UIViewController) -> (NVC: BaseNavigationController, interactor: MasterSplitInteractorProtocol) {
+        let VC = MasterSplitViewController()
+        let NVC = BaseNavigationController(rootViewController: VC)
+
+        let interactor = MasterSplitInteractor()
+        let router = MasterSplitRouter(SVC: SVC)
+        let presenter = MasterSplitPresenter()
+
+        VC.presenter = presenter
+        interactor.presenter = presenter
+
+        presenter.view = VC
+        presenter.interactor = interactor
+        presenter.router = router
+
+        return (NVC: NVC, interactor: interactor)
+    }
+
+    static func detailSplitViewController(SVC: UIViewController) -> (NVC: BaseNavigationController, interactor: DetailSplitInteractorProtocol) {
+        let VC = DetailSplitViewController()
+        let NVC = BaseNavigationController(rootViewController: VC)
+
+        let interactor = DetailSplitInteractor()
+        let router = DetailSplitRouter(SVC: SVC)
+        let presenter = DetailSplitPresenter()
+
+        VC.presenter = presenter
+        interactor.presenter = presenter
+
+        presenter.view = VC
+        presenter.interactor = interactor
+        presenter.router = router
+
+        return (NVC: NVC, interactor: interactor)
     }
     
 }

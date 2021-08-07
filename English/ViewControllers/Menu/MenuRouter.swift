@@ -9,29 +9,46 @@ import Foundation
 import UIKit
 
 protocol MenuRouterProtocol: AnyObject {
-    func presentSplit(words: [Word], way: MenuEndpointsEnum.ActionButtonsAlert)
-    func pushCramming(words: [Word], listName: String)
+    func presentSplit(list: List?, way: MenuEndpointsEnum.ActionButtonsAlert)
+    func pushCramming(list: List?)
     func newWordInTheme(list: List)
 
-    init(navigationVC: UINavigationController)
+    init(navigationVC: BaseNavigationController)
 }
 
 class MenuRouter: MenuRouterProtocol{
-    private let navigationVC: UINavigationController!
+    private let navigationVC: BaseNavigationController!
 
-    required init(navigationVC: UINavigationController){
+    required init(navigationVC: BaseNavigationController){
         self.navigationVC = navigationVC
     }
 
-    func presentSplit(words: [Word], way: MenuEndpointsEnum.ActionButtonsAlert) {
-
+    func presentSplit(list: List?, way: MenuEndpointsEnum.ActionButtonsAlert) {
+        let VC = DI.splitViewController(list: list, wayTranslate: way)
+        VC.modalPresentationStyle = .fullScreen
+        VC.delegate = self
+        navigationVC.present(VC, animated: true, completion: nil)
     }
 
-    func pushCramming(words: [Word], listName: String) {
+    func pushCramming(list: List?) {
+        let VC = DI.wordsViewController(list: list, NVC: navigationVC)
+        self.navigationVC.pushViewController(viewController: VC, completion: nil)
     }
 
     func newWordInTheme(list: List) {
 		let NVC = DI.newWordViewController(list: list, oldWord: nil)
         navigationVC.present(NVC, animated: true, completion: nil)
     }
+}
+
+
+extension MenuRouter: UISplitViewControllerDelegate {
+
+    func splitViewController(_ splitViewController: UISplitViewController,
+                    collapseSecondary secondaryViewController: UIViewController,
+                    onto primaryViewController: UIViewController) -> Bool{
+
+        return true
+    }
+
 }

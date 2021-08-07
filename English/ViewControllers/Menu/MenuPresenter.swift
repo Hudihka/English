@@ -8,28 +8,32 @@
 import Foundation
 
 
-protocol MenuPresenterIn: AnyObject {
-    func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert, theme: String)
+protocol MenuPresenterProtocol: AnyObject {
+    func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert, list: List?)
     func createList(name: String)
     func renameList(oldName: String, newName: String)
+	func deleteList(name: String)
     func reloadProfile()
     func newWordInTheme(list: List)
 }
 
-class MenuPresenter: MenuPresenterIn {
-    
-    var interactor: MenuInteractorIn?
+class MenuPresenter: MenuPresenterProtocol {
+
+    var interactor: MenuInteractorProtocol?
     var router: MenuRouterProtocol?
-    weak var view: MenuViewControllerIn?
+    weak var view: MenuViewControllerProtocol?
     
-    func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert, theme: String) {
+    func tapedAlert(_ alertButton: MenuEndpointsEnum.ActionButtonsAlert,
+					list: List?) { //если лист нил значит фаворит
+
         switch alertButton {
-        case .rusEngl:
-            print("------1")
-        case .englRus:
-            print("------2")
+        case .rusEngl, .englRus:
+            router?.presentSplit(list: list,
+                                 way: alertButton)
         case .cramming:
-            print("------3")
+            router?.pushCramming(list: list)
+        case .title:
+            break
         }
     }
 
@@ -48,6 +52,10 @@ class MenuPresenter: MenuPresenterIn {
             interactor?.renameList(oldName: oldName, newName: newName)
         }
     }
+	
+	func deleteList(name: String) {
+		interactor?.deleteList(name: name)
+	}
 
     func reloadProfile(){
         view?.reloadData()

@@ -7,22 +7,16 @@
 
 import Foundation
 
-//все сообщения другим классам
-//protocol LoadProfilePresenterOut: AnyObject {
-//
-//}
-
-//все сообщения от других классов
-protocol LoadProfilePresenterIn: AnyObject {
+protocol LoadProfilePresenterProtocol: AnyObject {
     func finishLoadProfile(error: Error?)
     func didLoadVC()
 }
 
-class LoadProfilePresenter: LoadProfilePresenterIn {
+class LoadProfilePresenter: LoadProfilePresenterProtocol {
     
-    var interactor: LoadProfileInteractorIn?
+    var interactor: LoadProfileInteractorProtocol?
     var router: LoadProfileProtocol?
-    weak var view: LoadProfileViewControllerIn?
+    weak var view: LoadProfileViewControllerProtocol?
     
     func finishLoadProfile(error: Error?) {
         if let error = error {

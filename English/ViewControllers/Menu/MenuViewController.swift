@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MenuViewControllerIn: AnyObject {
+protocol MenuViewControllerProtocol: AnyObject {
     func showErrorNewList()
     func reloadData()
 }
@@ -16,7 +16,7 @@ class MenuViewController: BaseViewController {
     
     private var tableView: MenuTableView!
     
-    var presenter: MenuPresenter?
+    var presenter: MenuPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +25,19 @@ class MenuViewController: BaseViewController {
     }
     
     override var titleText: String?{
-        return "ТЕМЫ"
+        return MenuEndpointsEnum.ViewText.title.rawValue
     }
     
     override var rightTextBBItem: String?{
-        return "+"
+        return MenuEndpointsEnum.ViewText.rightBB.rawValue
     }
     
     @objc override func rightBBItem(){
-        showAlertTextField(title: "Введите название новой темы",
+        showAlertTextField(title: MenuEndpointsEnum.AlertTF.title.rawValue,
                            message: nil,
-                           actionTitle: "Ok",
-                           cancelTitle: "Отмена", inputPlaceholder: "Тема") {[weak self] str in
+                           actionTitle: MenuEndpointsEnum.AlertTF.actionTitle.rawValue,
+                           cancelTitle: MenuEndpointsEnum.AlertTF.cancelTitle.rawValue,
+                           inputPlaceholder: MenuEndpointsEnum.AlertTF.theme.rawValue) {[weak self] str in
             guard let self = self, let str = str else {
                 return
             }
@@ -46,7 +47,7 @@ class MenuViewController: BaseViewController {
     }
     
     override func desingUI() {
-        tableView = MenuTableView()
+        tableView = MenuTableView(presenter: presenter)
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
@@ -56,23 +57,20 @@ class MenuViewController: BaseViewController {
             make.bottom.equalTo(0)
         }
 
-        tableView.tapedCell = {[weak self] theme in
-            guard let self = self else {
-                return
-            }
+        tableView.tapedCell = {[weak self] list, name in
 
-            self.showAlertThreeButton(title: "Выберите направление",
+			self?.showAlertThreeButton(title: MenuEndpointsEnum.ActionButtonsAlert.title.rawValue,
                                       message: nil,
                                       buttonText1: MenuEndpointsEnum.ActionButtonsAlert.rusEngl.rawValue,
                                       action1: { _ in
-                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.rusEngl, theme: theme)
+										self?.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.rusEngl, list: list)
                                       },
                                       buttonText2: MenuEndpointsEnum.ActionButtonsAlert.englRus.rawValue,
                                       action2: { _ in
-                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.englRus, theme: theme)
+										self?.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.englRus, list: list)
                                       },
                                       buttonText3: MenuEndpointsEnum.ActionButtonsAlert.cramming.rawValue) { _ in
-                                        self.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.cramming, theme: theme)
+										self?.presenter?.tapedAlert(MenuEndpointsEnum.ActionButtonsAlert.cramming, list: list)
             }
         }
 
@@ -81,12 +79,11 @@ class MenuViewController: BaseViewController {
                 return
             }
 
-            self.showAlertTextField(title: "Введите новое название",
-                               message: nil,
-                               actionTitle: "Ok",
-                               cancelTitle: "Отмена",
-                               inputPlaceholder: "Тема",
-                               inputStartText: theme) {[weak self] str in
+            self.showAlertTextField(title: MenuEndpointsEnum.AlertTF.title.rawValue,
+                                    message: nil,
+                                    actionTitle: MenuEndpointsEnum.AlertTF.actionTitle.rawValue,
+                                    cancelTitle: MenuEndpointsEnum.AlertTF.cancelTitle.rawValue,
+                                    inputStartText: theme) {[weak self] str in
                 guard let self = self, let str = str else {
                     return
                 }
@@ -94,23 +91,16 @@ class MenuViewController: BaseViewController {
                 self.presenter?.renameList(oldName: theme, newName: str)
             }
         }
-
-        tableView.tapedAdd = {[weak self] list in
-            guard let self = self else {
-                return
-            }
-
-            self.presenter?.newWordInTheme(list: list)
-        }
     }
 
 }
 
 
-extension MenuViewController: MenuViewControllerIn {
+extension MenuViewController: MenuViewControllerProtocol {
 
     func showErrorNewList() {
-        showAlert(title: "Ошибка", message: "Нельзя тиспользовать такое имя")
+        showAlert(title: MenuEndpointsEnum.AlertError.title.rawValue,
+                  message: MenuEndpointsEnum.AlertError.description.rawValue)
     }
 
     func reloadData(){

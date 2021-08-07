@@ -11,10 +11,14 @@ import UIKit
 
 extension UIViewController {
     
-    func showAlert(title: String?, message: String?, buttonText: String? = "OK", action: ((UIAlertAction) -> Void)? = nil){
+    func showAlert(title: String?,
+                   message: String?,
+                   style: UIAlertAction.Style = UIAlertAction.Style.default,
+                   buttonText: String? = "OK",
+                   action: ((UIAlertAction) -> Void)? = nil){
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: buttonText, style: UIAlertAction.Style.default, handler: action))
+        alert.addAction(UIAlertAction(title: buttonText, style: style, handler: action))
         self.present(alert, animated: true, completion:{
                 alert.view.superview?.isUserInteractionEnabled = true
                 alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))

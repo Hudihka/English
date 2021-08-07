@@ -19,7 +19,7 @@ class ListCell: BaseCell {
         didSet{
             if let list = list {
                 labelTheme.text = list.name
-                labelCount.text = "\(list.count) слов"
+				labelCount.text = MenuEndpointsEnum.CellText.allWord(list.count).text
                 
                 countFavorite.isHidden = true
                 favoritImage.isHidden = true

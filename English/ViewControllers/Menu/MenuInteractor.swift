@@ -7,18 +7,21 @@
 
 import Foundation
 
-protocol MenuInteractorIn: AnyObject {
+protocol MenuInteractorProtocol: AnyObject {
     func createdNewList(name: String)
     func renameList(oldName: String, newName: String)
+	func deleteList(name: String)
+
+    init(presenter: MenuPresenterProtocol)
 }
 
-class MenuInteractor: MenuInteractorIn {
+class MenuInteractor: MenuInteractorProtocol {
 
     private let FB = FirebaseData.shared
     
-    var presenter: MenuPresenter?
+    var presenter: MenuPresenterProtocol?
 
-    init(presenter: MenuPresenter) {
+    required init(presenter: MenuPresenterProtocol) {
         self.presenter = presenter
         self.FB.lisenProfile {[weak self] in
             guard let presenter = self?.presenter else {return}
@@ -33,6 +36,10 @@ class MenuInteractor: MenuInteractorIn {
     func renameList(oldName: String, newName: String){
         FB.renameLists(oldName: oldName, newName: newName)
     }
+	
+	func deleteList(name: String) {
+		FB.deleteList(listName: name)
+	}
 
 //    private func lissen
 }

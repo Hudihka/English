@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-protocol AutorisationViewControllerIn: AnyObject {
+protocol AutorisationViewControllerProtocol: AnyObject {
     func resultLoadProfile(error: Error)
 }
 
-class AutorisationViewController: BaseViewController, AutorisationViewControllerIn {
+class AutorisationViewController: BaseViewController, AutorisationViewControllerProtocol {
     
     var presenter: AutorisationPresenter?
     lazy var button = BaseBlackButton(title: "ВХОД", selector: #selector(buttonAction), target: self)

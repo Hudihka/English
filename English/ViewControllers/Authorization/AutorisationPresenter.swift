@@ -8,16 +8,16 @@
 import Foundation
 
 
-protocol AutorisationPresenterIn: AnyObject {
+protocol AutorisationPresenterProtocol: AnyObject {
     func finishLoadProfile(error: Error?)
     func autoriz()
 }
 
-class AutorisationPresenter: AutorisationPresenterIn {
+class AutorisationPresenter: AutorisationPresenterProtocol {
     
-    var interactor: AutorisationInteractorIn?
+    var interactor: AutorisationInteractorProtocol?
     var router: AutorisationRouterProtocol?
-    weak var view: AutorisationViewControllerIn?
+    weak var view: AutorisationViewControllerProtocol?
     
     func finishLoadProfile(error: Error?) {
         BluereViewController.hide()
