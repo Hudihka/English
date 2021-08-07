@@ -27,10 +27,6 @@ class WordsViewController: BaseViewController {
         return WordsEndpoint.ViewText.rightBB.rawValue
     }
 
-    override var leftTextBBItem: String?{
-        return " "
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

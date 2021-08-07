@@ -37,11 +37,6 @@ class DetailSplitViewController: BaseViewController{
         presenter?.tapedDissmis()
     }
 
-    override var leftTextBBItem: String?{
-        return ""
-    }
-
-
     override func desingUI() {
 
         label = UILabel()
