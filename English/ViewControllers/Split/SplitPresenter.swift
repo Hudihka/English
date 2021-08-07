@@ -8,8 +8,8 @@
 import Foundation
 
 protocol SplitPresenterProtocol: AnyObject {
-    func tapedAnswer(word: Word)
     func choseWordToCheck(wordAnser: WordAnswer)
+    func tapedAnswer(word: Word)
 
 
     init(interactor: SplitInteractorProtocol, wayTranslate: MenuEndpointsEnum.ActionButtonsAlert)
@@ -23,6 +23,7 @@ class SplitPresenter: SplitPresenterProtocol {
 
     private var answerWords = [WordAnswer]()
     private var allWord = [Word]()
+    private var wordCheck: Word? = nil //слово что выбрали для проверки
     private let wayTranslate: MenuEndpointsEnum.ActionButtonsAlert!
 
     required init(interactor: SplitInteractorProtocol,
@@ -44,14 +45,14 @@ class SplitPresenter: SplitPresenterProtocol {
         }
     }
 
-    func tapedAnswer(word: Word) { //выбрали ответ
-        guard let index = index(word: word) else {return}
+    func tapedAnswer(word: Word) {
+        guard let index = index else {return}
 
         var answer = answerWords[index]
         answer.creteAnswer(word: word)
         answerWords[index] = answer
-		
-		view?.correctedAnswerTwoVC(wordsAnswe: answerWords)
+
+        view?.correctedAnswerTwoVC(wordsAnswe: answerWords)
 
         guard let answerWord = answer.answer else { return }
         if answerWord {
@@ -62,8 +63,8 @@ class SplitPresenter: SplitPresenterProtocol {
     }
 
     func choseWordToCheck(wordAnser: WordAnswer) { //выбрали слово для проверки
-        let word = wordAnser.word
-        guard let index = index(word: word) else {return}
+        wordCheck = wordAnser.word
+        guard let index = index else {return}
 
         var answer = answerWords[index]
         answer.createWordsAnswers(allWords: allWord)
@@ -72,8 +73,9 @@ class SplitPresenter: SplitPresenterProtocol {
 		view?.answerDetailVC(wordAnswer: answer)
     }
 
-    private func index(word: Word) -> Int? {
-        return answerWords.firstIndex(where: {$0.word == word})
+    private var index: Int? {
+        guard let id = wordCheck?.id else {return nil}
+        return answerWords.firstIndex(where: {$0.word.id == id})
     }
 
 }
