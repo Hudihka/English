@@ -8,20 +8,22 @@
 import Foundation
 
 protocol MasterSplitInteractorProtocol: AnyObject {
-//    func dissmis()
-
-//    init(navigationVC: BaseNavigationController)
+    var translateWayRusEng: Bool {get set}
+    func allAnswer(wordsAnswe: [WordAnswer])
+    func correctedAnswerTwoVC(wordsAnswe: [WordAnswer])
 }
 
 class MasterSplitInteractor: MasterSplitInteractorProtocol {
+    
+    var presenter: MasterSplitPresenterProtocol?
 
-//    private var navigationVC: BaseNavigationController!
-//
-//    required init(navigationVC: BaseNavigationController, list: List?) {
-//        self.navigationVC = navigationVC
-//    }
-//
-//    func dissmis() {
-//        navigationVC.dismiss(animated: true, completion: nil)
-//    }
+    var translateWayRusEng: Bool = true
+
+    func allAnswer(wordsAnswe: [WordAnswer]) {
+        presenter?.allAnswer(wordsAnswe: wordsAnswe, translateWayRusEng: translateWayRusEng)
+    }
+
+    func correctedAnswerTwoVC(wordsAnswe: [WordAnswer]) {
+        
+    }
 }

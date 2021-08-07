@@ -27,6 +27,7 @@ struct WordAnswer {
 		if answer == nil,
 			word.id != nil,
 			self.word.id != nil {
+
 			self.wordsAnswer = []
 			answer = word.id == self.word.id
 		}

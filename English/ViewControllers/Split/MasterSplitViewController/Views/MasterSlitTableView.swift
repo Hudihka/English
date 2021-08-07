@@ -15,7 +15,7 @@ class MasterSlitTableView: UITableView {
     var countTrue: Int = 0
     var countFalse: Int = 0
 	
-	var wordsAnswer: [WordAnswer]{
+	var wordsAnswer: [WordAnswer] = []{
 		didSet {
 			reloadData()
 		}

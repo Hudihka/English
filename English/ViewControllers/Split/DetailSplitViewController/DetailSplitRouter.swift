@@ -7,15 +7,15 @@
 
 import Foundation
 
-protocol MasterSplitRouterProtocol: AnyObject {
+protocol DetailSplitRouterProtocol: AnyObject {
 //    func dissmis()
 
 //    init(navigationVC: BaseNavigationController)
 }
 
-class MasterSplitRouter: MasterSplitRouterProtocol {
+class DetailSplitRouter: DetailSplitRouterProtocol {
 
-    var presenter: MasterSplitPresenterProtocol?
+    var presenter: DetailSplitPresenterProtocol?
 
 //    private var navigationVC: BaseNavigationController!
 //

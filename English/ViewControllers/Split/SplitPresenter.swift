@@ -51,6 +51,13 @@ class SplitPresenter: SplitPresenterProtocol {
         answerWords[index] = answer
 		
 		view?.correctedAnswerTwoVC(wordsAnswe: answerWords)
+
+        guard let answerWord = answer.answer else { return }
+        if answerWord {
+            Vibro.weak()
+        } else {
+            Vibro.strong()
+        }
     }
 
     func choseWordToCheck(word: Word) { //выбрали слово для проверки

@@ -17,6 +17,8 @@ protocol DIProtocol: AnyObject {
     static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController
 
     static func splitViewController(list: List?, wayTranslate: MenuEndpointsEnum.ActionButtonsAlert) -> SplitViewController
+    static func masterSplitViewController() -> (VC: BaseViewController, interactor: MasterSplitInteractorProtocol)
+    static func detailSplitViewController() -> (VC: BaseViewController, interactor: DetailSplitInteractorProtocol)
 }
 
 
@@ -127,13 +129,12 @@ class DI: DIProtocol {
         return VC
     }
 
-    static func asterSplitViewController(list: List?,
-                                         wayTranslate: MenuEndpointsEnum.ActionButtonsAlert) -> SplitViewController {
+    static func masterSplitViewController() -> (VC: BaseViewController, interactor: MasterSplitInteractorProtocol) {
         let VC = MasterSplitViewController()
 
-        let interactor = SplitInteractor(list: list)
-        let router = SplitRouterRouter()
-        let presenter = SplitPresenter(interactor: interactor, wayTranslate: wayTranslate)
+        let interactor = MasterSplitInteractor()
+        let router = MasterSplitRouter()
+        let presenter = MasterSplitPresenter()
 
         VC.presenter = presenter
         interactor.presenter = presenter
@@ -142,7 +143,24 @@ class DI: DIProtocol {
         presenter.interactor = interactor
         presenter.router = router
 
-        return VC
+        return (VC: VC, interactor: interactor)
+    }
+
+    static func detailSplitViewController() -> (VC: BaseViewController, interactor: DetailSplitInteractorProtocol) {
+        let VC = DetailSplitViewController()
+
+        let interactor = DetailSplitInteractor()
+        let router = DetailSplitRouter()
+        let presenter = DetailSplitPresenter()
+
+        VC.presenter = presenter
+        interactor.presenter = presenter
+
+        presenter.view = VC
+        presenter.interactor = interactor
+        presenter.router = router
+
+        return (VC: VC, interactor: interactor)
     }
     
 }

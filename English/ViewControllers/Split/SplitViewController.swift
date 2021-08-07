@@ -15,25 +15,39 @@ protocol SplitViewControllerProtocol: AnyObject {
 
 class SplitViewController: UISplitViewController {
     var presenter: SplitPresenterProtocol?
+    private var masterInteractor: MasterSplitInteractorProtocol?
+    private var detailInteractor: DetailSplitInteractorProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		
+        let tuplMaster = DI.masterSplitViewController()
+        let tuplDetail = DI.detailSplitViewController()
+
+        masterInteractor = tuplMaster.interactor
+        detailInteractor = tuplDetail.interactor
+
+        viewControllers = [tuplMaster.VC, tuplDetail.VC]
+        preferredDisplayMode = .allVisible
     }
 
 }
 
 extension SplitViewController: SplitViewControllerProtocol {
     func answer(wordsAnswe: [WordAnswer], translateWayRusEng: Bool) {
-		
+        masterInteractor?.translateWayRusEng = translateWayRusEng
+        detailInteractor?.translateWayRusEng = translateWayRusEng
+
+        masterInteractor?.allAnswer(wordsAnswe: wordsAnswe)
+        guard let word = wordsAnswe.first else {return}
+        detailInteractor?.answerDetailVC(wordAnswer: word)
     }
 	
 	func correctedAnswerTwoVC(wordsAnswe: [WordAnswer]){ //это после ответа
-		
+        masterInteractor?.allAnswer(wordsAnswe: wordsAnswe)
 	}
 	
 	func answerDetailVC(wordAnswer: WordAnswer) { //это показ возможных вариантов ответа
-		
+        detailInteractor?.answerDetailVC(wordAnswer: wordAnswer)
 	}
 }

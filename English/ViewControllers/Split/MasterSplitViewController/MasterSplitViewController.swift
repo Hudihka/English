@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 protocol MasterSplitViewControllerProtocol: AnyObject {
-
+    func count(countTrue: Int, countFalse: Int)
+    func startSettingsTableview(wordsAnswe: [WordAnswer], translateWayRusEng: Bool)
 }
 
 class MasterSplitViewController: BaseViewController{
@@ -48,5 +49,16 @@ class MasterSplitViewController: BaseViewController{
 }
 
 extension MasterSplitViewController: MasterSplitViewControllerProtocol {
+
+    func count(countTrue: Int, countFalse: Int) {
+        table.countTrue = countTrue
+        table.countFalse = countFalse
+    }
+
+    func startSettingsTableview(wordsAnswe: [WordAnswer],
+                                translateWayRusEng: Bool) {
+        table.rusEngWay = translateWayRusEng
+        table.wordsAnswer = wordsAnswe
+    }
 
 }

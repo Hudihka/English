@@ -8,20 +8,21 @@
 import Foundation
 
 protocol MasterSplitPresenterProtocol: AnyObject {
-//    func dissmis()
-
-//    init(navigationVC: BaseNavigationController)
+    func allAnswer(wordsAnswe: [WordAnswer], translateWayRusEng: Bool)
 }
 
 class MasterSplitPresenter: MasterSplitPresenterProtocol {
 
-//    private var navigationVC: BaseNavigationController!
-//
-//    required init(navigationVC: BaseNavigationController, list: List?) {
-//        self.navigationVC = navigationVC
-//    }
-//
-//    func dissmis() {
-//        navigationVC.dismiss(animated: true, completion: nil)
-//    }
+    var interactor: MasterSplitInteractorProtocol?
+    var router: MasterSplitRouterProtocol?
+    weak var view: MasterSplitViewControllerProtocol?
+
+    func allAnswer(wordsAnswe: [WordAnswer], translateWayRusEng: Bool) {
+
+        let countTrue = wordsAnswe.compactMap({$0.answer == true}).count
+        let countFalse = wordsAnswe.compactMap({$0.answer == false}).count
+
+        view?.count(countTrue: countTrue, countFalse: countFalse)
+        view?.startSettingsTableview(wordsAnswe: wordsAnswe, translateWayRusEng: translateWayRusEng)
+    }
 }
