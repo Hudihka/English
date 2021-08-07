@@ -9,6 +9,8 @@ import Foundation
 
 protocol DetailSplitPresenterProtocol: AnyObject {
     func answer(ansewe: WordAnswer, translateWayRusEng: Bool)
+    func tapedIndex(index: Int)
+
     func tapedDissmis()
 }
 
@@ -18,7 +20,10 @@ class DetailSplitPresenter: DetailSplitPresenterProtocol {
     var router: DetailSplitRouterProtocol?
     weak var view: DetailSplitViewControllerProtocol?
 
+    private var wordAnswer: WordAnswer?
+
     func answer(ansewe: WordAnswer, translateWayRusEng: Bool){
+        wordAnswer = ansewe
         let labelTitle = translateWayRusEng ? ansewe.word.rusValue : ansewe.word.engValue
         view?.labelTitle(text: labelTitle)
         
@@ -31,6 +36,11 @@ class DetailSplitPresenter: DetailSplitPresenterProtocol {
                         ansewe.wordsAnswer.compactMap({$0.rusValue})
             view?.answerTexts(texts: texts)
         }
+    }
+
+    func tapedIndex(index: Int) {
+        guard let word = wordAnswer?.wordsAnswer[safe: index] else {return}
+        
     }
 
     func tapedDissmis() {

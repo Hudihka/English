@@ -34,6 +34,10 @@ class SplitViewController: UISplitViewController {
             self?.presenter?.choseWordToCheck(wordAnser: word)
         }
 
+        detailInteractor?.choiceWord = {[weak self] word in
+            self?.presenter?.tapedAnswer(word: word)
+        }
+
         viewControllers = [tuplMaster.NVC, detailViewController]
         preferredDisplayMode = .allVisible
     }

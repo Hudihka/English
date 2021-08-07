@@ -10,6 +10,8 @@ import Foundation
 protocol DetailSplitInteractorProtocol: AnyObject {
     var translateWayRusEng: Bool {get set}
     func answerDetailVC(wordAnswer: WordAnswer)
+
+    var choiceWord: (Word) -> Void {get set}
 }
 
 class DetailSplitInteractor: DetailSplitInteractorProtocol {
@@ -22,4 +24,6 @@ class DetailSplitInteractor: DetailSplitInteractorProtocol {
         presenter?.answer(ansewe: wordAnswer,
                           translateWayRusEng: translateWayRusEng)
     }
+
+    var choiceWord: (Word) -> Void = {_ in }
 }

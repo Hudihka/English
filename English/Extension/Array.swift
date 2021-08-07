@@ -7,6 +7,13 @@
 
 import Foundation
 
+extension Collection {
+    subscript (safe index: Index) -> Iterator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
+//telephoneArray[safe: indexPath.row - 1]
+
 extension Array { //массив уже должен быть без искомого слова, но только если слов меньше 10
 	subscript (obj: Element) -> [Element] {
         var copy = self
