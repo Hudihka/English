@@ -16,7 +16,9 @@ protocol SplitViewControllerProtocol: AnyObject {
 class SplitViewController: UISplitViewController {
     var presenter: SplitPresenterProtocol?
     private var masterInteractor: MasterSplitInteractorProtocol?
+    private var detailViewController: UIViewController!
     private var detailInteractor: DetailSplitInteractorProtocol?
+    private var flagLoadDetail = false //нужен для того, что бы при первом запуске не делать сразу переход
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +28,13 @@ class SplitViewController: UISplitViewController {
 
         masterInteractor = tuplMaster.interactor
         detailInteractor = tuplDetail.interactor
+        detailViewController = tuplDetail.NVC
 
         masterInteractor?.choiceWordAnswer = {[weak self] word in
             self?.presenter?.choseWordToCheck(wordAnser: word)
         }
 
-        viewControllers = [tuplMaster.NVC, tuplDetail.NVC]
+        viewControllers = [tuplMaster.NVC, detailViewController]
         preferredDisplayMode = .allVisible
     }
 
@@ -50,6 +53,12 @@ extension SplitViewController: SplitViewControllerProtocol {
 	}
 	
 	func answerDetailVC(wordAnswer: WordAnswer) { //это показ возможных вариантов ответа
+        if let DVC = detailViewController, flagLoadDetail {
+            self.showDetailViewController(DVC, sender: nil)
+        } else {
+            flagLoadDetail = true
+        }
+
         detailInteractor?.answerDetailVC(wordAnswer: wordAnswer)
 	}
 }

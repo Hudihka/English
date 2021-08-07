@@ -164,6 +164,10 @@ class NewWordViewController: BaseViewController{
         return label
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
 }
 
 extension NewWordViewController: UITextFieldDelegate {
