@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4504A84526BFE340009B6388 /* Jule2021.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83026BFE340009B6388 /* Jule2021.swift */; };
+		4504A84626BFE340009B6388 /* Adjectives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83126BFE340009B6388 /* Adjectives.swift */; };
+		4504A84726BFE340009B6388 /* March2021.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83226BFE340009B6388 /* March2021.swift */; };
+		4504A84826BFE340009B6388 /* FamilyAndHobbies .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83326BFE340009B6388 /* FamilyAndHobbies .swift */; };
+		4504A84926BFE340009B6388 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83426BFE340009B6388 /* Time.swift */; };
+		4504A84A26BFE340009B6388 /* Verbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83526BFE340009B6388 /* Verbs.swift */; };
+		4504A84B26BFE340009B6388 /* BodyParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83626BFE340009B6388 /* BodyParts.swift */; };
+		4504A84C26BFE340009B6388 /* AllThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83726BFE340009B6388 /* AllThemes.swift */; };
+		4504A84D26BFE340009B6388 /* Clothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83826BFE340009B6388 /* Clothes.swift */; };
+		4504A84E26BFE340009B6388 /* Februaru2021.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83926BFE340009B6388 /* Februaru2021.swift */; };
+		4504A84F26BFE340009B6388 /* Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83A26BFE340009B6388 /* Subjects.swift */; };
+		4504A85026BFE340009B6388 /* Prepositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83B26BFE340009B6388 /* Prepositions.swift */; };
+		4504A85126BFE340009B6388 /* Phrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83C26BFE340009B6388 /* Phrases.swift */; };
+		4504A85226BFE340009B6388 /* DestinationsAndLocations .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83D26BFE340009B6388 /* DestinationsAndLocations .swift */; };
+		4504A85326BFE340009B6388 /* Februaru-June2021.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83E26BFE340009B6388 /* Februaru-June2021.swift */; };
+		4504A85426BFE340009B6388 /* NotTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A83F26BFE340009B6388 /* NotTheme.swift */; };
+		4504A85526BFE340009B6388 /* Funiture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A84026BFE340009B6388 /* Funiture.swift */; };
+		4504A85626BFE340009B6388 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A84126BFE340009B6388 /* Food.swift */; };
+		4504A85726BFE340009B6388 /* December2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A84226BFE340009B6388 /* December2020.swift */; };
+		4504A85826BFE340009B6388 /* Januri2021.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A84326BFE340009B6388 /* Januri2021.swift */; };
+		4504A85926BFE340009B6388 /* ProfessionAndWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504A84426BFE340009B6388 /* ProfessionAndWork.swift */; };
 		450712E5269E0A9C0022EE61 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712E4269E0A9C0022EE61 /* MenuPresenter.swift */; };
 		450712E7269E0B520022EE61 /* MenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712E6269E0B510022EE61 /* MenuInteractor.swift */; };
 		450712E9269E0D160022EE61 /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712E8269E0D160022EE61 /* MenuRouter.swift */; };
@@ -93,6 +114,27 @@
 /* Begin PBXFileReference section */
 		2A9F5BC59122B2F9337ED01F /* Pods_English.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_English.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BA1FE80835AF7A178CB8FBA /* Pods-English.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.release.xcconfig"; path = "Target Support Files/Pods-English/Pods-English.release.xcconfig"; sourceTree = "<group>"; };
+		4504A83026BFE340009B6388 /* Jule2021.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jule2021.swift; sourceTree = "<group>"; };
+		4504A83126BFE340009B6388 /* Adjectives.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adjectives.swift; sourceTree = "<group>"; };
+		4504A83226BFE340009B6388 /* March2021.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = March2021.swift; sourceTree = "<group>"; };
+		4504A83326BFE340009B6388 /* FamilyAndHobbies .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FamilyAndHobbies .swift"; sourceTree = "<group>"; };
+		4504A83426BFE340009B6388 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		4504A83526BFE340009B6388 /* Verbs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Verbs.swift; sourceTree = "<group>"; };
+		4504A83626BFE340009B6388 /* BodyParts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyParts.swift; sourceTree = "<group>"; };
+		4504A83726BFE340009B6388 /* AllThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllThemes.swift; sourceTree = "<group>"; };
+		4504A83826BFE340009B6388 /* Clothes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clothes.swift; sourceTree = "<group>"; };
+		4504A83926BFE340009B6388 /* Februaru2021.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Februaru2021.swift; sourceTree = "<group>"; };
+		4504A83A26BFE340009B6388 /* Subjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
+		4504A83B26BFE340009B6388 /* Prepositions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prepositions.swift; sourceTree = "<group>"; };
+		4504A83C26BFE340009B6388 /* Phrases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phrases.swift; sourceTree = "<group>"; };
+		4504A83D26BFE340009B6388 /* DestinationsAndLocations .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DestinationsAndLocations .swift"; sourceTree = "<group>"; };
+		4504A83E26BFE340009B6388 /* Februaru-June2021.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Februaru-June2021.swift"; sourceTree = "<group>"; };
+		4504A83F26BFE340009B6388 /* NotTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotTheme.swift; sourceTree = "<group>"; };
+		4504A84026BFE340009B6388 /* Funiture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Funiture.swift; sourceTree = "<group>"; };
+		4504A84126BFE340009B6388 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		4504A84226BFE340009B6388 /* December2020.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = December2020.swift; sourceTree = "<group>"; };
+		4504A84326BFE340009B6388 /* Januri2021.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Januri2021.swift; sourceTree = "<group>"; };
+		4504A84426BFE340009B6388 /* ProfessionAndWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfessionAndWork.swift; sourceTree = "<group>"; };
 		450712E4269E0A9C0022EE61 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
 		450712E6269E0B510022EE61 /* MenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInteractor.swift; sourceTree = "<group>"; };
 		450712E8269E0D160022EE61 /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
@@ -190,6 +232,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4504A82F26BFE340009B6388 /* CONTENT */ = {
+			isa = PBXGroup;
+			children = (
+				4504A83726BFE340009B6388 /* AllThemes.swift */,
+				4504A83126BFE340009B6388 /* Adjectives.swift */,
+				4504A83026BFE340009B6388 /* Jule2021.swift */,
+				4504A83226BFE340009B6388 /* March2021.swift */,
+				4504A83326BFE340009B6388 /* FamilyAndHobbies .swift */,
+				4504A83426BFE340009B6388 /* Time.swift */,
+				4504A83526BFE340009B6388 /* Verbs.swift */,
+				4504A83626BFE340009B6388 /* BodyParts.swift */,
+				4504A83826BFE340009B6388 /* Clothes.swift */,
+				4504A83926BFE340009B6388 /* Februaru2021.swift */,
+				4504A83A26BFE340009B6388 /* Subjects.swift */,
+				4504A83B26BFE340009B6388 /* Prepositions.swift */,
+				4504A83C26BFE340009B6388 /* Phrases.swift */,
+				4504A83D26BFE340009B6388 /* DestinationsAndLocations .swift */,
+				4504A83E26BFE340009B6388 /* Februaru-June2021.swift */,
+				4504A83F26BFE340009B6388 /* NotTheme.swift */,
+				4504A84026BFE340009B6388 /* Funiture.swift */,
+				4504A84126BFE340009B6388 /* Food.swift */,
+				4504A84226BFE340009B6388 /* December2020.swift */,
+				4504A84326BFE340009B6388 /* Januri2021.swift */,
+				4504A84426BFE340009B6388 /* ProfessionAndWork.swift */,
+			);
+			path = CONTENT;
+			sourceTree = "<group>";
+		};
 		450712E3269E09FA0022EE61 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +391,7 @@
 				45E8EEBC2693389600D66F13 /* FirebaseAutorization.swift */,
 				45E8EEBE26933CB400D66F13 /* FirebaseData.swift */,
 				45E8EEC82693429E00D66F13 /* DefaultUtils.swift */,
+				4504A82F26BFE340009B6388 /* CONTENT */,
 			);
 			path = DataProvider;
 			sourceTree = "<group>";
@@ -591,10 +662,14 @@
 				45EA372926BDB8D400BB40BD /* MasterSplitRouter.swift in Sources */,
 				458C50C126B6BF01001DD6B9 /* WordsInteractor.swift in Sources */,
 				529EFF0F26BD20C000D65721 /* SplitEndpoint.swift in Sources */,
+				4504A85826BFE340009B6388 /* Januri2021.swift in Sources */,
+				4504A84826BFE340009B6388 /* FamilyAndHobbies .swift in Sources */,
 				45EA373926BEAB1300BB40BD /* DetailSplitTableView.swift in Sources */,
 				45EA372726BDB8B300BB40BD /* MasterSplitInteractor.swift in Sources */,
 				45EA373B26BEB0C700BB40BD /* ChekWordCell.swift in Sources */,
+				4504A85726BFE340009B6388 /* December2020.swift in Sources */,
 				45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */,
+				4504A85526BFE340009B6388 /* Funiture.swift in Sources */,
 				45E8EED0269359F600D66F13 /* MenuViewController.swift in Sources */,
 				450712ED269E15C90022EE61 /* Date.swift in Sources */,
 				4561060C26BB0B0D006A1442 /* SplitPresenter.swift in Sources */,
@@ -619,6 +694,7 @@
 				456EB43F2692E1120003CEB6 /* AppDelegate.swift in Sources */,
 				458C50BD26B6BEB4001DD6B9 /* WordsViewController.swift in Sources */,
 				45FF7AAA26A015CF005BAF35 /* FavoriteWords.swift in Sources */,
+				4504A84E26BFE340009B6388 /* Februaru2021.swift in Sources */,
 				458C50C826B6CCFB001DD6B9 /* WordsEndpoint.swift in Sources */,
 				45E976A72694BB3A00A12858 /* BaseNavigationController.swift in Sources */,
 				456E7F77269A092A007ABF69 /* AutorisationViewController.swift in Sources */,
@@ -628,19 +704,28 @@
 				4562DE6126972E0600510378 /* LoadProfileInteractor.swift in Sources */,
 				45EA373526BEA82C00BB40BD /* DetailSplitViewController.swift in Sources */,
 				45942FEF26ADDD00006EE405 /* NewWordRouter.swift in Sources */,
+				4504A85926BFE340009B6388 /* ProfessionAndWork.swift in Sources */,
 				45EA373726BEA82C00BB40BD /* DetailSplitRouter.swift in Sources */,
 				450712EF269E174A0022EE61 /* List.swift in Sources */,
 				529EFF0A26BD1B0800D65721 /* MasterHeder.swift in Sources */,
 				45E8EEC92693429E00D66F13 /* DefaultUtils.swift in Sources */,
 				45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */,
+				4504A85226BFE340009B6388 /* DestinationsAndLocations .swift in Sources */,
+				4504A84726BFE340009B6388 /* March2021.swift in Sources */,
+				4504A84B26BFE340009B6388 /* BodyParts.swift in Sources */,
 				45942FED26ADDCDE006EE405 /* NewWordInteractor.swift in Sources */,
 				45E8EEC42693403D00D66F13 /* Vibro.swift in Sources */,
+				4504A84F26BFE340009B6388 /* Subjects.swift in Sources */,
+				4504A84926BFE340009B6388 /* Time.swift in Sources */,
+				4504A84526BFE340009B6388 /* Jule2021.swift in Sources */,
+				4504A84C26BFE340009B6388 /* AllThemes.swift in Sources */,
 				45EA372526BDB8A000BB40BD /* MasterSplitPresenter.swift in Sources */,
 				45942FEB26ADDCCA006EE405 /* NewWordPresenter.swift in Sources */,
 				45E976A3269490C500A12858 /* UINavigationController.swift in Sources */,
 				45EA373626BEA82C00BB40BD /* DetailSplitInteractor.swift in Sources */,
 				45ED9EC7269CBCCF00AB150F /* AutorisationPresenter.swift in Sources */,
 				52E45E7626BAFB32009C5965 /* WordAnswer.swift in Sources */,
+				4504A84626BFE340009B6388 /* Adjectives.swift in Sources */,
 				52E45E7326B7F546009C5965 /* WordCell.swift in Sources */,
 				45E8EEBD2693389600D66F13 /* FirebaseAutorization.swift in Sources */,
 				45942FE926ADDCAB006EE405 /* NewWordViewController.swift in Sources */,
@@ -651,14 +736,21 @@
 				45EA373426BEA82C00BB40BD /* DetailSplitPresenter.swift in Sources */,
 				45FF7AAD26A016DD005BAF35 /* BaseCell.swift in Sources */,
 				45E8EEC6269340BD00D66F13 /* Constant.swift in Sources */,
+				4504A85626BFE340009B6388 /* Food.swift in Sources */,
 				45FF7AAB26A015CF005BAF35 /* HederCells.swift in Sources */,
 				4561060E26BB0B61006A1442 /* SplitInteractorProtocol.swift in Sources */,
 				4562DE6526972E2400510378 /* LoadProfileRouter.swift in Sources */,
 				45C960162694C2D600B846D2 /* UIWindow.swift in Sources */,
 				45A191AE269DE16E00D2E169 /* VisualEffectView.swift in Sources */,
+				4504A84D26BFE340009B6388 /* Clothes.swift in Sources */,
+				4504A85026BFE340009B6388 /* Prepositions.swift in Sources */,
+				4504A84A26BFE340009B6388 /* Verbs.swift in Sources */,
+				4504A85426BFE340009B6388 /* NotTheme.swift in Sources */,
 				456E7F742699F79D007ABF69 /* DI.swift in Sources */,
 				450712E5269E0A9C0022EE61 /* MenuPresenter.swift in Sources */,
 				52E45E7B26BC5270009C5965 /* MasterSlitTableView.swift in Sources */,
+				4504A85126BFE340009B6388 /* Phrases.swift in Sources */,
+				4504A85326BFE340009B6388 /* Februaru-June2021.swift in Sources */,
 				45826F6026B9B83D001B3350 /* WordCellDescription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -809,7 +901,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 7M2U6SA6L4;
+				DEVELOPMENT_TEAM = UP3NTZ9NR7;
 				INFOPLIST_FILE = English/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -832,7 +924,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 7M2U6SA6L4;
+				DEVELOPMENT_TEAM = UP3NTZ9NR7;
 				INFOPLIST_FILE = English/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

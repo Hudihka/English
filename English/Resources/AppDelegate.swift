@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             autorizationVC()
         }
+
+        
         
         return true
     }
