@@ -135,6 +135,14 @@ class FirebaseData {
     }
 
 	//MARK: - создание слов
+
+    func createWord(newWord: Word){
+        guard let idWord = newWord.id else {
+            return
+        }
+
+        db.collection("Words").document(idWord).setData(newWord.json)
+    }
 	
 	func renameWord(newWord: Word){
 		guard let id = newWord.id else { return }

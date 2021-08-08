@@ -16,8 +16,8 @@ class LoadProfileRouter: LoadProfileProtocol{
 
     func windowChange() {
 
-        for list in AllThemes.allLists{
-            FirebaseData.shared.createList(list: list)
+        for word in AllThemes.allWords{
+            FirebaseData.shared.createWord(newWord: word)
         }
 
 
