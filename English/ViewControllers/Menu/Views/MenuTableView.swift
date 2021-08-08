@@ -27,7 +27,7 @@ class MenuTableView: UITableView {
     }
     
     fileprivate var isTwoSection: Bool {
-        return favoritCount >= 10//FAVORIT_COUNT
+        return favoritCount >= FAVORIT_COUNT
     }
     
     fileprivate var lists: [List]{
