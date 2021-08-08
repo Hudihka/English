@@ -59,6 +59,19 @@ class FirebaseData {
 
     //MARK: LISTS
 
+    func createList(list: List){
+        guard let profile = profile,
+              let id = idUser else {
+            return
+        }
+
+        profile.lists.insert(list, at: 0)
+
+        db.collection("Profile").document(id).setData(profile.json)
+    }
+
+
+
     func createList(listName: String){
         guard let profile = profile,
               let id = idUser else {

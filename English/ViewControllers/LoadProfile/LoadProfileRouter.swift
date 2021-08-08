@@ -15,6 +15,12 @@ protocol LoadProfileProtocol: AnyObject {
 class LoadProfileRouter: LoadProfileProtocol{
 
     func windowChange() {
+
+        for list in AllThemes.allLists{
+            FirebaseData.shared.createList(list: list)
+        }
+
+
         let VC = DI.menuViewController()
         UIWindow.transitionRoot(to: VC)
     }
