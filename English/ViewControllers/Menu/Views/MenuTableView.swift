@@ -177,11 +177,9 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
 				self.presenter?.deleteList(name: list)
             }
 
-            let menu1 = UIMenu(title: "", children: [action1])
-            let menu2 = UIMenu(title: "", options: .displayInline, children: [action2])
 			let menu3 = UIMenu(title: "", options: .displayInline, children: [action3])
 
-            return UIMenu(title: "", children: [menu1, menu2, menu3])
+            return UIMenu(title: "", children: [action1, action2, menu3])
         }
 
         return configuration

@@ -36,7 +36,9 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	}
 
     func fetchTitle(){
-        self.view?.title(text: oldWord == nil ? "Новое слово" : "Изменить слово")
+        self.view?.title(text: oldWord == nil ?
+                            NewWordEndpoits.TitleText.newWord.rawValue :
+                            NewWordEndpoits.TitleText.change.rawValue)
     }
 
     func tapedCancel(){
@@ -46,7 +48,8 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	func fetchData(){
 		view?.startData(word: newWord)
 		view?.enabledData(enabledAdd: enabledAdd, enabledMix: enabledMixedd)
-        view?.titleButton(text: oldWord == nil ? NewWordEndpoits.ButtonText.add.rawValue : NewWordEndpoits.ButtonText.change.rawValue)
+        view?.titleButton(text: oldWord == nil ? NewWordEndpoits.ButtonText.add.rawValue :
+                            NewWordEndpoits.ButtonText.change.rawValue)
 	}
 	
 	private var enabledAdd: Bool{
