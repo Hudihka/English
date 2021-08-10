@@ -58,6 +58,11 @@
 		45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A42694B56A00A12858 /* BaseViewController.swift */; };
 		45E976A72694BB3A00A12858 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A62694BB3900A12858 /* BaseNavigationController.swift */; };
 		45E976AA2694BE5E00A12858 /* LoadProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E976A92694BE5E00A12858 /* LoadProfileViewController.swift */; };
+		45E9D85026C2F37200638B6E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D84F26C2F37200638B6E /* SearchViewController.swift */; };
+		45E9D85226C2F3B700638B6E /* SearchEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D85126C2F3B700638B6E /* SearchEndpoints.swift */; };
+		45E9D85426C2F3E100638B6E /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D85326C2F3E100638B6E /* SearchPresenter.swift */; };
+		45E9D85626C2F40C00638B6E /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D85526C2F40C00638B6E /* SearchInteractor.swift */; };
+		45E9D85926C2F6FD00638B6E /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9D85826C2F6FD00638B6E /* SearchCell.swift */; };
 		45EA372526BDB8A000BB40BD /* MasterSplitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA372426BDB8A000BB40BD /* MasterSplitPresenter.swift */; };
 		45EA372726BDB8B300BB40BD /* MasterSplitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA372626BDB8B300BB40BD /* MasterSplitInteractor.swift */; };
 		45EA372926BDB8D400BB40BD /* MasterSplitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA372826BDB8D400BB40BD /* MasterSplitRouter.swift */; };
@@ -145,6 +150,11 @@
 		45E976A42694B56A00A12858 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		45E976A62694BB3900A12858 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		45E976A92694BE5E00A12858 /* LoadProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProfileViewController.swift; sourceTree = "<group>"; };
+		45E9D84F26C2F37200638B6E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		45E9D85126C2F3B700638B6E /* SearchEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndpoints.swift; sourceTree = "<group>"; };
+		45E9D85326C2F3E100638B6E /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		45E9D85526C2F40C00638B6E /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		45E9D85826C2F6FD00638B6E /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		45EA372426BDB8A000BB40BD /* MasterSplitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitPresenter.swift; sourceTree = "<group>"; };
 		45EA372626BDB8B300BB40BD /* MasterSplitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitInteractor.swift; sourceTree = "<group>"; };
 		45EA372826BDB8D400BB40BD /* MasterSplitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitRouter.swift; sourceTree = "<group>"; };
@@ -336,6 +346,7 @@
 				456E7F75269A08FD007ABF69 /* Authorization */,
 				45E976A82694BE3A00A12858 /* LoadProfile */,
 				456E7F732699F79D007ABF69 /* DI.swift */,
+				45E9D84E26C2F34C00638B6E /* SearchViewController */,
 				52E45E7426BAFAF6009C5965 /* Split */,
 			);
 			path = ViewControllers;
@@ -367,6 +378,26 @@
 				4562DE6426972E2400510378 /* LoadProfileRouter.swift */,
 			);
 			path = LoadProfile;
+			sourceTree = "<group>";
+		};
+		45E9D84E26C2F34C00638B6E /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				45E9D85126C2F3B700638B6E /* SearchEndpoints.swift */,
+				45E9D84F26C2F37200638B6E /* SearchViewController.swift */,
+				45E9D85326C2F3E100638B6E /* SearchPresenter.swift */,
+				45E9D85526C2F40C00638B6E /* SearchInteractor.swift */,
+				45E9D85726C2F6B000638B6E /* Views */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		45E9D85726C2F6B000638B6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				45E9D85826C2F6FD00638B6E /* SearchCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		45EA372E26BEA82C00BB40BD /* DetailSplitViewController */ = {
@@ -589,6 +620,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45FF7AA326A00AF1005BAF35 /* MenuTableView.swift in Sources */,
+				45E9D85926C2F6FD00638B6E /* SearchCell.swift in Sources */,
 				529EFF1126BD4ADA00D65721 /* CellMaster.swift in Sources */,
 				458C50C626B6CAD4001DD6B9 /* NewWordEndpoits.swift in Sources */,
 				45EA372926BDB8D400BB40BD /* MasterSplitRouter.swift in Sources */,
@@ -603,6 +635,7 @@
 				4561060C26BB0B0D006A1442 /* SplitPresenter.swift in Sources */,
 				45942FF226ADE87C006EE405 /* BaseBlackButton.swift in Sources */,
 				458C50C326B6BF0D001DD6B9 /* WordsRouter.swift in Sources */,
+				45E9D85226C2F3B700638B6E /* SearchEndpoints.swift in Sources */,
 				45FF7AA926A015CF005BAF35 /* ListCell.swift in Sources */,
 				52E45E7826BAFCB2009C5965 /* Array.swift in Sources */,
 				45A191B0269DE22C00D2E169 /* BluereViewController.swift in Sources */,
@@ -620,6 +653,7 @@
 				45E8EEC226933E9500D66F13 /* Profile.swift in Sources */,
 				4562DE6326972E1600510378 /* LoadProfilePresenter.swift in Sources */,
 				456EB43F2692E1120003CEB6 /* AppDelegate.swift in Sources */,
+				45E9D85626C2F40C00638B6E /* SearchInteractor.swift in Sources */,
 				458C50BD26B6BEB4001DD6B9 /* WordsViewController.swift in Sources */,
 				45FF7AAA26A015CF005BAF35 /* FavoriteWords.swift in Sources */,
 				458C50C826B6CCFB001DD6B9 /* WordsEndpoint.swift in Sources */,
@@ -630,6 +664,7 @@
 				52EF819326B039C700B81D19 /* EnumNotification.swift in Sources */,
 				4562DE6126972E0600510378 /* LoadProfileInteractor.swift in Sources */,
 				45EA373526BEA82C00BB40BD /* DetailSplitViewController.swift in Sources */,
+				45E9D85026C2F37200638B6E /* SearchViewController.swift in Sources */,
 				45942FEF26ADDD00006EE405 /* NewWordRouter.swift in Sources */,
 				45EA373726BEA82C00BB40BD /* DetailSplitRouter.swift in Sources */,
 				450712EF269E174A0022EE61 /* List.swift in Sources */,
@@ -660,6 +695,7 @@
 				45C960162694C2D600B846D2 /* UIWindow.swift in Sources */,
 				45A191AE269DE16E00D2E169 /* VisualEffectView.swift in Sources */,
 				456E7F742699F79D007ABF69 /* DI.swift in Sources */,
+				45E9D85426C2F3E100638B6E /* SearchPresenter.swift in Sources */,
 				450712E5269E0A9C0022EE61 /* MenuPresenter.swift in Sources */,
 				52E45E7B26BC5270009C5965 /* MasterSlitTableView.swift in Sources */,
 				45826F6026B9B83D001B3350 /* WordCellDescription.swift in Sources */,
