@@ -20,6 +20,9 @@ class LoadProfileRouter: LoadProfileProtocol{
             FirebaseData.shared.createWord(newWord: word)
         }
 
+        for word in AllThemes.allLists{
+            FirebaseData.shared.createList(list: word)
+        }
 
         let VC = DI.menuViewController()
         UIWindow.transitionRoot(to: VC)
