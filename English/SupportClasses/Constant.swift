@@ -15,6 +15,7 @@ let wDdevice = UIScreen.main.bounds.size.width
 
 let FAVORIT_NAME = "ФАВОРИТ"
 let FAVORIT_COUNT = 20
+let TEST_COUNT = 10
 
 let grayColor = UIColor(red: 242.0/255.0, green: 242.0/255.0, blue: 242.0/255.0, alpha: 1)
 

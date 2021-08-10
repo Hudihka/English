@@ -18,7 +18,7 @@ struct WordAnswer {
 	
 	mutating func createWordsAnswers(allWords: [Word]){
 		if answer == nil, wordsAnswer.isEmpty {
-            if allWords.count < 10 {
+            if allWords.count < TEST_COUNT {
                 wordsAnswer = allWords
             } else {
                 let arrayDontAnswer = allWords.filter({$0.id != word.id})
