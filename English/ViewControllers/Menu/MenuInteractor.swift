@@ -10,7 +10,6 @@ import Foundation
 protocol MenuInteractorProtocol: AnyObject {
     func createdNewList(name: String)
     func renameList(oldName: String, newName: String)
-	func deleteList(name: String)
 
     init(presenter: MenuPresenterProtocol)
 }
@@ -36,10 +35,6 @@ class MenuInteractor: MenuInteractorProtocol {
     func renameList(oldName: String, newName: String){
         FB.renameLists(oldName: oldName, newName: newName)
     }
-	
-	func deleteList(name: String) {
-		FB.deleteList(listName: name)
-	}
 
 //    private func lissen
 }

@@ -167,19 +167,8 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
                 let list = self.lists[indexPath.row]
 				self.presenter?.newWordInTheme(list: list)
             }
-			
-			let action3 = UIAction(title: MenuEndpointsEnum.TableContextMenu.delete.rawValue,
-								   image: UIImage(systemName: "trash"),
-								   attributes: .destructive) {[weak self] _ in
-                guard let self = self else {return}
 
-				let list = self.lists[indexPath.row].name
-				self.presenter?.deleteList(name: list)
-            }
-
-			let menu3 = UIMenu(title: "", options: .displayInline, children: [action3])
-
-            return UIMenu(title: "", children: [action1, action2, menu3])
+            return UIMenu(title: "", children: [action1, action2])
         }
 
         return configuration
