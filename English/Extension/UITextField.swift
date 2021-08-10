@@ -19,6 +19,7 @@ extension UITextField {
 		self.autocorrectionType = UITextAutocorrectionType.no
 		self.keyboardType = UIKeyboardType.default
 		self.returnKeyType = returnKeyType
+        self.autocapitalizationType = .none
 //		self.clearButtonMode = UITextField.ViewMode.whileEditing
 		self.delegate = delegateObj
     }

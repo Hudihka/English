@@ -11,15 +11,19 @@ import UIKit
 protocol NewWordViewControllerProtocol: AnyObject {
 	func startData(word: Word?)
 	func enabledData(enabledAdd: Bool, enabledMix: Bool)
+
     func title(text: String)
     func titleButton(text: String)
+    func isHidenBeginButton(isHiden: Bool)
 }
 
 class NewWordViewController: BaseViewController{
     
     var presenter: NewWordPresenterProtocol?
-	
-    private var button = BaseBlackButton(title: nil,
+
+    private var buttonAddAndNext = BaseBlackButton(title: NewWordEndpoits.ButtonText.addAndNext.rawValue,
+                                                   selector: #selector(buttonActionAddAndNext), target: self)
+    private var buttonAdd = BaseBlackButton(title: nil,
                                          selector: #selector(buttonAction), target: self)
     private var buttonMix = BaseBlackButton(title: NewWordEndpoits.ButtonText.mix.rawValue,
                                             selector: #selector(mixButton), target: self)
@@ -50,10 +54,10 @@ class NewWordViewController: BaseViewController{
     }
 
     override func desingUI() {
-        view.addSubview(button)
-        button.isEnabled = false
+        view.addSubview(buttonAdd)
+        buttonAdd.isEnabled = false
 
-        button.snp.makeConstraints({ (make) in
+        buttonAdd.snp.makeConstraints({ (make) in
             make.left.equalTo(20)
             make.right.equalTo(-20)
             make.bottom.equalTo(self.view).offset(-20)
@@ -126,12 +130,27 @@ class NewWordViewController: BaseViewController{
 			make.height.equalTo(30)
 		})
 
+        view.addSubview(buttonAddAndNext)
+        buttonAddAndNext.isEnabled = false
+
+        buttonAddAndNext.snp.makeConstraints({ (make) in
+            make.left.equalTo(20)
+            make.right.equalTo(-20)
+            make.top.equalTo(descriptionValueTF.snp.bottom).offset(30)
+            make.height.equalTo(50)
+        })
+
         gester = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         self.view.addGestureRecognizer(gester!)
         gester?.isEnabled = false
 
         presenter?.fetchTitle()
         presenter?.fetchData()
+    }
+
+    @objc private func buttonActionAddAndNext(sender: UIButton!) {
+        presenter?.createAndAddWord()
+        rusValueTF.becomeFirstResponder()
     }
 
     @objc private func buttonAction(sender: UIButton!) {
@@ -210,16 +229,16 @@ extension NewWordViewController: UITextFieldDelegate {
 
 extension NewWordViewController: NewWordViewControllerProtocol {
 	func startData(word: Word?) {
-		guard let word = word else { return }
 		
-		rusValueTF.text = word.rusValue.textEditor
-		engValueTF.text = word.engValue.textEditor
-		descriptionValueTF.text = word.descript
+        rusValueTF.text = word?.rusValue.textEditor
+		engValueTF.text = word?.engValue.textEditor
+		descriptionValueTF.text = word?.descript
 	}
 	
 	func enabledData(enabledAdd: Bool, enabledMix: Bool){
-		buttonMix.isEnabled = enabledMix
-		button.isEnabled = enabledAdd
+		buttonMix.isEnabled        = enabledMix
+        buttonAdd.isEnabled        = enabledAdd
+        buttonAddAndNext.isEnabled = enabledAdd
 	}
 
     func title(text: String){
@@ -227,7 +246,11 @@ extension NewWordViewController: NewWordViewControllerProtocol {
     }
 
     func titleButton(text: String) {
-        button.setTitle(text, for: .normal)
+        buttonAdd.setTitle(text, for: .normal)
+    }
+
+    func isHidenBeginButton(isHiden: Bool){
+        buttonAddAndNext.isHidden = isHiden
     }
 }
 

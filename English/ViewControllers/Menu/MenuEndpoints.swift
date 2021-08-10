@@ -56,6 +56,5 @@ enum MenuEndpointsEnum {
 	enum TableContextMenu: String {
         case rename     = "Переименовать"
         case addWord    = "Добавить слово"
-		case delete     = "Удалить"
 	}
 }
