@@ -23,9 +23,11 @@ extension Array { //массив уже должен быть без иском�
             copy.swapAt(i, Int(arc4random_uniform(UInt32(i + 1))))
         }
 
-		let randomIndex = Int(arc4random_uniform(UInt32(n)))
-		copy[randomIndex] = obj
+        var returnArray = Array(copy.suffix(n))
 
-        return Array(copy.suffix(n))
+		let randomIndex = Int(arc4random_uniform(UInt32(n)))
+        returnArray[randomIndex] = obj
+
+        return returnArray
     }
 }
