@@ -14,10 +14,13 @@ protocol NewWordPresenterProtocol: AnyObject {
 	
 	func tapedMix()
 	func createWord()
+    func createAndAddWord()
 	
 	func textInTF(rusText: String?, engText: String?, description: String?)
 	
-	init(oldWord: Word?, list: List)
+	init(oldWord: Word?,
+         list: List,
+         isBeginHide: Bool)
 }
 
 class NewWordPresenter: NewWordPresenterProtocol {
@@ -28,11 +31,13 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	private var oldWord: Word?
 	private var newWord: Word?
     private var list: List!
+    private var isBeginHide: Bool!
 	
-    required init(oldWord: Word?, list: List){
+    required init(oldWord: Word?, list: List, isBeginHide: Bool){
 		self.oldWord = oldWord
 		self.newWord = oldWord
         self.list = list
+        self.isBeginHide = isBeginHide
 	}
 
     func fetchTitle(){
@@ -46,6 +51,7 @@ class NewWordPresenter: NewWordPresenterProtocol {
     }
 	
 	func fetchData(){
+        view?.isHidenBeginButton(isHiden: isBeginHide)
 		view?.startData(word: newWord)
 		view?.enabledData(enabledAdd: enabledAdd, enabledMix: enabledMixedd)
         view?.titleButton(text: oldWord == nil ? NewWordEndpoits.ButtonText.add.rawValue :
@@ -83,10 +89,22 @@ class NewWordPresenter: NewWordPresenterProtocol {
 		guard let newWord = newWord else { return }
 		if oldWord == nil {
             interactor?.create(word: newWord, list: list)
+            tapedCancel()
 		} else {
             interactor?.reload(word: newWord)
 		}
 	}
+
+    func createAndAddWord() {
+        guard let newWord = newWord else { return }
+        interactor?.create(word: newWord, list: list)
+
+        self.oldWord = nil
+        self.newWord = nil
+
+        view?.startData(word: self.newWord)
+        view?.enabledData(enabledAdd: enabledAdd, enabledMix: enabledMixedd)
+    }
 	
 	func textInTF(rusText: String?, engText: String?, description: String?){
 		if newWord == nil {

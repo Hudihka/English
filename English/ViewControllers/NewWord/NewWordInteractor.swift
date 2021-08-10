@@ -25,6 +25,5 @@ class NewWordInteractor: NewWordInteractorProtocol {
 	
 	func create(word: Word, list: List) {
         db.createWord(newWord: word, list: list)
-        presenter?.tapedCancel()
 	}
 }

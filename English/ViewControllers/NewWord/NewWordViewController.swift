@@ -11,8 +11,10 @@ import UIKit
 protocol NewWordViewControllerProtocol: AnyObject {
 	func startData(word: Word?)
 	func enabledData(enabledAdd: Bool, enabledMix: Bool)
+
     func title(text: String)
     func titleButton(text: String)
+    func isHidenBeginButton(isHiden: Bool)
 }
 
 class NewWordViewController: BaseViewController{
@@ -59,17 +61,6 @@ class NewWordViewController: BaseViewController{
             make.left.equalTo(20)
             make.right.equalTo(-20)
             make.bottom.equalTo(self.view).offset(-20)
-            make.height.equalTo(50)
-        })
-
-        view.addSubview(buttonAddAndNext)
-        buttonAdd.isEnabled = false
-        buttonAdd.isHidden = true
-
-        buttonAddAndNext.snp.makeConstraints({ (make) in
-            make.left.equalTo(20)
-            make.right.equalTo(-20)
-            make.bottom.equalTo(self.view).offset(-90)
             make.height.equalTo(50)
         })
 		
@@ -139,6 +130,16 @@ class NewWordViewController: BaseViewController{
 			make.height.equalTo(30)
 		})
 
+        view.addSubview(buttonAddAndNext)
+        buttonAddAndNext.isEnabled = false
+
+        buttonAddAndNext.snp.makeConstraints({ (make) in
+            make.left.equalTo(20)
+            make.right.equalTo(-20)
+            make.top.equalTo(descriptionValueTF.snp.bottom).offset(30)
+            make.height.equalTo(50)
+        })
+
         gester = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         self.view.addGestureRecognizer(gester!)
         gester?.isEnabled = false
@@ -148,7 +149,8 @@ class NewWordViewController: BaseViewController{
     }
 
     @objc private func buttonActionAddAndNext(sender: UIButton!) {
-//        presenter?.createWord()
+        presenter?.createAndAddWord()
+        rusValueTF.becomeFirstResponder()
     }
 
     @objc private func buttonAction(sender: UIButton!) {
@@ -227,11 +229,10 @@ extension NewWordViewController: UITextFieldDelegate {
 
 extension NewWordViewController: NewWordViewControllerProtocol {
 	func startData(word: Word?) {
-		guard let word = word else { return }
 		
-		rusValueTF.text = word.rusValue.textEditor
-		engValueTF.text = word.engValue.textEditor
-		descriptionValueTF.text = word.descript
+        rusValueTF.text = word?.rusValue.textEditor
+		engValueTF.text = word?.engValue.textEditor
+		descriptionValueTF.text = word?.descript
 	}
 	
 	func enabledData(enabledAdd: Bool, enabledMix: Bool){
@@ -246,6 +247,10 @@ extension NewWordViewController: NewWordViewControllerProtocol {
 
     func titleButton(text: String) {
         buttonAdd.setTitle(text, for: .normal)
+    }
+
+    func isHidenBeginButton(isHiden: Bool){
+        buttonAddAndNext.isHidden = isHiden
     }
 }
 
