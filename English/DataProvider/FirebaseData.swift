@@ -82,6 +82,7 @@ class FirebaseData {
         oldList.name = newName
 		oldList.dateUpdate = Date()
         profile.lists[index] = oldList
+        profile.lists.swapAt(0, index)
 
         db.collection("Profile").document(id).setData(profile.json)
 
@@ -123,6 +124,7 @@ class FirebaseData {
 
         let newList = list.addOrDeleteOneWord(add: true)
         profile.lists[index] = newList
+        profile.lists.swapAt(0, index)
 
         db.collection("Profile").document(id).setData(profile.json)
         db.collection("Words").document(idWord).setData(newWord.json)
@@ -161,6 +163,7 @@ class FirebaseData {
 		let tapedFavorit = word.favorit ? false : true
 		let newList = oldList.jsonReloadFavoritCount(add: tapedFavorit)
         profile.lists[index] = newList
+        profile.lists.swapAt(0, index)
 
         var wordJson = word.json
         wordJson["favorit"] = tapedFavorit
@@ -185,6 +188,8 @@ class FirebaseData {
             newList = newList.jsonReloadFavoritCount(add: false)
         }
         profile.lists[index] = newList
+        profile.lists.swapAt(0, index)
+
 
         db.collection("Profile").document(id).setData(profile.json)
         db.collection("Words").document(idWord).delete()
