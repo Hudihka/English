@@ -41,6 +41,9 @@ class BaseViewController: UIViewController {
         self.title = titleText
         
         desingUI()
+
+        EnumNotification.UIKeyboardWillShow.subscribeNotific(observer: self, selector: #selector(adjustForKeydoard(notification:)))
+        EnumNotification.UIKeyboardWillHide.subscribeNotific(observer: self, selector: #selector(adjustForKeydoard(notification:)))
     }
     
     private func addLeftBBItem(){
@@ -61,10 +64,16 @@ class BaseViewController: UIViewController {
         navigationItem.rightBarButtonItem = right
     }
 
+    @objc func adjustForKeydoard(notification: Notification) {}
+
     @objc func leftBBItem(){}
     
     @objc func rightBBItem(){}
     
     func desingUI(){}
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 
 }

@@ -37,8 +37,6 @@ class NewWordViewController: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		EnumNotification.UIKeyboardWillShow.subscribeNotific(observer: self, selector: #selector(adjustForKeydoard(notification:)))
-        EnumNotification.UIKeyboardWillHide.subscribeNotific(observer: self, selector: #selector(adjustForKeydoard(notification:)))
     }
 
     override var leftTextBBItem: String?{
@@ -165,7 +163,7 @@ class NewWordViewController: BaseViewController{
         self.view.endEditing(true)
     }
 	
-	@objc private func adjustForKeydoard(notification: Notification) {
+    @objc override func adjustForKeydoard(notification: Notification) {
         if notification.name == UIApplication.keyboardWillShowNotification {
             gester?.isEnabled = true
         } else if notification.name == UIApplication.keyboardWillHideNotification {
@@ -181,10 +179,6 @@ class NewWordViewController: BaseViewController{
         label.text = text.rawValue
 
         return label
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 
 }

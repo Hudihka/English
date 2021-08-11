@@ -17,7 +17,7 @@ class SearchCell: BaseCell {
    private var buttonFave: UIButton!
    private let df = DefaultUtils.shared
 
-    var presenter: SearchPresenter?
+    var presenter: SearchPresenterProtocol?
 
     var word: Word? {
         didSet{
@@ -30,6 +30,8 @@ class SearchCell: BaseCell {
 
             labelWord.text = russValue ? word.rusValue : word.engValue
             labelTarnlate.text = !russValue ? word.rusValue : word.engValue
+
+            labelListName.text = word.listName
         }
     }
 
@@ -83,8 +85,20 @@ class SearchCell: BaseCell {
            make.left.equalTo(labelWord.snp.left)
            make.right.equalTo(-16)
            make.height.greaterThanOrEqualTo(25).priority(999)
-           make.bottom.equalTo(contentView.snp.bottom).offset(-9)
+//           make.bottom.equalTo(contentView.snp.bottom).offset(-9)
        })
 
+        labelListName = UILabel()
+        labelListName.numberOfLines = 0
+        labelListName.textColor = UIColor.black
+        labelListName.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
+        self.contentView.addSubview(labelTarnlate)
+        labelListName.snp.makeConstraints({ (make) in
+            make.top.equalTo(labelTarnlate.snp.bottom).offset(10)
+            make.left.equalTo(labelWord.snp.left)
+            make.right.equalTo(-16)
+            make.height.greaterThanOrEqualTo(10)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-9)
+        })
    }
 }

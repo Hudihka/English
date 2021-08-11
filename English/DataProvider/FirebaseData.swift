@@ -135,7 +135,7 @@ class FirebaseData {
         let collection = list == nil ?
             db.collection("Words").whereField("favorit", isEqualTo: true) :
             db.collection("Words").whereField("listName", isEqualTo: list?.name ?? "")
-
+        
         collection.addSnapshotListener {(snaphot, _) in
 
             if let data = snaphot?.documents {
@@ -145,7 +145,6 @@ class FirebaseData {
                 compl([])
             }
         }
-
     }
 	
 	func likeWord(word: Word?) {

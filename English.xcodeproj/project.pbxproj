@@ -72,6 +72,8 @@
 		45EA373726BEA82C00BB40BD /* DetailSplitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA373326BEA82C00BB40BD /* DetailSplitRouter.swift */; };
 		45EA373926BEAB1300BB40BD /* DetailSplitTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA373826BEAB1300BB40BD /* DetailSplitTableView.swift */; };
 		45EA373B26BEB0C700BB40BD /* ChekWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA373A26BEB0C700BB40BD /* ChekWordCell.swift */; };
+		45ED9D6726C4446100775564 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9D6626C4446100775564 /* SearchTableView.swift */; };
+		45ED9D6926C447CA00775564 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9D6826C447CA00775564 /* SearchRouter.swift */; };
 		45ED9EC7269CBCCF00AB150F /* AutorisationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9EC6269CBCCF00AB150F /* AutorisationPresenter.swift */; };
 		45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9EC8269CBCF600AB150F /* AutorisationInteractor.swift */; };
 		45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9ECA269CBD0E00AB150F /* AutorisationRouter.swift */; };
@@ -164,6 +166,8 @@
 		45EA373326BEA82C00BB40BD /* DetailSplitRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSplitRouter.swift; sourceTree = "<group>"; };
 		45EA373826BEAB1300BB40BD /* DetailSplitTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSplitTableView.swift; sourceTree = "<group>"; };
 		45EA373A26BEB0C700BB40BD /* ChekWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChekWordCell.swift; sourceTree = "<group>"; };
+		45ED9D6626C4446100775564 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
+		45ED9D6826C447CA00775564 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		45ED9EC6269CBCCF00AB150F /* AutorisationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationPresenter.swift; sourceTree = "<group>"; };
 		45ED9EC8269CBCF600AB150F /* AutorisationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationInteractor.swift; sourceTree = "<group>"; };
 		45ED9ECA269CBD0E00AB150F /* AutorisationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationRouter.swift; sourceTree = "<group>"; };
@@ -387,6 +391,7 @@
 				45E9D84F26C2F37200638B6E /* SearchViewController.swift */,
 				45E9D85326C2F3E100638B6E /* SearchPresenter.swift */,
 				45E9D85526C2F40C00638B6E /* SearchInteractor.swift */,
+				45ED9D6826C447CA00775564 /* SearchRouter.swift */,
 				45E9D85726C2F6B000638B6E /* Views */,
 			);
 			path = SearchViewController;
@@ -396,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				45E9D85826C2F6FD00638B6E /* SearchCell.swift */,
+				45ED9D6626C4446100775564 /* SearchTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -642,6 +648,7 @@
 				4561060A26BB0974006A1442 /* SplitViewController.swift in Sources */,
 				529EFF0C26BD1CBA00D65721 /* UITableView.swift in Sources */,
 				450712EB269E15980022EE61 /* String.swift in Sources */,
+				45ED9D6726C4446100775564 /* SearchTableView.swift in Sources */,
 				45E8EEBF26933CB400D66F13 /* FirebaseData.swift in Sources */,
 				45E976A126947F5800A12858 /* UIViewController.swift in Sources */,
 				458C50CA26B70D96001DD6B9 /* WordsTableView.swift in Sources */,
@@ -668,6 +675,7 @@
 				45942FEF26ADDD00006EE405 /* NewWordRouter.swift in Sources */,
 				45EA373726BEA82C00BB40BD /* DetailSplitRouter.swift in Sources */,
 				450712EF269E174A0022EE61 /* List.swift in Sources */,
+				45ED9D6926C447CA00775564 /* SearchRouter.swift in Sources */,
 				529EFF0A26BD1B0800D65721 /* MasterHeder.swift in Sources */,
 				45E8EEC92693429E00D66F13 /* DefaultUtils.swift in Sources */,
 				45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */,

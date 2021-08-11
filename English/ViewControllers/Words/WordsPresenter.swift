@@ -16,7 +16,7 @@ protocol WordsPresenterProtocol: AnyObject {
     func delete(word: Word)
     func changeWord(word: Word?)
 
-    init(interactor: WordsInteractorProtocol) //если лист нил значит фаворит
+    init(interactor: WordsInteractorProtocol)
 }
 
 class WordsPresenter: WordsPresenterProtocol {

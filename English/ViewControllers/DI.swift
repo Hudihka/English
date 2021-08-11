@@ -173,12 +173,14 @@ class DI: DIProtocol {
 
         let interactor = SearchInteractor()
         let presenter = SearchPresenter()
+        let router = SearchRouter(navigationVC: NVC)
 
         VC.presenter = presenter
         interactor.presenter = presenter
 
         presenter.view = VC
         presenter.interactor = interactor
+        presenter.router = router
 
         return NVC
     }
