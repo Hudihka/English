@@ -170,6 +170,35 @@ class NewWordViewController: BaseViewController{
         presenter?.fetchData()
     }
 
+    private func labelCopy() {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.text = "СКОПИРОВАНО"
+        label.backgroundColor = .black
+        label.textColor = .white
+        label.addRadius(number: 2)
+
+        view.addSubview(label)
+
+        label.snp.makeConstraints({ (make) in
+            make.right.equalTo(view.snp.left).offset(-5)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(1)
+            make.height.equalTo(19)
+            make.width.equalTo(40)
+        })
+
+        UIView.animate(withDuration: 0.3) {
+            label.snp.makeConstraints({ (make) in
+                make.left.equalTo(self.view.snp.right).offset(5)
+            })
+        } completion: { compl in
+            if compl {
+                label.removeFromSuperview()
+            }
+        }
+
+    }
+
     @objc private func buttonActionAddAndNext(sender: UIButton!) {
         presenter?.createAndAddWord()
         rusValueTF.becomeFirstResponder()
@@ -291,6 +320,7 @@ extension NewWordViewController: NewWordViewControllerProtocol {
 
     func blockedButton(tag: Int) {
         //паказываем что скопировали
+        labelCopy()
         if topCopy.tag == tag {
             topCopy.isEnabled = false
         }
