@@ -11,7 +11,7 @@ protocol SearchPresenterProtocol: AnyObject {
     func saveWay(index: Int)
 
     func tapedLike(word: Word?)
-    func changeWord(word: Word?)
+    func seartchWords(text: String?)
 }
 
 class SearchPresenter: SearchPresenterProtocol {
@@ -31,8 +31,8 @@ class SearchPresenter: SearchPresenterProtocol {
         interactor?.tapedLike(word: word)
     }
 
-    func changeWord(word: Word?){
-        router?.newWordInTheme(word: word)
+    func seartchWords(text: String?) {
+        
     }
 }
 

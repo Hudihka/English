@@ -96,8 +96,7 @@ extension SearchTableView: UITableViewDelegate, UITableViewDataSource {
                                    image: UIImage(systemName: "square.and.pencil")) {[weak self] _ in
                 guard let self = self else {return}
 
-//                let oldName = self.lists[indexPath.row].name
-//                self.tapedRename(oldName)
+//
             }
 
             return UIMenu(title: "", children: [action1])

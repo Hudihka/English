@@ -8,6 +8,7 @@
 import UIKit
 
 protocol SearchViewControllerProtocol: AnyObject {
+    func showWords(words: [Word], text: String?)
 }
 
 class SearchViewController: BaseViewController {
@@ -18,6 +19,8 @@ class SearchViewController: BaseViewController {
     fileprivate let seartchView = UISearchBar()
     fileprivate let labelClear = UILabel()
     fileprivate let segentTranslate = UISegmentedControl()
+
+    fileprivate var timer: Timer?
 
     private var gester: UITapGestureRecognizer?
 
@@ -97,16 +100,6 @@ class SearchViewController: BaseViewController {
 
     }
 
-    private func settingsLabelClear(words: [Any]) {
-        if let text = seartchView.text,
-           !text.isEmpty,
-           words.isEmpty {
-            labelClear.isHidden = false
-        } else {
-            labelClear.isHidden = true
-        }
-    }
-
     @objc private func actionSegment(_ sender: UISegmentedControl) {
         seartchView.resignFirstResponder()
         seartchView.text = nil
@@ -133,7 +126,11 @@ class SearchViewController: BaseViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        reloadAllData(text: searchText.textEditor)
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: {[weak self] (_) in
+            guard let self = self else { return }
+            self.presenter?.seartchWords(text: self.seartchView.text)
+        })
     }
 
 
@@ -143,5 +140,16 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 extension SearchViewController: SearchViewControllerProtocol {
-    
+    func showWords(words: [Word], text: String?) {
+        if text == seartchView.text {
+            table.words = words
+
+            if words.isEmpty, text != nil {
+                labelClear.isHidden = false
+            } else {
+                labelClear.isHidden = true
+            }
+
+        }
+    }
 }

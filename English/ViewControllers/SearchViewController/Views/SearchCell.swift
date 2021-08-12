@@ -10,12 +10,12 @@ import UIKit
 
 class SearchCell: BaseCell {
 
-   private var labelWord: UILabel!
-   private var labelTarnlate: UILabel!
-   private var labelListName: UILabel!
+    private var labelWord: UILabel!
+    private var labelTarnlate: UILabel!
+    private var labelListName: UILabel!
 
-   private var buttonFave: UIButton!
-   private let df = DefaultUtils.shared
+    private var buttonFave: UIButton!
+    private let df = DefaultUtils.shared
 
     var presenter: SearchPresenterProtocol?
 
@@ -44,9 +44,9 @@ class SearchCell: BaseCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-   @objc private func tapedLikeButton() {
-//       presenter?.tapedLike(word: word)
-   }
+    @objc private func tapedLikeButton() {
+        presenter?.tapedLike(word: word)
+    }
 
 
    override func desingUI(){

@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 
+typealias wordsAndText = ([Word], String?)
 
 class FirebaseData {
     
@@ -169,6 +170,30 @@ class FirebaseData {
 
         db.collection("Profile").document(id).setData(profile.json)
         db.collection("Words").document(idWord).setData(wordJson)
+    }
+
+    func wordsConteins(text: String?, compl: @escaping((wordsAndText) -> Void)) {
+        guard let text = text,
+              !text.isEmpty else {
+                compl(([], nil))
+            return
+        }
+
+        let key = DefaultUtils.shared.translateWay == 0 ? "rusValue" : "engValue"
+        db.collection("Words").getDocuments { snaphot, _ in
+            var words = [Word]()
+
+            if var data = snaphot?.documents {
+                data = data.filter({ json in
+                    if let value = json.data()[key] as? String {
+                        return value.lowercased().contains(text.lowercased())
+                    }
+                    return false
+                })
+                words = data.map({Word(json: $0.data(), id: $0.documentID)})
+            }
+            compl((words, text))
+        }
     }
 
     func delete(word: Word) {
