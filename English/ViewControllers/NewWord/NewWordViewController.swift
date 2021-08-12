@@ -290,7 +290,13 @@ extension NewWordViewController: NewWordViewControllerProtocol {
     }
 
     func blockedButton(tag: Int) {
-
+        //паказываем что скопировали
+        if topCopy.tag == tag {
+            topCopy.isEnabled = false
+        }
+        if bottomCopy.tag == tag {
+            bottomCopy.isEnabled = false
+        }
     }
 }
 
