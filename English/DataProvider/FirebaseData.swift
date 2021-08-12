@@ -173,8 +173,7 @@ class FirebaseData {
     }
 
     func wordsConteins(text: String?, compl: @escaping((wordsAndText) -> Void)) {
-        guard let text = text,
-              !text.isEmpty else {
+        guard let text = text?.textEditor else {
                 compl(([], nil))
             return
         }

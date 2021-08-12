@@ -13,6 +13,7 @@
 		450712EB269E15980022EE61 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712EA269E15980022EE61 /* String.swift */; };
 		450712ED269E15C90022EE61 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712EC269E15C90022EE61 /* Date.swift */; };
 		450712EF269E174A0022EE61 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450712EE269E174A0022EE61 /* List.swift */; };
+		4522481126C58ED9005EB014 /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522481026C58ED9005EB014 /* CopyButton.swift */; };
 		4539C1A12693284000534F4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4539C1A02693284000534F4B /* GoogleService-Info.plist */; };
 		4553CEC726A8954F001EF57E /* MenuEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4553CEC626A8954F001EF57E /* MenuEndpoints.swift */; };
 		4561060A26BB0974006A1442 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4561060926BB0974006A1442 /* SplitViewController.swift */; };
@@ -106,6 +107,7 @@
 		450712EA269E15980022EE61 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		450712EC269E15C90022EE61 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		450712EE269E174A0022EE61 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		4522481026C58ED9005EB014 /* CopyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyButton.swift; sourceTree = "<group>"; };
 		4539C1A02693284000534F4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4553CEC626A8954F001EF57E /* MenuEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEndpoints.swift; sourceTree = "<group>"; };
 		4561060926BB0974006A1442 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				45A191AD269DE16E00D2E169 /* VisualEffectView.swift */,
 				45A191AF269DE22C00D2E169 /* BluereViewController.swift */,
 				45942FF126ADE87C006EE405 /* BaseBlackButton.swift */,
+				4522481026C58ED9005EB014 /* CopyButton.swift */,
 			);
 			path = BaseUI;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				45E9D85226C2F3B700638B6E /* SearchEndpoints.swift in Sources */,
 				45FF7AA926A015CF005BAF35 /* ListCell.swift in Sources */,
 				52E45E7826BAFCB2009C5965 /* Array.swift in Sources */,
+				4522481126C58ED9005EB014 /* CopyButton.swift in Sources */,
 				45A191B0269DE22C00D2E169 /* BluereViewController.swift in Sources */,
 				4561060A26BB0974006A1442 /* SplitViewController.swift in Sources */,
 				529EFF0C26BD1CBA00D65721 /* UITableView.swift in Sources */,

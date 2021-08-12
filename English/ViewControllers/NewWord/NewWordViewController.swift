@@ -15,18 +15,24 @@ protocol NewWordViewControllerProtocol: AnyObject {
     func title(text: String)
     func titleButton(text: String)
     func isHidenBeginButton(isHiden: Bool)
+
+    func blockedButton(tag: Int)
 }
 
 class NewWordViewController: BaseViewController{
     
     var presenter: NewWordPresenterProtocol?
 
-    private var buttonAddAndNext = BaseBlackButton(title: NewWordEndpoits.ButtonText.addAndNext.rawValue,
+    private let buttonAddAndNext = BaseBlackButton(title: NewWordEndpoits.ButtonText.addAndNext.rawValue,
                                                    selector: #selector(buttonActionAddAndNext), target: self)
-    private var buttonAdd = BaseBlackButton(title: nil,
+    private let buttonAdd = BaseBlackButton(title: nil,
                                          selector: #selector(buttonAction), target: self)
-    private var buttonMix = BaseBlackButton(title: NewWordEndpoits.ButtonText.mix.rawValue,
+    private let buttonMix = BaseBlackButton(title: NewWordEndpoits.ButtonText.mix.rawValue,
                                             selector: #selector(mixButton), target: self)
+    private let topCopy = CopyButton(selector: #selector(copyTap),
+                                     target: self)
+    private let bottomCopy = CopyButton(selector: #selector(copyTap),
+                                     target: self)
 
     private var gester: UITapGestureRecognizer?
 	
@@ -65,11 +71,20 @@ class NewWordViewController: BaseViewController{
         let rusValue = addLabel(text: NewWordEndpoits.Labels.rus)
 		view.addSubview(rusValue)
 		rusValue.snp.makeConstraints({ (make) in
-			 make.left.equalTo(20)
-			 make.right.equalTo(-20)
+            make.left.equalTo(20)
+            make.right.equalTo(-20)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
-			 make.height.equalTo(30)
+            make.height.equalTo(30)
 		 })
+
+        topCopy.tag = 0
+        view.addSubview(topCopy)
+        rusValue.snp.makeConstraints({ (make) in
+            make.left.equalTo(rusValue.snp.top)
+            make.right.equalTo(rusValue.snp.right)
+            make.bottom.equalTo(rusValue.snp.bottom)
+            make.width.equalTo(50)
+         })
 		
         rusValueTF.settingsTF(placeholder: NewWordEndpoits.TextField.rus.rawValue, delegateObj: self)
 		view.addSubview(rusValueTF)
@@ -98,6 +113,15 @@ class NewWordViewController: BaseViewController{
 			make.top.equalTo(buttonMix.snp.bottom).offset(20)
 			 make.height.equalTo(30)
 		 })
+
+        bottomCopy.tag = 1
+        view.addSubview(bottomCopy)
+        bottomCopy.snp.makeConstraints({ (make) in
+            make.left.equalTo(engValue.snp.top)
+            make.right.equalTo(engValue.snp.right)
+            make.bottom.equalTo(engValue.snp.bottom)
+            make.width.equalTo(50)
+         })
 		
         engValueTF.settingsTF(placeholder: NewWordEndpoits.TextField.engl.rawValue, delegateObj: self)
 		view.addSubview(engValueTF)
@@ -157,6 +181,10 @@ class NewWordViewController: BaseViewController{
 	
     @objc private func mixButton(sender: UIButton!) {
 		presenter?.tapedMix()
+    }
+
+    @objc private func copyTap(sender: UIButton!) {
+        presenter?.tapedMix()
     }
 
     @objc private func handleTap(sender: UITapGestureRecognizer) {
@@ -223,11 +251,25 @@ extension NewWordViewController: UITextFieldDelegate {
 
 extension NewWordViewController: NewWordViewControllerProtocol {
 	func startData(word: Word?) {
+        let topText = word?.rusValue.textEditor
+        let botomText = word?.engValue.textEditor
 		
-        rusValueTF.text = word?.rusValue.textEditor
-		engValueTF.text = word?.engValue.textEditor
+        rusValueTF.text = topText
+		engValueTF.text = botomText
+
+        blocked(button: topCopy, text: topText)
+        blocked(button: bottomCopy, text: botomText)
+
 		descriptionValueTF.text = word?.descript
 	}
+
+    private func blocked(button: UIButton, text: String?) {
+        if let text = text?.textEditor {
+            button.isEnabled = UIPasteboard.general.string != text
+            return
+        }
+        button.isEnabled = false
+    }
 	
 	func enabledData(enabledAdd: Bool, enabledMix: Bool){
 		buttonMix.isEnabled        = enabledMix
@@ -245,6 +287,10 @@ extension NewWordViewController: NewWordViewControllerProtocol {
 
     func isHidenBeginButton(isHiden: Bool){
         buttonAddAndNext.isHidden = isHiden
+    }
+
+    func blockedButton(tag: Int) {
+
     }
 }
 

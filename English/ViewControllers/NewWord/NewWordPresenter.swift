@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol NewWordPresenterProtocol: AnyObject {
     func tapedCancel()
@@ -15,6 +16,8 @@ protocol NewWordPresenterProtocol: AnyObject {
 	func tapedMix()
 	func createWord()
     func createAndAddWord()
+
+    func copyText(text: String?, tag: Int)
 	
 	func textInTF(rusText: String?, engText: String?, description: String?)
 	
@@ -126,5 +129,11 @@ class NewWordPresenter: NewWordPresenterProtocol {
 		
 		view?.enabledData(enabledAdd: enabledAdd, enabledMix: enabledMixedd)
 	}
-	
+
+
+    func copyText(text: String?, tag: Int){
+        if let text = text {
+            UIPasteboard.general.string = text
+        }
+    }
 }
