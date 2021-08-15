@@ -17,7 +17,7 @@ protocol NewWordPresenterProtocol: AnyObject {
 	func createWord()
     func createAndAddWord()
 
-    func copyText(text: String?, tag: Int)
+    func copyText(tag: Int)
 	
 	func textInTF(rusText: String?, engText: String?, description: String?)
 	
@@ -56,7 +56,10 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	func fetchData(){
         view?.isHidenBeginButton(isHiden: isBeginHide)
 		view?.startData(word: newWord)
-		view?.enabledData(enabledAdd: enabledAdd, enabledMix: enabledMixedd)
+		view?.enabledData(enabledAdd: enabledAdd,
+                          enabledMix: enabledMixedd)
+        view?.enableCopy(enableCopyTop: isEnabledTop,
+                        enableCopyBottom: isEnabledBottom)
         view?.titleButton(text: oldWord == nil ? NewWordEndpoits.ButtonText.add.rawValue :
                             NewWordEndpoits.ButtonText.change.rawValue)
 	}
@@ -106,7 +109,10 @@ class NewWordPresenter: NewWordPresenterProtocol {
         self.newWord = nil
 
         view?.startData(word: self.newWord)
-        view?.enabledData(enabledAdd: enabledAdd, enabledMix: enabledMixedd)
+        view?.enabledData(enabledAdd: enabledAdd,
+                          enabledMix: enabledMixedd)
+        view?.enableCopy(enableCopyTop: isEnabledTop,
+                        enableCopyBottom: isEnabledBottom)
     }
 	
 	func textInTF(rusText: String?, engText: String?, description: String?){
@@ -127,13 +133,36 @@ class NewWordPresenter: NewWordPresenterProtocol {
 			newWord?.descript = description
 		}
 		
-		view?.enabledData(enabledAdd: enabledAdd, enabledMix: enabledMixedd)
+		view?.enabledData(enabledAdd: enabledAdd,
+                          enabledMix: enabledMixedd)
+
+        view?.enableCopy(enableCopyTop: isEnabledTop,
+                        enableCopyBottom: isEnabledBottom)
 	}
 
 
-    func copyText(text: String?, tag: Int){
+    func copyText(tag: Int){
+        let text = tag == 0 ? newWord?.rusValue : newWord?.engValue
         if let text = text {
             UIPasteboard.general.string = text
         }
+        view?.enableCopy(enableCopyTop: isEnabledTop,
+                        enableCopyBottom: isEnabledBottom)
+    }
+
+    private var isEnabledTop: Bool {
+        if let text = newWord?.rusValue.textEditor,
+           let textBuffer = UIPasteboard.general.string {
+            return textBuffer != text
+        }
+        return false
+    }
+
+    private var isEnabledBottom: Bool {
+        if let text = newWord?.engValue.textEditor,
+           let textBuffer = UIPasteboard.general.string {
+            return textBuffer != text
+        }
+        return false
     }
 }

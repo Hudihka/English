@@ -10,7 +10,10 @@ import UIKit
 
 protocol NewWordViewControllerProtocol: AnyObject {
 	func startData(word: Word?)
-	func enabledData(enabledAdd: Bool, enabledMix: Bool)
+	func enabledData(enabledAdd: Bool,
+                     enabledMix: Bool)
+    func enableCopy(enableCopyTop: Bool,
+                    enableCopyBottom: Bool)
 
     func title(text: String)
     func titleButton(text: String)
@@ -32,7 +35,7 @@ class NewWordViewController: BaseViewController{
     private let topCopy = CopyButton(selector: #selector(copyTap),
                                      target: self)
     private let bottomCopy = CopyButton(selector: #selector(copyTap),
-                                     target: self)
+                                        target: self)
 
     private var gester: UITapGestureRecognizer?
 	
@@ -76,15 +79,6 @@ class NewWordViewController: BaseViewController{
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
             make.height.equalTo(30)
 		 })
-
-        topCopy.tag = 0
-        view.addSubview(topCopy)
-        rusValue.snp.makeConstraints({ (make) in
-            make.left.equalTo(rusValue.snp.top)
-            make.right.equalTo(rusValue.snp.right)
-            make.bottom.equalTo(rusValue.snp.bottom)
-            make.width.equalTo(50)
-         })
 		
         rusValueTF.settingsTF(placeholder: NewWordEndpoits.TextField.rus.rawValue, delegateObj: self)
 		view.addSubview(rusValueTF)
@@ -94,6 +88,15 @@ class NewWordViewController: BaseViewController{
 			make.top.equalTo(rusValue.snp.bottom).offset(10)
 			make.height.equalTo(30)
 		})
+
+        topCopy.tag = 0
+        view.addSubview(topCopy)
+        topCopy.snp.makeConstraints({ (make) in
+            make.top.equalTo(rusValue.snp.top)
+            make.right.equalTo(rusValueTF.snp.right)
+            make.bottom.equalTo(rusValue.snp.bottom)
+            make.width.equalTo(75)
+         })
 		
         view.addSubview(buttonMix)
         buttonMix.isEnabled = false
@@ -113,15 +116,6 @@ class NewWordViewController: BaseViewController{
 			make.top.equalTo(buttonMix.snp.bottom).offset(20)
 			 make.height.equalTo(30)
 		 })
-
-        bottomCopy.tag = 1
-        view.addSubview(bottomCopy)
-        bottomCopy.snp.makeConstraints({ (make) in
-            make.left.equalTo(engValue.snp.top)
-            make.right.equalTo(engValue.snp.right)
-            make.bottom.equalTo(engValue.snp.bottom)
-            make.width.equalTo(50)
-         })
 		
         engValueTF.settingsTF(placeholder: NewWordEndpoits.TextField.engl.rawValue, delegateObj: self)
 		view.addSubview(engValueTF)
@@ -131,6 +125,15 @@ class NewWordViewController: BaseViewController{
 			make.top.equalTo(engValue.snp.bottom).offset(10)
 			make.height.equalTo(30)
 		})
+
+        bottomCopy.tag = 1
+        view.addSubview(bottomCopy)
+        bottomCopy.snp.makeConstraints({ (make) in
+            make.top.equalTo(engValue.snp.top)
+            make.right.equalTo(engValueTF.snp.right)
+            make.bottom.equalTo(engValue.snp.bottom)
+            make.width.equalTo(75)
+         })
 		
         let description = addLabel(text: NewWordEndpoits.Labels.descript)
 		view.addSubview(description)
@@ -170,34 +173,33 @@ class NewWordViewController: BaseViewController{
         presenter?.fetchData()
     }
 
-    private func labelCopy() {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        label.text = "СКОПИРОВАНО"
-        label.backgroundColor = .black
-        label.textColor = .white
-        label.addRadius(number: 2)
-
-        view.addSubview(label)
-
-        label.snp.makeConstraints({ (make) in
-            make.right.equalTo(view.snp.left).offset(-5)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(1)
-            make.height.equalTo(19)
-            make.width.equalTo(40)
-        })
-
-        UIView.animate(withDuration: 0.3) {
-            label.snp.makeConstraints({ (make) in
-                make.left.equalTo(self.view.snp.right).offset(5)
-            })
-        } completion: { compl in
-            if compl {
-                label.removeFromSuperview()
-            }
-        }
-
-    }
+//    private func labelCopy() {
+//        let label = UILabel()
+//        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+//        label.text = "СКОПИРОВАНО"
+//        label.backgroundColor = .black
+//        label.textColor = .white
+//        label.addRadius(number: 2)
+//
+//        view.addSubview(label)
+//
+//        label.snp.makeConstraints({ (make) in
+//            make.left.equalTo(view.snp.left).offset(-5)
+//            make.top.equalTo(view.snp.top).offset(1)
+//            make.height.equalTo(19)
+//            make.width.equalTo(40)
+//        })
+//
+//        UIView.animate(withDuration: 0.3) {
+//            label.snp.makeConstraints({ (make) in
+//                make.left.equalTo(self.view.snp.right).offset(5)
+//            })
+//        } completion: { compl in
+//            if compl {
+//                label.removeFromSuperview()
+//            }
+//        }
+//    }
 
     @objc private func buttonActionAddAndNext(sender: UIButton!) {
         presenter?.createAndAddWord()
@@ -213,7 +215,8 @@ class NewWordViewController: BaseViewController{
     }
 
     @objc private func copyTap(sender: UIButton!) {
-        presenter?.tapedMix()
+//        labelCopy()
+        presenter?.copyText(tag: sender.tag)
     }
 
     @objc private func handleTap(sender: UITapGestureRecognizer) {
@@ -286,25 +289,21 @@ extension NewWordViewController: NewWordViewControllerProtocol {
         rusValueTF.text = topText
 		engValueTF.text = botomText
 
-        blocked(button: topCopy, text: topText)
-        blocked(button: bottomCopy, text: botomText)
-
 		descriptionValueTF.text = word?.descript
 	}
-
-    private func blocked(button: UIButton, text: String?) {
-        if let text = text?.textEditor {
-            button.isEnabled = UIPasteboard.general.string != text
-            return
-        }
-        button.isEnabled = false
-    }
 	
-	func enabledData(enabledAdd: Bool, enabledMix: Bool){
+	func enabledData(enabledAdd: Bool,
+                     enabledMix: Bool){
 		buttonMix.isEnabled        = enabledMix
         buttonAdd.isEnabled        = enabledAdd
         buttonAddAndNext.isEnabled = enabledAdd
 	}
+
+    func enableCopy(enableCopyTop: Bool,
+                    enableCopyBottom: Bool) {
+        topCopy.isEnabled = enableCopyTop
+        bottomCopy.isEnabled = enableCopyBottom
+    }
 
     func title(text: String){
         self.title = text
@@ -319,8 +318,6 @@ extension NewWordViewController: NewWordViewControllerProtocol {
     }
 
     func blockedButton(tag: Int) {
-        //паказываем что скопировали
-        labelCopy()
         if topCopy.tag == tag {
             topCopy.isEnabled = false
         }

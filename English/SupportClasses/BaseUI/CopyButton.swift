@@ -19,11 +19,11 @@ class CopyButton: UIButton {
     init(selector: Selector, target: Any?) {
         super.init(frame: CGRect())
 
-        setTitle("КОПИРОВАТЬ", for: .normal)
+        setTitle("COPY", for: .normal)
         backgroundColor = UIColor.clear
         isEnabled = false
-        titleLabel?.textAlignment = .left
-        titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        titleLabel?.textAlignment = .right
+        titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         addTarget(target, action: selector, for: .touchUpInside)
     }
 
