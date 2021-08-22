@@ -8,13 +8,13 @@
 import Foundation
 
 
-class List {
+struct List {
     
     var name: String = ""
     var count: Int = 0
     var countFavorit: Int = 0
     
-    var dateUpdate: Date = Date()
+    var dateUpdate: Date?
 
     init(name: String){
         self.name = name
@@ -56,7 +56,7 @@ class List {
 	//методы вызываемые когда что либо делаем со словами
 
     func addOrDeleteOneWord(add: Bool) -> List{
-        let newList = self
+        var newList = self
         newList.dateUpdate = Date()
         if add {
             newList.count += 1
@@ -69,7 +69,7 @@ class List {
     
 	
 	func jsonReloadFavoritCount(add: Bool) -> List{
-		let newList = self
+		var newList = self
 		let oldCountFavorit = newList.countFavorit
 		
 		if add {
@@ -80,7 +80,6 @@ class List {
 			newList.countFavorit -= 1
 		}
 		newList.dateUpdate = Date()
-		
 		return newList
 	}
 }

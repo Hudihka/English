@@ -8,14 +8,15 @@
 import Foundation
 
 
-class Profile {
+struct Profile {
 
     var lists: [List] = []
 
     init(json: JSON) {
 
         if let temp = json["lists"] as? [JSON] {
-            let lists = temp.map { List(json: $0) }.sorted(by: { $0.dateUpdate > $1.dateUpdate })
+            let defaultDate = Date(timeIntervalSinceNow: TimeInterval(-1000000000))
+            let lists = temp.map { List(json: $0) }.sorted(by: { $0.dateUpdate ?? defaultDate > $1.dateUpdate ?? defaultDate })
 
             self.lists = lists
         }

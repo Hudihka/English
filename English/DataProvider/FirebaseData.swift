@@ -61,7 +61,7 @@ class FirebaseData {
     //MARK: LISTS
 
     func createList(listName: String){
-        guard let profile = profile,
+        guard var profile = profile,
               let id = idUser else {
             return
         }
@@ -73,13 +73,13 @@ class FirebaseData {
     }
 
     func renameLists(oldName: String, newName: String){
-        guard let profile = profile,
+        guard var profile = profile,
             let id = idUser,
             let index = profile.lists.firstIndex(where: {$0.name == oldName}) else {
             return
         }
 
-        let oldList = profile.lists[index]
+        var oldList = profile.lists[index]
         oldList.name = newName
 		oldList.dateUpdate = Date()
         profile.lists[index] = oldList
@@ -116,7 +116,7 @@ class FirebaseData {
 	}
 
     func createWord(newWord: Word, list: List){
-        guard let profile = profile,
+        guard var profile = profile,
             let id = idUser,
 			let idWord = newWord.id,
             let index = profile.lists.firstIndex(where: {$0.name == list.name}) else {
@@ -153,7 +153,7 @@ class FirebaseData {
 		guard
 			let word = word,
 			let idWord = word.id,
-			let profile = profile,
+			var profile = profile,
             let id = idUser,
 			let index = profile.lists.firstIndex(where: {$0.name == word.listName}) else {
             return
@@ -199,7 +199,7 @@ class FirebaseData {
 
         guard
             let idWord = word.id,
-            let profile = profile,
+            var profile = profile,
             let id = idUser,
             let index = profile.lists.firstIndex(where: {$0.name == word.listName}) else {
             return
