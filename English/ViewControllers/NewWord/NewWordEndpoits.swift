@@ -10,9 +10,10 @@ import Foundation
 enum NewWordEndpoits {
 
     enum Labels: String {
-        case rus        = "Введте русское значение"
-        case engl       = "Введте английское значение"
-        case descript   = "Описание если надо"
+        case rus             = "Введте русское значение"
+        case engl            = "Введте английское значение"
+        case descript        = "Описание если надо"
+        case createFavorit   = "Сделать фаворит"
     }
 
     enum TextField: String {

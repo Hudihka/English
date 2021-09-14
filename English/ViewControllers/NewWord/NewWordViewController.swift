@@ -32,6 +32,8 @@ class NewWordViewController: BaseViewController{
                                          selector: #selector(buttonAction), target: self)
     private let buttonMix = BaseBlackButton(title: NewWordEndpoits.ButtonText.mix.rawValue,
                                             selector: #selector(mixButton), target: self)
+    private let switchFavorit = UISwitch()
+    private var createFavorit = UILabel()
     private let topCopy = CopyButton(selector: #selector(copyTap),
                                      target: self)
     private let bottomCopy = CopyButton(selector: #selector(copyTap),
@@ -105,8 +107,24 @@ class NewWordViewController: BaseViewController{
 			make.top.equalTo(rusValueTF.snp.bottom).offset(20)
             make.height.equalTo(50)
 			make.width.equalTo(50)
-			make.centerX.equalTo(self.view.center.x)
+			make.left.equalTo(20)
         })
+
+        switchFavorit.snp.makeConstraints({ (make) in
+            make.left.equalTo(buttonMix.snp.right).offset(15)
+            make.centerY.equalTo(buttonMix.snp.centerY)
+        })
+        view.addSubview(switchFavorit)
+
+        createFavorit = addLabel(text: NewWordEndpoits.Labels.createFavorit)
+        view.addSubview(createFavorit)
+        createFavorit.snp.makeConstraints({ (make) in
+            make.left.equalTo(buttonMix.snp.right).offset(15)
+            make.right.equalTo(-20)
+            make.centerY.equalTo(buttonMix.snp.centerY)
+            make.height.equalTo(30)
+         })
+        
 		
 		let engValue = addLabel(text: NewWordEndpoits.Labels.engl)
 		view.addSubview(engValue)
@@ -290,6 +308,8 @@ extension NewWordViewController: NewWordViewControllerProtocol {
 		engValueTF.text = botomText
 
 		descriptionValueTF.text = word?.descript
+        createFavorit.isHidden = word == nil
+        switchFavorit.isHidden = word == nil
 	}
 	
 	func enabledData(enabledAdd: Bool,
