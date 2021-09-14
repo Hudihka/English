@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 
+typealias wordsAndText = ([Word], String?)
 
 class FirebaseData {
     
@@ -60,7 +61,7 @@ class FirebaseData {
     //MARK: LISTS
 
     func createList(listName: String){
-        guard let profile = profile,
+        guard var profile = profile,
               let id = idUser else {
             return
         }
@@ -72,13 +73,13 @@ class FirebaseData {
     }
 
     func renameLists(oldName: String, newName: String){
-        guard let profile = profile,
+        guard var profile = profile,
             let id = idUser,
             let index = profile.lists.firstIndex(where: {$0.name == oldName}) else {
             return
         }
 
-        let oldList = profile.lists[index]
+        var oldList = profile.lists[index]
         oldList.name = newName
 		oldList.dateUpdate = Date()
         profile.lists[index] = oldList
@@ -115,7 +116,7 @@ class FirebaseData {
 	}
 
     func createWord(newWord: Word, list: List){
-        guard let profile = profile,
+        guard var profile = profile,
             let id = idUser,
 			let idWord = newWord.id,
             let index = profile.lists.firstIndex(where: {$0.name == list.name}) else {
@@ -135,7 +136,7 @@ class FirebaseData {
         let collection = list == nil ?
             db.collection("Words").whereField("favorit", isEqualTo: true) :
             db.collection("Words").whereField("listName", isEqualTo: list?.name ?? "")
-
+        
         collection.addSnapshotListener {(snaphot, _) in
 
             if let data = snaphot?.documents {
@@ -145,7 +146,6 @@ class FirebaseData {
                 compl([])
             }
         }
-
     }
 	
 	func likeWord(word: Word?) {
@@ -153,7 +153,7 @@ class FirebaseData {
 		guard
 			let word = word,
 			let idWord = word.id,
-			let profile = profile,
+			var profile = profile,
             let id = idUser,
 			let index = profile.lists.firstIndex(where: {$0.name == word.listName}) else {
             return
@@ -172,11 +172,34 @@ class FirebaseData {
         db.collection("Words").document(idWord).setData(wordJson)
     }
 
+    func wordsConteins(text: String?, compl: @escaping((wordsAndText) -> Void)) {
+        guard let text = text?.textEditor else {
+                compl(([], nil))
+            return
+        }
+
+        let key = DefaultUtils.shared.translateWay == 0 ? "rusValue" : "engValue"
+        db.collection("Words").getDocuments { snaphot, _ in
+            var words = [Word]()
+
+            if var data = snaphot?.documents {
+                data = data.filter({ json in
+                    if let value = json.data()[key] as? String {
+                        return value.lowercased().contains(text.lowercased())
+                    }
+                    return false
+                })
+                words = data.map({Word(json: $0.data(), id: $0.documentID)})
+            }
+            compl((words, text))
+        }
+    }
+
     func delete(word: Word) {
 
         guard
             let idWord = word.id,
-            let profile = profile,
+            var profile = profile,
             let id = idUser,
             let index = profile.lists.firstIndex(where: {$0.name == word.listName}) else {
             return

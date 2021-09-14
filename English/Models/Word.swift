@@ -38,8 +38,9 @@ struct Word: Equatable {
             self.engValue = temp
         }
         
-        if let temp = json["descript"] as? String {
-            self.descript = temp
+        if let temp = json["descript"] as? String,
+           let desc = temp.textEditor {
+            self.descript = desc
         }
 
         if let temp = json["favorit"] as? Bool {

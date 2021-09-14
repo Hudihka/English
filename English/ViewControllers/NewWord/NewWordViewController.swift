@@ -10,23 +10,32 @@ import UIKit
 
 protocol NewWordViewControllerProtocol: AnyObject {
 	func startData(word: Word?)
-	func enabledData(enabledAdd: Bool, enabledMix: Bool)
+	func enabledData(enabledAdd: Bool,
+                     enabledMix: Bool)
+    func enableCopy(enableCopyTop: Bool,
+                    enableCopyBottom: Bool)
 
     func title(text: String)
     func titleButton(text: String)
     func isHidenBeginButton(isHiden: Bool)
+
+    func blockedButton(tag: Int)
 }
 
 class NewWordViewController: BaseViewController{
     
     var presenter: NewWordPresenterProtocol?
 
-    private var buttonAddAndNext = BaseBlackButton(title: NewWordEndpoits.ButtonText.addAndNext.rawValue,
+    private let buttonAddAndNext = BaseBlackButton(title: NewWordEndpoits.ButtonText.addAndNext.rawValue,
                                                    selector: #selector(buttonActionAddAndNext), target: self)
-    private var buttonAdd = BaseBlackButton(title: nil,
+    private let buttonAdd = BaseBlackButton(title: nil,
                                          selector: #selector(buttonAction), target: self)
-    private var buttonMix = BaseBlackButton(title: NewWordEndpoits.ButtonText.mix.rawValue,
+    private let buttonMix = BaseBlackButton(title: NewWordEndpoits.ButtonText.mix.rawValue,
                                             selector: #selector(mixButton), target: self)
+    private let topCopy = CopyButton(selector: #selector(copyTap),
+                                     target: self)
+    private let bottomCopy = CopyButton(selector: #selector(copyTap),
+                                        target: self)
 
     private var gester: UITapGestureRecognizer?
 	
@@ -37,8 +46,6 @@ class NewWordViewController: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		EnumNotification.UIKeyboardWillShow.subscribeNotific(observer: self, selector: #selector(adjustForKeydoard(notification:)))
-        EnumNotification.UIKeyboardWillHide.subscribeNotific(observer: self, selector: #selector(adjustForKeydoard(notification:)))
     }
 
     override var leftTextBBItem: String?{
@@ -67,10 +74,10 @@ class NewWordViewController: BaseViewController{
         let rusValue = addLabel(text: NewWordEndpoits.Labels.rus)
 		view.addSubview(rusValue)
 		rusValue.snp.makeConstraints({ (make) in
-			 make.left.equalTo(20)
-			 make.right.equalTo(-20)
+            make.left.equalTo(20)
+            make.right.equalTo(-20)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
-			 make.height.equalTo(30)
+            make.height.equalTo(30)
 		 })
 		
         rusValueTF.settingsTF(placeholder: NewWordEndpoits.TextField.rus.rawValue, delegateObj: self)
@@ -81,6 +88,15 @@ class NewWordViewController: BaseViewController{
 			make.top.equalTo(rusValue.snp.bottom).offset(10)
 			make.height.equalTo(30)
 		})
+
+        topCopy.tag = 0
+        view.addSubview(topCopy)
+        topCopy.snp.makeConstraints({ (make) in
+            make.top.equalTo(rusValue.snp.top)
+            make.right.equalTo(rusValueTF.snp.right)
+            make.bottom.equalTo(rusValue.snp.bottom)
+            make.width.equalTo(75)
+         })
 		
         view.addSubview(buttonMix)
         buttonMix.isEnabled = false
@@ -109,6 +125,15 @@ class NewWordViewController: BaseViewController{
 			make.top.equalTo(engValue.snp.bottom).offset(10)
 			make.height.equalTo(30)
 		})
+
+        bottomCopy.tag = 1
+        view.addSubview(bottomCopy)
+        bottomCopy.snp.makeConstraints({ (make) in
+            make.top.equalTo(engValue.snp.top)
+            make.right.equalTo(engValueTF.snp.right)
+            make.bottom.equalTo(engValue.snp.bottom)
+            make.width.equalTo(75)
+         })
 		
         let description = addLabel(text: NewWordEndpoits.Labels.descript)
 		view.addSubview(description)
@@ -148,6 +173,34 @@ class NewWordViewController: BaseViewController{
         presenter?.fetchData()
     }
 
+//    private func labelCopy() {
+//        let label = UILabel()
+//        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+//        label.text = "СКОПИРОВАНО"
+//        label.backgroundColor = .black
+//        label.textColor = .white
+//        label.addRadius(number: 2)
+//
+//        view.addSubview(label)
+//
+//        label.snp.makeConstraints({ (make) in
+//            make.left.equalTo(view.snp.left).offset(-5)
+//            make.top.equalTo(view.snp.top).offset(1)
+//            make.height.equalTo(19)
+//            make.width.equalTo(40)
+//        })
+//
+//        UIView.animate(withDuration: 0.3) {
+//            label.snp.makeConstraints({ (make) in
+//                make.left.equalTo(self.view.snp.right).offset(5)
+//            })
+//        } completion: { compl in
+//            if compl {
+//                label.removeFromSuperview()
+//            }
+//        }
+//    }
+
     @objc private func buttonActionAddAndNext(sender: UIButton!) {
         presenter?.createAndAddWord()
         rusValueTF.becomeFirstResponder()
@@ -161,11 +214,16 @@ class NewWordViewController: BaseViewController{
 		presenter?.tapedMix()
     }
 
+    @objc private func copyTap(sender: UIButton!) {
+//        labelCopy()
+        presenter?.copyText(tag: sender.tag)
+    }
+
     @objc private func handleTap(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
 	
-	@objc private func adjustForKeydoard(notification: Notification) {
+    @objc override func adjustForKeydoard(notification: Notification) {
         if notification.name == UIApplication.keyboardWillShowNotification {
             gester?.isEnabled = true
         } else if notification.name == UIApplication.keyboardWillHideNotification {
@@ -181,10 +239,6 @@ class NewWordViewController: BaseViewController{
         label.text = text.rawValue
 
         return label
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 
 }
@@ -229,17 +283,27 @@ extension NewWordViewController: UITextFieldDelegate {
 
 extension NewWordViewController: NewWordViewControllerProtocol {
 	func startData(word: Word?) {
+        let topText = word?.rusValue.textEditor
+        let botomText = word?.engValue.textEditor
 		
-        rusValueTF.text = word?.rusValue.textEditor
-		engValueTF.text = word?.engValue.textEditor
+        rusValueTF.text = topText
+		engValueTF.text = botomText
+
 		descriptionValueTF.text = word?.descript
 	}
 	
-	func enabledData(enabledAdd: Bool, enabledMix: Bool){
+	func enabledData(enabledAdd: Bool,
+                     enabledMix: Bool){
 		buttonMix.isEnabled        = enabledMix
         buttonAdd.isEnabled        = enabledAdd
         buttonAddAndNext.isEnabled = enabledAdd
 	}
+
+    func enableCopy(enableCopyTop: Bool,
+                    enableCopyBottom: Bool) {
+        topCopy.isEnabled = enableCopyTop
+        bottomCopy.isEnabled = enableCopyBottom
+    }
 
     func title(text: String){
         self.title = text
@@ -251,6 +315,15 @@ extension NewWordViewController: NewWordViewControllerProtocol {
 
     func isHidenBeginButton(isHiden: Bool){
         buttonAddAndNext.isHidden = isHiden
+    }
+
+    func blockedButton(tag: Int) {
+        if topCopy.tag == tag {
+            topCopy.isEnabled = false
+        }
+        if bottomCopy.tag == tag {
+            bottomCopy.isEnabled = false
+        }
     }
 }
 

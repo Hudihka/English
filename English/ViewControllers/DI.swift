@@ -11,7 +11,7 @@ import UIKit
 protocol DIProtocol: AnyObject {
     static func loadProfileViewController() -> BaseViewController
     static func autorisationViewController() -> BaseViewController
-    
+
     static func menuViewController() -> BaseNavigationController
     static func newWordViewController(list: List, oldWord: Word?) -> BaseNavigationController
     static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController
@@ -19,44 +19,46 @@ protocol DIProtocol: AnyObject {
     static func splitViewController(list: List?, wayTranslate: MenuEndpointsEnum.ActionButtonsAlert) -> SplitViewController
     static func masterSplitViewController(SVC: UIViewController) -> (NVC: BaseNavigationController, interactor: MasterSplitInteractorProtocol)
     static func detailSplitViewController(SVC: UIViewController) -> (NVC: BaseNavigationController, interactor: DetailSplitInteractorProtocol)
+
+    static func searchViewController() -> BaseNavigationController
 }
 
 
 class DI: DIProtocol {
     static func loadProfileViewController() -> BaseViewController {
-        
+
         let VC = LoadProfileViewController()
         let presenter = LoadProfilePresenter()
         let interactor = LoadProfileInteractor()
         let router = LoadProfileRouter()
-        
+
         VC.presenter = presenter
         interactor.presenter = presenter
-        
+
         presenter.view = VC
         presenter.interactor = interactor
         presenter.router = router
-        
+
         return VC
     }
-    
+
     static func autorisationViewController() -> BaseViewController{
-        
+
         let VC = AutorisationViewController()
         let presenter = AutorisationPresenter()
         let interactor = AutorisationInteractor()
         let router = AutorisationRouter()
-        
+
         VC.presenter = presenter
         interactor.presenter = presenter
-        
+
         presenter.view = VC
         presenter.interactor = interactor
         presenter.router = router
-        
+
         return VC
     }
-    
+
     static func menuViewController() -> BaseNavigationController {
         let VC = MenuViewController()
         let NVC = BaseNavigationController(rootViewController: VC)
@@ -64,19 +66,19 @@ class DI: DIProtocol {
         let presenter = MenuPresenter()
         let interactor = MenuInteractor(presenter: presenter)
         let router = MenuRouter(navigationVC: NVC)
-        
+
         VC.presenter = presenter
         interactor.presenter = presenter
-        
+
         presenter.view = VC
         presenter.interactor = interactor
         presenter.router = router
-        
+
         return NVC
     }
 
-	static func newWordViewController(list: List,
-									  oldWord: Word?) -> BaseNavigationController {
+    static func newWordViewController(list: List,
+                                      oldWord: Word?) -> BaseNavigationController {
         let VC = NewWordViewController()
         let NVC = BaseNavigationController(rootViewController: VC)
 
@@ -99,7 +101,7 @@ class DI: DIProtocol {
     static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController {
         let VC = WordsViewController()
 
-		let interactor = WordsInteractor(list: list)
+        let interactor = WordsInteractor(list: list)
         let router = WordsRouter(navigationVC: NVC, list: list)
         let presenter = WordsPresenter(interactor: interactor)
 
@@ -164,5 +166,24 @@ class DI: DIProtocol {
 
         return (NVC: NVC, interactor: interactor)
     }
-    
+
+    static func searchViewController() -> BaseNavigationController {
+        let VC = SearchViewController()
+        let NVC = BaseNavigationController(rootViewController: VC)
+
+        let interactor = SearchInteractor()
+        let presenter = SearchPresenter()
+        let router = SearchRouter(navigationVC: NVC)
+
+        VC.presenter = presenter
+        interactor.presenter = presenter
+
+        presenter.view = VC
+        presenter.interactor = interactor
+        presenter.router = router
+
+        return NVC
+    }
+
 }
+
