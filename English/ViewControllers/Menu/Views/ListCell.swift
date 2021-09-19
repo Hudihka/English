@@ -10,9 +10,12 @@ import UIKit
 
 class ListCell: BaseCell {
     
-    private var labelTheme: UILabel!
-    private var labelCount: UILabel!
-    private var countFavorite: UILabel!
+    private var labelTheme = UILabel.labelInfinity(text: nil,
+                                                   font: EnumFont.medium(18))
+    private var labelCount = UILabel.label(text: nil,
+                                           font: EnumFont.regular(16))
+    private var countFavorite = UILabel.label(text: nil,
+                                              font: EnumFont.regular(16))
     private var favoritImage: UIImageView!
     
     var list: List? {
@@ -46,10 +49,6 @@ class ListCell: BaseCell {
 	}
 	
 	override func desingUI(){
-		
-		labelTheme = UILabel()
-		labelTheme.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        labelTheme.numberOfLines = 0
 
 		self.contentView.addSubview(labelTheme)
 		labelTheme.snp.makeConstraints({ (make) in
@@ -58,10 +57,7 @@ class ListCell: BaseCell {
 			make.right.equalTo(-16)
 			make.top.equalTo(10)
 		})
-		
-		
-		labelCount = UILabel()
-		labelCount.font = UIFont.systemFont(ofSize: 16)
+
 
 		self.contentView.addSubview(labelCount)
 		labelCount.snp.makeConstraints({ (make) in
@@ -79,9 +75,7 @@ class ListCell: BaseCell {
 			make.centerY.equalTo(self.labelCount.snp.centerY)
 			make.left.equalTo(self.labelCount.snp.right)
 		}
-		
-		countFavorite = UILabel()
-		countFavorite.font = UIFont.systemFont(ofSize: 16)
+
 		self.contentView.addSubview(countFavorite)
 		countFavorite.snp.makeConstraints({ (make) in
 			make.height.equalTo(18)

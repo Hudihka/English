@@ -19,9 +19,12 @@ class WordsViewController: BaseViewController {
     var presenter: WordsPresenterProtocol?
 
 	private var table: WordsTableView!
-    fileprivate let labelClear = UILabel()
-    fileprivate let segentTranslate = UISegmentedControl()
-    fileprivate let switchTranslate = UISwitch()
+    private let labelClear = UILabel.label(text: WordsEndpoint.Text.emptyWords.rawValue,
+                                           font: EnumFont.bold(25),
+                                           aligment: .center)
+    private let segentTranslate = UISegmentedControl()
+    private let switchTranslate = UISwitch()
+    private let switchOnlyFavorit = UISwitch()
 
     override var rightTextBBItem: String?{
         return WordsEndpoint.ViewText.rightBB.rawValue
@@ -68,10 +71,8 @@ class WordsViewController: BaseViewController {
             make.left.equalTo(segentTranslate.snp.left)
         }
 
-        let hideTranslate = UILabel()
-        hideTranslate.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        hideTranslate.textColor = UIColor.black
-        hideTranslate.text = WordsEndpoint.Text.hide.rawValue
+        let hideTranslate = UILabel.label(text: WordsEndpoint.Text.hide.rawValue,
+                                          font: EnumFont.semibold(20))
         self.view.addSubview(hideTranslate)
         hideTranslate.snp.makeConstraints({ (make) in
             make.height.equalTo(31)
@@ -80,12 +81,9 @@ class WordsViewController: BaseViewController {
             make.top.equalTo(segentTranslate.snp.bottom).offset(16)
         })
 
-        labelClear.textColor = UIColor.black
-        labelClear.font = UIFont.systemFont(ofSize: 25, weight: .bold)
-        labelClear.textAlignment = .center
-        labelClear.text = WordsEndpoint.Text.emptyWords.rawValue
-        self.view.addSubview(labelClear)
 
+
+        self.view.addSubview(labelClear)
         labelClear.snp.makeConstraints({ (make) in
             make.height.equalTo(44)
             make.left.equalTo(0)

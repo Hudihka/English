@@ -10,11 +10,12 @@ import Foundation
 enum WordsEndpoint {
 
     enum Text: String {
-        case rus        = "Рус -> Англ"
-        case engl       = "Англ -> Рус"
-        case hide       = "Скрыть перевод"
-        case emptyWords = "Нет слов"
-		case title 		= "ФАВОРИТ"
+        case rus         = "Рус -> Англ"
+        case engl        = "Англ -> Рус"
+        case hide        = "Скрыть перевод"
+        case onlyFavorit = "Только фаворит"
+        case emptyWords  = "Нет слов"
+		case title 		 = "ФАВОРИТ"
     }
 
     enum ViewText: String {

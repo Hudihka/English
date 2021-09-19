@@ -16,6 +16,7 @@ protocol NewWordViewControllerProtocol: AnyObject {
                     enableCopyBottom: Bool)
 
     func title(text: String)
+    func settingsSwitch(hiden: Bool, value: Bool)
     func titleButton(text: String)
     func isHidenBeginButton(isHiden: Bool)
 
@@ -33,7 +34,8 @@ class NewWordViewController: BaseViewController{
     private let buttonMix = BaseBlackButton(title: NewWordEndpoits.ButtonText.mix.rawValue,
                                             selector: #selector(mixButton), target: self)
     private let switchFavorit = UISwitch()
-    private var createFavorit = UILabel()
+    private var createFavorit = UILabel.label(text: NewWordEndpoits.Labels.createFavorit.rawValue,
+                                              font: EnumFont.medium(18), aligment: .left)
     private let topCopy = CopyButton(selector: #selector(copyTap),
                                      target: self)
     private let bottomCopy = CopyButton(selector: #selector(copyTap),
@@ -73,7 +75,8 @@ class NewWordViewController: BaseViewController{
             make.height.equalTo(50)
         })
 		
-        let rusValue = addLabel(text: NewWordEndpoits.Labels.rus)
+        let rusValue = UILabel.label(text: NewWordEndpoits.Labels.rus.rawValue,
+                                     font: EnumFont.medium(18), aligment: .left)
 		view.addSubview(rusValue)
 		rusValue.snp.makeConstraints({ (make) in
             make.left.equalTo(20)
@@ -117,7 +120,6 @@ class NewWordViewController: BaseViewController{
             make.centerY.equalTo(buttonMix.snp.centerY)
         })
 
-        createFavorit = addLabel(text: NewWordEndpoits.Labels.createFavorit)
         view.addSubview(createFavorit)
         createFavorit.snp.makeConstraints({ (make) in
             make.left.equalTo(switchFavorit.snp.right).offset(15)
@@ -127,7 +129,8 @@ class NewWordViewController: BaseViewController{
          })
         
 		
-		let engValue = addLabel(text: NewWordEndpoits.Labels.engl)
+		let engValue = UILabel.label(text: NewWordEndpoits.Labels.engl.rawValue,
+                                     font: EnumFont.medium(18), aligment: .left)
 		view.addSubview(engValue)
 		engValue.snp.makeConstraints({ (make) in
 			 make.left.equalTo(20)
@@ -154,7 +157,8 @@ class NewWordViewController: BaseViewController{
             make.width.equalTo(75)
          })
 		
-        let description = addLabel(text: NewWordEndpoits.Labels.descript)
+        let description = UILabel.label(text: NewWordEndpoits.Labels.descript.rawValue,
+                                        font: EnumFont.medium(18), aligment: .left)
 		view.addSubview(description)
 		description.snp.makeConstraints({ (make) in
 			 make.left.equalTo(20)
@@ -190,6 +194,7 @@ class NewWordViewController: BaseViewController{
 
         presenter?.fetchTitle()
         presenter?.fetchData()
+        presenter?.fetchSwitch()
     }
 
 //    private func labelCopy() {
@@ -251,18 +256,7 @@ class NewWordViewController: BaseViewController{
 	}
 
     @objc private func switchAction(_ sender: UISwitch) {
-//        presenter?.saveSwitch(isOn: sender.isOn)
-//        table.wordsTable(wordsArray: nil, duration: 0.25)
-    }
-
-    private func addLabel(text: NewWordEndpoits.Labels) -> UILabel {
-
-        let label = UILabel()
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.text = text.rawValue
-
-        return label
+        presenter?.tapedSwitch(value: sender.isOn)
     }
 
 }
@@ -314,8 +308,6 @@ extension NewWordViewController: NewWordViewControllerProtocol {
 		engValueTF.text = botomText
 
 		descriptionValueTF.text = word?.descript
-        createFavorit.isHidden = word != nil
-        switchFavorit.isHidden = word != nil
 	}
 	
 	func enabledData(enabledAdd: Bool,
@@ -333,6 +325,13 @@ extension NewWordViewController: NewWordViewControllerProtocol {
 
     func title(text: String){
         self.title = text
+    }
+
+    func settingsSwitch(hiden: Bool, value: Bool) {
+        createFavorit.isHidden = hiden
+        
+        switchFavorit.isHidden = hiden
+        switchFavorit.isOn = value
     }
 
     func titleButton(text: String) {

@@ -12,9 +12,11 @@ protocol NewWordPresenterProtocol: AnyObject {
     func tapedCancel()
 	func fetchData()
     func fetchTitle()
+    func fetchSwitch()
 	
 	func tapedMix()
 	func createWord()
+    func tapedSwitch(value: Bool)
     func createAndAddWord()
 
     func copyText(tag: Int)
@@ -44,13 +46,24 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	}
 
     func fetchTitle(){
-        self.view?.title(text: oldWord == nil ?
+        view?.title(text: oldWord == nil ?
                             NewWordEndpoits.TitleText.newWord.rawValue :
                             NewWordEndpoits.TitleText.change.rawValue)
     }
 
+    func fetchSwitch() {
+        let hiden = oldWord != nil
+        let value = DefaultUtils.shared.favoritNewWord
+
+        view?.settingsSwitch(hiden: hiden, value: value)
+    }
+
     func tapedCancel(){
         router?.popViewController()
+    }
+
+    func tapedSwitch(value: Bool) {
+        DefaultUtils.shared.favoritNewWord = value
     }
 	
 	func fetchData(){
@@ -92,8 +105,9 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	}
 	
 	func createWord() {
-		guard let newWord = newWord else { return }
+		guard var newWord = newWord else { return }
 		if oldWord == nil {
+            newWord.favorit = DefaultUtils.shared.favoritNewWord
             interactor?.create(word: newWord, list: list)
             tapedCancel()
 		} else {
@@ -102,7 +116,8 @@ class NewWordPresenter: NewWordPresenterProtocol {
 	}
 
     func createAndAddWord() {
-        guard let newWord = newWord else { return }
+        guard var newWord = newWord else { return }
+        newWord.favorit = DefaultUtils.shared.favoritNewWord
         interactor?.create(word: newWord, list: list)
 
         self.oldWord = nil

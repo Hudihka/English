@@ -10,13 +10,13 @@ import UIKit
 
 class WordCellDescription: WordCell {
 
-   private var labelDescription: UILabel!
+   private var labelDescription = UILabel.labelInfinity(text: nil, font: EnumFont.regular(17))
 
     override func textsLabels(word: Word, alpha: CGFloat) {
         super.textsLabels(word: word, alpha: alpha)
 
-        labelDescription?.alpha = alpha
-        labelDescription?.text = word.descript
+        labelDescription.alpha = alpha
+        labelDescription.text = word.descript
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -44,10 +44,6 @@ class WordCellDescription: WordCell {
            make.height.greaterThanOrEqualTo(25).priority(999)
        })
 
-        labelDescription = UILabel()
-        labelDescription.numberOfLines = 0
-        labelDescription.textColor = UIColor.black
-        labelDescription.font = UIFont.systemFont(ofSize: 17)
         self.contentView.addSubview(labelDescription)
         labelDescription.snp.makeConstraints({ (make) in
             make.top.equalTo(labelTarnlate.snp.bottom).offset(10)

@@ -134,6 +134,11 @@ class FirebaseData {
 
                 self.db.collection("Profile").document(id).setData(profile.json)
                 self.db.collection("Words").document(idWord).setData(newWord.json)
+
+                //TODO добавить пересщет
+//                if newWord.favorit {
+//                    self.likeWord(word: newWord)
+//                }
             }
         }
     }

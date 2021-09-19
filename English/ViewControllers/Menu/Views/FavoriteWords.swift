@@ -10,7 +10,8 @@ import UIKit
 
 class FavoriteWords: BaseCell {
     
-    private var labelFavorite: UILabel!
+    private var labelFavorite = UILabel.label(text: MenuEndpointsEnum.CellText.favorit.text,
+                                              font: EnumFont.bold(25), aligment: .center)
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,12 +23,6 @@ class FavoriteWords: BaseCell {
 	}
 	
 	override func desingUI(){
-		
-		labelFavorite = UILabel()
-		labelFavorite.text = MenuEndpointsEnum.CellText.favorit.text
-		labelFavorite.textColor = UIColor.black
-		labelFavorite.font = UIFont.systemFont(ofSize: 25, weight: .bold)
-        labelFavorite.textAlignment = .center
 
 		self.contentView.addSubview(labelFavorite)
 		labelFavorite.snp.makeConstraints({ (make) in

@@ -13,7 +13,7 @@ class BaseNavigationController: UINavigationController {
         super.viewDidLoad()
 
         self.clearBar()
-        self.fontBar(font: EnumFont.bold.font(21), color: .black)
+        self.fontBar(font: EnumFont.bold(21).font, color: .black)
     }
     
     override init(rootViewController: UIViewController) {

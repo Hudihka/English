@@ -10,9 +10,12 @@ import UIKit
 
 class SearchCell: BaseCell {
 
-    private var labelWord: UILabel!
-    private var labelTarnlate: UILabel!
-    private var labelListName: UILabel!
+    private var labelWord = UILabel.labelInfinity(text: nil,
+                                                  font: EnumFont.bold(32))
+    private var labelTarnlate = UILabel.labelInfinity(text: nil,
+                                                      font: EnumFont.regular(23))
+    private var labelListName = UILabel.labelInfinity(text: nil,
+                                                      font: EnumFont.semibold(10))
 
     private var buttonFave: UIButton!
     private let df = DefaultUtils.shared
@@ -63,10 +66,6 @@ class SearchCell: BaseCell {
            make.width.equalTo(50)
        })
 
-       labelWord = UILabel()
-       labelWord.textColor = UIColor.black
-       labelWord.numberOfLines = 0
-       labelWord.font = UIFont.systemFont(ofSize: 32, weight: .bold)
        self.contentView.addSubview(labelWord)
        labelWord.snp.makeConstraints({ (make) in
            make.top.equalTo(5)
@@ -75,10 +74,6 @@ class SearchCell: BaseCell {
            make.height.greaterThanOrEqualTo(40)
        })
 
-       labelTarnlate = UILabel()
-       labelTarnlate.numberOfLines = 0
-       labelTarnlate.textColor = UIColor.black
-       labelTarnlate.font = UIFont.systemFont(ofSize: 23)
        self.contentView.addSubview(labelTarnlate)
        labelTarnlate.snp.makeConstraints({ (make) in
            make.top.equalTo(labelWord.snp.bottom).offset(7)
@@ -88,10 +83,6 @@ class SearchCell: BaseCell {
 //           make.bottom.equalTo(contentView.snp.bottom).offset(-9)
        })
 
-        labelListName = UILabel()
-        labelListName.numberOfLines = 0
-        labelListName.textColor = UIColor.black
-        labelListName.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
         self.contentView.addSubview(labelTarnlate)
         labelListName.snp.makeConstraints({ (make) in
             make.top.equalTo(labelTarnlate.snp.bottom).offset(10)

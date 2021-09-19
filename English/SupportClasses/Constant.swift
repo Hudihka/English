@@ -21,15 +21,15 @@ let grayColor = UIColor(red: 242.0/255.0, green: 242.0/255.0, blue: 242.0/255.0,
 
 //MARK: - fonts
 
-enum EnumFont: String{
-    case bold = "Bold"
-    case semibold = "Semibold"
-    case regular = "Regular"
-    case medium = "Medium"
-    case light = "Light"
-    
+enum EnumFont {
+    case bold(CGFloat)
+    case semibold(CGFloat)
+    case regular(CGFloat)
+    case medium(CGFloat)
+    case light(CGFloat)
+
     private var wedding: UIFont.Weight {
-        
+
         switch self {
         case .bold:
             return UIFont.Weight.bold
@@ -43,12 +43,20 @@ enum EnumFont: String{
             return UIFont.Weight.light
         }
     }
-    
-    func font(_ size: CGFloat) -> UIFont {
-        let font = UIFont.systemFont(ofSize: size, weight: wedding)
-        return font
+
+    var font: UIFont {
+        switch self {
+        case .bold(let size):
+            return UIFont.systemFont(ofSize: size, weight: wedding)
+        case .semibold(let size):
+            return UIFont.systemFont(ofSize: size, weight: wedding)
+        case .regular(let size):
+            return UIFont.systemFont(ofSize: size, weight: wedding)
+        case .medium(let size):
+            return UIFont.systemFont(ofSize: size, weight: wedding)
+        case .light(let size):
+            return UIFont.systemFont(ofSize: size, weight: wedding)
+        }
     }
-    
+
 }
-
-

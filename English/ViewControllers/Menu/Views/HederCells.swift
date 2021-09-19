@@ -10,7 +10,9 @@ import UIKit
 
 class HederCells: UITableViewHeaderFooterView {
 
-    private var titleLable: UILabel!
+    private var titleLable = UILabel.labelInfinity(text: MenuEndpointsEnum.CellText.favorit.text,
+                                                   font: EnumFont.regular(15),
+                                                   aligment: .right)
     
     var text: String? {
         didSet{
@@ -36,12 +38,6 @@ class HederCells: UITableViewHeaderFooterView {
 	private func desingUI(){
 		
         contentView.backgroundColor = grayColor
-        
-		titleLable = UILabel()
-		titleLable.font = UIFont.systemFont(ofSize: 15)
-		titleLable.textColor = UIColor.black
-		titleLable.textAlignment = .right
-		titleLable.numberOfLines = 0
 
 		self.contentView.addSubview(titleLable)
 		titleLable.snp.makeConstraints({ (make) in

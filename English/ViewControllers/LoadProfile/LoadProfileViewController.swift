@@ -22,13 +22,10 @@ class LoadProfileViewController: BaseViewController, LoadProfileViewControllerPr
     
     override func desingUI() {
         super.desingUI()
-        
-        let label = UILabel()
-        label.text = "Учение - свет, неученье - тьма\nТьма - это мать, это мать, мать его..."
-        label.textColor = UIColor.black
-        label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 25)
-        label.textAlignment = .left
+
+        let label = UILabel.labelInfinity(text: "Учение - свет, неученье - тьма\nТьма - это мать, это мать, мать его...",
+                                          font: EnumFont.regular(25),
+                                          aligment: .left)
         self.view.addSubview(label)
         
         label.snp.makeConstraints({ (make) in

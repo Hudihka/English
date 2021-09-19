@@ -14,6 +14,7 @@ class DefaultUtils: NSObject {
         case hideTranslate          = "hide_translate"
         case slectedSertchIndex     = "slected_sertch_index"
         case keyUserAppleID         = "UserDefaults_user_apple_id"
+        case favoritNewWord         = "favorit_new_word"
     }
 
     
@@ -69,6 +70,11 @@ class DefaultUtils: NSObject {
     var userAppleID: String?{
         set { set(string: newValue, forKey: Keys.keyUserAppleID) }
         get { return string(forKey: Keys.keyUserAppleID) }
+    }
+
+    var favoritNewWord: Bool {
+        set { set(bool: newValue, forKey: Keys.favoritNewWord) }
+        get { return bool(forKey: Keys.favoritNewWord) }
     }
     
 }
