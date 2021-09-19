@@ -14,11 +14,12 @@ struct List {
     var count: Int = 0
     var countFavorit: Int = 0
     
-    var dateUpdate: Date?
+    var number: Int = 0
 
     init(name: String){
         self.name = name
-		self.dateUpdate = Date()
+        let oldNumber = FirebaseData.shared.profile?.newNumberList ?? 0
+        self.number = oldNumber + 1
     }
     
     init(json: JSON) {
@@ -35,8 +36,8 @@ struct List {
             self.countFavorit = temp
         }
         
-        if let temp = json["dateUpdate"] as? String, let date = temp.getDatwToString() {
-            self.dateUpdate = date
+        if let temp = json["number"] as? Int {
+            self.number = temp
         }
         
     }
@@ -57,7 +58,6 @@ struct List {
 
     func addOrDeleteOneWord(add: Bool) -> List{
         var newList = self
-        newList.dateUpdate = Date()
         if add {
             newList.count += 1
         } else if newList.count != 0 {
@@ -79,7 +79,6 @@ struct List {
 		} else {
 			newList.countFavorit -= 1
 		}
-		newList.dateUpdate = Date()
 		return newList
 	}
 }

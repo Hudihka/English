@@ -82,7 +82,6 @@ class FirebaseData {
 
         var oldList = profile.lists[index]
         oldList.name = newName
-		oldList.dateUpdate = Date()
         profile.lists[index] = oldList
         profile.lists.swapAt(0, index)
 

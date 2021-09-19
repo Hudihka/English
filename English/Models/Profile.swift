@@ -15,8 +15,7 @@ struct Profile {
     init(json: JSON) {
 
         if let temp = json["lists"] as? [JSON] {
-            let defaultDate = Date(timeIntervalSinceNow: TimeInterval(-1000000000))
-            let lists = temp.map { List(json: $0) }.sorted(by: { $0.dateUpdate ?? defaultDate > $1.dateUpdate ?? defaultDate })
+            let lists = temp.map { List(json: $0) }.sorted(by: { $0.number > $1.number })
 
             self.lists = lists
         }
@@ -44,3 +43,9 @@ struct Profile {
 
 }
 
+extension Profile {
+    var newNumberList: Int? {
+        let numbers = lists.compactMap({$0.number})
+        return numbers.max()
+    }
+}
