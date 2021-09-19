@@ -78,6 +78,7 @@
 		45ED9EC7269CBCCF00AB150F /* AutorisationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9EC6269CBCCF00AB150F /* AutorisationPresenter.swift */; };
 		45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9EC8269CBCF600AB150F /* AutorisationInteractor.swift */; };
 		45ED9ECB269CBD0E00AB150F /* AutorisationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED9ECA269CBD0E00AB150F /* AutorisationRouter.swift */; };
+		45EE2DB626F723EB007270C2 /* UISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EE2DB526F723EB007270C2 /* UISwitch.swift */; };
 		45FF7AA326A00AF1005BAF35 /* MenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AA226A00AF1005BAF35 /* MenuTableView.swift */; };
 		45FF7AA526A00C28005BAF35 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AA426A00C28005BAF35 /* NSObject.swift */; };
 		45FF7AA926A015CF005BAF35 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FF7AA626A015CF005BAF35 /* ListCell.swift */; };
@@ -173,6 +174,7 @@
 		45ED9EC6269CBCCF00AB150F /* AutorisationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationPresenter.swift; sourceTree = "<group>"; };
 		45ED9EC8269CBCF600AB150F /* AutorisationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationInteractor.swift; sourceTree = "<group>"; };
 		45ED9ECA269CBD0E00AB150F /* AutorisationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationRouter.swift; sourceTree = "<group>"; };
+		45EE2DB526F723EB007270C2 /* UISwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwitch.swift; sourceTree = "<group>"; };
 		45FC2C1C26C1AF6E00A16EDC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		45FC2C1D26C1AF6F00A16EDC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		45FF7AA226A00AF1005BAF35 /* MenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableView.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				45FF7AA426A00C28005BAF35 /* NSObject.swift */,
 				52DB12E226AEF37600AAF949 /* UITextField.swift */,
 				52E45E7726BAFCB2009C5965 /* Array.swift */,
+				45EE2DB526F723EB007270C2 /* UISwitch.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				45ED9EC9269CBCF600AB150F /* AutorisationInteractor.swift in Sources */,
 				45A191AC269DE0D700D2E169 /* UIView.swift in Sources */,
 				450712E9269E0D160022EE61 /* MenuRouter.swift in Sources */,
+				45EE2DB626F723EB007270C2 /* UISwitch.swift in Sources */,
 				4553CEC726A8954F001EF57E /* MenuEndpoints.swift in Sources */,
 				45EA373426BEA82C00BB40BD /* DetailSplitPresenter.swift in Sources */,
 				45FF7AAD26A016DD005BAF35 /* BaseCell.swift in Sources */,

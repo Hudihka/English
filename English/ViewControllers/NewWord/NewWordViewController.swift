@@ -110,16 +110,17 @@ class NewWordViewController: BaseViewController{
 			make.left.equalTo(20)
         })
 
+        switchFavorit.setingsSwitch(self, action: #selector(switchAction(_ :)))
+        view.addSubview(switchFavorit)
         switchFavorit.snp.makeConstraints({ (make) in
             make.left.equalTo(buttonMix.snp.right).offset(15)
             make.centerY.equalTo(buttonMix.snp.centerY)
         })
-        view.addSubview(switchFavorit)
 
         createFavorit = addLabel(text: NewWordEndpoits.Labels.createFavorit)
         view.addSubview(createFavorit)
         createFavorit.snp.makeConstraints({ (make) in
-            make.left.equalTo(buttonMix.snp.right).offset(15)
+            make.left.equalTo(switchFavorit.snp.right).offset(15)
             make.right.equalTo(-20)
             make.centerY.equalTo(buttonMix.snp.centerY)
             make.height.equalTo(30)
@@ -249,6 +250,11 @@ class NewWordViewController: BaseViewController{
         }
 	}
 
+    @objc private func switchAction(_ sender: UISwitch) {
+//        presenter?.saveSwitch(isOn: sender.isOn)
+//        table.wordsTable(wordsArray: nil, duration: 0.25)
+    }
+
     private func addLabel(text: NewWordEndpoits.Labels) -> UILabel {
 
         let label = UILabel()
@@ -308,8 +314,8 @@ extension NewWordViewController: NewWordViewControllerProtocol {
 		engValueTF.text = botomText
 
 		descriptionValueTF.text = word?.descript
-        createFavorit.isHidden = word == nil
-        switchFavorit.isHidden = word == nil
+        createFavorit.isHidden = word != nil
+        switchFavorit.isHidden = word != nil
 	}
 	
 	func enabledData(enabledAdd: Bool,

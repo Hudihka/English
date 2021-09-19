@@ -60,10 +60,7 @@ class WordsViewController: BaseViewController {
             make.height.equalTo(40)
         }
 
-        switchTranslate.onTintColor = UIColor.black
-        switchTranslate.tintColor = grayColor
-//        switchTranslate.isOn = presenter.hideTranslate
-        switchTranslate.addTarget(self, action: #selector(switchAction(_ :)), for: .touchUpInside)
+        switchTranslate.setingsSwitch(self, action: #selector(switchAction(_ :)))
         self.view.addSubview(switchTranslate)
 
         switchTranslate.snp.makeConstraints { (make) in
