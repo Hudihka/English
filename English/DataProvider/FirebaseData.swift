@@ -123,12 +123,19 @@ class FirebaseData {
             return
         }
 
-        let newList = list.addOrDeleteOneWord(add: true)
-        profile.lists[index] = newList
-        profile.lists.swapAt(0, index)
+        let collection = db.collection("Words").whereField("listName", isEqualTo: list.name)
+        var newList = list
+        collection.getDocuments { [weak self] (snaphot, _) in
+            guard let self = self else { return }
+            if let count = snaphot?.documents.count {
+                newList.count = count
+                newList.addOrDeleteOneWord(add: true)
+                profile.lists[index] = newList
 
-        db.collection("Profile").document(id).setData(profile.json)
-        db.collection("Words").document(idWord).setData(newWord.json)
+                self.db.collection("Profile").document(id).setData(profile.json)
+                self.db.collection("Words").document(idWord).setData(newWord.json)
+            }
+        }
     }
 
     func lisenWord(list: List?, compl: @escaping(([Word]) -> Void)) {
@@ -159,11 +166,10 @@ class FirebaseData {
             return
         }
 
-        let oldList = profile.lists[index]
+        var oldList = profile.lists[index]
 		let tapedFavorit = word.favorit ? false : true
-		let newList = oldList.jsonReloadFavoritCount(add: tapedFavorit)
-        profile.lists[index] = newList
-        profile.lists.swapAt(0, index)
+		oldList.jsonReloadFavoritCount(add: tapedFavorit)
+        profile.lists[index] = oldList
 
         var wordJson = word.json
         wordJson["favorit"] = tapedFavorit
@@ -205,13 +211,12 @@ class FirebaseData {
             return
         }
 
-        let oldList = profile.lists[index]
-        var newList = oldList.addOrDeleteOneWord(add: false)
+        var oldList = profile.lists[index]
+        oldList.addOrDeleteOneWord(add: false)
         if word.favorit {
-            newList = newList.jsonReloadFavoritCount(add: false)
+            oldList.jsonReloadFavoritCount(add: false)
         }
-        profile.lists[index] = newList
-        profile.lists.swapAt(0, index)
+        profile.lists[index] = oldList
 
 
         db.collection("Profile").document(id).setData(profile.json)

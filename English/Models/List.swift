@@ -49,36 +49,30 @@ struct List {
         json["name"]            = name
         json["count"]           = count
         json["favorit"]         = countFavorit
-        json["dateUpdate"]      = Date().printDate()
+        json["number"]          = number
         
         return json
     }
 	
 	//методы вызываемые когда что либо делаем со словами
 
-    func addOrDeleteOneWord(add: Bool) -> List{
-        var newList = self
+    mutating func addOrDeleteOneWord(add: Bool) {
         if add {
-            newList.count += 1
-        } else if newList.count != 0 {
-            newList.count -= 1
+            count += 1
+        } else if count != 0 {
+            count -= 1
         }
-
-        return newList
     }
     
 	
-	func jsonReloadFavoritCount(add: Bool) -> List{
-		var newList = self
-		let oldCountFavorit = newList.countFavorit
+    mutating func jsonReloadFavoritCount(add: Bool){
 		
 		if add {
-			newList.countFavorit += 1
-		} else if oldCountFavorit == 0 {
-			newList.countFavorit = 0
+			countFavorit += 1
+		} else if countFavorit == 0 {
+			countFavorit = 0
 		} else {
-			newList.countFavorit -= 1
+			countFavorit -= 1
 		}
-		return newList
 	}
 }
