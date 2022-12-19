@@ -7,25 +7,49 @@
 
 import UIKit
 
-protocol WordViewControllerProtocol: AnyObject {
-    func fetchTitle(text: String)
-    func fetchSegmentControll(index: Int)
-    func fetchSwitch(isOn: Bool)
-
-    func words(words: [Word])
-}
-
 class WordsViewController: BaseViewController {
-    var presenter: WordsPresenterProtocol?
+    private var arrayLists: [List] = []
+    
+    var VM: (WordsProtocolIn & WordsProtocolOut)?
 
 	private var table: WordsTableView!
-    fileprivate let labelClear = UILabel()
-    fileprivate let segentTranslate = UISegmentedControl()
-    fileprivate let switchTranslate = UISwitch()
+    
+    private let hideTranslateLabel: UILabel = {
+        let hideTranslate = UILabel()
+        hideTranslate.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        hideTranslate.textColor = UIColor.black
+        hideTranslate.text = WordsEndpoint.hideTranslate.hide.rawValue
+        
+        return hideTranslate
+    }()
+    
+    private lazy var segentTranslate: UISegmentedControl = {
+        let segment = UISegmentedControl()
+        segment.backgroundColor = .white
+        segment.tintColor = UIColor.yellow
+        segment.selectedSegmentTintColor = UIColor.black
 
-    override var rightTextBBItem: String?{
-        return WordsEndpoint.ViewText.rightBB.rawValue
-    }
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        segment.setTitleTextAttributes(titleTextAttributes, for:.normal)
+
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        segment.setTitleTextAttributes(titleTextAttributes1, for:.selected)
+
+        segment.insertSegment(withTitle: WordsEndpoint.Segment.all.rawValue, at: 0, animated: true)
+        segment.insertSegment(withTitle: WordsEndpoint.Segment.onlyFavorit.rawValue, at: 1, animated: true)
+        segment.addTarget(self, action: #selector(actionSegment(_ :)), for: .valueChanged)
+        
+        return segment
+    }()
+    
+    private lazy var switchTranslate: UISwitch = {
+        let swit = UISwitch()
+        swit.onTintColor = UIColor.black
+        swit.tintColor = grayColor
+        swit.addTarget(self, action: #selector(switchAction(_ :)), for: .touchUpInside)
+        
+        return swit
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,23 +59,10 @@ class WordsViewController: BaseViewController {
     
 
     override func desingUI() {
-
-        segentTranslate.backgroundColor = .white
-        segentTranslate.tintColor = UIColor.yellow
-        segentTranslate.selectedSegmentTintColor = UIColor.black
-
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        segentTranslate.setTitleTextAttributes(titleTextAttributes, for:.normal)
-
-        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        segentTranslate.setTitleTextAttributes(titleTextAttributes1, for:.selected)
-
-        segentTranslate.insertSegment(withTitle: WordsEndpoint.Text.rus.rawValue, at: 0, animated: true)
-        segentTranslate.insertSegment(withTitle: WordsEndpoint.Text.engl.rawValue, at: 1, animated: true)
-        segentTranslate.addTarget(self, action: #selector(actionSegment(_ :)), for: .valueChanged)
+        
+        self.title = WordsEndpoint.ViewText.title.rawValue
 
         self.view.addSubview(segentTranslate)
-
 
         segentTranslate.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
@@ -60,23 +71,14 @@ class WordsViewController: BaseViewController {
             make.height.equalTo(40)
         }
 
-        switchTranslate.onTintColor = UIColor.black
-        switchTranslate.tintColor = grayColor
-//        switchTranslate.isOn = presenter.hideTranslate
-        switchTranslate.addTarget(self, action: #selector(switchAction(_ :)), for: .touchUpInside)
-        self.view.addSubview(switchTranslate)
-
+        view.addSubview(switchTranslate)
         switchTranslate.snp.makeConstraints { (make) in
             make.top.equalTo(segentTranslate.snp.bottom).offset(16)
             make.left.equalTo(segentTranslate.snp.left)
         }
 
-        let hideTranslate = UILabel()
-        hideTranslate.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        hideTranslate.textColor = UIColor.black
-        hideTranslate.text = WordsEndpoint.Text.hide.rawValue
-        self.view.addSubview(hideTranslate)
-        hideTranslate.snp.makeConstraints({ (make) in
+        self.view.addSubview(hideTranslateLabel)
+        hideTranslateLabel.snp.makeConstraints({ (make) in
             make.height.equalTo(31)
             make.left.equalTo(switchTranslate.snp.right).offset(15)
             make.right.equalTo(-15)
@@ -105,31 +107,41 @@ class WordsViewController: BaseViewController {
             make.right.equalTo(0)
             make.bottom.equalTo(0)
         })
-
-        table.deleteWord = {[weak self] word in
-            guard let self = self else {return}
-
-            self.showAlert(title: "Уверен", message: "Действительно хочешь далить?", style: .cancel, buttonText: "ДА") { _ in
-                self.presenter?.delete(word: word)
-            }
+        
+    }
+    
+    override func lissenVM() {
+        guard var VM = VM else {
+            return
         }
-
+        
+        VM.arrayAllLists = { [weak self] arrayLists in
+            self?.arrayLists = arrayLists
+        }
+        
+        VM.arrayFavoritLists = { [weak self] arrayLists in
+            self?.arrayLists = arrayLists
+        }
+        
+        VM.segmentIndex = { [weak self] index in
+            self?.segentTranslate.selectedSegmentIndex = index
+        }
+        
+        VM.switchValue = { [weak self] value in
+            self?.switchTranslate.isOn = value
+        }
     }
 
     @objc private func actionSegment(_ sender: UISegmentedControl) {
-        presenter?.saveWay(index: sender.selectedSegmentIndex)
-        table.wordsTable(wordsArray: nil, duration: 0.25, scroll: true)
+        let segment = 
+        VM?.tapedSegment(segment: sender.selectedSegmentIndex)
+//        table.wordsTable(wordsArray: nil, duration: 0.25, scroll: true)
     }
 
     @objc private func switchAction(_ sender: UISwitch) {
-        presenter?.saveSwitch(isOn: sender.isOn)
-        table.wordsTable(wordsArray: nil, duration: 0.25)
+        VM?.tapedSwitch(value: sender.isOn)
+//        table.wordsTable(wordsArray: nil, duration: 0.25)
     }
-
-    @objc override func rightBBItem(){
-        self.presenter?.changeWord(word: nil)
-    }
-
 }
 
 

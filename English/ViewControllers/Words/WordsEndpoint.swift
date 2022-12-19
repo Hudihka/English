@@ -9,21 +9,23 @@ import Foundation
 
 enum WordsEndpoint {
 
-    enum Text: String {
-        case rus        = "Рус -> Англ"
-        case engl       = "Англ -> Рус"
-        case hide       = "Скрыть перевод"
-        case emptyWords = "Нет слов"
-		case title 		= "ФАВОРИТ"
+    enum Segment: String {
+        case all                = "Все"
+        case onlyFavorit        = "Фаворит"
+        
+        var index: Int {
+            self == .all ? 0 : 1
+        }
+        
+        init(index: Int) {
+            self = index == 0 ? .all : .onlyFavorit
+        }
     }
 
     enum ViewText: String {
-        case rightBB        = "add"
+        case title              = "Неправильные глаголы"
+        case hideTranslate      = "Скрыть перевод"
     }
-	
-	enum TableContextMenu: String {
-        case rename     = "Изменить"
-		case delete     = "Удалить"
-	}
 
+    
 }

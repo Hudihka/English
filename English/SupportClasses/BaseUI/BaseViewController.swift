@@ -9,19 +9,18 @@ import UIKit
 import SnapKit
 
 class BaseViewController: UIViewController {
-    
-    var titleText: String?{
-        return nil
-    }
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.white
         
-        self.title = titleText
-        
         desingUI()
-
+        
+        lissenVM()
     }
+    
+    func desingUI() {}
+    
+    func lissenVM() {}
 }

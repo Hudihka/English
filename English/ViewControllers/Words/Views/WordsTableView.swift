@@ -38,9 +38,11 @@ class WordsTableView: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func wordsTable(wordsArray: [Word]?,
+    func wordsTable(
+        wordsArray: [Word]?,
                     duration: TimeInterval = 0,
-                    scroll: Bool = false) {//если нил, использум те что уже есть
+                    scroll: Bool = false
+    ) {//если нил, использум те что уже есть
 
         let newWords: [Word] = wordsArray == nil ? self.words : wordsArray!
 
