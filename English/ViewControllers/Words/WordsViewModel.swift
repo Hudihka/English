@@ -8,25 +8,49 @@
 import Foundation
 
 final class WordsViewModel: WordsProtocolIn, WordsProtocolOut {
+    private let UD = DefaultUtils.shared
+    private let dataProvider = DataProvider.shared
+    
     var segmentIndex: (Int) -> Void             = { _ in }
     var switchValue: (Bool) -> Void             = { _ in }
-    var arrayAllLists: ([List]) -> Void         = { _ in }
-    var arrayFavoritLists: ([List]) -> Void     = { _ in }
+    var arrayLists: ([List]) -> Void            = { _ in }
     
     func giveMeData() {
         
+        segmentIndex(indexSegment)
+        switchValue(UD.hideTranslate)
+        
+        updateLists()
     }
     
     
     func tapedFavorit(word: Word) {
-        <#code#>
+        var newWord = word
+        newWord.isFavorit = !word.isFavorit
+        
+        dataProvider.update(word: newWord)
+        updateLists()
     }
     
     func tapedSegment(segment: WordsEndpoint.Segment) {
-        <#code#>
+        UD.translateWay = segment.index
     }
     
     func tapedSwitch(value: Bool) {
-        <#code#>
+        UD.hideTranslate = value
+    }
+}
+
+private extension WordsViewModel {
+    var indexSegment: Int {
+        UD.translateWay
+    }
+    
+    func updateLists() {
+        if WordsEndpoint.Segment(index: indexSegment) == .all {
+            arrayLists(dataProvider.allLists)
+        } else {
+            arrayLists(dataProvider.onlyFavorit)
+        }
     }
 }

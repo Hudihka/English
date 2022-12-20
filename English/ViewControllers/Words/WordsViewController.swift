@@ -18,9 +18,19 @@ class WordsViewController: BaseViewController {
         let hideTranslate = UILabel()
         hideTranslate.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         hideTranslate.textColor = UIColor.black
-        hideTranslate.text = WordsEndpoint.hideTranslate.hide.rawValue
+        hideTranslate.text = WordsEndpoint.ViewText.hideTranslate.rawValue
         
         return hideTranslate
+    }()
+    
+    private let labelEmpty: UILabel = {
+        let labelClear = UILabel()
+        labelClear.textColor = UIColor.black
+        labelClear.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        labelClear.textAlignment = .center
+        labelClear.text = WordsEndpoint.Text.emptyWords.rawValue
+        
+        return labelClear
     }()
     
     private lazy var segentTranslate: UISegmentedControl = {
@@ -54,7 +64,7 @@ class WordsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter?.fetchData()
+        VM?.giveMeData()
     }
     
 
@@ -62,8 +72,7 @@ class WordsViewController: BaseViewController {
         
         self.title = WordsEndpoint.ViewText.title.rawValue
 
-        self.view.addSubview(segentTranslate)
-
+        view.addSubview(segentTranslate)
         segentTranslate.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
             make.left.equalTo(16)
@@ -77,7 +86,7 @@ class WordsViewController: BaseViewController {
             make.left.equalTo(segentTranslate.snp.left)
         }
 
-        self.view.addSubview(hideTranslateLabel)
+        view.addSubview(hideTranslateLabel)
         hideTranslateLabel.snp.makeConstraints({ (make) in
             make.height.equalTo(31)
             make.left.equalTo(switchTranslate.snp.right).offset(15)
@@ -85,29 +94,22 @@ class WordsViewController: BaseViewController {
             make.top.equalTo(segentTranslate.snp.bottom).offset(16)
         })
 
-        labelClear.textColor = UIColor.black
-        labelClear.font = UIFont.systemFont(ofSize: 25, weight: .bold)
-        labelClear.textAlignment = .center
-        labelClear.text = WordsEndpoint.Text.emptyWords.rawValue
-        self.view.addSubview(labelClear)
-
-        labelClear.snp.makeConstraints({ (make) in
+        view.addSubview(labelEmpty)
+        labelEmpty.snp.makeConstraints({ (make) in
             make.height.equalTo(44)
             make.left.equalTo(0)
             make.right.equalTo(0)
             make.top.equalTo(273)
         })
 
-		table = WordsTableView(presenter: presenter)
-        self.view.addSubview(table)
-
+        
+        view.addSubview(table)
         table.snp.makeConstraints({ (make) in
             make.top.equalTo(switchTranslate.snp.bottom).offset(11)
             make.left.equalTo(0)
             make.right.equalTo(0)
             make.bottom.equalTo(0)
         })
-        
     }
     
     override func lissenVM() {
@@ -115,11 +117,7 @@ class WordsViewController: BaseViewController {
             return
         }
         
-        VM.arrayAllLists = { [weak self] arrayLists in
-            self?.arrayLists = arrayLists
-        }
-        
-        VM.arrayFavoritLists = { [weak self] arrayLists in
+        VM.arrayLists = { [weak self] arrayLists in
             self?.arrayLists = arrayLists
         }
         
@@ -133,38 +131,13 @@ class WordsViewController: BaseViewController {
     }
 
     @objc private func actionSegment(_ sender: UISegmentedControl) {
-        let segment = 
-        VM?.tapedSegment(segment: sender.selectedSegmentIndex)
+        let segment = sender.selectedSegmentIndex
+        VM?.tapedSegment(segment: WordsEndpoint.Segment(index: segment))
 //        table.wordsTable(wordsArray: nil, duration: 0.25, scroll: true)
     }
 
     @objc private func switchAction(_ sender: UISwitch) {
         VM?.tapedSwitch(value: sender.isOn)
 //        table.wordsTable(wordsArray: nil, duration: 0.25)
-    }
-}
-
-
-extension WordsViewController: WordViewControllerProtocol {
-    func fetchTitle(text: String){
-        self.title = text
-        if text == FAVORIT_NAME {
-            table.isFavoritList = true
-            navigationItem.rightBarButtonItem = nil
-        }
-    }
-
-    func fetchSegmentControll(index: Int){
-        segentTranslate.selectedSegmentIndex = index
-    }
-
-    func fetchSwitch(isOn: Bool){
-        switchTranslate.isOn = isOn
-    }
-
-
-    func words(words: [Word]) {
-        labelClear.isHidden = !words.isEmpty
-        table.wordsTable(wordsArray: words, duration: 0, scroll: false)
     }
 }

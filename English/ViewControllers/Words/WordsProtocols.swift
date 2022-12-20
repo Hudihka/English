@@ -18,6 +18,5 @@ protocol WordsProtocolIn {
 protocol WordsProtocolOut {
     var segmentIndex: (Int) -> Void { get set }
     var switchValue: (Bool) -> Void { get set }
-    var arrayAllLists: ([List]) -> Void { get set }
-    var arrayFavoritLists: ([List]) -> Void { get set }
+    var arrayLists: ([List]) -> Void { get set }
 }

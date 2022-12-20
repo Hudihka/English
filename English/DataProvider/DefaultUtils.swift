@@ -10,46 +10,57 @@ import UIKit
 
 class DefaultUtils: NSObject {
     
-    private enum Keys: String {
-        case hideTranslate          = "hide_translate"
-        case slectedSertchIndex     = "slected_sertch_index"
-        case keyUserAppleID         = "UserDefaults_user_apple_id"
+    private enum Keys {
+        case hideTranslate
+        case slectedSertchIndex
+        case wordId(id: String)
+        
+        var key: String {
+            switch self {
+            case .hideTranslate:
+                return "hide_translate"
+            case .slectedSertchIndex:
+                return "slected_sertch_index"
+            case .wordId(id: let id):
+                return "wordId_\(id)"
+            }
+        }
     }
 
     
     static let shared = DefaultUtils()
     
     private func obj(forKey: Keys) -> Any? {
-        return UserDefaults.standard.object(forKey: forKey.rawValue)
+        return UserDefaults.standard.object(forKey: forKey.key)
     }
     
     
     private func bool(forKey: Keys) -> Bool {
-        return UserDefaults.standard.bool(forKey: forKey.rawValue)
+        return UserDefaults.standard.bool(forKey: forKey.key)
     }
     
     private func int(forKey: Keys) -> Int {
-        return UserDefaults.standard.integer(forKey: forKey.rawValue)
+        return UserDefaults.standard.integer(forKey: forKey.key)
     }
     
     private func set(bool: Bool, forKey: Keys) {
-        UserDefaults.standard.set(bool, forKey: forKey.rawValue)
+        UserDefaults.standard.set(bool, forKey: forKey.key)
         UserDefaults.standard.synchronize()
     }
     
     private func set(int: Int, forKey: Keys) {
-        UserDefaults.standard.set(int, forKey: forKey.rawValue)
+        UserDefaults.standard.set(int, forKey: forKey.key)
         UserDefaults.standard.synchronize()
     }
     
     
     private func set(string: String?, forKey: Keys) {
-        UserDefaults.standard.set(string, forKey: forKey.rawValue)
+        UserDefaults.standard.set(string, forKey: forKey.key)
         UserDefaults.standard.synchronize()
     }
     
     private func string(forKey: Keys) -> String?{
-        return UserDefaults.standard.string(forKey: forKey.rawValue)
+        return UserDefaults.standard.string(forKey: forKey.key)
     }
     
     
@@ -66,9 +77,13 @@ class DefaultUtils: NSObject {
         get { return int(forKey: Keys.slectedSertchIndex) }
     }
     
-    var userAppleID: String?{
-        set { set(string: newValue, forKey: Keys.keyUserAppleID) }
-        get { return string(forKey: Keys.keyUserAppleID) }
+    func saveWordId(id: String, value: Bool) {
+        let key = Keys.wordId(id: id)
+        set(bool: value, forKey: key)
     }
     
+    func getFavoritValueWord(id: String) -> Bool {
+        let key = Keys.wordId(id: id)
+        return bool(forKey: key)
+    }
 }

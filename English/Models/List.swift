@@ -11,7 +11,7 @@ struct List {
     
     let number: Int
     let description: String
-    let words: [Word]
+    var words: [Word]
 
     init(json: JSON) {
         self.number = (json["number"] as? Int) ?? 0

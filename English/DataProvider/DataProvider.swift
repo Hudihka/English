@@ -16,5 +16,26 @@ final class DataProvider {
         self.allLists = List.generateListsArray(json: contentJSON)
     }
     
+    func update(word: Word) {
+        allLists.enumerated().forEach { (indexList, list) in
+            if let indexWord = list.words.firstIndex(where: { $0.key == word.key }) {
+                allLists[indexList].words[indexWord] = word
+                
+                return
+            }
+        }
+    }
     
+    var onlyFavorit: [List] {
+        var lists = [List]()
+        
+        for var list in allLists {
+            let words = list.words.filter({ $0.isFavorit })
+            list.words = words
+            
+            lists.append(list)
+        }
+        
+        return lists
+    }
 }

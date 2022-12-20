@@ -13,11 +13,15 @@ struct Word {
     let form2: String
     let form3: String
     
+    var isFavorit: Bool = false
+    
     init(json: JSON){
         self.trans = (json["trans"] as? String) ?? "-"
         self.form1 = (json["form1"] as? String) ?? "-"
         self.form2 = (json["form2"] as? String) ?? "-"
         self.form3 = (json["form3"] as? String) ?? "-"
+        
+        self.isFavorit = DefaultUtils.shared.getFavoritValueWord(id: self.key)
     }
 }
 
