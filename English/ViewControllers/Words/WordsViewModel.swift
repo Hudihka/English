@@ -28,6 +28,7 @@ final class WordsViewModel: WordsProtocolIn, WordsProtocolOut {
         var newWord = word
         newWord.isFavorit = !word.isFavorit
         
+        UD.saveWordId(id: word.key, value: newWord.isFavorit)
         dataProvider.update(word: newWord)
         updateLists()
     }

@@ -114,6 +114,7 @@ class WordsViewController: BaseViewController {
             guard let self = self else {
                 return
             }
+            self.labelEmpty.isHidden = !arrayLists.isEmpty
             self.table.wordsTable(listArray: arrayLists, duration: 0.25)
         }
         
@@ -123,6 +124,13 @@ class WordsViewController: BaseViewController {
         
         VM.switchValue = { [weak self] value in
             self?.switchTranslate.isOn = value
+        }
+        
+        table.tapWord = { [weak self] value in
+            guard let VM = self?.VM else {
+                return
+            }
+            VM.tapedFavorit(word: value)
         }
     }
 
