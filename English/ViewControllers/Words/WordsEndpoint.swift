@@ -25,6 +25,7 @@ enum WordsEndpoint {
     enum ViewText: String {
         case title              = "Неправильные глаголы"
         case hideTranslate      = "Скрыть перевод"
+        case empty              = "Нет слов"
     }
 
     

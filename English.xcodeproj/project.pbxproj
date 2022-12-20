@@ -13,7 +13,6 @@
 		456EB4462692E1120003CEB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4442692E1120003CEB6 /* Main.storyboard */; };
 		456EB4482692E1120003CEB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4472692E1120003CEB6 /* Assets.xcassets */; };
 		456EB44B2692E1120003CEB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456EB4492692E1120003CEB6 /* LaunchScreen.storyboard */; };
-		45826F6026B9B83D001B3350 /* WordCellDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45826F5F26B9B83D001B3350 /* WordCellDescription.swift */; };
 		458C50BD26B6BEB4001DD6B9 /* WordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50BC26B6BEB4001DD6B9 /* WordsViewController.swift */; };
 		458C50BF26B6BEE5001DD6B9 /* WordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50BE26B6BEE5001DD6B9 /* WordsViewModel.swift */; };
 		458C50C826B6CCFB001DD6B9 /* WordsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C50C726B6CCFB001DD6B9 /* WordsEndpoint.swift */; };
@@ -37,6 +36,8 @@
 		E97DA815295116730059EF64 /* JSONContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DA814295116730059EF64 /* JSONContent.swift */; };
 		E97DA81729511F680059EF64 /* WordsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DA81629511F680059EF64 /* WordsProtocols.swift */; };
 		E97DA819295122780059EF64 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DA818295122780059EF64 /* DataProvider.swift */; };
+		E9E67EA42951B79D00F0A8AB /* ListHeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E67EA32951B79D00F0A8AB /* ListHeder.swift */; };
+		E9E67EA62951B7E300F0A8AB /* Offsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E67EA52951B7E300F0A8AB /* Offsets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +49,6 @@
 		456EB4472692E1120003CEB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		456EB44A2692E1120003CEB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		456EB44C2692E1120003CEB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45826F5F26B9B83D001B3350 /* WordCellDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCellDescription.swift; sourceTree = "<group>"; };
 		458C50BC26B6BEB4001DD6B9 /* WordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsViewController.swift; sourceTree = "<group>"; };
 		458C50BE26B6BEE5001DD6B9 /* WordsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsViewModel.swift; sourceTree = "<group>"; };
 		458C50C726B6CCFB001DD6B9 /* WordsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsEndpoint.swift; sourceTree = "<group>"; };
@@ -73,6 +73,8 @@
 		E97DA814295116730059EF64 /* JSONContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONContent.swift; sourceTree = "<group>"; };
 		E97DA81629511F680059EF64 /* WordsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsProtocols.swift; sourceTree = "<group>"; };
 		E97DA818295122780059EF64 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		E9E67EA32951B79D00F0A8AB /* ListHeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeder.swift; sourceTree = "<group>"; };
+		E9E67EA52951B7E300F0A8AB /* Offsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offsets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +148,7 @@
 			children = (
 				458C50C926B70D96001DD6B9 /* WordsTableView.swift */,
 				52E45E7226B7F546009C5965 /* WordCell.swift */,
-				45826F5F26B9B83D001B3350 /* WordCellDescription.swift */,
+				E9E67EA32951B79D00F0A8AB /* ListHeder.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +210,7 @@
 				45E976A42694B56A00A12858 /* BaseViewController.swift */,
 				45E976A62694BB3900A12858 /* BaseNavigationController.swift */,
 				45FF7AAC26A016DD005BAF35 /* BaseCell.swift */,
+				E9E67EA52951B7E300F0A8AB /* Offsets.swift */,
 			);
 			path = BaseUI;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				45E976A52694B56A00A12858 /* BaseViewController.swift in Sources */,
 				52E45E7826BAFCB2009C5965 /* Array.swift in Sources */,
 				E97DA815295116730059EF64 /* JSONContent.swift in Sources */,
+				E9E67EA42951B79D00F0A8AB /* ListHeder.swift in Sources */,
 				529EFF0C26BD1CBA00D65721 /* UITableView.swift in Sources */,
 				45E976A126947F5800A12858 /* UIViewController.swift in Sources */,
 				458C50CA26B70D96001DD6B9 /* WordsTableView.swift in Sources */,
@@ -310,11 +314,11 @@
 				45E976A3269490C500A12858 /* UINavigationController.swift in Sources */,
 				52E45E7326B7F546009C5965 /* WordCell.swift in Sources */,
 				45A191AC269DE0D700D2E169 /* UIView.swift in Sources */,
+				E9E67EA62951B7E300F0A8AB /* Offsets.swift in Sources */,
 				45FF7AAD26A016DD005BAF35 /* BaseCell.swift in Sources */,
 				45E8EEC6269340BD00D66F13 /* Constant.swift in Sources */,
 				45C960162694C2D600B846D2 /* UIWindow.swift in Sources */,
 				456E7F742699F79D007ABF69 /* DI.swift in Sources */,
-				45826F6026B9B83D001B3350 /* WordCellDescription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

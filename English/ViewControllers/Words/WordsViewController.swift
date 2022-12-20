@@ -8,11 +8,9 @@
 import UIKit
 
 class WordsViewController: BaseViewController {
-    private var arrayLists: [List] = []
-    
     var VM: (WordsProtocolIn & WordsProtocolOut)?
 
-	private var table: WordsTableView!
+	private var table = WordsTableView()
     
     private let hideTranslateLabel: UILabel = {
         let hideTranslate = UILabel()
@@ -28,7 +26,7 @@ class WordsViewController: BaseViewController {
         labelClear.textColor = UIColor.black
         labelClear.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         labelClear.textAlignment = .center
-        labelClear.text = WordsEndpoint.Text.emptyWords.rawValue
+        labelClear.text = WordsEndpoint.ViewText.empty.rawValue
         
         return labelClear
     }()
@@ -74,41 +72,35 @@ class WordsViewController: BaseViewController {
 
         view.addSubview(segentTranslate)
         segentTranslate.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
-            make.left.equalTo(16)
-            make.right.equalTo(-16)
+            make.top.left.right.equalToSuperview().inset(Offsets.value16)
             make.height.equalTo(40)
         }
 
         view.addSubview(switchTranslate)
         switchTranslate.snp.makeConstraints { (make) in
-            make.top.equalTo(segentTranslate.snp.bottom).offset(16)
+            make.top.equalTo(segentTranslate.snp.bottom).offset(Offsets.value16)
             make.left.equalTo(segentTranslate.snp.left)
         }
 
         view.addSubview(hideTranslateLabel)
         hideTranslateLabel.snp.makeConstraints({ (make) in
             make.height.equalTo(31)
-            make.left.equalTo(switchTranslate.snp.right).offset(15)
-            make.right.equalTo(-15)
-            make.top.equalTo(segentTranslate.snp.bottom).offset(16)
+            make.left.equalTo(switchTranslate.snp.right).offset(Offsets.value16)
+            make.right.equalTo(-Offsets.value16)
+            make.top.equalTo(segentTranslate.snp.bottom).offset(Offsets.value16)
         })
 
         view.addSubview(labelEmpty)
         labelEmpty.snp.makeConstraints({ (make) in
-            make.height.equalTo(44)
-            make.left.equalTo(0)
-            make.right.equalTo(0)
-            make.top.equalTo(273)
+            make.centerX.equalTo(self.view.snp.centerX)
+            make.centerY.equalTo(self.view.snp.centerY)
         })
 
         
         view.addSubview(table)
         table.snp.makeConstraints({ (make) in
-            make.top.equalTo(switchTranslate.snp.bottom).offset(11)
-            make.left.equalTo(0)
-            make.right.equalTo(0)
-            make.bottom.equalTo(0)
+            make.top.equalTo(switchTranslate.snp.bottom).offset(Offsets.value16)
+            make.left.right.bottom.equalToSuperview()
         })
     }
     
@@ -118,7 +110,10 @@ class WordsViewController: BaseViewController {
         }
         
         VM.arrayLists = { [weak self] arrayLists in
-            self?.arrayLists = arrayLists
+            guard let self = self else {
+                return
+            }
+            self.table.wordsTable(listArray: arrayLists, duration: 0.25)
         }
         
         VM.segmentIndex = { [weak self] index in
@@ -133,11 +128,9 @@ class WordsViewController: BaseViewController {
     @objc private func actionSegment(_ sender: UISegmentedControl) {
         let segment = sender.selectedSegmentIndex
         VM?.tapedSegment(segment: WordsEndpoint.Segment(index: segment))
-//        table.wordsTable(wordsArray: nil, duration: 0.25, scroll: true)
     }
 
     @objc private func switchAction(_ sender: UISwitch) {
         VM?.tapedSwitch(value: sender.isOn)
-//        table.wordsTable(wordsArray: nil, duration: 0.25)
     }
 }

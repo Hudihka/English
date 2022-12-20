@@ -34,10 +34,12 @@ final class WordsViewModel: WordsProtocolIn, WordsProtocolOut {
     
     func tapedSegment(segment: WordsEndpoint.Segment) {
         UD.translateWay = segment.index
+        updateLists()
     }
     
     func tapedSwitch(value: Bool) {
         UD.hideTranslate = value
+        updateLists()
     }
 }
 

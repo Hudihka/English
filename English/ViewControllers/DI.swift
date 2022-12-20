@@ -9,26 +9,17 @@ import Foundation
 import UIKit
 
 protocol DIProtocol: AnyObject {
-    static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController
+    static func wordsViewController() -> BaseNavigationController
 }
 
 
 class DI: DIProtocol {
-    static func wordsViewController(list: List?, NVC: BaseNavigationController) -> BaseViewController {
+    static func wordsViewController() -> BaseNavigationController {
         let VC = WordsViewController()
-
-        let interactor = WordsInteractor(list: list)
-        let router = WordsRouter(navigationVC: NVC, list: list)
-        let presenter = WordsPresenter(interactor: interactor)
-
-        VC.presenter = presenter
-        interactor.presenter = presenter
-
-        presenter.view = VC
-        presenter.interactor = interactor
-        presenter.router = router
-
-        return VC
+        let VM = WordsViewModel()
+        VC.VM = VM
+        
+        return BaseNavigationController(rootViewController: VC)
     }
 }
 
