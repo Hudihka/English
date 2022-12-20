@@ -31,9 +31,12 @@ final class DataProvider {
         
         for var list in allLists {
             let words = list.words.filter({ $0.isFavorit })
-            list.words = words
             
-            lists.append(list)
+            if !words.isEmpty {
+                list.words = words
+                
+                lists.append(list)
+            }
         }
         
         return lists

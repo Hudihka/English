@@ -24,6 +24,6 @@ struct List {
 
 extension List {
     static func generateListsArray(json: [JSON]) -> [List] {
-        json.map({ List(json: $0) }).sorted(by: { $0.number > $1.number })
+        json.map({ List(json: $0) }).sorted(by: { $0.number < $1.number })
     }
 }

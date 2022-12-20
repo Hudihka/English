@@ -19,7 +19,7 @@ class WordCell: BaseCell {
         let labelWord = UILabel()
         labelWord.textColor = UIColor.black
         labelWord.numberOfLines = 0
-        labelWord.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        labelWord.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         
         return labelWord
     }()
@@ -28,7 +28,7 @@ class WordCell: BaseCell {
         let labelTarnlate = UILabel()
         labelTarnlate.numberOfLines = 0
         labelTarnlate.textColor = UIColor.black
-        labelTarnlate.font = UIFont.systemFont(ofSize: 23)
+        labelTarnlate.font = UIFont.systemFont(ofSize: 25)
         
         return labelTarnlate
     }()
@@ -50,6 +50,9 @@ class WordCell: BaseCell {
             
             let alpha: CGFloat = hideTranslate ? 0 : 1
             labelEngl.alpha = alpha
+            
+            labelRus.text = word.trans
+            labelEngl.text = "\(word.form1) \(word.form2) \(word.form3)"
         }
     }
     
@@ -105,14 +108,16 @@ class WordCell: BaseCell {
         
         contentView.addSubview(labelRus)
         labelRus.snp.makeConstraints({ (make) in
-            make.top.left.right.equalToSuperview().inset(Offsets.value16)
-            make.height.equalTo(40)
+            make.left.right.equalToSuperview().inset(Offsets.value16)
+            make.top.equalToSuperview().inset(8)
+            make.height.equalTo(25)
         })
         
         contentView.addSubview(labelEngl)
         labelEngl.snp.makeConstraints({ (make) in
             make.top.equalTo(labelRus.snp.bottom).offset(7)
-            make.bottom.left.right.equalToSuperview().inset(Offsets.value16)
+            make.left.right.equalToSuperview().inset(Offsets.value16)
+            make.bottom.equalToSuperview().inset(8)
         })
         
     }

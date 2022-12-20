@@ -72,7 +72,8 @@ class WordsViewController: BaseViewController {
 
         view.addSubview(segentTranslate)
         segentTranslate.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview().inset(Offsets.value16)
+            make.left.right.equalToSuperview().inset(Offsets.value16)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(Offsets.value16)
             make.height.equalTo(40)
         }
 

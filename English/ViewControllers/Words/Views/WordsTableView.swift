@@ -85,7 +85,7 @@ extension WordsTableView: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100.0
+        75
     }
 
     //MARK: - тап

@@ -27,7 +27,7 @@ struct Word {
 
 extension Word {
     static func generateArray(json: [JSON]) -> [Word] {
-        json.map({ Word(json: $0) }).sorted(by: { $0.form1 > $1.form1 })
+        json.map({ Word(json: $0) }).sorted(by: { $0.form1 < $1.form1 })
     }
     
     var key: String {

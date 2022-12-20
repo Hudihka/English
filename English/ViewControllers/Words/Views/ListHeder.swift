@@ -14,7 +14,7 @@ final class ListHeder: UITableViewHeaderFooterView {
         let labelWord = UILabel()
         labelWord.textColor = UIColor.black
         labelWord.numberOfLines = 0
-        labelWord.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        labelWord.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         return labelWord
     }()
@@ -23,7 +23,7 @@ final class ListHeder: UITableViewHeaderFooterView {
         let labelTarnlate = UILabel()
         labelTarnlate.numberOfLines = 0
         labelTarnlate.textColor = UIColor.black
-        labelTarnlate.font = UIFont.systemFont(ofSize: 23)
+        labelTarnlate.font = UIFont.systemFont(ofSize: 18)
         
         return labelTarnlate
     }()
@@ -57,14 +57,16 @@ final class ListHeder: UITableViewHeaderFooterView {
 
         addSubview(labelNumber)
         labelNumber.snp.makeConstraints({ (make) in
-            make.top.left.right.equalToSuperview().offset(Offsets.value16)
-            make.bottom.left.right.equalToSuperview().offset(Offsets.value16)
+            make.left.right.equalToSuperview().offset(Offsets.value16)
+            make.top.equalToSuperview().offset(8)
+//            make.left.right.equalToSuperview().offset(Offsets.value16)
         })
         
         addSubview(labelInfo)
         labelInfo.snp.makeConstraints({ (make) in
-            make.bottom.left.right.equalToSuperview().offset(Offsets.value16)
-            make.top.equalTo(labelNumber.snp.bottom).offset(Offsets.value16)
+            make.top.equalTo(labelNumber.snp.bottom).offset(8)
+            make.left.right.equalToSuperview().offset(Offsets.value16)
+            make.bottom.equalToSuperview().offset(-8)
         })
     }
 }
